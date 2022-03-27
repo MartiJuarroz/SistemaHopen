@@ -7,15 +7,14 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
-@Table (name = "obra")
+@Table(name = "aluminio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Obra implements Serializable {
+public class Aluminio implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,23 +23,12 @@ public class Obra implements Serializable {
     private Long id;
 
     @Column
-    private String titular;
+    private float kiloPresupuestado;
 
     @Column
-    private float totalPresupuesto;
+    private float kiloFactura;
 
     @Column
-    private float comision;
-
-    @Column
-    private float gananciaPrentendida;
-
-    @Column
-    private Date fechaPresupuesto;
-
-    @Column
-    private float costosFijos;
-
-
+    private String remito;
 
 }
