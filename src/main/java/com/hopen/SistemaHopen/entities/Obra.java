@@ -10,31 +10,38 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table (name = "obra")
+@Table(name = "obra")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 public class Obra extends Base {
 
-    @Column
-    private String titular;
+      @Column
+      private String titular;
 
-    @Column
-    private float totalPresupuesto;
+      @Column
+      private float totalPresupuesto;
 
-    @Column
-    private float comision;
+      @Column
+      private float comision;
 
-    @Column
-    private float gananciaPrentendida;
+      @Column
+      private float gananciaPrentendida;
 
-    @Column
-    private Date fechaPresupuesto;
+      @Column
+      private Date fechaPresupuesto;
 
-    @Column
-    private float costosFijos;
+      @Column
+      private float costosFijos;
 
+      @ManyToOne
+      @JoinColumn(name = "proveedor_id")
+      private Proveedor proveedor;
 
+      private Viaje viaje;
+      private ManoObra manoObra;
+      private Vidrio vidrio;
+      private Aluminio aluminio;
 
 }
