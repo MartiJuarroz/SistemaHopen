@@ -16,6 +16,8 @@ import java.io.Serializable;
 @Setter
 public class Vidrio extends DiferenciaRealPresupuesto {
 
+      private int a;
+
     @Column
     private int cantPlanchas;
 
