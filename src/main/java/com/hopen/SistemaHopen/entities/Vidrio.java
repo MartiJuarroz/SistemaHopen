@@ -14,9 +14,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Vidrio extends Base {
+public class Vidrio extends DiferenciaRealPresupuesto {
 
+    @Column
     private int cantPlanchas;
 
+    @Column
     private int planchasUsadas;
 }

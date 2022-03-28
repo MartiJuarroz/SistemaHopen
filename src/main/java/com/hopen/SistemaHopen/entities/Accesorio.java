@@ -8,15 +8,19 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
-@Table(name = "tipoVidrio")
+@Table(name = "accesorio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class TipoVidrio extends Base{
+public class Accesorio extends DiferenciaRealPresupuesto{
 
     @Column
-    private String nombreTipoVidrio;
+    private String nombreAccesorio;
+
+    @Column
+    private Date fechaCompra;
 }

@@ -8,21 +8,18 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "aluminio")
+@MappedSuperclass
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Aluminio extends DiferenciaRealPresupuesto {
+public class DiferenciaRealPresupuesto implements Serializable {
 
-    @Column
-    private float kiloPresupuestado;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column
-    private float kiloFactura;
+    private float totalReal;
 
-    @Column
-    private String remito;
-
+    private float totalPresupuesto;
 }

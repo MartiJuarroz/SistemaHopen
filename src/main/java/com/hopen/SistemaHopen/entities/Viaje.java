@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "viaje")
@@ -14,9 +13,11 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Viaje extends Base{
+public class Viaje extends DiferenciaRealPresupuesto{
 
+    @Column
     private String nombreEmpresa;
 
+    @Column
     private int cantViajesPresupuesto;
 }
