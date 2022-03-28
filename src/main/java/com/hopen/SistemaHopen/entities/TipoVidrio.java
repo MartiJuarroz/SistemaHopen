@@ -5,18 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "vidrio")
+@Table(name = "tipoVidrio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Vidrio extends Base {
+public class TipoVidrio extends Base{
 
-    private int cantPlanchas;
-
-    private int planchasUsadas;
+    private String nombreTipoVidrio;
 }
