@@ -43,6 +43,7 @@ public class Obra extends Base {
       @JoinColumn(name = "viaje_id")
       private Viaje viaje;
 
+
       private ManoObra manoObra;
       private Vidrio vidrio;
       private Aluminio aluminio;
