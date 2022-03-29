@@ -16,6 +16,10 @@ import java.util.Date;
 @Getter
 @Setter
 public class Obra extends Base {
+      //la agregue por ahora, pero creo q el nombre iba a ser la clave
+      @Id
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
+      private Long id;
 
       @Column
       private String titular;
@@ -49,7 +53,7 @@ public class Obra extends Base {
 
       @OneToMany
       @JoinColumn(name = "vidrio_id")
-      private Vidrio vidrio;
+      private Vidrio vidrio;//aca no entiendo q pija pasa
 
       @OneToOne
       @JoinColumn(name = "aluminio_id")

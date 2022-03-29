@@ -18,8 +18,8 @@ import java.util.Date;
 @Setter
 public class Factura {
     @Id
-    @Column(name = "id", nullable = false)
-    private  long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @OneToOne//no estoy seguro de si es 1 a 1
     @JoinColumn(name = "detalleFactura_id")

@@ -18,9 +18,8 @@ import java.util.Date;
 @Setter
 public class EstadoObra {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String nombreEstado;
 

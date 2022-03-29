@@ -18,6 +18,6 @@ import java.util.Date;
 @Setter
 public class DetalleFactura {
     @Id
-    @Column(name = "id", nullable = false)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }
