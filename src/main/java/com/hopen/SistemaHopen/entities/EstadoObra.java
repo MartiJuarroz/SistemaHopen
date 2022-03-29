@@ -16,11 +16,9 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class EstadoObra {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class EstadoObra extends Base{
+
     @Column
-    private String nombreEstado;
+    private String nombreEstadoObra;
 
 }

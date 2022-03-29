@@ -8,7 +8,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "factura")
@@ -16,13 +18,10 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Factura {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Factura extends Base{
 
-    @OneToOne//no estoy seguro de si es 1 a 1
-    @JoinColumn(name = "detalleFactura_id")
-    private DetalleFactura detalleFactura;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JoinColumn(name = "detalleFactura_id")
+    private List<DetalleFactura> detallesFactura = new ArrayList<DetalleFactura>();
 
 }

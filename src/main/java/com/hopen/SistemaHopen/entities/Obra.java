@@ -7,7 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "obra")
@@ -16,10 +18,6 @@ import java.util.Date;
 @Getter
 @Setter
 public class Obra extends Base {
-      //la agregue por ahora, pero creo q el nombre iba a ser la clave
-      @Id
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
-      private Long id;
 
       @Column
       private String titular;
@@ -39,9 +37,9 @@ public class Obra extends Base {
       @Column
       private float costosFijos;
 
-      @ManyToOne
-      @JoinColumn(name = "proveedor_id")
-      private Proveedor proveedor;
+      @OneToMany
+    //  @JoinColumn(name = "proveedor_id")
+      private List<Proveedor> proveedores = new ArrayList<Proveedor>();
 
       @OneToOne
       @JoinColumn(name = "viaje_id")
@@ -52,15 +50,19 @@ public class Obra extends Base {
       private ManoObra manoObra;
 
       @OneToMany
-      @JoinColumn(name = "vidrio_id")
-      private Vidrio vidrio;//aca no entiendo q pija pasa
+    //  @JoinColumn(name = "vidrio_id")
+      private List<Vidrio> listaVidrio = new ArrayList<Vidrio>();
+
+      @OneToMany
+    //  @JoinColumn(name = "accesorio_id")
+      private List<Accesorio> listaAccesorios = new ArrayList<Accesorio>();
 
       @OneToOne
       @JoinColumn(name = "aluminio_id")
       private Aluminio aluminio;
 
-      @ManyToOne
-      @JoinColumn(name = "estadoObra")
+      @ManyToOne(cascade = CascadeType.PERSIST)
+      @JoinColumn(name = "estadoObra_id")
       private EstadoObra estadoObra;
 
 }
