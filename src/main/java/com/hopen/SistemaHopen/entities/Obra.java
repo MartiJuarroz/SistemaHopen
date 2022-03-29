@@ -39,7 +39,10 @@ public class Obra extends Base {
       @JoinColumn(name = "proveedor_id")
       private Proveedor proveedor;
 
+      @ManyToOne
+      @JoinColumn(name = "viaje_id")
       private Viaje viaje;
+
       private ManoObra manoObra;
       private Vidrio vidrio;
       private Aluminio aluminio;
