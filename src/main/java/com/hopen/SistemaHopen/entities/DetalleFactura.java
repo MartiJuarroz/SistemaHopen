@@ -1,5 +1,6 @@
 package com.hopen.SistemaHopen.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,22 +8,16 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Table(name = "vidrio")
+@Table(name = "detalleFactura")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Vidrio extends DiferenciaRealPresupuesto {
-
-    @Column
-    private int cantPlanchas;
-
-    @Column
-    private int planchasUsadas;
-
-    @ManyToOne
-    @JoinColumn(name = "tipoVidrio_id")
-    private TipoVidrio tipoVidrio;
+public class DetalleFactura {
+    @Id
+    @Column(name = "id", nullable = false)
+    private long id;
 }
