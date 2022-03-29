@@ -82,6 +82,7 @@
             </constraints>
             <properties>
               <font name="DialogInput" size="14" style="1"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="f981b" class="javax.swing.JButton" binding="btnEntrar">
@@ -139,6 +140,7 @@
             </constraints>
             <properties>
               <font name="DialogInput" size="14" style="1"/>
+              <text value=" "/>
             </properties>
           </component>
           <component id="f2e71" class="javax.swing.JLabel">
