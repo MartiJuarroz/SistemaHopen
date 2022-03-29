@@ -24,4 +24,13 @@ public class Factura extends Base{
     //@JoinColumn(name = "detalleFactura_id")
     private List<DetalleFactura> detallesFactura = new ArrayList<DetalleFactura>();
 
+    @Column
+    private Date fechaFactura;
+
+    @Column
+    private int numeroFactura;
+
+    @Column
+    private float totalFactura;
+
 }
