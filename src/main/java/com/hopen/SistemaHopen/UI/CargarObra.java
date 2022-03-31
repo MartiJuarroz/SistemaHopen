@@ -335,7 +335,7 @@ public class CargarObra extends javax.swing.JFrame {
          obra.setCostosFijos(costosFijos);
          obra.setFechaPresupuesto(fecha);
          
-         conexion(query);
+         //conexion(query);
          
          
         dispose();
