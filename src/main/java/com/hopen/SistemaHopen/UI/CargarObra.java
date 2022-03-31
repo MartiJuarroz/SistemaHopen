@@ -5,8 +5,9 @@
 package com.hopen.SistemaHopen.UI;
 
 import com.hopen.SistemaHopen.entities.Obra;
-import com.hopen.SistemaHopen.metodos.TextPrompt;
+import com.hopen.SistemaHopen.UI.TextPrompt;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -19,10 +20,10 @@ public class CargarObra extends javax.swing.JFrame {
      */
     public CargarObra() {
         initComponents();
-        //TextPrompt dataholderMontoTotal = new TextPrompt("Ingrese el monto con formato 100.000",MTTxt);
-        //dataholderMontoTotal.setShowPromptOnce(true);
-        //TextPrompt dataholderComision = new TextPrompt("Ingrese la comision con formato 100.000",ComisionTxt);
-        //dataholderComision.setShowPromptOnce(true);
+        TextPrompt dataholderMontoTotal = new TextPrompt("Ingrese el monto con formato 100.000",MTTxt);
+        dataholderMontoTotal.setShowPromptOnce(true);
+        TextPrompt dataholderComision = new TextPrompt("Ingrese la comision con formato 100.000",ComisionTxt);
+        dataholderComision.setShowPromptOnce(true);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +58,7 @@ public class CargarObra extends javax.swing.JFrame {
         sepFecha = new javax.swing.JSeparator();
         SalirBtn = new javax.swing.JButton();
         SigBtn = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        fechaCH = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 570));
@@ -161,7 +162,7 @@ public class CargarObra extends javax.swing.JFrame {
             }
         });
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        fechaCH.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,8 +191,9 @@ public class CargarObra extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(fechaLbl)
-                                        .addGap(105, 105, 105)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(95, 95, 95)
+                                        .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10))
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(sepMT, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,8 +214,9 @@ public class CargarObra extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(CFLbl)
-                        .addGap(77, 77, 77)
-                        .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)))
                 .addContainerGap(74, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -259,7 +262,7 @@ public class CargarObra extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fechaLbl)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -268,7 +271,7 @@ public class CargarObra extends javax.swing.JFrame {
                     .addComponent(CFLbl))
                 .addGap(8, 8, 8)
                 .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -322,7 +325,7 @@ public class CargarObra extends javax.swing.JFrame {
          float comision = Float.parseFloat(ComisionTxt.getText());
          float gananciaPretendida = Float.parseFloat(GPTxt.getText());
          float costosFijos = Float.parseFloat(CFTxt.getText());
-          //   Date fecha = 
+         Date fecha = fechaCH.getDate();
          
          Obra obra = new Obra();
          obra.setTitular(titular);
@@ -330,8 +333,11 @@ public class CargarObra extends javax.swing.JFrame {
          obra.setComision(comision);
          obra.setGananciaPrentendida(gananciaPretendida);
          obra.setCostosFijos(costosFijos);
-    //     obra.setFechaPresupuesto(fechaPresupuesto);
-    
+         obra.setFechaPresupuesto(fecha);
+         
+         conexion(query);
+         
+         
         dispose();
         CargarFactura cf = new CargarFactura();
         cf.setVisible(true);
@@ -392,8 +398,8 @@ public class CargarObra extends javax.swing.JFrame {
     private javax.swing.JButton SalirBtn;
     private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
+    private com.toedter.calendar.JDateChooser fechaCH;
     private javax.swing.JLabel fechaLbl;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator sepCF;
     private javax.swing.JSeparator sepComision;
