@@ -218,8 +218,7 @@ public class LoginForm extends javax.swing.JFrame {
 
          if (usuario != null) {
                 dispose();
-                CargarObra co = new CargarObra();
-                co.setVisible(true);
+                new CargarObra().setVisible(true);
        //         this.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(LoginForm.this,
