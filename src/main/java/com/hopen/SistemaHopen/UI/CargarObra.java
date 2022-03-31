@@ -56,19 +56,17 @@ public class CargarObra extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        UITxt.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        UITxt.setFont(new java.awt.Font("Microsoft YaHei", 2, 20)); // NOI18N
         UITxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UITxt.setText("Ingrese los datos de la obra");
 
         ObreroIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ObreroIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/obrero.png"))); // NOI18N
 
-        titularLbl.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        titularLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
         titularLbl.setText("Titular");
 
         titularTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        titularTxt.setForeground(new java.awt.Color(204, 204, 204));
-        titularTxt.setText("Ingrese titular de la obra");
         titularTxt.setToolTipText("Hola q onda\n");
         titularTxt.setBorder(null);
         titularTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -78,13 +76,11 @@ public class CargarObra extends javax.swing.JFrame {
             }
         });
 
-        MTLbl.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        MTLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         MTLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MTLbl.setText("Monto Total");
 
         MTTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        MTTxt.setForeground(new java.awt.Color(204, 204, 204));
-        MTTxt.setText("Ingrese monto total");
         MTTxt.setBorder(null);
         MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         MTTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -93,12 +89,10 @@ public class CargarObra extends javax.swing.JFrame {
             }
         });
 
-        CFLbl.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        CFLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         CFLbl.setText("Costos Fijos");
 
         CFTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        CFTxt.setForeground(new java.awt.Color(204, 204, 204));
-        CFTxt.setText("Ingrese costos fijos");
         CFTxt.setBorder(null);
         CFTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,12 +100,10 @@ public class CargarObra extends javax.swing.JFrame {
             }
         });
 
-        ComisionLbl.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        ComisionLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         ComisionLbl.setText("Comisión");
 
         ComisionTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        ComisionTxt.setForeground(new java.awt.Color(204, 204, 204));
-        ComisionTxt.setText("Ingrese comision");
         ComisionTxt.setBorder(null);
         ComisionTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,12 +111,10 @@ public class CargarObra extends javax.swing.JFrame {
             }
         });
 
-        GPLbl.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        GPLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         GPLbl.setText("Ganancia Pretendida");
 
         GPTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        GPTxt.setForeground(new java.awt.Color(204, 204, 204));
-        GPTxt.setText("Ingrese ganancia");
         GPTxt.setBorder(null);
         GPTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +122,7 @@ public class CargarObra extends javax.swing.JFrame {
             }
         });
 
-        fechaLbl.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        fechaLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         fechaLbl.setText("Fecha");
 
         SalirBtn.setBackground(new java.awt.Color(255, 51, 51));
@@ -141,7 +131,7 @@ public class CargarObra extends javax.swing.JFrame {
         SalirBtn.setText("Salir");
         SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        SigBtn.setBackground(new java.awt.Color(102, 102, 255));
+        SigBtn.setBackground(new java.awt.Color(0, 204, 255));
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Siguiente");
@@ -160,23 +150,9 @@ public class CargarObra extends javax.swing.JFrame {
                         .addComponent(MTTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(CFLbl)
-                                .addGap(53, 53, 53)
-                                .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(titularLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(titularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(ComisionLbl)
-                                .addGap(73, 73, 73)
-                                .addComponent(ComisionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(fechaLbl)
-                                .addGap(90, 90, 90)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(titularLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(titularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,8 +172,23 @@ public class CargarObra extends javax.swing.JFrame {
                                     .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(ComisionLbl)
+                        .addGap(78, 78, 78)
+                        .addComponent(ComisionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(fechaLbl)
+                        .addGap(102, 102, 102)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(CFLbl)
+                        .addGap(77, 77, 77)
+                        .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(74, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,18 +231,18 @@ public class CargarObra extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fechaLbl)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaLbl))
                 .addGap(7, 7, 7)
                 .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CFLbl)
-                    .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CFLbl))
+                .addGap(8, 8, 8)
                 .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
