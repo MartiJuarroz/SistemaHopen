@@ -1,5 +1,7 @@
 package com.hopen.SistemaHopen;
 
+import com.hopen.SistemaHopen.UI.LoginForm;
+import com.hopen.SistemaHopen.entities.Usuario;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
