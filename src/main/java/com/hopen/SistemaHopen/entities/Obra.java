@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +31,7 @@ public class Obra extends Base {
       private float gananciaPrentendida;
 
       @Column
+      @Temporal(TemporalType.DATE)
       private Date fechaPresupuesto;
 
       @Column
