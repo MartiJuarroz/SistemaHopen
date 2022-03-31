@@ -130,6 +130,11 @@ public class CargarObra extends javax.swing.JFrame {
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Salir");
         SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirBtnActionPerformed(evt);
+            }
+        });
 
         SigBtn.setBackground(new java.awt.Color(0, 204, 255));
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
@@ -282,6 +287,11 @@ public class CargarObra extends javax.swing.JFrame {
     private void GPTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GPTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_GPTxtActionPerformed
+
+    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(WIDTH);
+    }//GEN-LAST:event_SalirBtnActionPerformed
 
     /**
      * @param args the command line arguments
