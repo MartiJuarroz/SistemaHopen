@@ -71,19 +71,26 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="GPTxt" min="-2" pref="433" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="sepMT" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
-                                      <Component id="sepTitular" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="ObreroIcon" min="-2" pref="104" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                          <Component id="UITxt" min="-2" pref="391" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="fechaLbl" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Component id="jDateChooser1" min="-2" pref="392" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="sepComision" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
-                                      <Component id="sepFecha" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
-                                      <Component id="sepGP" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
-                                      <Component id="sepCF" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="sepMT" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
+                                          <Component id="sepTitular" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="ObreroIcon" min="-2" pref="104" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                              <Component id="UITxt" min="-2" pref="391" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="sepComision" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
+                                          <Component id="sepFecha" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
+                                          <Component id="sepGP" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
+                                          <Component id="sepCF" alignment="0" min="-2" pref="575" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -96,17 +103,13 @@
                           <Component id="ComisionTxt" min="-2" pref="433" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                          <Component id="fechaLbl" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="CFLbl" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                           <Component id="CFTxt" min="-2" pref="423" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="74" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -159,8 +162,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="sepGP" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="fechaLbl" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="fechaLbl" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="sepFecha" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -215,7 +221,7 @@
               <Border info="null"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -243,7 +249,7 @@
               <Border info="null"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -344,7 +350,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -364,12 +370,19 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Siguiente"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SigBtnActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
