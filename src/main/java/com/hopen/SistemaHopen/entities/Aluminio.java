@@ -28,5 +28,5 @@ public class Aluminio extends DiferenciaRealPresupuesto {
     @ManyToOne
     @JoinColumn(name = "colorAluminio_id")
     private ColorAluminio colorAluminio;
-
+    
 }
