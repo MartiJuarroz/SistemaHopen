@@ -379,10 +379,10 @@ public class CargarObra extends javax.swing.JFrame {
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
          String titular = titularTxt.getText();
-         float totalPresupuesto = Float.parseFloat(MTTxt.getText());
+         float total_presupuesto = Float.parseFloat(MTTxt.getText());
          float comision = Float.parseFloat(ComisionTxt.getText());
-         float gananciaPretendida = Float.parseFloat(GPTxt.getText());
-         float costosFijos = Float.parseFloat(CFTxt.getText());
+         float ganancia_pretendida = Float.parseFloat(GPTxt.getText());
+         float costos_fijos = Float.parseFloat(CFTxt.getText());
          //Para convertir fecha de java en fecha de sql
          java.util.Date fecha = fechaCH.getDate();
          long timeInMilliSecs = fecha.getTime();
@@ -390,25 +390,25 @@ public class CargarObra extends javax.swing.JFrame {
          
          Obra obra = new Obra();
          obra.setTitular(titular);
-         obra.setTotalPresupuesto(totalPresupuesto);
+         obra.setTotalPresupuesto(total_presupuesto);
          obra.setComision(comision);
-         obra.setGananciaPrentendida(gananciaPretendida);
-         obra.setCostosFijos(costosFijos);
-         obra.setFechaPresupuesto(fecha);
+         obra.setGanancia_pretendida(ganancia_pretendida);
+         obra.setCostosFijos(costos_fijos);
+         obra.setFechaPresupuesto(fechaDB);
          
          
          PreparedStatement ps;
          
          try{
          Connection con = ConexionDB.getConnection();
-         String sql ="INSERT INTO `obra`(`titular`, `montoTotal`, `comision`, `gananciaPretendida`, `costosFijos`, `fecha`) VALUES (?,?,?,?,?,?)";
+         String sql ="INSERT INTO obra (titular, total_presupuesto, comision, ganancia_pretendida, costos_fijos, fecha_presupuesto) VALUES (?,?,?,?,?,?)";
          ps = ConexionDB.getConnection().prepareStatement(sql);
                
          ps.setString(1, titular);
-         ps.setFloat(2, totalPresupuesto);
+         ps.setFloat(2, total_presupuesto);
          ps.setFloat(3, comision);
-         ps.setFloat(4, gananciaPretendida);
-         ps.setFloat(5, costosFijos);
+         ps.setFloat(4, ganancia_pretendida);
+         ps.setFloat(5, costos_fijos);
          ps.setDate(6, fechaDB);
          ps.executeUpdate();
          
@@ -447,7 +447,7 @@ public class CargarObra extends javax.swing.JFrame {
         // TODO add your handling code here:
         char car = evt.getKeyChar();
         
-        if ((car<'0' || car>'9') && MTTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
+        if ((car<'0' || car>'9') && ComisionTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
         evt.consume();
         JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
         }else if((car<'0' || car>'9') && (car!='.')&& (car!=(char)KeyEvent.VK_BACK_SPACE)){
@@ -460,7 +460,7 @@ public class CargarObra extends javax.swing.JFrame {
         // TODO add your handling code here:
         char car = evt.getKeyChar();
         
-        if ((car<'0' || car>'9') && MTTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
+        if ((car<'0' || car>'9') && GPTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
         evt.consume();
         JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
         }else if((car<'0' || car>'9') && (car!='.')&& (car!=(char)KeyEvent.VK_BACK_SPACE)){
@@ -473,7 +473,7 @@ public class CargarObra extends javax.swing.JFrame {
         // TODO add your handling code here:
         char car = evt.getKeyChar();
         
-        if ((car<'0' || car>'9') && MTTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
+        if ((car<'0' || car>'9') && CFTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
         evt.consume();
         JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
         }else if((car<'0' || car>'9') && (car!='.')&& (car!=(char)KeyEvent.VK_BACK_SPACE)){

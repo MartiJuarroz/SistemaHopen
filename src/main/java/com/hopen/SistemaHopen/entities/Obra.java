@@ -28,7 +28,7 @@ public class Obra extends Base {
       private float comision;
 
       @Column
-      private float gananciaPrentendida;
+      private float ganancia_pretendida;
 
       @Column
       @Temporal(TemporalType.DATE)
