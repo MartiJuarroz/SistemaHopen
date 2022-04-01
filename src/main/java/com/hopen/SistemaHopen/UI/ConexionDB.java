@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -17,7 +18,30 @@ import java.sql.Statement;
  */
 public class ConexionDB {
     
-    public ConexionDB(String query){
+    public static Connection getConnection(){
+     
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_hopen?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                    "root", "");
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return con;
+    }
+    
+    public static void endConnection(Connection con) throws SQLException{
+      try{
+          con.close();
+      }catch(Exception e){
+           e.printStackTrace();
+      }  
+    }
+    
+    
+  /*  public ConexionDB(String query){
         
         conexion(query);
        
@@ -53,7 +77,7 @@ public class ConexionDB {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
+        }*/
     
     
     

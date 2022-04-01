@@ -6,8 +6,10 @@ package com.hopen.SistemaHopen.UI;
 
 import com.hopen.SistemaHopen.entities.Obra;
 import com.hopen.SistemaHopen.UI.TextPrompt;
+import java.awt.event.KeyEvent;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +26,11 @@ public class CargarObra extends javax.swing.JFrame {
         dataholderMontoTotal.setShowPromptOnce(true);
         TextPrompt dataholderComision = new TextPrompt("Ingrese la comision con formato 100.000",ComisionTxt);
         dataholderComision.setShowPromptOnce(true);
+        TextPrompt dataholderGananciaPre = new TextPrompt("Ingrese la ganancia pretendida con formato 100.000",GPTxt);
+        dataholderGananciaPre.setShowPromptOnce(true);
+        TextPrompt dataholderCF = new TextPrompt("Ingrese los costos fijos con formato 100.000",CFTxt);
+        dataholderCF.setShowPromptOnce(true);
+        setTitle("CargarObra");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,6 +109,11 @@ public class CargarObra extends javax.swing.JFrame {
                 MTTxtActionPerformed(evt);
             }
         });
+        MTTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MTTxtKeyTyped(evt);
+            }
+        });
 
         CFLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         CFLbl.setText("Costos Fijos");
@@ -111,6 +123,11 @@ public class CargarObra extends javax.swing.JFrame {
         CFTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CFTxtActionPerformed(evt);
+            }
+        });
+        CFTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CFTxtKeyTyped(evt);
             }
         });
 
@@ -124,6 +141,11 @@ public class CargarObra extends javax.swing.JFrame {
                 ComisionTxtActionPerformed(evt);
             }
         });
+        ComisionTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ComisionTxtKeyTyped(evt);
+            }
+        });
 
         GPLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         GPLbl.setText("Ganancia Pretendida");
@@ -133,6 +155,11 @@ public class CargarObra extends javax.swing.JFrame {
         GPTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GPTxtActionPerformed(evt);
+            }
+        });
+        GPTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                GPTxtKeyTyped(evt);
             }
         });
 
@@ -337,6 +364,8 @@ public class CargarObra extends javax.swing.JFrame {
          //conexion(query);
          
          
+         
+         
         dispose();
         CargarFactura cf = new CargarFactura();
         cf.setVisible(true);
@@ -347,6 +376,58 @@ public class CargarObra extends javax.swing.JFrame {
     private void titularTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titularTxtMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_titularTxtMouseClicked
+
+    private void MTTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MTTxtKeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        
+        if ((car<'0' || car>'9') && MTTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
+        }else if((car<'0' || car>'9') && (car!='.')&& (car!=(char)KeyEvent.VK_BACK_SPACE)){
+             evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_MTTxtKeyTyped
+
+    private void ComisionTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComisionTxtKeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        
+        if ((car<'0' || car>'9') && MTTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
+        }else if((car<'0' || car>'9') && (car!='.')&& (car!=(char)KeyEvent.VK_BACK_SPACE)){
+             evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_ComisionTxtKeyTyped
+
+    private void GPTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GPTxtKeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        
+        if ((car<'0' || car>'9') && MTTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
+        }else if((car<'0' || car>'9') && (car!='.')&& (car!=(char)KeyEvent.VK_BACK_SPACE)){
+             evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_GPTxtKeyTyped
+
+    private void CFTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CFTxtKeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        
+        if ((car<'0' || car>'9') && MTTxt.getText().contains(".") && (car!=(char)KeyEvent.VK_BACK_SPACE)){
+        evt.consume();
+        JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
+        }else if((car<'0' || car>'9') && (car!='.')&& (car!=(char)KeyEvent.VK_BACK_SPACE)){
+             evt.consume();
+             JOptionPane.showMessageDialog(null, "Solo se admiten números", "Validar numeros", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_CFTxtKeyTyped
 
     /**
      * @param args the command line arguments

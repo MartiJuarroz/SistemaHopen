@@ -249,32 +249,40 @@ public class LoginForm extends javax.swing.JFrame {
     public Usuario usuario;
     
       private Usuario getAuthenticadedUser(String nombre_usuario, String contraseña) {
-        Usuario usuario = null;
+    /*    Usuario usuario = null;
         final String DB_URL = "jdbc:mysql://localhost:3306/db_hopen?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         final String USERNAME = "root";
-        final String PASSWORD = "";
-
+        final String PASSWORD = "";*/
+        PreparedStatement ps;
+    
+       
         try {
-            Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+         
+           // Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
             // Connected to database successfully...
-
-            Statement stmt = conn.createStatement();
+        //    Statement stmt = conn.createStatement();
+            Connection con = ConexionDB.getConnection();
             String sql = "SELECT * FROM usuario WHERE nombre_usuario=? AND contraseña=?";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, nombre_usuario);
-            preparedStatement.setString(2, contraseña);
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+      //      PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ps.setString(1, nombre_usuario);
+            ps.setString(2, contraseña);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
                 usuario = new Usuario();
                 String nombreU = resultSet.getString("nombre_usuario");
-                String pass = resultSet.getString("contraseña");
-                System.out.println("Successful Authentication of: " + nombreU);
+            //    String pass = resultSet.getString("contraseña");
+            //    System.out.println("Successful Authentication of: " + nombreU);
+                JOptionPane.showMessageDialog(LoginForm.this,
+                        "Bienvenido "+nombreU);
             }
+            
+            ConexionDB.endConnection(con);
 
-            stmt.close();
-            conn.close();
+          //  stmt.close();
+          //  conn.close();
 
         } catch (Exception e) {
             e.printStackTrace();
