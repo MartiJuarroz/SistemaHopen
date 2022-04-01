@@ -7,9 +7,13 @@ package com.hopen.SistemaHopen.UI;
 import com.hopen.SistemaHopen.entities.Obra;
 import com.hopen.SistemaHopen.UI.TextPrompt;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import com.hopen.SistemaHopen.UI.ConexionDB;
+import java.sql.PreparedStatement;
+import java.util.logging.Level;
 
 /**
  *
@@ -361,14 +365,32 @@ public class CargarObra extends javax.swing.JFrame {
          obra.setCostosFijos(costosFijos);
          obra.setFechaPresupuesto(fecha);
          
-         //conexion(query);
          
+         PreparedStatement ps;
          
+         try{
+         Connection con = ConexionDB.getConnection();
+         String sql ="INSERT INTO `obra`(`titular`, `montoTotal`, `comision`, `gananciaPretendida`, `costosFijos`, `fecha`) VALUES (?,?,?,?,?,?)";
+         ps = ConexionDB.getConnection().prepareStatement(sql);
+      
+         ps.setString(1, titular);
+         ps.setFloat(2, montoTotal);
+         ps.setFloat(3, comision);
+         ps.setFloat(4, gananciaPretendida);
+         ps.setFloat(5, costosFijos);
+         ps.setDate(6, (java.sql.Date) fecha);
+         ps.executeUpdate();
          
+         JOptionPane.showMessageDialog(null, "Datos guardados");
+         ConexionDB.endConnection(con);
+         
+         }catch(Exception e){
+             e.printStackTrace();
+         }
          
         dispose();
-        CargarFactura cf = new CargarFactura();
-        cf.setVisible(true);
+        //CargarFactura cf = new CargarFactura();
+        //cf.setVisible(true);
          
      
     }//GEN-LAST:event_SigBtnActionPerformed
