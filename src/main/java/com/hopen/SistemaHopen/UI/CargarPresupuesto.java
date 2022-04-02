@@ -20,6 +20,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
      */
     public CargarPresupuesto() {
         initComponents();
+        setTitle("Cargar datos de presupuesto");
     }
 
     /**

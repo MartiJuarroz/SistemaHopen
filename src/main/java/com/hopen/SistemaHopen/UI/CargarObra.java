@@ -35,7 +35,7 @@ public class CargarObra extends javax.swing.JFrame {
         dataholderGananciaPre.setShowPromptOnce(true);
         TextPrompt dataholderCF = new TextPrompt("Ingrese los costos fijos con formato 100.000",CFTxt);
         dataholderCF.setShowPromptOnce(true);
-        setTitle("CargarObra");
+        setTitle("Cargar Obra");
     }
     /**
      * This method is called from within the constructor to initialize the form.
