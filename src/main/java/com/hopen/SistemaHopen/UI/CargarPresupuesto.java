@@ -4,6 +4,11 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import com.hopen.SistemaHopen.entities.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Martiniano
@@ -28,76 +33,317 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnSiguiente = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        cantManoObra = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        kiloLabel = new javax.swing.JLabel();
+        kiloTxt = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel17 = new javax.swing.JLabel();
+        totPresupuesto = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel18 = new javax.swing.JLabel();
+        RemitoTxt = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel19 = new javax.swing.JLabel();
+        planchasVidrio = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel20 = new javax.swing.JLabel();
+        totPresupuestoVidrio = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel21 = new javax.swing.JLabel();
+        cantViajes = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel22 = new javax.swing.JLabel();
+        presupuestoViaje = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel23 = new javax.swing.JLabel();
+        presupuestoManoObra = new javax.swing.JTextField();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel24 = new javax.swing.JLabel();
+        presupuestoAcc = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        jLabel25 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        SigBtn = new javax.swing.JButton();
+        SalirBtn = new javax.swing.JButton();
+        fechaAcc = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 2, 20)); // NOI18N
         jLabel1.setText("Cargar datos del presupuesto");
 
-        btnSiguiente.setText("Siguiente");
-        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguienteActionPerformed(evt);
-            }
-        });
-
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/presupuesto.png"))); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Total presupuestado mano de obra");
+        jLabel15.setText("Cantidad de horas mano de obra");
+
+        cantManoObra.setBorder(null);
+
+        kiloLabel.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        kiloLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        kiloLabel.setText("Kilo de aluminio");
+
+        kiloTxt.setBorder(null);
+
+        jLabel17.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Total presupuestado aluminio");
+
+        totPresupuesto.setBorder(null);
+
+        jLabel18.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Remito Aluminio");
+
+        RemitoTxt.setBorder(null);
+        RemitoTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemitoTxtActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Plachas de Vidrio");
+
+        planchasVidrio.setBorder(null);
+        planchasVidrio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                planchasVidrioActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Total presupuestado Vidrio");
+
+        totPresupuestoVidrio.setBorder(null);
+
+        jLabel21.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Cantidad de viajes");
+
+        cantViajes.setBorder(null);
+
+        jLabel22.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("Monto presupuestado viajes");
+
+        presupuestoViaje.setBorder(null);
+
+        jLabel23.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Total presupuestado mano de obra");
+
+        presupuestoManoObra.setBorder(null);
+
+        jLabel24.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Total presupuestado accesorios");
+
+        presupuestoAcc.setBorder(null);
+
+        jLabel25.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText("Fecha de compra accesorios");
+
+        SigBtn.setBackground(new java.awt.Color(0, 204, 255));
+        SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        SigBtn.setForeground(new java.awt.Color(255, 255, 255));
+        SigBtn.setText("Siguiente");
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SigBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SigBtnActionPerformed(evt);
+            }
+        });
+
+        SalirBtn.setBackground(new java.awt.Color(255, 51, 51));
+        SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
+        SalirBtn.setText("Salir");
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirBtnActionPerformed(evt);
+            }
+        });
+
+        fechaAcc.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addComponent(jLabel14)
-                            .addGap(120, 120, 120)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSiguiente)
-                .addGap(106, 106, 106))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel14)
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(kiloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(kiloTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(43, 43, 43)
+                                    .addComponent(totPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(RemitoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(43, 43, 43)
+                                                .addComponent(planchasVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(43, 43, 43)
+                                                .addComponent(totPresupuestoVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(43, 43, 43)
+                                                .addComponent(cantManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(43, 43, 43)
+                                                .addComponent(cantViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(43, 43, 43)
+                                                .addComponent(presupuestoViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(43, 43, 43)
+                                                .addComponent(presupuestoManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(43, 43, 43)
+                                                .addComponent(presupuestoAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(50, 50, 50)
+                                                .addComponent(fechaAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel14))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(39, 39, 39)
                         .addComponent(jLabel1)))
-                .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(kiloLabel)
+                            .addComponent(kiloTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(totPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(RemitoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(planchasVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(totPresupuestoVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(cantViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(presupuestoViaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(cantManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(presupuestoManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(presupuestoAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel25))
+                    .addComponent(fechaAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
-                .addComponent(btnSiguiente)
-                .addGap(20, 20, 20))
+                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -112,11 +358,102 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+    private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnSiguienteActionPerformed
+        //aca declaramos las variables para guardar los datos en pantalla
+        float kiloPresupuestado = Float.parseFloat(kiloTxt.getText());
+        float totalPresupuestadoA = Float.parseFloat(totPresupuesto.getText());
+        String remitoAl = RemitoTxt.getText();
+        int cantPlanchas = Integer.parseInt(planchasVidrio.getText());
+        float totalPresupuestadoV = Float.parseFloat(totPresupuestoVidrio.getText());
+        int cantViajesPresupuesto = Integer.parseInt(cantViajes.getText());
+        float totalPresupuestadoViajes = Float.parseFloat(presupuestoViaje.getText());
+        float cantMO = Float.parseFloat(cantManoObra.getText());
+        float totalPresupuestadoMO = Float.parseFloat(presupuestoManoObra.getText());
+        float totalPresupuestadoAcc = Float.parseFloat(presupuestoAcc.getText());
+        java.util.Date fechaCompra = fechaAcc.getDate();
+        
+        Aluminio aluminio = new Aluminio();
+        Vidrio vidrio = new Vidrio();
+        ManoObra manoObra = new ManoObra();
+        Viaje viaje = new Viaje();
+        Accesorio accesorio = new Accesorio();
+                
+        aluminio.setKiloPresupuestado(kiloPresupuestado);
+        aluminio.setTotalPresupuesto(totalPresupuestadoA);
+        aluminio.setRemito(remitoAl);
+        vidrio.setCantPlanchas(cantPlanchas);
+        vidrio.setTotalPresupuesto(totalPresupuestadoV);
+        viaje.setCantViajesPresupuesto(cantViajesPresupuesto);
+        viaje.setTotalPresupuesto(totalPresupuestadoViajes);
+        manoObra.setHorasMO(cantMO);
+        manoObra.setTotalPresupuesto(totalPresupuestadoMO);
+        accesorio.setTotalPresupuesto(totalPresupuestadoAcc);
+        accesorio.setFechaCompra(fechaCompra);
+        long timeInMilliSecs = fechaCompra.getTime();
+        java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);        
+        
+        PreparedStatement ps;
+        PreparedStatement ps2;
+        PreparedStatement ps3;
+        PreparedStatement ps4;
+        PreparedStatement ps5;
+
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="INSERT INTO aluminio (remito, kilo_presupuestado, total_presupuesto) VALUES (?, ?, ?)";
+            String sql2 ="INSERT INTO vidrio (cant_planchas, total_presupuesto) VALUES (?, ?)";
+            String sql3 ="INSERT INTO mano_obra (horasmo, total_presupuesto) VALUES (?, ?)";
+            String sql4 ="INSERT INTO accesorio (fecha_compra, total_presupuesto) VALUES (?, ?)";
+            String sql5 ="INSERT INTO viaje (cant_viajes_presupuesto, total_presupuesto) VALUES (?, ?)";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            ps2 = ConexionDB.getConnection().prepareStatement(sql2);
+            ps3 = ConexionDB.getConnection().prepareStatement(sql3);
+            ps4 = ConexionDB.getConnection().prepareStatement(sql4);
+            ps5 = ConexionDB.getConnection().prepareStatement(sql5);
+            
+            ps.setString(1, remitoAl);
+            ps.setFloat(2, kiloPresupuestado);
+            ps.setFloat(3, totalPresupuestadoA);
+            ps2.setFloat(1, cantPlanchas);
+            ps2.setFloat(2, totalPresupuestadoV);
+            ps3.setFloat(1, cantMO);
+            ps3.setFloat(2, totalPresupuestadoMO);
+            ps4.setDate(1, fechaDB);
+            ps4.setFloat(2, totalPresupuestadoAcc);
+            ps5.setFloat(1, cantViajesPresupuesto);
+            ps5.setFloat(2, totalPresupuestadoViajes);            
+            
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+            ConexionDB.endConnection(con);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        dispose();
+        //CargarFactura cf = new CargarFactura();
+        //cf.setVisible(true);
+
+    }//GEN-LAST:event_SigBtnActionPerformed
+
+    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_SalirBtnActionPerformed
+
+    private void RemitoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemitoTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RemitoTxtActionPerformed
+
+    private void planchasVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planchasVidrioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_planchasVidrioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,12 +491,43 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSiguiente;
+    private javax.swing.JTextField RemitoTxt;
+    private javax.swing.JButton SalirBtn;
+    private javax.swing.JButton SigBtn;
+    private javax.swing.JTextField cantManoObra;
+    private javax.swing.JTextField cantViajes;
+    private com.toedter.calendar.JDateChooser fechaAcc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel kiloLabel;
+    private javax.swing.JTextField kiloTxt;
+    private javax.swing.JTextField planchasVidrio;
+    private javax.swing.JTextField presupuestoAcc;
+    private javax.swing.JTextField presupuestoManoObra;
+    private javax.swing.JTextField presupuestoViaje;
+    private javax.swing.JTextField totPresupuesto;
+    private javax.swing.JTextField totPresupuestoVidrio;
     // End of variables declaration//GEN-END:variables
 }

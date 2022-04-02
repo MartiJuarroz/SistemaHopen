@@ -175,7 +175,7 @@ public class CargarObra extends javax.swing.JFrame {
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Salir");
-        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
@@ -186,7 +186,7 @@ public class CargarObra extends javax.swing.JFrame {
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Siguiente");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);
@@ -251,8 +251,8 @@ public class CargarObra extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
                                 .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -261,11 +261,11 @@ public class CargarObra extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titularLbl)
@@ -346,7 +346,7 @@ public class CargarObra extends javax.swing.JFrame {
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
         // TODO add your handling code here:
-        System.exit(WIDTH);
+        dispose();
     }//GEN-LAST:event_SalirBtnActionPerformed
 
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
@@ -368,7 +368,6 @@ public class CargarObra extends javax.swing.JFrame {
          obra.setGanancia_pretendida(ganancia_pretendida);
          obra.setCostosFijos(costos_fijos);
          obra.setFechaPresupuesto(fechaDB);
-         
          
          PreparedStatement ps;
          
