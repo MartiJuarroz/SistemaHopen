@@ -21,6 +21,26 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     public CargarPresupuesto() {
         initComponents();
         setTitle("Cargar datos de presupuesto");
+        TextPrompt dataholderKilo = new TextPrompt("Ingrese kilos aluminio",kiloTxt);
+        dataholderKilo.setShowPromptOnce(true);
+        TextPrompt dataholderPresuAl = new TextPrompt("Ingrese presup aluminio con formato 100.000",totPresupuesto);
+        dataholderPresuAl.setShowPromptOnce(true);
+        TextPrompt dataholderRemito = new TextPrompt("Ingrese remito",RemitoTxt);
+        dataholderRemito.setShowPromptOnce(true);
+        TextPrompt dataholderPlanchas = new TextPrompt("Ingrese cantidad de planchas",planchasVidrio);
+        dataholderPlanchas.setShowPromptOnce(true);
+        TextPrompt dataholderPresuVidrio = new TextPrompt("Ingrese presup vidrio con formato 100.000",totPresupuestoVidrio);
+        dataholderPresuVidrio.setShowPromptOnce(true);
+        TextPrompt dataholderCantViajes = new TextPrompt("Ingrese cantidad de fletes",cantViajes);
+        dataholderCantViajes.setShowPromptOnce(true);
+        TextPrompt dataholderPresuViaje = new TextPrompt("Ingrese presup fletes con formato 100.000",presupuestoViaje);
+        dataholderPresuViaje.setShowPromptOnce(true);
+        TextPrompt dataholderMO = new TextPrompt("Ingrese horas de mano de obra",cantManoObra);
+        dataholderMO.setShowPromptOnce(true);
+        TextPrompt dataholderPresuMO = new TextPrompt("Ingrese presup mano de obra con formato 100.000",presupuestoManoObra);
+        dataholderPresuMO.setShowPromptOnce(true);
+        TextPrompt dataholderPresuAcc = new TextPrompt("Ingrese presup accesorios con formato 100.000",presupuestoAcc);
+        dataholderPresuAcc.setShowPromptOnce(true);
     }
 
     /**
@@ -68,8 +88,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
         SigBtn = new javax.swing.JButton();
-        SalirBtn = new javax.swing.JButton();
         fechaAcc = new com.toedter.calendar.JDateChooser();
+        SalirBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -167,18 +187,18 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             }
         });
 
+        fechaAcc.setBackground(new java.awt.Color(255, 255, 255));
+
         SalirBtn.setBackground(new java.awt.Color(255, 51, 51));
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn.setText("Salir");
+        SalirBtn.setText("Cancelar");
         SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
             }
         });
-
-        fechaAcc.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,8 +217,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(kiloLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(kiloTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(489, 489, 489))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,14 +225,19 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(43, 43, 43)
-                                    .addComponent(totPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(RemitoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(489, 489, 489))
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(kiloTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(totPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(RemitoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -276,22 +300,24 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(kiloLabel)
-                            .addComponent(kiloTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(kiloLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(totPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(RemitoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(kiloTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(totPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(RemitoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -337,7 +363,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                         .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel25))
-                    .addComponent(fechaAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fechaAcc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -443,11 +469,6 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_SigBtnActionPerformed
 
-    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_SalirBtnActionPerformed
-
     private void RemitoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemitoTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RemitoTxtActionPerformed
@@ -455,6 +476,15 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private void planchasVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planchasVidrioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_planchasVidrioActionPerformed
+
+    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (JOptionPane.YES_NO_OPTION == 0){
+            dispose();
+            new Menu().setVisible(true);
+        }
+    }//GEN-LAST:event_SalirBtnActionPerformed
 
     /**
      * @param args the command line arguments

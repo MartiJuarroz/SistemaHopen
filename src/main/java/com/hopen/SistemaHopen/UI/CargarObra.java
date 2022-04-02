@@ -174,7 +174,7 @@ public class CargarObra extends javax.swing.JFrame {
         SalirBtn.setBackground(new java.awt.Color(255, 51, 51));
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn.setText("Salir");
+        SalirBtn.setText("Cancelar");
         SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,7 +346,11 @@ public class CargarObra extends javax.swing.JFrame {
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
         // TODO add your handling code here:
-        dispose();
+        JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (JOptionPane.YES_NO_OPTION == 0){
+            dispose();
+            new Menu().setVisible(true);
+        }
     }//GEN-LAST:event_SalirBtnActionPerformed
 
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
@@ -391,10 +395,7 @@ public class CargarObra extends javax.swing.JFrame {
              e.printStackTrace();
          }
          
-        dispose();
-        //CargarFactura cf = new CargarFactura();
-        //cf.setVisible(true);
-         
+        dispose();         
      
     }//GEN-LAST:event_SigBtnActionPerformed
 

@@ -4,6 +4,9 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +23,8 @@ public class Menu extends javax.swing.JFrame {
         cargarFactura.setVisible(false);
         cargarObra.setVisible(false);
         cargarPresupuesto.setVisible(false);
+        TextPrompt dataholderNombreObra = new TextPrompt("Ingrese titular de obra",nombreObra);
+        dataholderNombreObra.setShowPromptOnce(true);
     }
 
     /**
@@ -33,43 +38,25 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        cargarObra = new javax.swing.JButton();
-        nombreObra = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        cargarFactura = new javax.swing.JButton();
         cargarPresupuesto = new javax.swing.JButton();
+        cargarFactura = new javax.swing.JButton();
+        cargarObra = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
+        nombreObra = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        cargarObra.setBackground(new java.awt.Color(0, 204, 255));
-        cargarObra.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        cargarObra.setForeground(new java.awt.Color(255, 255, 255));
-        cargarObra.setText("Cargar obra");
-        cargarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargarObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarObraActionPerformed(evt);
-            }
-        });
-
-        nombreObra.setText("Ingresar nombre de titular de obra");
-        nombreObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreObraActionPerformed(evt);
-            }
-        });
-
-        jPanel2.setBackground(new java.awt.Color(255, 135, 9));
+        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.png"))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 2, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MENU");
@@ -78,21 +65,36 @@ public class Menu extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel2)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel2)
-                .addGap(34, 34, 34)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        cargarPresupuesto.setBackground(new java.awt.Color(0, 204, 255));
+        cargarPresupuesto.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        cargarPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
+        cargarPresupuesto.setText("Cargar presupuesto");
+        cargarPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargarPresupuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarPresupuestoActionPerformed(evt);
+            }
+        });
 
         cargarFactura.setBackground(new java.awt.Color(0, 204, 255));
         cargarFactura.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
@@ -105,14 +107,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        cargarPresupuesto.setBackground(new java.awt.Color(0, 204, 255));
-        cargarPresupuesto.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        cargarPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
-        cargarPresupuesto.setText("Cargar presupuesto");
-        cargarPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargarPresupuesto.addActionListener(new java.awt.event.ActionListener() {
+        cargarObra.setBackground(new java.awt.Color(0, 204, 255));
+        cargarObra.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        cargarObra.setForeground(new java.awt.Color(255, 255, 255));
+        cargarObra.setText("Cargar obra");
+        cargarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarPresupuestoActionPerformed(evt);
+                cargarObraActionPerformed(evt);
             }
         });
 
@@ -127,41 +129,48 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        nombreObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreObraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(82, 82, 82)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cargarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cargarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(aceptar)))
-                .addGap(38, 38, 38))
+                        .addGap(28, 28, 28)
+                        .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(aceptar)
+                        .addGap(35, 35, 35))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(76, 76, 76)
                 .addComponent(cargarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,16 +212,31 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String textField = nombreObra.getText();
         
-        if (textField != null){
-            cargarFactura.setVisible(true);
-            cargarObra.setVisible(true);
-            cargarPresupuesto.setVisible(true);
-            nombreObra.setVisible(false);
-            aceptar.setVisible(false);
+        PreparedStatement ps;
+        try{
+         Connection con = ConexionDB.getConnection();
+         String sql ="SELECT * FROM obra WHERE titular=?";
+         ps = ConexionDB.getConnection().prepareStatement(sql);
+         
+         ps.setString(1, textField);
+         
+         ResultSet resultSet = ps.executeQuery();
+         
+         if (resultSet.next()){
+            String nombreO = resultSet.getString("titular");
+                cargarFactura.setVisible(true);
+                cargarObra.setVisible(true);
+                cargarPresupuesto.setVisible(true);
+                aceptar.setVisible(false);
+                nombreObra.setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(null, "Ingrese alguna obra");
+            JOptionPane.showMessageDialog(null, "Obra no existente, intente nuevamente.");
         }
-        
+         
+         }catch(Exception e){
+             e.printStackTrace();
+         }
+                
     }//GEN-LAST:event_aceptarActionPerformed
 
     /**
