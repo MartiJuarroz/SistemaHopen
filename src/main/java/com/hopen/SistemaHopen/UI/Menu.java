@@ -22,7 +22,7 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         cargarFactura.setVisible(false);
-        cargarObra.setVisible(false);
+        btnEditarObra.setVisible(false);
         cargarPresupuesto.setVisible(false);
         TextPrompt dataholderNombreObra = new TextPrompt("Ingrese titular de obra",nombreObra);
         dataholderNombreObra.setShowPromptOnce(true);
@@ -44,7 +44,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cargarPresupuesto = new javax.swing.JButton();
         cargarFactura = new javax.swing.JButton();
-        cargarObra = new javax.swing.JButton();
+        btnEditarObra = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
         nombreObra = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
@@ -111,14 +111,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        cargarObra.setBackground(new java.awt.Color(0, 204, 255));
-        cargarObra.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        cargarObra.setForeground(new java.awt.Color(255, 255, 255));
-        cargarObra.setText("Editar datos de obra");
-        cargarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cargarObra.addActionListener(new java.awt.event.ActionListener() {
+        btnEditarObra.setBackground(new java.awt.Color(0, 204, 255));
+        btnEditarObra.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        btnEditarObra.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarObra.setText("Editar datos de obra");
+        btnEditarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnEditarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarObraActionPerformed(evt);
+                btnEditarObraActionPerformed(evt);
             }
         });
 
@@ -167,7 +167,7 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cargarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(99, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -184,7 +184,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(76, 76, 76)
-                .addComponent(cargarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -217,11 +217,12 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreObraActionPerformed
 
-    private void cargarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarObraActionPerformed
+    private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
+      //  new CargarObra().setVisible(true);
+        new EditarObra().setVisible(true);
         dispose();
-    }//GEN-LAST:event_cargarObraActionPerformed
+    }//GEN-LAST:event_btnEditarObraActionPerformed
 
     private void cargarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarFacturaActionPerformed
         // TODO add your handling code here:
@@ -233,6 +234,28 @@ public class Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_cargarPresupuestoActionPerformed
 
+    private void buscarTitular(){
+        String textField = nombreObra.getText();
+        
+        PreparedStatement ps;
+        try{
+        Connection con = ConexionDB.getConnection();
+        String sql ="SELECT * FROM obra WHERE titular=?";
+        ps = ConexionDB.getConnection().prepareStatement(sql);
+         
+        ps.setString(1, textField);
+         
+        ResultSet resultSet = ps.executeQuery();
+         
+        String nombreO = resultSet.getString("titular");
+        Float montoTotal = resultSet.getFloat("total_presupuesto");
+        
+        
+        }catch(Exception e){
+             e.printStackTrace();
+         }
+    }
+    
     private void buscarTitularEnBD(){
         String textField = nombreObra.getText();
         
@@ -249,7 +272,7 @@ public class Menu extends javax.swing.JFrame {
          if (resultSet.next()){
             String nombreO = resultSet.getString("titular");
                 cargarFactura.setVisible(true);
-                cargarObra.setVisible(true);
+                btnEditarObra.setVisible(true);
                 cargarPresupuesto.setVisible(true);
                 aceptar.setVisible(false);
                 nombreObra.setVisible(false);
@@ -317,9 +340,9 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
+    private javax.swing.JButton btnEditarObra;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton cargarFactura;
-    private javax.swing.JButton cargarObra;
     private javax.swing.JButton cargarPresupuesto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

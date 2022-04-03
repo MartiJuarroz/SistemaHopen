@@ -57,7 +57,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="cargarPresupuesto" min="-2" pref="170" max="-2" attributes="0"/>
                               <Component id="cargarFactura" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="cargarObra" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="btnEditarObra" min="-2" pref="170" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="99" max="32767" attributes="0"/>
                       </Group>
@@ -82,7 +82,7 @@
               <Component id="jPanel2" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                  <Component id="cargarObra" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="btnEditarObra" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="cargarFactura" min="-2" pref="29" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -202,7 +202,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cargarFacturaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="cargarObra">
+        <Component class="javax.swing.JButton" name="btnEditarObra">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="0" type="rgb"/>
@@ -219,7 +219,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cargarObraActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarObraActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="aceptar">
