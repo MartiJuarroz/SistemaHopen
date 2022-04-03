@@ -174,8 +174,8 @@ public class CargarObra extends javax.swing.JFrame {
         SalirBtn.setBackground(new java.awt.Color(255, 51, 51));
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn.setText("Cancelar");
-        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalirBtn.setText("Volver");
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
@@ -186,7 +186,7 @@ public class CargarObra extends javax.swing.JFrame {
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Siguiente");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);

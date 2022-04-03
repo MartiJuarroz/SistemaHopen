@@ -6,6 +6,7 @@
 package com.hopen.SistemaHopen.UI;
 
 import com.hopen.SistemaHopen.entities.Usuario;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -81,7 +82,7 @@ public class LoginForm extends javax.swing.JFrame {
         btnEntrar.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
-        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEntrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -92,7 +93,7 @@ public class LoginForm extends javax.swing.JFrame {
         btnSalir.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -101,9 +102,14 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel7.setForeground(new java.awt.Color(51, 102, 255));
         jLabel7.setText("¿Olvidaste la contraseña? Click aqui");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         pfContraseña.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
+        pfContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pfContraseñaKeyPressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
@@ -221,8 +227,7 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        // TODO add your handling code here:
+    private void iniciarSesion(){
         String nombreUsuario = tfUsuario.getText();
         String contraseña = String.valueOf(pfContraseña.getPassword());
         
@@ -230,7 +235,7 @@ public class LoginForm extends javax.swing.JFrame {
 
          if (usuario != null) {
                 dispose();
-                new CargarObra().setVisible(true);
+                new Menu().setVisible(true);
        //         this.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(LoginForm.this,
@@ -239,6 +244,11 @@ public class LoginForm extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
                 pfContraseña.setText("");
             }
+    }
+    
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        // TODO add your handling code here:
+        iniciarSesion();
       
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -247,6 +257,12 @@ public class LoginForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void pfContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfContraseñaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+           iniciarSesion();
+    }//GEN-LAST:event_pfContraseñaKeyPressed
+    }
     /**
      *
      */

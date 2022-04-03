@@ -46,14 +46,15 @@ public class Menu extends javax.swing.JFrame {
         cargarObra = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
         nombreObra = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(530, 450));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(530, 500));
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 255));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.png"))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
@@ -89,7 +90,7 @@ public class Menu extends javax.swing.JFrame {
         cargarPresupuesto.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         cargarPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
         cargarPresupuesto.setText("Cargar presupuesto");
-        cargarPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargarPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cargarPresupuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarPresupuestoActionPerformed(evt);
@@ -100,7 +101,7 @@ public class Menu extends javax.swing.JFrame {
         cargarFactura.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         cargarFactura.setForeground(new java.awt.Color(255, 255, 255));
         cargarFactura.setText("Cargar factura");
-        cargarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cargarFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarFacturaActionPerformed(evt);
@@ -110,8 +111,8 @@ public class Menu extends javax.swing.JFrame {
         cargarObra.setBackground(new java.awt.Color(0, 204, 255));
         cargarObra.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         cargarObra.setForeground(new java.awt.Color(255, 255, 255));
-        cargarObra.setText("Cargar obra");
-        cargarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cargarObra.setText("Editar datos de obra");
+        cargarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cargarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cargarObraActionPerformed(evt);
@@ -121,8 +122,8 @@ public class Menu extends javax.swing.JFrame {
         aceptar.setBackground(new java.awt.Color(255, 135, 9));
         aceptar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         aceptar.setForeground(new java.awt.Color(255, 255, 255));
-        aceptar.setText("Aceptar");
-        aceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        aceptar.setText("Buscar");
+        aceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
@@ -132,6 +133,17 @@ public class Menu extends javax.swing.JFrame {
         nombreObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreObraActionPerformed(evt);
+            }
+        });
+
+        btnIngresar.setBackground(new java.awt.Color(255, 135, 9));
+        btnIngresar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setText("Ingresar una obra nueva");
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
             }
         });
 
@@ -148,12 +160,15 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cargarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(99, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(aceptar)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(aceptar)))
                         .addGap(35, 35, 35))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -166,22 +181,24 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                    .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
         );
 
         pack();
@@ -239,6 +256,12 @@ public class Menu extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_aceptarActionPerformed
 
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        // TODO add your handling code here:
+        new CargarObra().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -276,6 +299,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JButton cargarFactura;
     private javax.swing.JButton cargarObra;
     private javax.swing.JButton cargarPresupuesto;
