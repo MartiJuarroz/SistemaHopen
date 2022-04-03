@@ -4,6 +4,7 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,6 +56,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(530, 500));
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 255));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.png"))); // NOI18N
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
@@ -127,6 +130,11 @@ public class Menu extends javax.swing.JFrame {
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
+            }
+        });
+        aceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                aceptarKeyPressed(evt);
             }
         });
 
@@ -225,8 +233,7 @@ public class Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_cargarPresupuestoActionPerformed
 
-    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
+    private void buscarTitularEnBD(){
         String textField = nombreObra.getText();
         
         PreparedStatement ps;
@@ -253,7 +260,11 @@ public class Menu extends javax.swing.JFrame {
          }catch(Exception e){
              e.printStackTrace();
          }
-                
+    }
+    
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        // TODO add your handling code here:
+       buscarTitularEnBD(); 
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
@@ -261,6 +272,13 @@ public class Menu extends javax.swing.JFrame {
         new CargarObra().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void aceptarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aceptarKeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+           buscarTitularEnBD();
+    }                          
+    }//GEN-LAST:event_aceptarKeyPressed
 
     /**
      * @param args the command line arguments
