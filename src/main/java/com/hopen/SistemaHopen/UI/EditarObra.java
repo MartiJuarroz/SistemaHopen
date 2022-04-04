@@ -31,6 +31,7 @@ public class EditarObra extends javax.swing.JFrame {
         initComponents();
         setTitle("Editar Obra");
         String titularObra = getNombre();
+        this.titularTxt.setText("Juancito");
         buscarDatosObraEnBD(titularObra);
     }
     /**
@@ -75,7 +76,7 @@ public class EditarObra extends javax.swing.JFrame {
 
         UITxt.setFont(new java.awt.Font("Microsoft YaHei", 2, 20)); // NOI18N
         UITxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        UITxt.setText("Ingrese los datos de la obra");
+        UITxt.setText("Editar datos de la obra");
 
         ObreroIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ObreroIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/obrero.png"))); // NOI18N
@@ -84,7 +85,8 @@ public class EditarObra extends javax.swing.JFrame {
         titularLbl.setText("Titular");
 
         titularTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        titularTxt.setToolTipText("Hola q onda\n");
+        titularTxt.setToolTipText("Ingrese el nombre del titular");
+        titularTxt.setActionCommand("<Not Set>");
         titularTxt.setBorder(null);
         titularTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         titularTxt.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -329,18 +331,19 @@ public class EditarObra extends javax.swing.JFrame {
     private void buscarDatosObraEnBD(String titularObra){
  
         PreparedStatement ps;
-        try{
-         Connection con = ConexionDB.getConnection();
-         String sql ="SELECT * FROM obra WHERE titular=?";
+    /*    if(){
+    //        EntityManager em = 
+       /*  Connection con = ConexionDB.getConnection();
+         String sql ="SELECT * FROM obra o WHERE o.titular=?";
          ps = ConexionDB.getConnection().prepareStatement(sql);
          
          ps.setString(1, titularObra);
          
          ResultSet resultSet = ps.executeQuery();
-         
+         titularTxt.setText(titularObra);
          
          if(resultSet.next()){
-              titularTxt.setText(resultSet.getString("titular"));
+              this.titularTxt.setText(resultSet.getString("titular"));
         //      MTTxt.setText(resultSet.getString("total_presupuesto"));
         /*    double ganancia = resultSet.getDouble("ganancia_pretendida");
               double costosF = resultSet.getDouble("costos_fijos");
@@ -354,12 +357,14 @@ public class EditarObra extends javax.swing.JFrame {
       /*    }catch(SQLException msgerror){
               msgerror.printStackTrace();
               System.exit(1);*/
+    /*     }else{
+             this.titularTxt.setText(titularObra);
          }
           ConexionDB.endConnection(con);
-          
+    }
         }catch(Exception e){
              e.printStackTrace();
-         }
+         }*/
      }
     
     private void titularTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titularTxtActionPerformed
