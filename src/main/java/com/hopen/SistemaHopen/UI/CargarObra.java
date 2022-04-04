@@ -356,10 +356,10 @@ public class CargarObra extends javax.swing.JFrame {
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
          String titular = titularTxt.getText();
-         float total_presupuesto = Float.parseFloat(MTTxt.getText());
-         float comision = Float.parseFloat(ComisionTxt.getText());
-         float ganancia_pretendida = Float.parseFloat(GPTxt.getText());
-         float costos_fijos = Float.parseFloat(CFTxt.getText());
+         double total_presupuesto = Double.parseDouble(MTTxt.getText());
+         double comision = Double.parseDouble(ComisionTxt.getText());
+         double ganancia_pretendida = Double.parseDouble(GPTxt.getText());
+         double costos_fijos = Double.parseDouble(CFTxt.getText());
          //Para convertir fecha de java en fecha de sql
          java.util.Date fecha = fechaCH.getDate();
          long timeInMilliSecs = fecha.getTime();
@@ -381,10 +381,10 @@ public class CargarObra extends javax.swing.JFrame {
          ps = ConexionDB.getConnection().prepareStatement(sql);
                
          ps.setString(1, titular);
-         ps.setFloat(2, total_presupuesto);
-         ps.setFloat(3, comision);
-         ps.setFloat(4, ganancia_pretendida);
-         ps.setFloat(5, costos_fijos);
+         ps.setDouble(2, total_presupuesto);
+         ps.setDouble(3, comision);
+         ps.setDouble(4, ganancia_pretendida);
+         ps.setDouble(5, costos_fijos);
          ps.setDate(6, fechaDB);
          ps.executeUpdate();
          

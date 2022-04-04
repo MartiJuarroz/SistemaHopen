@@ -391,16 +391,16 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
         //aca declaramos las variables para guardar los datos en pantalla
-        float kiloPresupuestado = Float.parseFloat(kiloTxt.getText());
-        float totalPresupuestadoA = Float.parseFloat(totPresupuesto.getText());
+        double kiloPresupuestado = Double.parseDouble(kiloTxt.getText());
+        double totalPresupuestadoA = Double.parseDouble(totPresupuesto.getText());
         String remitoAl = RemitoTxt.getText();
         int cantPlanchas = Integer.parseInt(planchasVidrio.getText());
-        float totalPresupuestadoV = Float.parseFloat(totPresupuestoVidrio.getText());
+        double totalPresupuestadoV = Double.parseDouble(totPresupuestoVidrio.getText());
         int cantViajesPresupuesto = Integer.parseInt(cantViajes.getText());
-        float totalPresupuestadoViajes = Float.parseFloat(presupuestoViaje.getText());
-        float cantMO = Float.parseFloat(cantManoObra.getText());
-        float totalPresupuestadoMO = Float.parseFloat(presupuestoManoObra.getText());
-        float totalPresupuestadoAcc = Float.parseFloat(presupuestoAcc.getText());
+        double totalPresupuestadoViajes = Double.parseDouble(presupuestoViaje.getText());
+        double cantMO = Float.parseFloat(cantManoObra.getText());
+        double totalPresupuestadoMO = Double.parseDouble(presupuestoManoObra.getText());
+        double totalPresupuestadoAcc = Double.parseDouble(presupuestoAcc.getText());
         java.util.Date fechaCompra = fechaAcc.getDate();
         
         Aluminio aluminio = new Aluminio();
@@ -445,16 +445,16 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             ps5 = ConexionDB.getConnection().prepareStatement(sql5);
             
             ps.setString(1, remitoAl);
-            ps.setFloat(2, kiloPresupuestado);
-            ps.setFloat(3, totalPresupuestadoA);
-            ps2.setFloat(1, cantPlanchas);
-            ps2.setFloat(2, totalPresupuestadoV);
-            ps3.setFloat(1, cantMO);
-            ps3.setFloat(2, totalPresupuestadoMO);
+            ps.setDouble(2, kiloPresupuestado);
+            ps.setDouble(3, totalPresupuestadoA);
+            ps2.setDouble(1, cantPlanchas);
+            ps2.setDouble(2, totalPresupuestadoV);
+            ps3.setDouble(1, cantMO);
+            ps3.setDouble(2, totalPresupuestadoMO);
             ps4.setDate(1, fechaDB);
-            ps4.setFloat(2, totalPresupuestadoAcc);
-            ps5.setFloat(1, cantViajesPresupuesto);
-            ps5.setFloat(2, totalPresupuestadoViajes);            
+            ps4.setDouble(2, totalPresupuestadoAcc);
+            ps5.setDouble(1, cantViajesPresupuesto);
+            ps5.setDouble(2, totalPresupuestadoViajes);            
             
             ps.executeUpdate();
 

@@ -19,7 +19,7 @@ public class DiferenciaRealPresupuesto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private float totalReal;
+    private double totalReal;
 
-    private float totalPresupuesto;
+    private double totalPresupuesto;
 }

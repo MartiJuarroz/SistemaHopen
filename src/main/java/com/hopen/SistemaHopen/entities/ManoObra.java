@@ -16,5 +16,5 @@ import javax.persistence.*;
 public class ManoObra extends DiferenciaRealPresupuesto{
 
     @Column
-    private float horasMO;
+    private double horasMO;
 }

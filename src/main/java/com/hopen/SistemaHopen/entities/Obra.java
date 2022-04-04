@@ -22,20 +22,20 @@ public class Obra extends Base {
       private String titular;
 
       @Column
-      private float totalPresupuesto;
+      private double totalPresupuesto;
 
       @Column
-      private float comision;
+      private double comision;
 
       @Column
-      private float ganancia_pretendida;
+      private double ganancia_pretendida;
 
       @Column
       @Temporal(TemporalType.DATE)
       private Date fechaPresupuesto;
 
       @Column
-      private float costosFijos;
+      private double costosFijos;
 
       @OneToMany
     //  @JoinColumn(name = "proveedor_id")

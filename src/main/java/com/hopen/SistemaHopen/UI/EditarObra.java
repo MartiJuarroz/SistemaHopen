@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -29,7 +30,8 @@ public class EditarObra extends javax.swing.JFrame {
     public EditarObra() {
         initComponents();
         setTitle("Editar Obra");
-  //      titularTxt.setText(titular); la idea es que se cargue con los datos de la BD pero ni idea como se hace
+        String titularObra = getNombre();
+        buscarDatosObraEnBD(titularObra);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -318,6 +320,48 @@ public class EditarObra extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private String getNombre(){
+        Menu menu = new Menu();
+        String titularObra = menu.getNombreTitular();
+        return titularObra;
+    }
+    
+    private void buscarDatosObraEnBD(String titularObra){
+ 
+        PreparedStatement ps;
+        try{
+         Connection con = ConexionDB.getConnection();
+         String sql ="SELECT * FROM obra WHERE titular=?";
+         ps = ConexionDB.getConnection().prepareStatement(sql);
+         
+         ps.setString(1, titularObra);
+         
+         ResultSet resultSet = ps.executeQuery();
+         
+         
+         if(resultSet.next()){
+              titularTxt.setText(resultSet.getString("titular"));
+        //      MTTxt.setText(resultSet.getString("total_presupuesto"));
+        /*    double ganancia = resultSet.getDouble("ganancia_pretendida");
+              double costosF = resultSet.getDouble("costos_fijos");
+              double comision = resultSet.getDouble("comision");
+              Date fecha = resultSet.getDate("fecha_presupuesto");
+              MTTxt.setText(Double.toString(montoT));
+              CFTxt.setText(Double.toString(costosF));
+              ComisionTxt.setText(Double.toString(comision));
+              GPTxt.setText(Double.toString(ganancia));
+              fechaCH.setDate(fecha);*/
+      /*    }catch(SQLException msgerror){
+              msgerror.printStackTrace();
+              System.exit(1);*/
+         }
+          ConexionDB.endConnection(con);
+          
+        }catch(Exception e){
+             e.printStackTrace();
+         }
+     }
+    
     private void titularTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titularTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_titularTxtActionPerformed
@@ -405,10 +449,10 @@ public class EditarObra extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EditarObra().setVisible(true);
-            }
+       java.awt.EventQueue.invokeLater(new Runnable() {
+           public void run() {
+               new EditarObra().setVisible(true);
+          }
         });
     }
     

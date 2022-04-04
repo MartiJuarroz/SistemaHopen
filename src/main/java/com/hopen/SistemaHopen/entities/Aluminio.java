@@ -17,10 +17,10 @@ import java.io.Serializable;
 public class Aluminio extends DiferenciaRealPresupuesto {
 
     @Column
-    private float kiloPresupuestado;
+    private double kiloPresupuestado;
 
     @Column
-    private float kiloFactura;
+    private double kiloFactura;
 
     @Column
     private String remito;

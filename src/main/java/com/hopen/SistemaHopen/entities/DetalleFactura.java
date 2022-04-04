@@ -22,7 +22,7 @@ public class DetalleFactura extends Base{
    private int cantidad;
 
    @Column
-   private float subtotal;
+   private double subtotal;
 
    // aca el detalle tendria que tener una relacion con lo que se factura pero
    // no se bien que es

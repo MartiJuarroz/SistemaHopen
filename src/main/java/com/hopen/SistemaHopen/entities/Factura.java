@@ -31,6 +31,6 @@ public class Factura extends Base{
     private int numeroFactura;
 
     @Column
-    private float totalFactura;
+    private double totalFactura;
 
 }

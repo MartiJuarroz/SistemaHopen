@@ -220,6 +220,7 @@ public class Menu extends javax.swing.JFrame {
     private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
         // TODO add your handling code here:
       //  new CargarObra().setVisible(true);
+        String textField = nombreObra.getText();
         new EditarObra().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnEditarObraActionPerformed
@@ -233,29 +234,7 @@ public class Menu extends javax.swing.JFrame {
         new CargarPresupuesto().setVisible(true);
         dispose();
     }//GEN-LAST:event_cargarPresupuestoActionPerformed
-
-    private void buscarTitular(){
-        String textField = nombreObra.getText();
-        
-        PreparedStatement ps;
-        try{
-        Connection con = ConexionDB.getConnection();
-        String sql ="SELECT * FROM obra WHERE titular=?";
-        ps = ConexionDB.getConnection().prepareStatement(sql);
-         
-        ps.setString(1, textField);
-         
-        ResultSet resultSet = ps.executeQuery();
-         
-        String nombreO = resultSet.getString("titular");
-        Float montoTotal = resultSet.getFloat("total_presupuesto");
-        
-        
-        }catch(Exception e){
-             e.printStackTrace();
-         }
-    }
-    
+       
     private void buscarTitularEnBD(){
         String textField = nombreObra.getText();
         
@@ -270,7 +249,7 @@ public class Menu extends javax.swing.JFrame {
          ResultSet resultSet = ps.executeQuery();
          
          if (resultSet.next()){
-            String nombreO = resultSet.getString("titular");
+       //     String nombreO = resultSet.getString("titular");
                 cargarFactura.setVisible(true);
                 btnEditarObra.setVisible(true);
                 cargarPresupuesto.setVisible(true);
@@ -280,9 +259,16 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Obra no existente, intente nuevamente.");
         }
          
+         ConexionDB.endConnection(con);
+         
          }catch(Exception e){
              e.printStackTrace();
          }
+    }
+    
+    public String getNombreTitular(){
+        String textField = nombreObra.getText();
+        return textField;
     }
     
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
