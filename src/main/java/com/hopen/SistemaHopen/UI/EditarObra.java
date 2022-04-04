@@ -5,18 +5,9 @@
 package com.hopen.SistemaHopen.UI;
 
 import com.hopen.SistemaHopen.entities.Obra;
-import com.hopen.SistemaHopen.UI.TextPrompt;
-import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
-import com.hopen.SistemaHopen.UI.ConexionDB;
-import java.awt.Color;
 import java.sql.PreparedStatement;
-import java.util.logging.Level;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import Service.*;
 
 /**
  *
@@ -30,9 +21,6 @@ public class EditarObra extends javax.swing.JFrame {
     public EditarObra() {
         initComponents();
         setTitle("Editar Obra");
-        String titularObra = getNombre();
-        this.titularTxt.setText("Juancito");
-        buscarDatosObraEnBD(titularObra);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,6 +56,7 @@ public class EditarObra extends javax.swing.JFrame {
         SalirBtn = new javax.swing.JButton();
         SigBtn = new javax.swing.JButton();
         fechaCH = new com.toedter.calendar.JDateChooser();
+        buscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,8 +75,7 @@ public class EditarObra extends javax.swing.JFrame {
 
         titularTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         titularTxt.setToolTipText("Ingrese el nombre del titular");
-        titularTxt.setActionCommand("<Not Set>");
-        titularTxt.setBorder(null);
+        titularTxt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         titularTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         titularTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -193,6 +181,17 @@ public class EditarObra extends javax.swing.JFrame {
 
         fechaCH.setBackground(new java.awt.Color(255, 255, 255));
 
+        buscar.setBackground(new java.awt.Color(255, 135, 9));
+        buscar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setText("Buscar");
+        buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -217,23 +216,20 @@ public class EditarObra extends javax.swing.JFrame {
                                     .addComponent(CFLbl)
                                     .addGap(64, 64, 64)
                                     .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(sepMT, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sepComision, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(fechaLbl)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(titularLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(titularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(sepMT, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sepComision, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addGap(16, 16, 16)
+                                            .addComponent(fechaLbl)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(GPLbl)
@@ -248,9 +244,16 @@ public class EditarObra extends javax.swing.JFrame {
                                 .addComponent(ComisionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
-                                .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(titularLbl)
+                                        .addGap(77, 77, 77)
+                                        .addComponent(titularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(44, 44, 44))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -267,7 +270,8 @@ public class EditarObra extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titularLbl)
-                    .addComponent(titularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -300,7 +304,7 @@ public class EditarObra extends javax.swing.JFrame {
                     .addComponent(CFLbl))
                 .addGap(8, 8, 8)
                 .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -315,18 +319,13 @@ public class EditarObra extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private String getNombre(){
-        Menu menu = new Menu();
-        String titularObra = menu.getNombreTitular();
-        return titularObra;
-    }
     
     private void buscarDatosObraEnBD(String titularObra){
  
@@ -425,6 +424,21 @@ public class EditarObra extends javax.swing.JFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_CFTxtKeyTyped
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        ObraService obraService = new ObraService();
+        if (titularTxt.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "El campo esta vacío");
+        }else {
+            Obra obra = obraService.buscarObra(titularTxt.getText());
+            MTTxt.setText(obra.getTotalPresupuesto()+"");
+            ComisionTxt.setText(obra.getComision()+"");
+            GPTxt.setText(obra.getGanancia_pretendida()+"");
+            fechaCH.setDate(obra.getFechaPresupuesto());
+            CFTxt.setText(obra.getCostosFijos()+"");
+        }
+    }//GEN-LAST:event_buscarActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -475,6 +489,7 @@ public class EditarObra extends javax.swing.JFrame {
     private javax.swing.JButton SalirBtn;
     private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
+    private javax.swing.JButton buscar;
     private com.toedter.calendar.JDateChooser fechaCH;
     private javax.swing.JLabel fechaLbl;
     private javax.swing.JPanel jPanel1;

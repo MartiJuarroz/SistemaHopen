@@ -6,8 +6,12 @@ package Service;
 
 import Repository.ObraRepository;
 import com.hopen.SistemaHopen.entities.Obra;
+import com.hopen.SistemaHopen.metodos.ObraJPAController;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +22,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ObraService implements BaseService<Obra> {
+    
+    private ObraJPAController ObraController = new ObraJPAController();
+    private Obra obra = new Obra();
+    private String mensaje = "";
+
     
     @Autowired
     private ObraRepository obraRepository;
@@ -94,6 +103,23 @@ public class ObraService implements BaseService<Obra> {
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }
+    }
+    
+    @Transactional
+    public Obra buscarObra(String tit){
+        Obra obra = new Obra();
+        EntityManager em = ObraController.getEntityManager();
+        try{
+            Query query = em.createQuery("SELECT * FROM Obra WHERE titular = :titular");
+            query.setParameter("titular", tit);
+            obra = (Obra) query.getSingleResult();
+            if(ObraController.findObra(tit) == null){
+                JOptionPane.showMessageDialog(null, "Obra no existente");
+            }
+        } catch(Exception e){
+            
+        }
+        return obra;
     }
     
 }

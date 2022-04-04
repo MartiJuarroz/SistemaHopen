@@ -42,9 +42,12 @@ public class ObraJPAController implements Serializable{
             }
         }
     }
-     
-     
-    
-    
-    
+        public Obra findObra(String tit){
+            EntityManager em = getEntityManager();
+            try{
+                return em.find(Obra.class, tit);
+            } finally{
+                em.close();
+            }
+        }
 }

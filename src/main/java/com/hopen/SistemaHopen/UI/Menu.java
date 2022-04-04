@@ -4,11 +4,13 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import com.hopen.SistemaHopen.entities.Obra;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import com.hopen.SistemaHopen.metodos.ObraJPAController;
 
 /**
  *
@@ -21,11 +23,6 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
-        cargarFactura.setVisible(false);
-        btnEditarObra.setVisible(false);
-        cargarPresupuesto.setVisible(false);
-        TextPrompt dataholderNombreObra = new TextPrompt("Ingrese titular de obra",nombreObra);
-        dataholderNombreObra.setShowPromptOnce(true);
     }
 
     /**
@@ -45,8 +42,6 @@ public class Menu extends javax.swing.JFrame {
         cargarPresupuesto = new javax.swing.JButton();
         cargarFactura = new javax.swing.JButton();
         btnEditarObra = new javax.swing.JButton();
-        aceptar = new javax.swing.JButton();
-        nombreObra = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,28 +117,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        aceptar.setBackground(new java.awt.Color(255, 135, 9));
-        aceptar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        aceptar.setForeground(new java.awt.Color(255, 255, 255));
-        aceptar.setText("Buscar");
-        aceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        aceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aceptarActionPerformed(evt);
-            }
-        });
-        aceptar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                aceptarKeyPressed(evt);
-            }
-        });
-
-        nombreObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreObraActionPerformed(evt);
-            }
-        });
-
         btnIngresar.setBackground(new java.awt.Color(255, 135, 9));
         btnIngresar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
@@ -161,39 +134,30 @@ public class Menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                        .addGap(35, 35, 35))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(99, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(aceptar)))
-                        .addGap(35, 35, 35))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addContainerGap(142, Short.MAX_VALUE)
                 .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(122, 122, 122)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -213,10 +177,6 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreObraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreObraActionPerformed
-
     private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
         // TODO add your handling code here:
       //  new CargarObra().setVisible(true);
@@ -235,7 +195,7 @@ public class Menu extends javax.swing.JFrame {
         new CargarPresupuesto().setVisible(true);
         dispose();
     }//GEN-LAST:event_cargarPresupuestoActionPerformed
-       
+       /*
     private void buscarTitularEnBD(){
         String textField = nombreObra.getText();
         
@@ -254,7 +214,7 @@ public class Menu extends javax.swing.JFrame {
                 cargarFactura.setVisible(true);
                 btnEditarObra.setVisible(true);
                 cargarPresupuesto.setVisible(true);
-                aceptar.setVisible(false);
+                buscar.setVisible(false);
                 nombreObra.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Obra no existente, intente nuevamente.");
@@ -265,30 +225,13 @@ public class Menu extends javax.swing.JFrame {
          }catch(Exception e){
              e.printStackTrace();
          }
-    }
-    
-    public String getNombreTitular(){
-        String textField = nombreObra.getText();
-        return textField;
-    }
-    
-    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        // TODO add your handling code here:
-       buscarTitularEnBD(); 
-    }//GEN-LAST:event_aceptarActionPerformed
-
+    }*/
+        
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
         new CargarObra().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnIngresarActionPerformed
-
-    private void aceptarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aceptarKeyPressed
-        // TODO add your handling code here:
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-           buscarTitularEnBD();
-    }                          
-    }//GEN-LAST:event_aceptarKeyPressed
 
     /**
      * @param args the command line arguments
@@ -326,7 +269,6 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton aceptar;
     private javax.swing.JButton btnEditarObra;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton cargarFactura;
@@ -335,6 +277,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField nombreObra;
     // End of variables declaration//GEN-END:variables
 }
