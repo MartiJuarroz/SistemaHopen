@@ -220,8 +220,9 @@ public class Menu extends javax.swing.JFrame {
     private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
         // TODO add your handling code here:
       //  new CargarObra().setVisible(true);
-        String textField = nombreObra.getText();
-        new EditarObra().setVisible(true);
+    //    String textField = nombreObra.getText();
+        EditarObra edit = new EditarObra();
+        edit.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnEditarObraActionPerformed
 
