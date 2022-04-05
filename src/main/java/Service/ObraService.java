@@ -12,6 +12,8 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -106,12 +108,30 @@ public class ObraService implements BaseService<Obra> {
     }
     
     @Transactional
+    public List<Obra> buscarObras(String tit){
+        Obra obra = new Obra();
+        EntityManager em = ObraController.getEntityManager();
+        try{
+            Query query = em.createQuery("SELECT * FROM Obra WHERE titular LIKE :titular");
+            query.setParameter("titular", tit+"%");
+            List<Obra> obras = query.getResultList();
+            if(ObraController.findObra(tit) == null){
+                JOptionPane.showMessageDialog(null, "Obra no existente");
+            }
+            return obras;
+        } catch(Exception e){
+            
+        }
+        return null;
+    }
+    
+    @Transactional
     public Obra buscarObra(String tit){
         Obra obra = new Obra();
         EntityManager em = ObraController.getEntityManager();
         try{
-            Query query = em.createQuery("SELECT * FROM Obra WHERE titular = :titular");
-            query.setParameter("titular", tit);
+            Query query = em.createQuery("SELECT * FROM Obra WHERE titular=:titular");
+            query.setParameter("titular", tit+"%");
             obra = (Obra) query.getSingleResult();
             if(ObraController.findObra(tit) == null){
                 JOptionPane.showMessageDialog(null, "Obra no existente");
@@ -120,6 +140,24 @@ public class ObraService implements BaseService<Obra> {
             
         }
         return obra;
+    }
+    
+    public void listarObras(JTable tabla,String nombres){
+        DefaultTableModel model;
+        String [] titulo = {"TITULAR","TOTAL PRESUPUESTO","FECHA PRESUPUESTO"};
+        model = new DefaultTableModel(null,titulo);
+        
+        List<Obra> datos = buscarObras(nombres);
+                
+        String [] datosObra = new String[3];
+        for(Obra obras : datos){
+               datosObra[0] = obras.getTitular()+"";
+               datosObra[1] = obras.getTotalPresupuesto()+"";
+               datosObra[2] = obras.getFechaPresupuesto()+"";
+               model.addRow(datosObra);
+    }
+        tabla.setModel(model);
+        
     }
     
 }
