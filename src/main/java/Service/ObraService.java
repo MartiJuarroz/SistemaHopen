@@ -96,7 +96,6 @@ public class ObraService implements BaseService<Obra> {
         }
     }
     
-    @Override
     @Transactional
     public List<Obra> findByName(String name) throws Exception {
          try{
@@ -108,11 +107,21 @@ public class ObraService implements BaseService<Obra> {
     }
     
     @Transactional
+    public Obra findOneByName(String name) throws Exception {
+         try{
+            Obra entidad = obraRepository.findOneByName(name);
+            return entidad;
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+    
+ /*   @Transactional
     public List<Obra> buscarObras(String tit){
         Obra obra = new Obra();
         EntityManager em = ObraController.getEntityManager();
         try{
-            Query query = em.createQuery("SELECT * FROM Obra WHERE titular LIKE :titular");
+            Query query = em.createQuery("SELECT * FROM obra WHERE titular LIKE :titular");
             query.setParameter("titular", tit+"%");
             List<Obra> obras = query.getResultList();
             if(ObraController.findObra(tit) == null){
@@ -130,7 +139,7 @@ public class ObraService implements BaseService<Obra> {
         Obra obra = new Obra();
         EntityManager em = ObraController.getEntityManager();
         try{
-            Query query = em.createQuery("SELECT * FROM Obra WHERE titular=:titular");
+            Query query = em.createQuery("SELECT * FROM obra WHERE titular=:titular");
             query.setParameter("titular", tit+"%");
             obra = (Obra) query.getSingleResult();
             if(ObraController.findObra(tit) == null){
@@ -140,14 +149,14 @@ public class ObraService implements BaseService<Obra> {
             
         }
         return obra;
-    }
+    }*/
     
-    public void listarObras(JTable tabla,String nombres){
+    public void listarObras(JTable tabla,String nombres) throws Exception{
         DefaultTableModel model;
         String [] titulo = {"TITULAR","TOTAL PRESUPUESTO","FECHA PRESUPUESTO"};
         model = new DefaultTableModel(null,titulo);
         
-        List<Obra> datos = buscarObras(nombres);
+        List<Obra> datos = findByName(nombres);
                 
         String [] datosObra = new String[3];
         for(Obra obras : datos){

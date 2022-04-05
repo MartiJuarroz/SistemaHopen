@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import com.hopen.SistemaHopen.metodos.ObraJPAController;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -294,8 +296,7 @@ public class Menu extends javax.swing.JFrame {
          }
     }*/
     
-    private void mostrarTabla(String nombres){
-            
+    private void mostrarTabla(String nombres) throws Exception{   
         obraS.listarObras(tablaObras,nombres);
     }
         
@@ -310,14 +311,22 @@ public class Menu extends javax.swing.JFrame {
         if(btnBuscar.getText().equals("")){
             JOptionPane.showMessageDialog(null, "No puede estar vacío el campo");
         }else{
-            obraS.buscarObra(tfBuscar.getText());
+            try {
+                obraS.findByName(tfBuscar.getText());
+            } catch (Exception ex) {
+               ex.getMessage();
+            }
         }
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tfBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarKeyReleased
-        // TODO add your handling code here:
-        mostrarTabla(tfBuscar.getText());
+        try {
+            // TODO add your handling code here:
+            mostrarTabla(tfBuscar.getText());
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
     }//GEN-LAST:event_tfBuscarKeyReleased
 
     /**

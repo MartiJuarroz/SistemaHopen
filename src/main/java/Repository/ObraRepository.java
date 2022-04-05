@@ -17,7 +17,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ObraRepository extends JpaRepository<Obra, Long> {
     
-    @Query(value = "SELECT * FROM obra o WHERE o.titular LIKE %nombre", nativeQuery = true) //aca hay que poner una variable que no me acuerdo como 
+    @Query(value = "SELECT * FROM obra o WHERE o.titular LIKE %:nombre") //aca hay que poner una variable que no me acuerdo como 
     List<Obra> findByName(String nombre);
     
+    @Query(value = "SELECT * FROM obra o WHERE o.titular = :nombre")
+    Obra findOneByName (String nombre);
 }

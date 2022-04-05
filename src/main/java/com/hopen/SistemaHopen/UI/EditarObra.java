@@ -8,6 +8,8 @@ import com.hopen.SistemaHopen.entities.Obra;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import Service.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -431,12 +433,16 @@ public class EditarObra extends javax.swing.JFrame {
         if (titularTxt.getText().equals("")){
             JOptionPane.showMessageDialog(null, "El campo esta vacío");
         }else {
-            Obra obra = obraService.buscarObra(titularTxt.getText());
-            MTTxt.setText(obra.getTotalPresupuesto()+"");
-            ComisionTxt.setText(obra.getComision()+"");
-            GPTxt.setText(obra.getGanancia_pretendida()+"");
-            fechaCH.setDate(obra.getFechaPresupuesto());
-            CFTxt.setText(obra.getCostosFijos()+"");
+            try {
+                Obra obra = obraService.findOneByName(titularTxt.getText());
+                MTTxt.setText(obra.getTotalPresupuesto()+"");
+                ComisionTxt.setText(obra.getComision()+"");
+                GPTxt.setText(obra.getGanancia_pretendida()+"");
+                fechaCH.setDate(obra.getFechaPresupuesto());
+                CFTxt.setText(obra.getCostosFijos()+"");
+            } catch (Exception ex) {
+                Logger.getLogger(EditarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_buscarActionPerformed
     /**
