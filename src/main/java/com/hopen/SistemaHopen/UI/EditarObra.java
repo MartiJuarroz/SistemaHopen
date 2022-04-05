@@ -393,7 +393,11 @@ public class EditarObra extends javax.swing.JFrame {
         JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (JOptionPane.YES_NO_OPTION == 0){
             dispose();
-            new Menu().setVisible(true);
+            try {
+                new Menu().setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(EditarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_SalirBtnActionPerformed
 

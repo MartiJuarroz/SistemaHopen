@@ -8,6 +8,7 @@ import com.hopen.SistemaHopen.entities.Obra;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,9 +18,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ObraRepository extends JpaRepository<Obra, Long> {
     
-    @Query(value = "SELECT * FROM obra o WHERE o.titular LIKE %:nombre") //aca hay que poner una variable que no me acuerdo como 
-    List<Obra> findByName(String nombre);
+    @Query(value = "SELECT * FROM obra o WHERE o.titular LIKE %:nombre", nativeQuery = true) //aca hay que poner una variable que no me acuerdo como 
+    List<Obra> findByName(@Param("nombre")String nombre);
     
-    @Query(value = "SELECT * FROM obra o WHERE o.titular = :nombre")
-    Obra findOneByName (String nombre);
+    @Query(value = "SELECT * FROM obra o WHERE o.titular = :nombre",nativeQuery = true)
+    Obra findOneByName (@Param("nombre")String nombre);
 }

@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import com.hopen.SistemaHopen.metodos.ObraJPAController;
+//import com.hopen.SistemaHopen.metodos.ObraJPAController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,11 +26,12 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu() throws Exception {
         initComponents();
         setTitle("Menu");
         TextPrompt dataholderBuscar = new TextPrompt("Ingrese el nombre del titular de la obra a buscar",tfBuscar);
         dataholderBuscar.setShowPromptOnce(true);
+        mostrarTabla();
     }
 
     /**
@@ -142,29 +143,21 @@ public class Menu extends javax.swing.JFrame {
 
         tablaObras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Titular", "Total Presupuesto", "Fecha Presupuesto"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         jScrollPane1.setViewportView(tablaObras);
 
         tfBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -296,8 +289,8 @@ public class Menu extends javax.swing.JFrame {
          }
     }*/
     
-    private void mostrarTabla(String nombres) throws Exception{   
-        obraS.listarObras(tablaObras,nombres);
+    private void mostrarTabla() throws Exception {   
+        obraS.listarObras(tablaObras);
     }
         
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
@@ -312,7 +305,8 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No puede estar vacío el campo");
         }else{
             try {
-                obraS.findByName(tfBuscar.getText());
+                mostrarTabla();
+               // obraS.findByName(tfBuscar.getText());
             } catch (Exception ex) {
                ex.getMessage();
             }
@@ -321,12 +315,12 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void tfBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarKeyReleased
-        try {
+//      try {
             // TODO add your handling code here:
-            mostrarTabla(tfBuscar.getText());
-        } catch (Exception ex) {
-            ex.getMessage();
-        }
+   //         mostrarTabla(tfBuscar.getText());
+  //      } catch (Exception ex) {
+   //         ex.getMessage();
+   //     }
     }//GEN-LAST:event_tfBuscarKeyReleased
 
     /**
@@ -359,7 +353,11 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                try {
+                    new Menu().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
