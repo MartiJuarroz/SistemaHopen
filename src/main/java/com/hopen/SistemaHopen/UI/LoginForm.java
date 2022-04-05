@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -235,8 +237,12 @@ public class LoginForm extends javax.swing.JFrame {
 
          if (usuario != null) {
                 dispose();
+            try {
                 new Menu().setVisible(true);
-       //         this.setVisible(false);
+                //         this.setVisible(false);
+            } catch (Exception ex) {
+                Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
             } else {
                 JOptionPane.showMessageDialog(LoginForm.this,
                         "Usuario o Contraseña invalidos",
