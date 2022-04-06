@@ -26,7 +26,7 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu() throws Exception {
+    public Menu() {
         initComponents();
         setTitle("Menu");
         TextPrompt dataholderBuscar = new TextPrompt("Ingrese el nombre del titular de la obra a buscar",tfBuscar);
@@ -289,7 +289,7 @@ public class Menu extends javax.swing.JFrame {
          }
     }*/
     
-    private void mostrarTabla() throws Exception {   
+    private void mostrarTabla() {   
         obraS.listarObras(tablaObras);
     }
         
@@ -304,12 +304,8 @@ public class Menu extends javax.swing.JFrame {
         if(btnBuscar.getText().equals("")){
             JOptionPane.showMessageDialog(null, "No puede estar vacío el campo");
         }else{
-            try {
                 mostrarTabla();
                // obraS.findByName(tfBuscar.getText());
-            } catch (Exception ex) {
-               ex.getMessage();
-            }
         }
         
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -353,11 +349,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new Menu().setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                    new Menu().setVisible(true);          
             }
         });
     }

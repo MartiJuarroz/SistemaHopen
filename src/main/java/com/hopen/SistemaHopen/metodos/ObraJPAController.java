@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-/*package com.hopen.SistemaHopen.metodos;
+package com.hopen.SistemaHopen.metodos;
 
 import com.hopen.SistemaHopen.entities.Obra;
 import java.io.Serializable;
@@ -13,20 +13,24 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author Martiniano
  */
-/*public class ObraJPAController implements Serializable{
+ public class ObraJPAController implements Serializable{
     
- //   factoryBean.setJpaProperties(this.additionalProperties());
+     @Autowired
+     EntityManagerFactory emf;
     
     public ObraJPAController (EntityManagerFactory emf){
        this.emf = emf;
     }
     
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.hopen_SistemaHopen_jar_0.0.1-SNAPSHOTPU");
+ //   private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.hopen_SistemaHopen_jar_0.0.1-SNAPSHOTPU");
+    
+    EntityManager entitymanager = emf.createEntityManager( );
     
     public EntityManager getEntityManager(){
         return emf.createEntityManager();
@@ -85,4 +89,3 @@ import javax.persistence.criteria.Root;
         
     
 }
-*/

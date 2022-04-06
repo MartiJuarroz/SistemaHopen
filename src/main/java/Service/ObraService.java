@@ -6,7 +6,7 @@ package Service;
 
 import Repository.ObraRepository;
 import com.hopen.SistemaHopen.entities.Obra;
-//import com.hopen.SistemaHopen.metodos.ObraJPAController;
+import com.hopen.SistemaHopen.metodos.ObraJPAController;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
@@ -22,16 +22,20 @@ import org.springframework.stereotype.Service;
  *
  * @author Martiniano
  */
-@Service
+
 public class ObraService implements BaseService<Obra> {
     
-//    private ObraJPAController ObraController = new ObraJPAController();
+    private ObraJPAController ObraController = new ObraJPAController();
     private Obra obra = new Obra();
     private String mensaje = "";
 
     
     @Autowired
     private ObraRepository obraRepository;
+    
+    public ObraService(ObraRepository obraRepository) {
+        this.obraRepository = obraRepository;
+    }
     
    
     @Override
@@ -146,12 +150,12 @@ public class ObraService implements BaseService<Obra> {
         return obra;
     }*/
     
-    public void listarObras(JTable tabla) throws Exception{
+    public void listarObras(JTable tabla) {
         DefaultTableModel model;
         String [] titulo = {"TITULAR","TOTAL PRESUPUESTO","FECHA PRESUPUESTO"};
         model = new DefaultTableModel(null,titulo);
         
-        List<Obra> datos = findAll();
+        List<Obra> datos = ObraController.findObraEntities();
                 
         String [] datosObra = new String[3];
         for(Obra obras : datos){
@@ -163,5 +167,5 @@ public class ObraService implements BaseService<Obra> {
         tabla.setModel(model);
         
     }
-    
+   
 }
