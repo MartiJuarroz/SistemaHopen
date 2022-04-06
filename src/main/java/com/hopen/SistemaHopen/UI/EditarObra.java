@@ -10,12 +10,16 @@ import java.sql.PreparedStatement;
 import Service.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author lisan
  */
 public class EditarObra extends javax.swing.JFrame {
+    
+    @Autowired
+    ObraService obraService;
     
     /**
      * Creates new form CargarObra
@@ -433,7 +437,7 @@ public class EditarObra extends javax.swing.JFrame {
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         // TODO add your handling code here:
-        ObraService obraService = new ObraService();
+        
         if (titularTxt.getText().equals("")){
             JOptionPane.showMessageDialog(null, "El campo esta vacío");
         }else {

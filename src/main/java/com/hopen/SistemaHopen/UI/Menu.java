@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class Menu extends javax.swing.JFrame {
 
-    private ObraService obraS = new ObraService();
+    private ObraService obraS;
     
     /**
      * Creates new form Menu
