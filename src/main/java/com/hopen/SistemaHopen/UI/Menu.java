@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 //import com.hopen.SistemaHopen.metodos.ObraJPAController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -21,6 +22,7 @@ import java.util.logging.Logger;
  */
 public class Menu extends javax.swing.JFrame {
 
+    @Autowired
     private ObraService obraS;
     
     /**
