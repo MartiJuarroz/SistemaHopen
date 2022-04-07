@@ -21,8 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
  public class ObraJPAController implements Serializable{
     
-     @Autowired
-     EntityManagerFactory emf;
+    @Autowired
+    EntityManagerFactory emf;
     
     public ObraJPAController (EntityManagerFactory emf){
        this.emf = emf;

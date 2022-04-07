@@ -186,7 +186,7 @@ public class CargarObra extends javax.swing.JFrame {
         SigBtn.setBackground(new java.awt.Color(0, 204, 255));
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SigBtn.setText("Siguiente");
+        SigBtn.setText("Guardar");
         SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

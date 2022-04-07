@@ -167,5 +167,7 @@ public class ObraService implements BaseService<Obra> {
         tabla.setModel(model);
         
     }
+    
+    
    
 }

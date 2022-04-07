@@ -8,6 +8,10 @@ import com.hopen.SistemaHopen.entities.Obra;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import Service.*;
+import static java.lang.Double.parseDouble;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +31,7 @@ public class EditarObra extends javax.swing.JFrame {
     public EditarObra() {
         initComponents();
         setTitle("Editar Obra");
+        mostrarDatos();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -332,6 +337,42 @@ public class EditarObra extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mostrarDatos(){
+        
+        String titular = new Menu().getTitular();
+
+        PreparedStatement ps;
+        
+        try{
+        Connection con = ConexionDB.getConnection();
+        String sql = "SELECT * FROM obra o WHERE o.titular=?";
+        ps = ConexionDB.getConnection().prepareStatement(sql);
+        ps.setString(1, titular);
+        
+        ResultSet resultSet = ps.executeQuery();
+        
+        if(resultSet.next()){
+            double comision = resultSet.getDouble("comision");
+            double costos_fijos = resultSet.getDouble("costos_fijos");
+            String fecha = resultSet.getString("fecha_presupuesto");
+            double ganancia = resultSet.getDouble("ganancia_pretendida");
+            String titular2 = resultSet.getString("titular");
+            double presupuesto = resultSet.getDouble("total_presupuesto");
+            
+            CFTxt.setText(Double.toString(costos_fijos));
+            ComisionTxt.setText(Double.toString(comision));
+            GPTxt.setText(Double.toString(ganancia));
+            MTTxt.setText(Double.toString(presupuesto));
+            titularTxt.setText(titular2);
+        }
+        
+        ConexionDB.endConnection(con);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+    
     
     private void buscarDatosObraEnBD(String titularObra){
  

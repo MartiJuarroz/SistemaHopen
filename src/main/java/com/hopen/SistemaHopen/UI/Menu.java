@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 //import com.hopen.SistemaHopen.metodos.ObraJPAController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -58,9 +59,10 @@ public class Menu extends javax.swing.JFrame {
         tablaObras = new javax.swing.JTable();
         tfBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        MTbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 500));
+        setPreferredSize(new java.awt.Dimension(900, 550));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(530, 500));
@@ -143,6 +145,9 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        tablaObras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tablaObras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -177,6 +182,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        MTbtn.setBackground(new java.awt.Color(255, 135, 9));
+        MTbtn.setForeground(new java.awt.Color(255, 255, 255));
+        MTbtn.setText("Mostrar todas");
+        MTbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MTbtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -186,7 +200,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                         .addGap(33, 33, 33))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -200,30 +214,33 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MTbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MTbtn))
                 .addGap(31, 31, 31))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addContainerGap(78, Short.MAX_VALUE))
+                    .addComponent(btnBuscar)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -234,7 +251,7 @@ public class Menu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -243,13 +260,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
         // TODO add your handling code here:
-      //  new CargarObra().setVisible(true);
-    //    String textField = nombreObra.getText();
-        EditarObra edit = new EditarObra();
-        edit.setVisible(true);
+        new EditarObra().setVisible(true);
         dispose();
+       // tablaObras.
     }//GEN-LAST:event_btnEditarObraActionPerformed
 
+    public String getTitular(){
+        int fila = tablaObras.getSelectedRow();
+        String titular = tablaObras.getValueAt(fila,0).toString();
+        return titular;
+    }
+    
     private void cargarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarFacturaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cargarFacturaActionPerformed
@@ -259,40 +280,76 @@ public class Menu extends javax.swing.JFrame {
         new CargarPresupuesto().setVisible(true);
         dispose();
     }//GEN-LAST:event_cargarPresupuestoActionPerformed
-       /*
-    private void buscarTitularEnBD(){
-        String textField = nombreObra.getText();
+      
+    private void buscarDatosObra(String input){
+        DefaultTableModel model = new DefaultTableModel(); 
+        
+        model.addColumn("Titular");
+        model.addColumn("Total presupuesto");
+        model.addColumn("Fecha presupuesto");
+        
+        tablaObras.setModel(model);
+        
+        String[] dato = new String[3];
         
         PreparedStatement ps;
+        
         try{
-         Connection con = ConexionDB.getConnection();
-         String sql ="SELECT * FROM obra WHERE titular=?";
-         ps = ConexionDB.getConnection().prepareStatement(sql);
-         
-         ps.setString(1, textField);
-         
-         ResultSet resultSet = ps.executeQuery();
-         
-         if (resultSet.next()){
-       //     String nombreO = resultSet.getString("titular");
-                cargarFactura.setVisible(true);
-                btnEditarObra.setVisible(true);
-                cargarPresupuesto.setVisible(true);
-                buscar.setVisible(false);
-                nombreObra.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "Obra no existente, intente nuevamente.");
+        Connection con = ConexionDB.getConnection();
+        String sql = "SELECT o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o WHERE titular LIKE ?";
+        ps = ConexionDB.getConnection().prepareStatement(sql);
+        ps.setString(1, input+"%");
+        
+        ResultSet resultSet = ps.executeQuery();
+        
+        while(resultSet.next()){
+            dato[0] = resultSet.getString(1);
+            dato[1] = resultSet.getString(2);
+            dato[2] = resultSet.getString(3);
+            model.addRow(dato);
         }
-         
-         ConexionDB.endConnection(con);
-         
-         }catch(Exception e){
-             e.printStackTrace();
-         }
-    }*/
+        
+        ConexionDB.endConnection(con);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+    
     
     private void mostrarTabla() {   
-        obraS.listarObras(tablaObras);
+           
+        DefaultTableModel model = new DefaultTableModel(); 
+        
+        model.addColumn("Titular");
+        model.addColumn("Total presupuesto");
+        model.addColumn("Fecha presupuesto");
+        
+        tablaObras.setModel(model);
+        
+        String[] dato = new String[3];
+        
+        PreparedStatement ps;
+        
+        try{
+        Connection con = ConexionDB.getConnection();
+        String sql = "SELECT o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o";
+        ps = ConexionDB.getConnection().prepareStatement(sql);
+        
+        ResultSet resultSet = ps.executeQuery();
+        
+        while(resultSet.next()){
+            dato[0] = resultSet.getString(1);
+            dato[1] = resultSet.getString(2);
+            dato[2] = resultSet.getString(3);
+            model.addRow(dato);
+        }
+        
+        ConexionDB.endConnection(con);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
     }
         
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
@@ -303,10 +360,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        if(btnBuscar.getText().equals("")){
+        if(tfBuscar.getText().equals("")){
             JOptionPane.showMessageDialog(null, "No puede estar vacío el campo");
         }else{
-                mostrarTabla();
+                buscarDatosObra(tfBuscar.getText());
+                tfBuscar.setText("");
                // obraS.findByName(tfBuscar.getText());
         }
         
@@ -320,6 +378,11 @@ public class Menu extends javax.swing.JFrame {
    //         ex.getMessage();
    //     }
     }//GEN-LAST:event_tfBuscarKeyReleased
+
+    private void MTbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MTbtnActionPerformed
+        // TODO add your handling code here:
+        mostrarTabla();
+    }//GEN-LAST:event_MTbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,6 +420,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton MTbtn;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditarObra;
     private javax.swing.JButton btnIngresar;
