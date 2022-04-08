@@ -398,10 +398,9 @@ public class CargarObra extends javax.swing.JFrame {
          
          }catch(Exception e){
              e.printStackTrace();
-         }
-         
-        dispose();         
-     
+         }    
+     new Menu().setVisible(true);
+     dispose();
     }//GEN-LAST:event_SigBtnActionPerformed
 
     private void titularTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titularTxtMouseClicked

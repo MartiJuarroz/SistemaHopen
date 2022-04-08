@@ -150,22 +150,41 @@ public class Menu extends javax.swing.JFrame {
         tablaObras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tablaObras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-
+                "Titular", "Total Presupuesto", "Fecha"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaObras);
+        if (tablaObras.getColumnModel().getColumnCount() > 0) {
+            tablaObras.getColumnModel().getColumn(0).setResizable(false);
+            tablaObras.getColumnModel().getColumn(1).setResizable(false);
+            tablaObras.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         tfBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -264,10 +283,12 @@ public class Menu extends javax.swing.JFrame {
         dispose();
        // tablaObras.
     }//GEN-LAST:event_btnEditarObraActionPerformed
-
+        
     public String getTitular(){
-        int fila = tablaObras.getSelectedRow();
-        String titular = tablaObras.getValueAt(fila,0).toString();
+        String titular = tfBuscar.getText();
+        /*int fila = tablaObras.getSelectedRow();
+        System.out.println("Numero de fila: "+fila);
+        String titular = tablaObras.getValueAt(3,0).toString();*/
         return titular;
     }
     
@@ -364,8 +385,7 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No puede estar vacío el campo");
         }else{
                 buscarDatosObra(tfBuscar.getText());
-                tfBuscar.setText("");
-               // obraS.findByName(tfBuscar.getText());
+                tfBuscar.setText("");               
         }
         
     }//GEN-LAST:event_btnBuscarActionPerformed

@@ -338,7 +338,7 @@ public class EditarObra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mostrarDatos(){
-        
+        /*
         String titular = new Menu().getTitular();
 
         PreparedStatement ps;
@@ -370,7 +370,7 @@ public class EditarObra extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        
+        */
     }
     
     
@@ -448,8 +448,43 @@ public class EditarObra extends javax.swing.JFrame {
 
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
-        
-     
+        if(titularTxt.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresar una obra para editar");
+        }else{
+            double total_presupuesto = Double.parseDouble(MTTxt.getText());
+            double comision = Double.parseDouble(ComisionTxt.getText());
+            double ganancia_pretendida = Double.parseDouble(GPTxt.getText());
+            double costos_fijos = Double.parseDouble(CFTxt.getText());
+            //Para convertir fecha de java en fecha de sql
+            java.util.Date fecha = fechaCH.getDate();
+            long timeInMilliSecs = fecha.getTime();
+            java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
+         
+            Obra obra = new Obra();
+            obra.setTotalPresupuesto(total_presupuesto);
+            obra.setComision(comision);
+            obra.setGanancia_pretendida(ganancia_pretendida);
+            obra.setCostosFijos(costos_fijos);
+            obra.setFechaPresupuesto(fecha);
+         
+            PreparedStatement ps;
+
+            try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="UPDATE obra SET total_presupuesto = '"+total_presupuesto+"',comision ='"+comision+"', ganancia_pretendida ='"+ganancia_pretendida+"', costos_fijos ='"+costos_fijos+"', fecha_presupuesto ='"+fechaDB+"' WHERE titular = '"+titularTxt.getText()+"'";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+            ConexionDB.endConnection(con);
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }    
+        new Menu().setVisible(true);
+        dispose();
+        }
     }//GEN-LAST:event_SigBtnActionPerformed
 
     private void titularTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_titularTxtMouseClicked
@@ -482,16 +517,29 @@ public class EditarObra extends javax.swing.JFrame {
         if (titularTxt.getText().equals("")){
             JOptionPane.showMessageDialog(null, "El campo esta vacío");
         }else {
-            try {
-                Obra obra = obraService.findOneByName(titularTxt.getText());
-                MTTxt.setText(obra.getTotalPresupuesto()+"");
-                ComisionTxt.setText(obra.getComision()+"");
-                GPTxt.setText(obra.getGanancia_pretendida()+"");
-                fechaCH.setDate(obra.getFechaPresupuesto());
-                CFTxt.setText(obra.getCostosFijos()+"");
-            } catch (Exception ex) {
-                Logger.getLogger(EditarObra.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            PreparedStatement ps;
+            String titular = titularTxt.getText();
+        try{
+        Connection con = ConexionDB.getConnection();
+        String sql = "SELECT o.total_presupuesto, o.fecha_presupuesto, o.ganancia_pretendida, o.comision, o.costos_fijos FROM obra o WHERE titular LIKE ?";
+        ps = ConexionDB.getConnection().prepareStatement(sql);
+        ps.setString(1, titular);
+        
+        ResultSet resultSet = ps.executeQuery();
+        
+        if(resultSet.next()){
+            MTTxt.setText(resultSet.getString(1));
+            ComisionTxt.setText(resultSet.getString(4));
+            GPTxt.setText(resultSet.getString(3));
+            CFTxt.setText(resultSet.getString(5));
+            fechaCH.setDate(resultSet.getDate(2));
+            
+        }
+        
+        ConexionDB.endConnection(con);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         }
     }//GEN-LAST:event_buscarActionPerformed
     /**
