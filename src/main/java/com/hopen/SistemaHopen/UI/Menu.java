@@ -5,15 +5,10 @@
 package com.hopen.SistemaHopen.UI;
 
 import Service.ObraService;
-import com.hopen.SistemaHopen.entities.Obra;
-import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-//import com.hopen.SistemaHopen.metodos.ObraJPAController;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -294,6 +289,8 @@ public class Menu extends javax.swing.JFrame {
     
     private void cargarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarFacturaActionPerformed
         // TODO add your handling code here:
+        new CargarFactura().setVisible(true);
+        dispose();
     }//GEN-LAST:event_cargarFacturaActionPerformed
 
     private void cargarPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarPresupuestoActionPerformed

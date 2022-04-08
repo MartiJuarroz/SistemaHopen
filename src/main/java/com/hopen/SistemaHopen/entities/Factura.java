@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +27,7 @@ public class Factura extends Base{
     private Date fechaFactura;
 
     @Column
-    private int numeroFactura;
+    private String numeroFactura;
 
     @Column
     private double totalFactura;

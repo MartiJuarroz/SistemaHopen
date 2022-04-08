@@ -5,16 +5,11 @@
 package com.hopen.SistemaHopen.UI;
 
 import com.hopen.SistemaHopen.entities.Obra;
-import com.hopen.SistemaHopen.UI.TextPrompt;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
-import com.hopen.SistemaHopen.UI.ConexionDB;
-import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
-import java.sql.Date;
 import java.util.logging.Logger;
 
 /**
