@@ -54,14 +54,14 @@ public class CargarFactura extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        UITxt.setFont(new java.awt.Font("Microsoft YaHei", 2, 20)); // NOI18N
+        UITxt.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         UITxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UITxt.setText("Ingrese los datos de factura");
 
         ObreroIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ObreroIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/factura.png"))); // NOI18N
 
-        titularLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        titularLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         titularLbl.setText("Numero Factura");
 
         numeroFac.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -79,7 +79,7 @@ public class CargarFactura extends javax.swing.JFrame {
             }
         });
 
-        MTLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        MTLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         MTLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MTLbl.setText("Monto ");
 
@@ -97,11 +97,11 @@ public class CargarFactura extends javax.swing.JFrame {
             }
         });
 
-        fechaLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        fechaLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         fechaLbl.setText("Fecha");
 
-        SalirBtn.setBackground(new java.awt.Color(255, 51, 51));
-        SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        SalirBtn.setBackground(new java.awt.Color(255, 153, 51));
+        SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Volver");
         SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -112,7 +112,7 @@ public class CargarFactura extends javax.swing.JFrame {
         });
 
         SigBtn.setBackground(new java.awt.Color(0, 204, 255));
-        SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Guardar");
         SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -196,7 +196,7 @@ public class CargarFactura extends javax.swing.JFrame {
                     .addComponent(fechaLbl))
                 .addGap(9, 9, 9)
                 .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))

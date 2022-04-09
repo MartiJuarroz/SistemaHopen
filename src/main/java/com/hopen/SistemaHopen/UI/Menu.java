@@ -44,7 +44,6 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cargarPresupuesto = new javax.swing.JButton();
         cargarFactura = new javax.swing.JButton();
@@ -57,6 +56,7 @@ public class Menu extends javax.swing.JFrame {
         MTbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1007, 491));
         setPreferredSize(new java.awt.Dimension(900, 550));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -64,10 +64,8 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 255));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu.png"))); // NOI18N
-
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MENU");
@@ -77,27 +75,20 @@ public class Menu extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2)
-                .addGap(41, 41, 41)
+                .addGap(52, 52, 52)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cargarPresupuesto.setBackground(new java.awt.Color(0, 204, 255));
-        cargarPresupuesto.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        cargarPresupuesto.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         cargarPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
         cargarPresupuesto.setText("Cargar presupuesto");
         cargarPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -108,7 +99,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         cargarFactura.setBackground(new java.awt.Color(0, 204, 255));
-        cargarFactura.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        cargarFactura.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         cargarFactura.setForeground(new java.awt.Color(255, 255, 255));
         cargarFactura.setText("Cargar factura");
         cargarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -119,7 +110,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnEditarObra.setBackground(new java.awt.Color(0, 204, 255));
-        btnEditarObra.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        btnEditarObra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         btnEditarObra.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarObra.setText("Editar datos de obra");
         btnEditarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -129,8 +120,8 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        btnIngresar.setBackground(new java.awt.Color(255, 135, 9));
-        btnIngresar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        btnIngresar.setBackground(new java.awt.Color(0, 153, 204));
+        btnIngresar.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar una obra nueva");
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -188,6 +179,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btnBuscar.setBackground(new java.awt.Color(255, 135, 9));
+        btnBuscar.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +189,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         MTbtn.setBackground(new java.awt.Color(255, 135, 9));
+        MTbtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         MTbtn.setForeground(new java.awt.Color(255, 255, 255));
         MTbtn.setText("Mostrar todas");
         MTbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -211,82 +204,104 @@ public class Menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                        .addGap(33, 33, 33))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cargarFactura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEditarObra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnIngresar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MTbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(30, 30, 30))
+                            .addComponent(MTbtn)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MTbtn))
-                .addGap(31, 31, 31))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar)))
+                    .addComponent(btnBuscar))
+                .addGap(18, 18, 18)
+                .addComponent(MTbtn)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1007, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void MTbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MTbtnActionPerformed
+        // TODO add your handling code here:
+        mostrarTabla();
+    }//GEN-LAST:event_MTbtnActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        if(tfBuscar.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "No puede estar vacío el campo");
+        }else{
+            buscarDatosObra(tfBuscar.getText());
+            tfBuscar.setText("");
+        }
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tfBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarKeyReleased
+        //      try {
+            // TODO add your handling code here:
+            //         mostrarTabla(tfBuscar.getText());
+            //      } catch (Exception ex) {
+            //         ex.getMessage();
+            //     }
+    }//GEN-LAST:event_tfBuscarKeyReleased
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        // TODO add your handling code here:
+        new CargarObra().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
     private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
         // TODO add your handling code here:
         new EditarObra().setVisible(true);
         dispose();
-       // tablaObras.
+        // tablaObras.
     }//GEN-LAST:event_btnEditarObraActionPerformed
-        
-    public String getTitular(){
-        String titular = tfBuscar.getText();
-        /*int fila = tablaObras.getSelectedRow();
-        System.out.println("Numero de fila: "+fila);
-        String titular = tablaObras.getValueAt(3,0).toString();*/
-        return titular;
-    }
-    
+
     private void cargarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarFacturaActionPerformed
         // TODO add your handling code here:
         new CargarFactura().setVisible(true);
@@ -298,7 +313,15 @@ public class Menu extends javax.swing.JFrame {
         new CargarPresupuesto().setVisible(true);
         dispose();
     }//GEN-LAST:event_cargarPresupuestoActionPerformed
-      
+        
+    public String getTitular(){
+        String titular = tfBuscar.getText();
+        /*int fila = tablaObras.getSelectedRow();
+        System.out.println("Numero de fila: "+fila);
+        String titular = tablaObras.getValueAt(3,0).toString();*/
+        return titular;
+    }
+          
     private void buscarDatosObra(String input){
         DefaultTableModel model = new DefaultTableModel(); 
         
@@ -370,37 +393,6 @@ public class Menu extends javax.swing.JFrame {
         
     }
         
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        if(tfBuscar.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "No puede estar vacío el campo");
-        }else{
-                buscarDatosObra(tfBuscar.getText());
-                tfBuscar.setText("");               
-        }
-        
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void tfBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarKeyReleased
-//      try {
-            // TODO add your handling code here:
-   //         mostrarTabla(tfBuscar.getText());
-  //      } catch (Exception ex) {
-   //         ex.getMessage();
-   //     }
-    }//GEN-LAST:event_tfBuscarKeyReleased
-
-    private void MTbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MTbtnActionPerformed
-        // TODO add your handling code here:
-        mostrarTabla();
-    }//GEN-LAST:event_MTbtnActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -444,7 +436,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton cargarFactura;
     private javax.swing.JButton cargarPresupuesto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

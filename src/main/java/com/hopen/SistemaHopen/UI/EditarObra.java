@@ -72,14 +72,14 @@ public class EditarObra extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        UITxt.setFont(new java.awt.Font("Microsoft YaHei", 2, 20)); // NOI18N
+        UITxt.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
         UITxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         UITxt.setText("Editar datos de la obra");
 
         ObreroIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ObreroIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/obrero.png"))); // NOI18N
 
-        titularLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 14)); // NOI18N
+        titularLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         titularLbl.setText("Titular");
 
         titularTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -97,7 +97,7 @@ public class EditarObra extends javax.swing.JFrame {
             }
         });
 
-        MTLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        MTLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         MTLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MTLbl.setText("Monto Total");
 
@@ -115,7 +115,7 @@ public class EditarObra extends javax.swing.JFrame {
             }
         });
 
-        CFLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        CFLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         CFLbl.setText("Costos Fijos");
 
         CFTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -131,7 +131,7 @@ public class EditarObra extends javax.swing.JFrame {
             }
         });
 
-        ComisionLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        ComisionLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         ComisionLbl.setText("Comisión");
 
         ComisionTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -147,7 +147,7 @@ public class EditarObra extends javax.swing.JFrame {
             }
         });
 
-        GPLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        GPLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         GPLbl.setText("Ganancia Pretendida");
 
         GPTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -163,11 +163,11 @@ public class EditarObra extends javax.swing.JFrame {
             }
         });
 
-        fechaLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        fechaLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         fechaLbl.setText("Fecha");
 
-        SalirBtn.setBackground(new java.awt.Color(255, 51, 51));
-        SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        SalirBtn.setBackground(new java.awt.Color(255, 153, 51));
+        SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Volver");
         SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -178,7 +178,7 @@ public class EditarObra extends javax.swing.JFrame {
         });
 
         SigBtn.setBackground(new java.awt.Color(0, 204, 255));
-        SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Siguiente");
         SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -191,7 +191,7 @@ public class EditarObra extends javax.swing.JFrame {
         fechaCH.setBackground(new java.awt.Color(255, 255, 255));
 
         buscar.setBackground(new java.awt.Color(255, 135, 9));
-        buscar.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        buscar.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         buscar.setForeground(new java.awt.Color(255, 255, 255));
         buscar.setText("Buscar");
         buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -264,7 +264,7 @@ public class EditarObra extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
