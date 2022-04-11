@@ -4,7 +4,7 @@
  */
 package com.hopen.SistemaHopen.UI;
 
-import Service.ObraService;
+import com.hopen.SistemaHopen.services.ObraService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
