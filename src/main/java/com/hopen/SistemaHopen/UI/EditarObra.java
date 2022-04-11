@@ -5,9 +5,9 @@
 package com.hopen.SistemaHopen.UI;
 
 import com.hopen.SistemaHopen.entities.Obra;
+import com.hopen.SistemaHopen.services.ObraService;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
-import Service.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.logging.Level;

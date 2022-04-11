@@ -31,5 +31,8 @@ public class Factura extends Base{
 
     @Column
     private double totalFactura;
+    
+    @Column
+    private String imagenFactura;
 
 }
