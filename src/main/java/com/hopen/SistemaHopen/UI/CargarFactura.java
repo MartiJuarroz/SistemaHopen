@@ -59,8 +59,10 @@ public class CargarFactura extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
 
         UITxt.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
@@ -76,7 +78,7 @@ public class CargarFactura extends javax.swing.JFrame {
         numeroFac.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         numeroFac.setToolTipText("Hola q onda\n");
         numeroFac.setBorder(null);
-        numeroFac.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        numeroFac.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         numeroFac.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 numeroFacMouseClicked(evt);
@@ -94,7 +96,7 @@ public class CargarFactura extends javax.swing.JFrame {
 
         monto.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         monto.setBorder(null);
-        monto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        monto.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         monto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 montoActionPerformed(evt);
@@ -113,7 +115,7 @@ public class CargarFactura extends javax.swing.JFrame {
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Volver");
-        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
@@ -124,7 +126,7 @@ public class CargarFactura extends javax.swing.JFrame {
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Guardar");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);
@@ -139,7 +141,7 @@ public class CargarFactura extends javax.swing.JFrame {
         tfImagen.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         tfImagen.setToolTipText("Hola q onda\n");
         tfImagen.setBorder(null);
-        tfImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tfImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         tfImagen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tfImagenMouseClicked(evt);
@@ -151,6 +153,9 @@ public class CargarFactura extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(0, 204, 255));
+        jButton1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,7 +250,7 @@ public class CargarFactura extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sepTitular1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
