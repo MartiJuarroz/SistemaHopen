@@ -5,13 +5,17 @@
 package com.hopen.SistemaHopen.UI;
 
 import com.hopen.SistemaHopen.entities.Factura;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -278,18 +282,22 @@ public class CargarFactura extends javax.swing.JFrame {
         factura.setNumeroFactura(numeroFactura);
         factura.setFechaFactura(fechaDB);
         factura.setTotalFactura(totalFactura);
-     //   factura.setImagenFactura();
+        
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, imagen_factura) VALUES (?,?,?,?)";
+            String sql ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, imagen) VALUES (?,?,?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
+            FileInputStream archivoFoto;
+            archivoFoto = new FileInputStream(tfImagen.getText());
+            
             ps.setString(1, numeroFactura);
             ps.setDouble(2, totalFactura);
             ps.setDate(3, fechaDB);
+            ps.setBinaryStream(4, archivoFoto);
             
             ps.executeUpdate();
 
@@ -351,11 +359,18 @@ public class CargarFactura extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivo JPEG(*.JPG;*.PNG)","jpg","png");
         JFileChooser jf = new JFileChooser();
-        jf.setMultiSelectionEnabled(false);
-        if(jf.showOpenDialog(this)== JFileChooser.APPROVE_OPTION){
-      //      rsdragdropfiles.Rs
+        jf.setFileFilter(filtro);
+    //    jf.addChoosableFileFilter(filtro);
+        jf.setDialogTitle("Abrir archivo");
+    //    jf.setMultiSelectionEnabled(false);
+        int ventana = jf.showOpenDialog(null);
+        if(ventana == JFileChooser.APPROVE_OPTION){
+            File file = jf.getSelectedFile();
+            tfImagen.setText(String.valueOf(jf));
+        //    Image foto = getToolkit().getImage(tfImagen.getText());
+        //    foto = foto.getScaledInstance(110, 110, Image.SCALE_DEFAULT);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
