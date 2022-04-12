@@ -278,7 +278,7 @@ public class CargarFactura extends javax.swing.JFrame {
         factura.setNumeroFactura(numeroFactura);
         factura.setFechaFactura(fechaDB);
         factura.setTotalFactura(totalFactura);
-        factura.setImagenFactura();
+     //   factura.setImagenFactura();
 
         PreparedStatement ps;
 
@@ -355,7 +355,7 @@ public class CargarFactura extends javax.swing.JFrame {
         JFileChooser jf = new JFileChooser();
         jf.setMultiSelectionEnabled(false);
         if(jf.showOpenDialog(this)== JFileChooser.APPROVE_OPTION){
-            rsdragdropfiles.Rs
+      //      rsdragdropfiles.Rs
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

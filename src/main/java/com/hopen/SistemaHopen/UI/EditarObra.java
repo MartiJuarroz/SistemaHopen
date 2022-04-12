@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -31,7 +32,11 @@ public class EditarObra extends javax.swing.JFrame {
     public EditarObra() {
         initComponents();
         setTitle("Editar Obra");
-        buscarObras();
+        TextPrompt dataholderBuscar = new TextPrompt("Ingrese el nombre del titular de la obra a buscar",tfBuscar);
+        dataholderBuscar.setShowPromptOnce(true);
+        mostrarTabla();
+      //  buscarObras();
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,8 +71,13 @@ public class EditarObra extends javax.swing.JFrame {
         SalirBtn = new javax.swing.JButton();
         SigBtn = new javax.swing.JButton();
         fechaCH = new com.toedter.calendar.JDateChooser();
-        listaObras = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        MTbtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaObras = new javax.swing.JTable();
+        tfBuscar = new javax.swing.JTextField();
+        tfCliente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,7 +92,7 @@ public class EditarObra extends javax.swing.JFrame {
         ObreroIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/obrero.png"))); // NOI18N
 
         titularLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
-        titularLbl.setText("Titular");
+        titularLbl.setText("Cliente");
 
         MTLbl.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 16)); // NOI18N
         MTLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,7 +100,7 @@ public class EditarObra extends javax.swing.JFrame {
 
         MTTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         MTTxt.setBorder(null);
-        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MTTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MTTxtActionPerformed(evt);
@@ -157,7 +167,7 @@ public class EditarObra extends javax.swing.JFrame {
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Volver");
-        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
@@ -167,8 +177,8 @@ public class EditarObra extends javax.swing.JFrame {
         SigBtn.setBackground(new java.awt.Color(0, 204, 255));
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SigBtn.setText("Siguiente");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SigBtn.setText("Guardar");
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);
@@ -178,20 +188,53 @@ public class EditarObra extends javax.swing.JFrame {
         fechaCH.setBackground(new java.awt.Color(255, 255, 255));
         fechaCH.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
 
-        listaObras.setEditable(true);
-        listaObras.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        listaObras.setBorder(null);
-        listaObras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jButton1.setBackground(new java.awt.Color(0, 204, 255));
         jButton1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar");
+        jButton1.setText("Ver datos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        btnBuscar.setBackground(new java.awt.Color(255, 135, 9));
+        btnBuscar.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        MTbtn.setBackground(new java.awt.Color(255, 135, 9));
+        MTbtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        MTbtn.setForeground(new java.awt.Color(255, 255, 255));
+        MTbtn.setText("Mostrar todas");
+        MTbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MTbtnActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        tablaObras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tablaObras.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        tablaObras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaObrasMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaObras);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -200,138 +243,349 @@ public class EditarObra extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(MTLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(MTTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(58, 58, 58)
+                        .addComponent(ComisionLbl))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(CFLbl))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
                         .addComponent(titularLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(listaObras, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(sepMT, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sepComision, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(fechaLbl)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sepComision, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ComisionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(MTTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sepMT, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(tfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton1))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(UITxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(MTLbl)
+                                .addGap(362, 362, 362))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(GPLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(GPTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(GPLbl))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(ComisionLbl)
-                                .addGap(78, 78, 78)
-                                .addComponent(ComisionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(CFLbl)
-                                .addGap(75, 75, 75)
-                                .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(7, 7, 7))
+                                .addComponent(fechaLbl)
+                                .addGap(77, 77, 77)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(sepFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(fechaCH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                                            .addComponent(GPTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(sepGP, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(MTbtn)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar)))
+                        .addGap(63, 63, 63))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(titularLbl)
-                        .addComponent(listaObras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MTLbl)
-                    .addComponent(MTTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sepMT, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ComisionLbl)
-                    .addComponent(ComisionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sepComision, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GPLbl)
-                    .addComponent(GPTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fechaLbl))
-                .addGap(9, 9, 9)
-                .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MTbtn)
+                .addGap(25, 25, 25))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(UITxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(titularLbl)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MTLbl)
+                            .addComponent(MTTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepMT, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ComisionLbl)
+                            .addComponent(ComisionTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepComision, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GPLbl)
+                            .addComponent(GPTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CFLbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CFLbl))
-                .addGap(8, 8, 8)
-                .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                    .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1080, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        mostrarDatos();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
+        // TODO add your handling code here:
+            double total_presupuesto = Double.parseDouble(MTTxt.getText());
+            double comision = Double.parseDouble(ComisionTxt.getText());
+            double ganancia_pretendida = Double.parseDouble(GPTxt.getText());
+            double costos_fijos = Double.parseDouble(CFTxt.getText());
+            //Para convertir fecha de java en fecha de sql
+            java.util.Date fecha = fechaCH.getDate();
+            long timeInMilliSecs = fecha.getTime();
+            java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
+
+            Obra obra = new Obra();
+            obra.setTotalPresupuesto(total_presupuesto);
+            obra.setComision(comision);
+            obra.setGanancia_pretendida(ganancia_pretendida);
+            obra.setCostosFijos(costos_fijos);
+            obra.setFechaPresupuesto(fecha);
+
+            PreparedStatement ps;
+
+            try{
+                Connection con = ConexionDB.getConnection();
+                String sql ="UPDATE obra SET total_presupuesto = '"+total_presupuesto+"',comision ='"+comision+"', ganancia_pretendida ='"+ganancia_pretendida+"', costos_fijos ='"+costos_fijos+"', fecha_presupuesto ='"+fechaDB+"' WHERE titular = '"+tfCliente.getText()+"'";
+                ps = ConexionDB.getConnection().prepareStatement(sql);
+
+                ps.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Datos guardados");
+                ConexionDB.endConnection(con);
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            new Menu().setVisible(true);
+            dispose();
+    }//GEN-LAST:event_SigBtnActionPerformed
+
+    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+            == JOptionPane.YES_OPTION){
+            dispose();
+            try {
+                new Menu().setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_SalirBtnActionPerformed
+
+    private void GPTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GPTxtKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_GPTxtKeyTyped
+
+    private void GPTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GPTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GPTxtActionPerformed
+
+    private void ComisionTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComisionTxtKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_ComisionTxtKeyTyped
+
+    private void ComisionTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComisionTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComisionTxtActionPerformed
+
+    private void CFTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CFTxtKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_CFTxtKeyTyped
+
+    private void CFTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CFTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CFTxtActionPerformed
+
+    private void MTTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MTTxtKeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_MTTxtKeyTyped
+
+    private void MTTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MTTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MTTxtActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+          if(tfBuscar.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "No puede estar vacío el campo");
+        }else{
+            buscarDatosObra(tfBuscar.getText());
+            tfBuscar.setText("");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void MTbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MTbtnActionPerformed
+        // TODO add your handling code here:
+          mostrarTabla();
+    }//GEN-LAST:event_MTbtnActionPerformed
+
+    private void tablaObrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaObrasMouseClicked
+        // TODO add your handling code here:
+         if (tablaObras.getSelectedRow() != -1) {
+            String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 0);
+            tfCliente.setText(titular);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un renglón primero", "No seleccionó ninguna fila", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_tablaObrasMouseClicked
+
+     private void mostrarTabla() {   
+           
+        DefaultTableModel model = new DefaultTableModel(); 
+        
+        model.addColumn("Cliente");
+        model.addColumn("Total presupuesto");
+        model.addColumn("Fecha presupuesto");
+        
+        tablaObras.setModel(model);
+        
+        String[] dato = new String[3];
+        
+        PreparedStatement ps;
+        
+        try{
+        Connection con = ConexionDB.getConnection();
+        String sql = "SELECT o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o";
+        ps = ConexionDB.getConnection().prepareStatement(sql);
+        
+        ResultSet resultSet = ps.executeQuery();
+        
+        while(resultSet.next()){
+            dato[0] = resultSet.getString(1);
+            dato[1] = resultSet.getString(2);
+            dato[2] = resultSet.getString(3);
+            model.addRow(dato);
+        }
+        
+        
+        ConexionDB.endConnection(con);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+    
+    private void buscarDatosObra(String input){
+        DefaultTableModel model = new DefaultTableModel(); 
+        
+        model.addColumn("Titular");
+        model.addColumn("Total presupuesto");
+        model.addColumn("Fecha presupuesto");
+        
+        tablaObras.setModel(model);
+        
+        String[] dato = new String[3];
+        
+        PreparedStatement ps;
+        
+        try{
+        Connection con = ConexionDB.getConnection();
+        String sql = "SELECT o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o WHERE titular LIKE ?";
+        ps = ConexionDB.getConnection().prepareStatement(sql);
+        ps.setString(1, input+"%");
+        
+        ResultSet resultSet = ps.executeQuery();
+        
+        while(resultSet.next()){
+            dato[0] = resultSet.getString(1);
+            dato[1] = resultSet.getString(2);
+            dato[2] = resultSet.getString(3);
+            model.addRow(dato);
+        }
+        
+        ConexionDB.endConnection(con);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+    
     private void mostrarDatos(){
-  
-        //String titular = new Menu().getTitular();
-        String titular = (String) listaObras.getSelectedItem();
+      
+        if (tablaObras.getSelectedRow() != -1) {
+            String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 0);
+            tfCliente.setText(titular);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un renglón primero", "No seleccionó ninguna fila", JOptionPane.INFORMATION_MESSAGE);
+        }
 
         PreparedStatement ps;
         
@@ -339,7 +593,7 @@ public class EditarObra extends javax.swing.JFrame {
         Connection con = ConexionDB.getConnection();
         String sql = "SELECT * FROM obra o WHERE o.titular=?";
         ps = ConexionDB.getConnection().prepareStatement(sql);
-        ps.setString(1, titular);
+        ps.setString(1, tfCliente.getText());
         
         ResultSet resultSet = ps.executeQuery();
         
@@ -367,7 +621,7 @@ public class EditarObra extends javax.swing.JFrame {
     }
     
     
-    private void buscarObras(){
+   /* private void buscarObras(){
         
         PreparedStatement ps;
         
@@ -387,104 +641,8 @@ public class EditarObra extends javax.swing.JFrame {
             e.printStackTrace();
         }
  
-     }
-    
-    private void MTTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MTTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MTTxtActionPerformed
-
-    private void CFTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CFTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CFTxtActionPerformed
-
-    private void ComisionTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComisionTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComisionTxtActionPerformed
-
-    private void GPTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GPTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GPTxtActionPerformed
-
-    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
-        // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
-                == JOptionPane.YES_OPTION){
-            dispose();
-            try {
-                new Menu().setVisible(true);
-            } catch (Exception ex) {
-                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_SalirBtnActionPerformed
-
-    private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
-        // TODO add your handling code here:
-        if(listaObras.getSelectedItem().equals("")){
-            JOptionPane.showMessageDialog(null, "Seleccione una obra para editar");
-        }else{
-            double total_presupuesto = Double.parseDouble(MTTxt.getText());
-            double comision = Double.parseDouble(ComisionTxt.getText());
-            double ganancia_pretendida = Double.parseDouble(GPTxt.getText());
-            double costos_fijos = Double.parseDouble(CFTxt.getText());
-            //Para convertir fecha de java en fecha de sql
-            java.util.Date fecha = fechaCH.getDate();
-            long timeInMilliSecs = fecha.getTime();
-            java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
-         
-            Obra obra = new Obra();
-            obra.setTotalPresupuesto(total_presupuesto);
-            obra.setComision(comision);
-            obra.setGanancia_pretendida(ganancia_pretendida);
-            obra.setCostosFijos(costos_fijos);
-            obra.setFechaPresupuesto(fecha);
-         
-            PreparedStatement ps;
-
-            try{
-            Connection con = ConexionDB.getConnection();
-            String sql ="UPDATE obra SET total_presupuesto = '"+total_presupuesto+"',comision ='"+comision+"', ganancia_pretendida ='"+ganancia_pretendida+"', costos_fijos ='"+costos_fijos+"', fecha_presupuesto ='"+fechaDB+"' WHERE titular = '"+listaObras.getSelectedItem()+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql);
-
-            ps.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Datos guardados");
-            ConexionDB.endConnection(con);
-
-            }catch(Exception e){
-                e.printStackTrace();
-            }    
-        new Menu().setVisible(true);
-        dispose();
-        }
-    }//GEN-LAST:event_SigBtnActionPerformed
-
-    private void MTTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MTTxtKeyTyped
-        // TODO add your handling code here:
-      
-    }//GEN-LAST:event_MTTxtKeyTyped
-
-    private void ComisionTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComisionTxtKeyTyped
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_ComisionTxtKeyTyped
-
-    private void GPTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GPTxtKeyTyped
-        // TODO add your handling code here:
-     
-    }//GEN-LAST:event_GPTxtKeyTyped
-
-    private void CFTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CFTxtKeyTyped
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_CFTxtKeyTyped
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        mostrarDatos();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-    /**
+     }*/
+        /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -530,21 +688,26 @@ public class EditarObra extends javax.swing.JFrame {
     private javax.swing.JTextField GPTxt;
     private javax.swing.JLabel MTLbl;
     private javax.swing.JTextField MTTxt;
+    private javax.swing.JButton MTbtn;
     private javax.swing.JLabel ObreroIcon;
     private javax.swing.JButton SalirBtn;
     private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
+    private javax.swing.JButton btnBuscar;
     private com.toedter.calendar.JDateChooser fechaCH;
     private javax.swing.JLabel fechaLbl;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JComboBox<String> listaObras;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator sepCF;
     private javax.swing.JSeparator sepComision;
     private javax.swing.JSeparator sepFecha;
     private javax.swing.JSeparator sepGP;
     private javax.swing.JSeparator sepMT;
     private javax.swing.JSeparator sepTitular;
+    private javax.swing.JTable tablaObras;
+    private javax.swing.JTextField tfBuscar;
+    private javax.swing.JTextField tfCliente;
     private javax.swing.JLabel titularLbl;
     // End of variables declaration//GEN-END:variables
 }
