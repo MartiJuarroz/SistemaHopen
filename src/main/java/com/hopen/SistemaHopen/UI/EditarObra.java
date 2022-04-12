@@ -4,13 +4,13 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import com.hopen.SistemaHopen.colorTabla.ColorCeldas;
 import com.hopen.SistemaHopen.entities.Obra;
 import com.hopen.SistemaHopen.services.ObraService;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,7 +100,7 @@ public class EditarObra extends javax.swing.JFrame {
 
         MTTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         MTTxt.setBorder(null);
-        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         MTTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MTTxtActionPerformed(evt);
@@ -167,7 +167,7 @@ public class EditarObra extends javax.swing.JFrame {
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Volver");
-        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
@@ -178,7 +178,7 @@ public class EditarObra extends javax.swing.JFrame {
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Guardar");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);
@@ -192,6 +192,7 @@ public class EditarObra extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Ver datos");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -202,6 +203,7 @@ public class EditarObra extends javax.swing.JFrame {
         btnBuscar.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Buscar");
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -212,6 +214,7 @@ public class EditarObra extends javax.swing.JFrame {
         MTbtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         MTbtn.setForeground(new java.awt.Color(255, 255, 255));
         MTbtn.setText("Mostrar todas");
+        MTbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MTbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MTbtnActionPerformed(evt);
@@ -221,6 +224,7 @@ public class EditarObra extends javax.swing.JFrame {
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         tablaObras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tablaObras.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tablaObras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -229,6 +233,7 @@ public class EditarObra extends javax.swing.JFrame {
 
             }
         ));
+        tablaObras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tablaObras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaObrasMouseClicked(evt);
@@ -299,7 +304,7 @@ public class EditarObra extends javax.swing.JFrame {
                                             .addComponent(GPTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(sepGP, javax.swing.GroupLayout.Alignment.TRAILING))
                                         .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -508,6 +513,8 @@ public class EditarObra extends javax.swing.JFrame {
     }//GEN-LAST:event_tablaObrasMouseClicked
 
      private void mostrarTabla() {   
+         
+        ColorCeldas c = new ColorCeldas();
            
         DefaultTableModel model = new DefaultTableModel(); 
         
@@ -540,6 +547,12 @@ public class EditarObra extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
+        
+         for (int i = 0; i < tablaObras.getColumnCount(); i++) {
+             
+             tablaObras.getColumnModel().getColumn(i).setCellRenderer(c);
+             
+         }
         
     }
     
