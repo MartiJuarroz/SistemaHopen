@@ -5,11 +5,6 @@
 package com.hopen.SistemaHopen.UI;
 
 import com.hopen.SistemaHopen.services.ObraService;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -206,7 +201,6 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         new EditarObra().setVisible(true);
         dispose();
-        // tablaObras.
     }//GEN-LAST:event_btnEditarObraActionPerformed
 
     private void cargarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarFacturaActionPerformed
@@ -225,15 +219,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-        
- /*   public String getTitular(){
-        String titular = tfBuscar.getText();
-        /*int fila = tablaObras.getSelectedRow();
-        System.out.println("Numero de fila: "+fila);
-        String titular = tablaObras.getValueAt(3,0).toString();*/
-    /*    return titular;
-    }*/
-          
+         
     /**
      * @param args the command line arguments
      */

@@ -62,7 +62,7 @@ public class CargarFactura extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
 
         UITxt.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
@@ -250,7 +250,7 @@ public class CargarFactura extends javax.swing.JFrame {
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sepTitular1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,9 +265,7 @@ public class CargarFactura extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
         );
 
         pack();
@@ -297,6 +295,7 @@ public class CargarFactura extends javax.swing.JFrame {
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             FileInputStream archivoFoto;
+            
             archivoFoto = new FileInputStream(tfImagen.getText());
             
             ps.setString(1, numeroFactura);
@@ -373,7 +372,9 @@ public class CargarFactura extends javax.swing.JFrame {
         int ventana = jf.showOpenDialog(null);
         if(ventana == JFileChooser.APPROVE_OPTION){
             File file = jf.getSelectedFile();
-            tfImagen.setText(String.valueOf(jf));
+            String path = file.getPath();
+            //String name = file.getName();
+            tfImagen.setText(path);
         //    Image foto = getToolkit().getImage(tfImagen.getText());
         //    foto = foto.getScaledInstance(110, 110, Image.SCALE_DEFAULT);
         }
