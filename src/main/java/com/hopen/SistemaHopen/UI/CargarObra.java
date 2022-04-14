@@ -4,6 +4,7 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import com.hopen.SistemaHopen.entities.EstadoObra;
 import com.hopen.SistemaHopen.entities.Obra;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -73,7 +74,7 @@ public class CargarObra extends javax.swing.JFrame {
         cbEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 600));
+        setPreferredSize(new java.awt.Dimension(660, 650));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -266,7 +267,7 @@ public class CargarObra extends javax.swing.JFrame {
                                     .addComponent(sepMT, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sepComision, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addGap(7, 7, 7))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -329,18 +330,18 @@ public class CargarObra extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
         );
 
         pack();
@@ -364,6 +365,32 @@ public class CargarObra extends javax.swing.JFrame {
         }
     }
     
+    private int getIDFromObra(){
+        String estado = cbEstado.getSelectedItem().toString();
+    //    obra.setEstadoObra(estadoObra);*
+
+        PreparedStatement ps;
+        
+          try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="SELECT id FROM estado_obra e WHERE nombre_estado_obra = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            
+            ps.setString(1, estado);
+            
+            ResultSet resultSet = ps.executeQuery();
+            
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                return id;
+            }
+            
+          }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
         String titular = titularTxt.getText();
@@ -377,18 +404,18 @@ public class CargarObra extends javax.swing.JFrame {
         java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
 
         Obra obra = new Obra();
-        obra.setTitular(titular);
+  /*      obra.setTitular(titular);
         obra.setTotalPresupuesto(total_presupuesto);
         obra.setComision(comision);
         obra.setGanancia_pretendida(ganancia_pretendida);
         obra.setCostosFijos(costos_fijos);
-        obra.setFechaPresupuesto(fechaDB);
-
+        obra.setFechaPresupuesto(fechaDB);*/
+        
         PreparedStatement ps;
-
+  
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO obra (titular, total_presupuesto, comision, ganancia_pretendida, costos_fijos, fecha_presupuesto) VALUES (?,?,?,?,?,?)";
+            String sql ="INSERT INTO obra (titular, total_presupuesto, comision, ganancia_pretendida, costos_fijos, fecha_presupuesto,estado_obra_id) VALUES (?,?,?,?,?,?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setString(1, titular);
@@ -397,6 +424,7 @@ public class CargarObra extends javax.swing.JFrame {
             ps.setDouble(4, ganancia_pretendida);
             ps.setDouble(5, costos_fijos);
             ps.setDate(6, fechaDB);
+            ps.setInt(7,getIDFromObra());
             ps.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Datos guardados");

@@ -34,7 +34,8 @@ public class EditarObra extends javax.swing.JFrame {
         setTitle("Editar Obra");
         TextPrompt dataholderBuscar = new TextPrompt("Ingrese el nombre del titular de la obra a buscar",tfBuscar);
         dataholderBuscar.setShowPromptOnce(true);
-        mostrarTabla();        
+        mostrarTabla();  
+        llenarComboBox();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,6 +79,8 @@ public class EditarObra extends javax.swing.JFrame {
         tfCliente = new javax.swing.JTextField();
         editarPresupuesto = new javax.swing.JButton();
         editarFactura = new javax.swing.JButton();
+        CFLbl1 = new javax.swing.JLabel();
+        cbEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,7 +103,7 @@ public class EditarObra extends javax.swing.JFrame {
 
         MTTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         MTTxt.setBorder(null);
-        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MTTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MTTxtActionPerformed(evt);
@@ -167,7 +170,7 @@ public class EditarObra extends javax.swing.JFrame {
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Volver");
-        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
@@ -178,7 +181,7 @@ public class EditarObra extends javax.swing.JFrame {
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Guardar");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);
@@ -192,7 +195,7 @@ public class EditarObra extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Ver datos");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -203,7 +206,7 @@ public class EditarObra extends javax.swing.JFrame {
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
         btnBuscar.setBorder(null);
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -214,7 +217,7 @@ public class EditarObra extends javax.swing.JFrame {
         MTbtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         MTbtn.setForeground(new java.awt.Color(255, 255, 255));
         MTbtn.setText("Mostrar todas");
-        MTbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MTbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MTbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MTbtnActionPerformed(evt);
@@ -233,7 +236,7 @@ public class EditarObra extends javax.swing.JFrame {
 
             }
         ));
-        tablaObras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaObras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tablaObras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaObrasMouseClicked(evt);
@@ -241,11 +244,17 @@ public class EditarObra extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaObras);
 
+        tfCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfClienteActionPerformed(evt);
+            }
+        });
+
         editarPresupuesto.setBackground(new java.awt.Color(51, 204, 255));
         editarPresupuesto.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         editarPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
         editarPresupuesto.setText("Editar presupuesto");
-        editarPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         editarPresupuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarPresupuestoActionPerformed(evt);
@@ -256,12 +265,17 @@ public class EditarObra extends javax.swing.JFrame {
         editarFactura.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         editarFactura.setForeground(new java.awt.Color(255, 255, 255));
         editarFactura.setText("Editar factura");
-        editarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         editarFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarFacturaActionPerformed(evt);
             }
         });
+
+        CFLbl1.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
+        CFLbl1.setText("Estado");
+
+        cbEstado.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -273,6 +287,13 @@ public class EditarObra extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(MTbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(100, 100, 100))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -327,15 +348,13 @@ public class EditarObra extends javax.swing.JFrame {
                                     .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
-                                .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(MTbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(93, 93, 93)))
+                                .addComponent(ObreroIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(CFLbl1)
+                                .addGap(86, 86, 86)
+                                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -412,13 +431,17 @@ public class EditarObra extends javax.swing.JFrame {
                             .addComponent(CFLbl))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sepCF, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CFLbl1)
+                            .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(editarFactura)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(editarPresupuesto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(MTbtn)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(58, 58, 58))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -440,6 +463,49 @@ public class EditarObra extends javax.swing.JFrame {
         mostrarDatos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+     private void llenarComboBox(){
+        PreparedStatement ps; 
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="SELECT o.nombre_estado_obra FROM estado_obra o";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            ResultSet resultSet = ps.executeQuery();
+        
+        while(resultSet.next()){
+            String item = resultSet.getString(1);
+            cbEstado.addItem(item);
+        }
+         }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    private int getIDFromObra(){
+        String estado = cbEstado.getSelectedItem().toString();
+    //    obra.setEstadoObra(estadoObra);*
+
+        PreparedStatement ps;
+        
+          try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="SELECT id FROM estado_obra e WHERE nombre_estado_obra = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            
+            ps.setString(1, estado);
+            
+            ResultSet resultSet = ps.executeQuery();
+            
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                return id;
+            }
+            
+          }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
             double total_presupuesto = Double.parseDouble(MTTxt.getText());
@@ -457,12 +523,14 @@ public class EditarObra extends javax.swing.JFrame {
             obra.setGanancia_pretendida(ganancia_pretendida);
             obra.setCostosFijos(costos_fijos);
             obra.setFechaPresupuesto(fecha);
+            int id = getIDFromObra();
 
             PreparedStatement ps;
 
             try{
                 Connection con = ConexionDB.getConnection();
-                String sql ="UPDATE obra SET total_presupuesto = '"+total_presupuesto+"',comision ='"+comision+"', ganancia_pretendida ='"+ganancia_pretendida+"', costos_fijos ='"+costos_fijos+"', fecha_presupuesto ='"+fechaDB+"' WHERE titular = '"+tfCliente.getText()+"'";
+                String sql ="UPDATE obra SET total_presupuesto = '"+total_presupuesto+"',comision ='"+comision+"', ganancia_pretendida ='"+ganancia_pretendida+
+                            "', costos_fijos ='"+costos_fijos+"', fecha_presupuesto ='"+fechaDB+"', estado_obra_id ='"+id+"' WHERE titular = '"+tfCliente.getText()+"'";
                 ps = ConexionDB.getConnection().prepareStatement(sql);
 
                 ps.executeUpdate();
@@ -556,6 +624,10 @@ public class EditarObra extends javax.swing.JFrame {
     private void GPTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GPTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_GPTxtActionPerformed
+
+    private void tfClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfClienteActionPerformed
 
      private void mostrarTabla() {   
          
@@ -711,6 +783,7 @@ public class EditarObra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CFLbl;
+    private javax.swing.JLabel CFLbl1;
     private javax.swing.JTextField CFTxt;
     private javax.swing.JLabel ComisionLbl;
     private javax.swing.JTextField ComisionTxt;
@@ -724,6 +797,7 @@ public class EditarObra extends javax.swing.JFrame {
     private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JButton editarFactura;
     private javax.swing.JButton editarPresupuesto;
     private com.toedter.calendar.JDateChooser fechaCH;
