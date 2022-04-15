@@ -70,7 +70,7 @@ public class EditarObra extends javax.swing.JFrame {
         SalirBtn = new javax.swing.JButton();
         SigBtn = new javax.swing.JButton();
         fechaCH = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        btnVerDatos = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         MTbtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -191,14 +191,14 @@ public class EditarObra extends javax.swing.JFrame {
         fechaCH.setBackground(new java.awt.Color(255, 255, 255));
         fechaCH.setFont(new java.awt.Font("Microsoft YaHei", 0, 12)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(0, 204, 255));
-        jButton1.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ver datos");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVerDatos.setBackground(new java.awt.Color(0, 204, 255));
+        btnVerDatos.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        btnVerDatos.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerDatos.setText("Ver datos");
+        btnVerDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVerDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVerDatosActionPerformed(evt);
             }
         });
 
@@ -303,7 +303,7 @@ public class EditarObra extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton1))
+                                    .addComponent(btnVerDatos))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addGap(14, 14, 14)
                                     .addComponent(GPLbl))
@@ -397,7 +397,7 @@ public class EditarObra extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnVerDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(4, 4, 4)
                                 .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -459,9 +459,9 @@ public class EditarObra extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
         mostrarDatos();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVerDatosActionPerformed
 
      private void llenarComboBox(){
         PreparedStatement ps; 
@@ -480,7 +480,7 @@ public class EditarObra extends javax.swing.JFrame {
         }
     }
     
-    private int getIDFromObra(){
+    private int getIDFromEstadoObra(){
         String estado = cbEstado.getSelectedItem().toString();
     //    obra.setEstadoObra(estadoObra);*
 
@@ -523,7 +523,7 @@ public class EditarObra extends javax.swing.JFrame {
             obra.setGanancia_pretendida(ganancia_pretendida);
             obra.setCostosFijos(costos_fijos);
             obra.setFechaPresupuesto(fecha);
-            int id = getIDFromObra();
+            int id = getIDFromEstadoObra();
 
             PreparedStatement ps;
 
@@ -705,7 +705,7 @@ public class EditarObra extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+             
     private void mostrarDatos(){
       
         if (tablaObras.getSelectedRow() != -1) {
@@ -716,6 +716,7 @@ public class EditarObra extends javax.swing.JFrame {
         }
 
         PreparedStatement ps;
+        PreparedStatement ps2;
         
         try{
         Connection con = ConexionDB.getConnection();
@@ -731,7 +732,22 @@ public class EditarObra extends javax.swing.JFrame {
             Date fecha = resultSet.getDate("fecha_presupuesto");
             double ganancia = resultSet.getDouble("ganancia_pretendida");
             double presupuesto = resultSet.getDouble("total_presupuesto"); 
+            int id = resultSet.getInt("estado_obra_id");
             
+             try{
+                String sql2 = "SELECT e.nombre_estado_obra FROM estado_obra e WHERE e.id=?";
+                ps2 = ConexionDB.getConnection().prepareStatement(sql2);
+                ps2.setInt(1, id);
+        
+                ResultSet resultSet2 = ps2.executeQuery();
+                
+                 if(resultSet2.next()){
+                   String nombreE = resultSet2.getString("nombre_estado_obra");
+                   cbEstado.setSelectedItem(nombreE);
+                 }
+             }catch(Exception e){
+                e.printStackTrace();
+            }
             CFTxt.setText(Double.toString(costos_fijos));
             ComisionTxt.setText(Double.toString(comision));
             GPTxt.setText(Double.toString(ganancia));
@@ -797,12 +813,12 @@ public class EditarObra extends javax.swing.JFrame {
     private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnVerDatos;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JButton editarFactura;
     private javax.swing.JButton editarPresupuesto;
     private com.toedter.calendar.JDateChooser fechaCH;
     private javax.swing.JLabel fechaLbl;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator sepCF;
