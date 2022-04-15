@@ -120,7 +120,7 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="SigBtn" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="guardarAluminio" min="-2" pref="151" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="SalirBtn" min="-2" pref="151" max="-2" attributes="0"/>
                               </Group>
@@ -155,7 +155,7 @@
                           <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace pref="109" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="SigBtn" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="guardarAluminio" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="SalirBtn" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -248,7 +248,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator3">
                 </Component>
-                <Component class="javax.swing.JButton" name="SigBtn">
+                <Component class="javax.swing.JButton" name="guardarAluminio">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="0" type="rgb"/>
@@ -265,7 +265,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SigBtnActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarAluminioActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="SalirBtn">
@@ -332,7 +332,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="SigBtn1" min="-2" pref="151" max="-2" attributes="0"/>
+                          <Component id="guardarVidrio" min="-2" pref="151" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="SalirBtn1" min="-2" pref="151" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -358,7 +358,7 @@
                           <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace pref="195" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="SigBtn1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="guardarVidrio" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="SalirBtn1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -423,7 +423,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator5">
                 </Component>
-                <Component class="javax.swing.JButton" name="SigBtn1">
+                <Component class="javax.swing.JButton" name="guardarVidrio">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="0" type="rgb"/>
@@ -440,7 +440,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SigBtn1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarVidrioActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="SalirBtn1">
@@ -487,7 +487,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="SigBtn2" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="guardarAcc" min="-2" pref="151" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="SalirBtn2" min="-2" pref="151" max="-2" attributes="0"/>
                               </Group>
@@ -534,7 +534,7 @@
                           <Component id="jSeparator11" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace pref="189" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="SigBtn2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="guardarAcc" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="SalirBtn2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -543,7 +543,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="SigBtn2">
+                <Component class="javax.swing.JButton" name="guardarAcc">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="0" type="rgb"/>
@@ -560,7 +560,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SigBtn2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarAccActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="SalirBtn2">
@@ -648,7 +648,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="337" max="32767" attributes="0"/>
-                                  <Component id="SigBtn3" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="guardarManoObra" min="-2" pref="151" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="SalirBtn3" min="-2" pref="151" max="-2" attributes="0"/>
                               </Group>
@@ -693,7 +693,7 @@
                           <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace pref="190" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="SigBtn3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="guardarManoObra" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="SalirBtn3" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -702,7 +702,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="SigBtn3">
+                <Component class="javax.swing.JButton" name="guardarManoObra">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="0" type="rgb"/>
@@ -719,7 +719,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SigBtn3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarManoObraActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="SalirBtn3">
@@ -822,7 +822,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="337" max="32767" attributes="0"/>
-                                  <Component id="SigBtn4" min="-2" pref="151" max="-2" attributes="0"/>
+                                  <Component id="guardarViajes" min="-2" pref="151" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="SalirBtn4" min="-2" pref="151" max="-2" attributes="0"/>
                               </Group>
@@ -867,7 +867,7 @@
                           <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace pref="190" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="SigBtn4" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="guardarViajes" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="SalirBtn4" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -876,7 +876,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="SigBtn4">
+                <Component class="javax.swing.JButton" name="guardarViajes">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="cc" red="0" type="rgb"/>
@@ -893,7 +893,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SigBtn4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarViajesActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="SalirBtn4">

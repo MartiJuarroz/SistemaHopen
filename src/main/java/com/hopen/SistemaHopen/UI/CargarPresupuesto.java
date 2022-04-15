@@ -44,7 +44,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         remito = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        SigBtn = new javax.swing.JButton();
+        guardarAluminio = new javax.swing.JButton();
         SalirBtn = new javax.swing.JButton();
         tabVidro = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -53,10 +53,10 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         presupuestoVidrio = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        SigBtn1 = new javax.swing.JButton();
+        guardarVidrio = new javax.swing.JButton();
         SalirBtn1 = new javax.swing.JButton();
         tabAcc = new javax.swing.JPanel();
-        SigBtn2 = new javax.swing.JButton();
+        guardarAcc = new javax.swing.JButton();
         SalirBtn2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
@@ -65,7 +65,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jSeparator11 = new javax.swing.JSeparator();
         fechaAcc = new com.toedter.calendar.JDateChooser();
         tabManoObra = new javax.swing.JPanel();
-        SigBtn3 = new javax.swing.JButton();
+        guardarManoObra = new javax.swing.JButton();
         SalirBtn3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         cantidadHoras = new javax.swing.JTextField();
@@ -74,7 +74,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         tabViaje = new javax.swing.JPanel();
-        SigBtn4 = new javax.swing.JButton();
+        guardarViajes = new javax.swing.JButton();
         SalirBtn4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         cantidadViajes = new javax.swing.JTextField();
@@ -124,14 +124,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         remito.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         remito.setSelectionColor(new java.awt.Color(51, 204, 255));
 
-        SigBtn.setBackground(new java.awt.Color(0, 204, 255));
-        SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        SigBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SigBtn.setText("Guardar");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SigBtn.addActionListener(new java.awt.event.ActionListener() {
+        guardarAluminio.setBackground(new java.awt.Color(0, 204, 255));
+        guardarAluminio.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        guardarAluminio.setForeground(new java.awt.Color(255, 255, 255));
+        guardarAluminio.setText("Guardar");
+        guardarAluminio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarAluminio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SigBtnActionPerformed(evt);
+                guardarAluminioActionPerformed(evt);
             }
         });
 
@@ -174,7 +174,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                         .addComponent(remito, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabAluminioLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(guardarAluminio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -202,7 +202,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardarAluminio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -231,14 +231,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         presupuestoVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         presupuestoVidrio.setSelectionColor(new java.awt.Color(51, 204, 255));
 
-        SigBtn1.setBackground(new java.awt.Color(0, 204, 255));
-        SigBtn1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        SigBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        SigBtn1.setText("Guardar");
-        SigBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SigBtn1.addActionListener(new java.awt.event.ActionListener() {
+        guardarVidrio.setBackground(new java.awt.Color(0, 204, 255));
+        guardarVidrio.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        guardarVidrio.setForeground(new java.awt.Color(255, 255, 255));
+        guardarVidrio.setText("Guardar");
+        guardarVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarVidrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SigBtn1ActionPerformed(evt);
+                guardarVidrioActionPerformed(evt);
             }
         });
 
@@ -276,7 +276,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidroLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(SigBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guardarVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SalirBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -298,7 +298,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                 .addGroup(tabVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SigBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardarVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -307,14 +307,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         tabAcc.setBackground(new java.awt.Color(255, 255, 255));
 
-        SigBtn2.setBackground(new java.awt.Color(0, 204, 255));
-        SigBtn2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        SigBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        SigBtn2.setText("Guardar");
-        SigBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SigBtn2.addActionListener(new java.awt.event.ActionListener() {
+        guardarAcc.setBackground(new java.awt.Color(0, 204, 255));
+        guardarAcc.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        guardarAcc.setForeground(new java.awt.Color(255, 255, 255));
+        guardarAcc.setText("Guardar");
+        guardarAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SigBtn2ActionPerformed(evt);
+                guardarAccActionPerformed(evt);
             }
         });
 
@@ -352,7 +352,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addGroup(tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabAccLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(SigBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(guardarAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SalirBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabAccLayout.createSequentialGroup()
@@ -388,7 +388,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addGroup(tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SigBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardarAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -397,14 +397,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         tabManoObra.setBackground(new java.awt.Color(255, 255, 255));
 
-        SigBtn3.setBackground(new java.awt.Color(0, 204, 255));
-        SigBtn3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        SigBtn3.setForeground(new java.awt.Color(255, 255, 255));
-        SigBtn3.setText("Guardar");
-        SigBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SigBtn3.addActionListener(new java.awt.event.ActionListener() {
+        guardarManoObra.setBackground(new java.awt.Color(0, 204, 255));
+        guardarManoObra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        guardarManoObra.setForeground(new java.awt.Color(255, 255, 255));
+        guardarManoObra.setText("Guardar");
+        guardarManoObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarManoObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SigBtn3ActionPerformed(evt);
+                guardarManoObraActionPerformed(evt);
             }
         });
 
@@ -448,7 +448,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addGroup(tabManoObraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabManoObraLayout.createSequentialGroup()
                         .addGap(0, 337, Short.MAX_VALUE)
-                        .addComponent(SigBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(guardarManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SalirBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabManoObraLayout.createSequentialGroup()
@@ -483,7 +483,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addGroup(tabManoObraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SigBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardarManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -492,14 +492,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         tabViaje.setBackground(new java.awt.Color(255, 255, 255));
 
-        SigBtn4.setBackground(new java.awt.Color(0, 204, 255));
-        SigBtn4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        SigBtn4.setForeground(new java.awt.Color(255, 255, 255));
-        SigBtn4.setText("Guardar");
-        SigBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        SigBtn4.addActionListener(new java.awt.event.ActionListener() {
+        guardarViajes.setBackground(new java.awt.Color(0, 204, 255));
+        guardarViajes.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        guardarViajes.setForeground(new java.awt.Color(255, 255, 255));
+        guardarViajes.setText("Guardar");
+        guardarViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarViajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SigBtn4ActionPerformed(evt);
+                guardarViajesActionPerformed(evt);
             }
         });
 
@@ -543,7 +543,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabViajeLayout.createSequentialGroup()
                         .addGap(0, 337, Short.MAX_VALUE)
-                        .addComponent(SigBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(guardarViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SalirBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabViajeLayout.createSequentialGroup()
@@ -578,7 +578,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SigBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardarViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -613,35 +613,22 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
+    private void guardarAluminioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAluminioActionPerformed
         // TODO add your handling code here:
-        /*String numeroFactura = numeroFac.getText();
-        double totalFactura = Double.parseDouble(monto.getText());
-        //Para convertir fecha de java en fecha de sql
-        java.util.Date fecha = fechaFac.getDate();
-        long timeInMilliSecs = fecha.getTime();
-        java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
-
-        Factura factura = new Factura();
-        factura.setNumeroFactura(numeroFactura);
-        factura.setFechaFactura(fechaDB);
-        factura.setTotalFactura(totalFactura);
+        double kiloPresupuestado = Double.parseDouble(presupuestoKg.getText());
+        String rto = remito.getText();
+        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, imagen) VALUES (?,?,?,?)";
+            String sql ="INSERT INTO aluminio (total_presupuesto, remito, kilo_presupuestado) VALUES (?,?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            FileInputStream archivoFoto;
-
-            archivoFoto = new FileInputStream(tfImagen.getText());
-
-            ps.setString(1, );
-            ps.setDouble(2, );
-            ps.setDate(3, );
-            ps.setBinaryStream(4,);
+            ps.setDouble(1, totalPresupuestado);
+            ps.setString(2, rto);
+            ps.setDouble(3, kiloPresupuestado);
 
             ps.executeUpdate();
 
@@ -651,8 +638,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        new Menu().setVisible(true);*/
-    }//GEN-LAST:event_SigBtnActionPerformed
+    }//GEN-LAST:event_guardarAluminioActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
         // TODO add your handling code here:
@@ -667,12 +653,30 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SalirBtnActionPerformed
 
-    private void SigBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtn1ActionPerformed
+    private void guardarVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrioActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
-        
-    }//GEN-LAST:event_SigBtn1ActionPerformed
+        int cantPlanchas = Integer.parseInt(planchasVidrio.getText());
+        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+
+        PreparedStatement ps;
+
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="INSERT INTO vidrio (total_presupuesto, cant_planchas) VALUES (?,?)";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+
+            ps.setDouble(1, totalPresupuestado);
+            ps.setInt(2, cantPlanchas);
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+            ConexionDB.endConnection(con);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_guardarVidrioActionPerformed
 
     private void SalirBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn1ActionPerformed
         // TODO add your handling code here:
@@ -680,11 +684,32 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_SalirBtn1ActionPerformed
 
-    private void SigBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtn2ActionPerformed
+    private void guardarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAccActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_SigBtn2ActionPerformed
+        java.util.Date fecha = fechaAcc.getDate();
+        long timeInMilliSecs = fecha.getTime();
+        java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
+        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+
+        PreparedStatement ps;
+
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="INSERT INTO accesorio (total_presupuesto, fecha_compra) VALUES (?,?)";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+
+            ps.setDouble(1, totalPresupuestado);
+            ps.setDate(2, fechaDB);
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+            ConexionDB.endConnection(con);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_guardarAccActionPerformed
 
     private void SalirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn2ActionPerformed
         // TODO add your handling code here:
@@ -692,11 +717,30 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_SalirBtn2ActionPerformed
 
-    private void SigBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtn3ActionPerformed
+    private void guardarManoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarManoObraActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_SigBtn3ActionPerformed
+        int cantHoras = Integer.parseInt(cantidadHoras.getText());
+        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+
+        PreparedStatement ps;
+
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="INSERT INTO mano_obra (total_presupuesto, horasmo) VALUES (?,?)";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+
+            ps.setDouble(1, totalPresupuestado);
+            ps.setInt(2, cantHoras);
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+            ConexionDB.endConnection(con);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_guardarManoObraActionPerformed
 
     private void SalirBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn3ActionPerformed
         // TODO add your handling code here:
@@ -704,11 +748,30 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_SalirBtn3ActionPerformed
 
-    private void SigBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtn4ActionPerformed
+    private void guardarViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarViajesActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_SigBtn4ActionPerformed
+        int cantViajes = Integer.parseInt(cantidadViajes.getText());
+        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+
+        PreparedStatement ps;
+
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="INSERT INTO viaje (total_presupuesto, fecha_compra) VALUES (?,?)";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+
+            ps.setDouble(1, totalPresupuestado);
+            ps.setInt(2, cantViajes);
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+            ConexionDB.endConnection(con);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_guardarViajesActionPerformed
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed
         // TODO add your handling code here:
@@ -758,14 +821,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private javax.swing.JButton SalirBtn2;
     private javax.swing.JButton SalirBtn3;
     private javax.swing.JButton SalirBtn4;
-    private javax.swing.JButton SigBtn;
-    private javax.swing.JButton SigBtn1;
-    private javax.swing.JButton SigBtn2;
-    private javax.swing.JButton SigBtn3;
-    private javax.swing.JButton SigBtn4;
     private javax.swing.JTextField cantidadHoras;
     private javax.swing.JTextField cantidadViajes;
     private com.toedter.calendar.JDateChooser fechaAcc;
+    private javax.swing.JButton guardarAcc;
+    private javax.swing.JButton guardarAluminio;
+    private javax.swing.JButton guardarManoObra;
+    private javax.swing.JButton guardarViajes;
+    private javax.swing.JButton guardarVidrio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
