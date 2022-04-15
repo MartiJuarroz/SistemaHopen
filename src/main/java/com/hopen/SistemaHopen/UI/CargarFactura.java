@@ -311,7 +311,7 @@ public class CargarFactura extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        new Menu().setVisible(true);
+        new CargarObra().setVisible(true);
         dispose();
     }//GEN-LAST:event_SigBtnActionPerformed
 
@@ -319,9 +319,9 @@ public class CargarFactura extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
-            dispose();
             try {
-                new Menu().setVisible(true);
+                new CargarObra().setVisible(true);
+                dispose();
             } catch (Exception ex) {
                 Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
             }

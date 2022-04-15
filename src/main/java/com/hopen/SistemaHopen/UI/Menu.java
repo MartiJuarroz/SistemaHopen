@@ -38,8 +38,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cargarPresupuesto = new javax.swing.JButton();
-        cargarFactura = new javax.swing.JButton();
         btnEditarObra = new javax.swing.JButton();
         btnIngresar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -82,30 +80,8 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
-
-        cargarPresupuesto.setBackground(new java.awt.Color(0, 204, 255));
-        cargarPresupuesto.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        cargarPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
-        cargarPresupuesto.setText("Cargar presupuesto");
-        cargarPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargarPresupuesto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarPresupuestoActionPerformed(evt);
-            }
-        });
-
-        cargarFactura.setBackground(new java.awt.Color(0, 204, 255));
-        cargarFactura.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        cargarFactura.setForeground(new java.awt.Color(255, 255, 255));
-        cargarFactura.setText("Cargar factura");
-        cargarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cargarFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cargarFacturaActionPerformed(evt);
-            }
-        });
 
         btnEditarObra.setBackground(new java.awt.Color(0, 204, 255));
         btnEditarObra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -154,8 +130,6 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cargarPresupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cargarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(69, 69, 69))))
         );
@@ -166,12 +140,8 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(86, 86, 86)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cargarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cargarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18))
         );
@@ -202,18 +172,6 @@ public class Menu extends javax.swing.JFrame {
         new EditarObra().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnEditarObraActionPerformed
-
-    private void cargarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarFacturaActionPerformed
-        // TODO add your handling code here:
-        new CargarFactura().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_cargarFacturaActionPerformed
-
-    private void cargarPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarPresupuestoActionPerformed
-        // TODO add your handling code here:
-        new CargarPresupuesto().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_cargarPresupuestoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -258,8 +216,6 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditarObra;
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton cargarFactura;
-    private javax.swing.JButton cargarPresupuesto;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
