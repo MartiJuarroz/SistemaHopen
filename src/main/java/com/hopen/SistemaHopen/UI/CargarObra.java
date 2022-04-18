@@ -76,7 +76,7 @@ public class CargarObra extends javax.swing.JFrame {
         botonFactura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(700, 703));
+        setMinimumSize(new java.awt.Dimension(753, 703));
         setPreferredSize(new java.awt.Dimension(700, 703));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -235,19 +235,6 @@ public class CargarObra extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(106, 106, 106))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -306,7 +293,20 @@ public class CargarObra extends javax.swing.JFrame {
                                         .addComponent(sepCF, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                                         .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(2, 2, 2)))))
-                .addGap(7, 60, Short.MAX_VALUE))
+                .addGap(7, 113, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(botonFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(155, 155, 155))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +362,7 @@ public class CargarObra extends javax.swing.JFrame {
                 .addComponent(botonFactura)
                 .addGap(12, 12, 12)
                 .addComponent(botonPresupuesto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -373,11 +373,11 @@ public class CargarObra extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
         );
 
         pack();
@@ -396,6 +396,7 @@ public class CargarObra extends javax.swing.JFrame {
             String item = resultSet.getString(1);
             cbEstado.addItem(item);
         }
+        ConexionDB.endConnection(con);
          }catch(Exception e){
             e.printStackTrace();
         }
@@ -420,7 +421,7 @@ public class CargarObra extends javax.swing.JFrame {
                 int id = resultSet.getInt("id");
                 return id;
             }
-            
+            ConexionDB.endConnection(con);
           }catch(Exception e){
             e.printStackTrace();
         }
@@ -429,71 +430,142 @@ public class CargarObra extends javax.swing.JFrame {
     
     //para la factura y el presupuesto de la obra nueva
      private int getIDObra(){
+         
         String titular = titularTxt.getText();
-
+ 
         PreparedStatement ps;
         
-          try{
-            Connection con = ConexionDB.getConnection();
-            String sql ="SELECT id FROM obra o WHERE titular = ?";
-            ps = ConexionDB.getConnection().prepareStatement(sql);
-            
-            ps.setString(1, titular);
-            
-            ResultSet resultSet = ps.executeQuery();
-            
-            if (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                return id;
-            }
-            ConexionDB.endConnection(con);
-          }catch(Exception e){
-            e.printStackTrace();
+        if (titular.equals("")){
+            JOptionPane.showMessageDialog(null, "No existe obra con ese titular");
+        }else{
+            try{
+              Connection con = ConexionDB.getConnection();
+              String sql ="SELECT id FROM obra o WHERE titular = ?";
+              ps = ConexionDB.getConnection().prepareStatement(sql);
+
+              ps.setString(1, titular);
+
+              ResultSet resultSet = ps.executeQuery();
+
+              if (resultSet.next()) {
+                  int id = resultSet.getInt("id");
+                  return id;
+              }
+              ConexionDB.endConnection(con);
+            }catch(Exception e){
+              e.printStackTrace();
+          }
         }
         return 0;
     }
+     
+     private int chequeoObras(){
+         String titular = titularTxt.getText();
+         
+         PreparedStatement ps;
+         if(titular.equals("")){
+             return -1;
+         }else{
+            try{
+                Connection con = ConexionDB.getConnection();
+                String sql ="SELECT o.id FROM obra o WHERE o.titular=?";
+                ps = ConexionDB.getConnection().prepareStatement(sql);
+
+                ps.setString(1, titular);
+
+                ResultSet resultSet = ps.executeQuery();
+
+                if(resultSet.next()){
+                    int i = resultSet.getInt(1);
+                    return i;
+                }
+
+                ConexionDB.endConnection(con);
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+         }
+        return 0;
+     }
+     
+     private int IdObraNueva(){
+        String titular = titularTxt.getText();
+        int i = 0;
+         
+         PreparedStatement ps;
+         
+            try{
+                Connection con = ConexionDB.getConnection();
+                String sql ="SELECT o.id FROM obra o WHERE o.titular=?";
+                ps = ConexionDB.getConnection().prepareStatement(sql);
+
+                ps.setString(1, titular);
+
+                ResultSet resultSet = ps.executeQuery();
+
+                if(resultSet.next()){
+                    i = resultSet.getInt(1);
+                }
+
+                ConexionDB.endConnection(con);
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            return i;
+     }
     
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
-        String titular = titularTxt.getText();
-        double total_presupuesto = Double.parseDouble(MTTxt.getText());
-        double comision = Double.parseDouble(ComisionTxt.getText());
-        double ganancia_pretendida = Double.parseDouble(GPTxt.getText());
-        double costos_fijos = Double.parseDouble(CFTxt.getText());
-        //Para convertir fecha de java en fecha de sql
-        java.util.Date fecha = fechaCH.getDate();
-        long timeInMilliSecs = fecha.getTime();
-        java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
+        //si es igual a 0 no existe la obra, si es mayor entonces existe y si es -1 el campo esta vacio   
+        if(chequeoObras() > 0){
+            JOptionPane.showMessageDialog(null, "Ya existe una obra con ese titular");
+        }else{
+            if(chequeoObras() == 0){
+                String titular = titularTxt.getText();
+            double total_presupuesto = Double.parseDouble(MTTxt.getText());
+            double comision = Double.parseDouble(ComisionTxt.getText());
+            double ganancia_pretendida = Double.parseDouble(GPTxt.getText());
+            double costos_fijos = Double.parseDouble(CFTxt.getText());
+            //Para convertir fecha de java en fecha de sql
+            java.util.Date fecha = fechaCH.getDate();
+            long timeInMilliSecs = fecha.getTime();
+            java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
 
-        Obra obra = new Obra();
-        obra.setTitular(titular);
-        obra.setTotalPresupuesto(total_presupuesto);
-        obra.setComision(comision);
-        obra.setGanancia_pretendida(ganancia_pretendida);
-        obra.setCostosFijos(costos_fijos);
-        obra.setFechaPresupuesto(fechaDB);
-        
-        PreparedStatement ps;
-  
-        try{
-            Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO obra (titular, total_presupuesto, comision, ganancia_pretendida, costos_fijos, fecha_presupuesto,estado_obra_id) VALUES (?,?,?,?,?,?,?)";
-            ps = ConexionDB.getConnection().prepareStatement(sql);
+            Obra obra = new Obra();
+            obra.setTitular(titular);
+            obra.setTotalPresupuesto(total_presupuesto);
+            obra.setComision(comision);
+            obra.setGanancia_pretendida(ganancia_pretendida);
+            obra.setCostosFijos(costos_fijos);
+            obra.setFechaPresupuesto(fechaDB);
 
-            ps.setString(1, titular);
-            ps.setDouble(2, total_presupuesto);
-            ps.setDouble(3, comision);
-            ps.setDouble(4, ganancia_pretendida);
-            ps.setDouble(5, costos_fijos);
-            ps.setDate(6, fechaDB);
-            ps.setInt(7,getIDFromObra());
-            ps.executeUpdate();
+            PreparedStatement ps;
 
-            JOptionPane.showMessageDialog(null, "Datos guardados");
-            ConexionDB.endConnection(con);
+            try{
+                Connection con = ConexionDB.getConnection();
+                String sql ="INSERT INTO obra (titular, total_presupuesto, comision, ganancia_pretendida, costos_fijos, fecha_presupuesto,estado_obra_id) VALUES (?,?,?,?,?,?,?)";
+                ps = ConexionDB.getConnection().prepareStatement(sql);
 
-        }catch(Exception e){
-            e.printStackTrace();
+                ps.setString(1, titular);
+                ps.setDouble(2, total_presupuesto);
+                ps.setDouble(3, comision);
+                ps.setDouble(4, ganancia_pretendida);
+                ps.setDouble(5, costos_fijos);
+                ps.setDate(6, fechaDB);
+                ps.setInt(7,getIDFromObra());
+                ps.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Datos guardados");
+                ConexionDB.endConnection(con);
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            }else{
+                JOptionPane.showMessageDialog(null, "El campo titular esta vacío.");
+            }    
         }
     }//GEN-LAST:event_SigBtnActionPerformed
 
@@ -589,14 +661,23 @@ public class CargarObra extends javax.swing.JFrame {
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
         // TODO add your handling code here:
         //Estos botones tendrian que validar que ya se creo la obra nueva
-        new CargarFactura().setVisible(true);
-        dispose();
+        //Obtenemos el id de la obra para ver si existe y despues cuando cargamos la factura y presupuesto lo relacionamos a esa obra
+        if(getIDObra() == 0){
+            JOptionPane.showMessageDialog(null, "Ingrese la obra primero, para hacerlo presione el boton guardar de abajo.");
+        }else{
+            new CargarFactura().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_botonFacturaActionPerformed
 
     private void botonPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPresupuestoActionPerformed
         // TODO add your handling code here:
-        new CargarPresupuesto().setVisible(true);
-        dispose();
+        if(getIDObra() == 0){
+            JOptionPane.showMessageDialog(null, "Ingrese la obra primero, para hacerlo presione el boton guardar de abajo.");
+        }else{
+            new CargarFactura().setVisible(true);
+            dispose();
+        }
     }//GEN-LAST:event_botonPresupuestoActionPerformed
     /**
      * @param args the command line arguments

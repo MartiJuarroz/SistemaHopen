@@ -624,6 +624,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         try{
             Connection con = ConexionDB.getConnection();
             String sql ="INSERT INTO aluminio (total_presupuesto, remito, kilo_presupuestado) VALUES (?,?,?)";
+            //String sql2 = "INSERT INTO obra (aluminio_id) VALUE "
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalPresupuestado);
