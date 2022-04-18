@@ -366,17 +366,12 @@ public class CargarFactura extends javax.swing.JFrame {
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivo JPEG(*.JPG;*.PNG)","jpg","png");
         JFileChooser jf = new JFileChooser();
         jf.setFileFilter(filtro);
-    //    jf.addChoosableFileFilter(filtro);
         jf.setDialogTitle("Abrir archivo");
-    //    jf.setMultiSelectionEnabled(false);
         int ventana = jf.showOpenDialog(null);
         if(ventana == JFileChooser.APPROVE_OPTION){
             File file = jf.getSelectedFile();
             String path = file.getPath();
-            //String name = file.getName();
             tfImagen.setText(path);
-        //    Image foto = getToolkit().getImage(tfImagen.getText());
-        //    foto = foto.getScaledInstance(110, 110, Image.SCALE_DEFAULT);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
