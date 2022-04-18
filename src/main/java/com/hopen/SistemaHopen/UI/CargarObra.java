@@ -95,7 +95,7 @@ public class CargarObra extends javax.swing.JFrame {
         titularTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         titularTxt.setToolTipText("Hola q onda\n");
         titularTxt.setBorder(null);
-        titularTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        titularTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         titularTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 titularTxtMouseClicked(evt);
@@ -113,7 +113,7 @@ public class CargarObra extends javax.swing.JFrame {
 
         MTTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         MTTxt.setBorder(null);
-        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         MTTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MTTxtActionPerformed(evt);
@@ -130,7 +130,7 @@ public class CargarObra extends javax.swing.JFrame {
 
         CFTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         CFTxt.setBorder(null);
-        CFTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        CFTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         CFTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CFTxtActionPerformed(evt);
@@ -147,7 +147,7 @@ public class CargarObra extends javax.swing.JFrame {
 
         ComisionTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         ComisionTxt.setBorder(null);
-        ComisionTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ComisionTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         ComisionTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComisionTxtActionPerformed(evt);
@@ -164,7 +164,7 @@ public class CargarObra extends javax.swing.JFrame {
 
         GPTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         GPTxt.setBorder(null);
-        GPTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        GPTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         GPTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GPTxtActionPerformed(evt);
@@ -183,7 +183,7 @@ public class CargarObra extends javax.swing.JFrame {
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Volver");
-        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
@@ -194,7 +194,7 @@ public class CargarObra extends javax.swing.JFrame {
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Guardar");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);
@@ -207,11 +207,13 @@ public class CargarObra extends javax.swing.JFrame {
         CFLbl1.setText("Estado");
 
         cbEstado.setToolTipText("");
+        cbEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         botonPresupuesto.setBackground(new java.awt.Color(51, 204, 255));
         botonPresupuesto.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         botonPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
         botonPresupuesto.setText("Cargar Presupuesto");
+        botonPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonPresupuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonPresupuestoActionPerformed(evt);
@@ -222,6 +224,7 @@ public class CargarObra extends javax.swing.JFrame {
         botonFactura.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         botonFactura.setForeground(new java.awt.Color(255, 255, 255));
         botonFactura.setText("Cargar Factura");
+        botonFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonFacturaActionPerformed(evt);
@@ -397,7 +400,7 @@ public class CargarObra extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+    //para el estado de la obra
     private int getIDFromObra(){
         String estado = cbEstado.getSelectedItem().toString();
     //    obra.setEstadoObra(estadoObra);*
@@ -424,6 +427,32 @@ public class CargarObra extends javax.swing.JFrame {
         return 0;
     }
     
+    //para la factura y el presupuesto de la obra nueva
+     private int getIDObra(){
+        String titular = titularTxt.getText();
+
+        PreparedStatement ps;
+        
+          try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="SELECT id FROM obra o WHERE titular = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            
+            ps.setString(1, titular);
+            
+            ResultSet resultSet = ps.executeQuery();
+            
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                return id;
+            }
+            ConexionDB.endConnection(con);
+          }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
         String titular = titularTxt.getText();
@@ -437,12 +466,12 @@ public class CargarObra extends javax.swing.JFrame {
         java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
 
         Obra obra = new Obra();
-  /*      obra.setTitular(titular);
+        obra.setTitular(titular);
         obra.setTotalPresupuesto(total_presupuesto);
         obra.setComision(comision);
         obra.setGanancia_pretendida(ganancia_pretendida);
         obra.setCostosFijos(costos_fijos);
-        obra.setFechaPresupuesto(fechaDB);*/
+        obra.setFechaPresupuesto(fechaDB);
         
         PreparedStatement ps;
   
@@ -466,8 +495,6 @@ public class CargarObra extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        new Menu().setVisible(true);
-        dispose();
     }//GEN-LAST:event_SigBtnActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
@@ -561,6 +588,7 @@ public class CargarObra extends javax.swing.JFrame {
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
         // TODO add your handling code here:
+        //Estos botones tendrian que validar que ya se creo la obra nueva
         new CargarFactura().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonFacturaActionPerformed

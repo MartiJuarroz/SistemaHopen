@@ -638,6 +638,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
+        presupuestoKg.setText("");
+        presupuestoAlu.setText("");
     }//GEN-LAST:event_guardarAluminioActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
@@ -656,7 +658,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private void guardarVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrioActionPerformed
         // TODO add your handling code here:
         int cantPlanchas = Integer.parseInt(planchasVidrio.getText());
-        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+        Double totalPresupuestado = Double.parseDouble(presupuestoVidrio.getText());
 
         PreparedStatement ps;
 
@@ -676,6 +678,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
+        presupuestoVidrio.setText("");
+        planchasVidrio.setText("");
     }//GEN-LAST:event_guardarVidrioActionPerformed
 
     private void SalirBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn1ActionPerformed
@@ -689,7 +693,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         java.util.Date fecha = fechaAcc.getDate();
         long timeInMilliSecs = fecha.getTime();
         java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
-        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+        Double totalPresupuestado = Double.parseDouble(presupuestoAcc.getText());
 
         PreparedStatement ps;
 
@@ -709,6 +713,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
+        fechaAcc = null;
+        presupuestoAcc.setText("");
     }//GEN-LAST:event_guardarAccActionPerformed
 
     private void SalirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn2ActionPerformed
@@ -720,7 +726,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private void guardarManoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarManoObraActionPerformed
         // TODO add your handling code here:
         int cantHoras = Integer.parseInt(cantidadHoras.getText());
-        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+        Double totalPresupuestado = Double.parseDouble(presupuestoManoObra.getText());
 
         PreparedStatement ps;
 
@@ -740,6 +746,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
+        cantidadHoras.setText("");
+        presupuestoManoObra.setText("");
     }//GEN-LAST:event_guardarManoObraActionPerformed
 
     private void SalirBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn3ActionPerformed
@@ -751,13 +759,13 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private void guardarViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarViajesActionPerformed
         // TODO add your handling code here:
         int cantViajes = Integer.parseInt(cantidadViajes.getText());
-        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+        Double totalPresupuestado = Double.parseDouble(presupuestoViajes.getText());
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO viaje (total_presupuesto, fecha_compra) VALUES (?,?)";
+            String sql ="INSERT INTO viaje (total_presupuesto, cant_viajes_presupuesto) VALUES (?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalPresupuestado);
@@ -771,6 +779,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
+        cantidadViajes.setText("");
+        presupuestoViajes.setText("");
     }//GEN-LAST:event_guardarViajesActionPerformed
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed
