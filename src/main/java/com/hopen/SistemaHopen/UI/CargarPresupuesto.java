@@ -6,6 +6,7 @@ package com.hopen.SistemaHopen.UI;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -624,7 +625,6 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         try{
             Connection con = ConexionDB.getConnection();
             String sql ="INSERT INTO aluminio (total_presupuesto, remito, kilo_presupuestado) VALUES (?,?,?)";
-            //String sql2 = "INSERT INTO obra (aluminio_id) VALUE "
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalPresupuestado);
@@ -632,6 +632,37 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             ps.setDouble(3, kiloPresupuestado);
 
             ps.executeUpdate();
+            
+            //Buscamos el id de obra y el de aluminio
+            String sql2 = "SELECT a.id FROM aluminio a WHERE remito = ?";
+            
+            ps = ConexionDB.getConnection().prepareStatement(sql2);
+            ps.setString(1, rto);
+            
+            ResultSet resultSet = ps.executeQuery();
+            int idAlu = 0;
+            if(resultSet.next()){
+                idAlu = resultSet.getInt(1);
+            }
+            
+            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
+            String sql4 = "SELECT MAX(id) FROM obra";
+            
+            ps = ConexionDB.getConnection().prepareStatement(sql4);
+            resultSet = ps.executeQuery();
+            
+            int idObra = 0;
+            if(resultSet.next()){
+                idObra = resultSet.getInt(1);
+            }
+            
+            
+            //ya tenemos los id, ahora lo asociamos a la obra
+            String sql3 = "UPDATE obra SET aluminio_id = '"+idAlu+"' WHERE titular = '"+idObra+"'";
+            ps = ConexionDB.getConnection().prepareStatement(sql3);
+            
+            ps.executeUpdate();
+            //ya estaria asociado
 
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
@@ -641,6 +672,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
         presupuestoKg.setText("");
         presupuestoAlu.setText("");
+        remito.setText("");
     }//GEN-LAST:event_guardarAluminioActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed

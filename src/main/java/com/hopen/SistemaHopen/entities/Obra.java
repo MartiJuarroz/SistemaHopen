@@ -38,7 +38,7 @@ public class Obra extends Base {
       private double costosFijos;
 
       @OneToMany
-    //  @JoinColumn(name = "proveedor_id")
+      @JoinColumn(name = "proveedor_id")
       private List<Proveedor> proveedores = new ArrayList<Proveedor>();
 
       @OneToOne
@@ -50,11 +50,11 @@ public class Obra extends Base {
       private ManoObra manoObra;
 
       @OneToMany
-    //  @JoinColumn(name = "vidrio_id")
+      @JoinColumn(name = "vidrio_id")
       private List<Vidrio> listaVidrio = new ArrayList<Vidrio>();
 
       @OneToMany
-    //  @JoinColumn(name = "accesorio_id")
+      @JoinColumn(name = "accesorio_id")
       private List<Accesorio> listaAccesorios = new ArrayList<Accesorio>();
 
       @OneToOne

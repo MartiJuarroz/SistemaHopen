@@ -436,7 +436,7 @@ public class CargarObra extends javax.swing.JFrame {
         PreparedStatement ps;
         
         if (titular.equals("")){
-            JOptionPane.showMessageDialog(null, "No existe obra con ese titular");
+            JOptionPane.showMessageDialog(null, "Campo titular vacio.");
         }else{
             try{
               Connection con = ConexionDB.getConnection();
@@ -489,7 +489,9 @@ public class CargarObra extends javax.swing.JFrame {
         return 0;
      }
      
-     private int IdObraNueva(){
+     public int guardarIdObraNueva(){
+        //pasamos el id de la obra nueva a las entidades que necesitemos relacionar
+        //Igual creo q esto lo voy a cambiar 
         String titular = titularTxt.getText();
         int i = 0;
          
@@ -675,7 +677,7 @@ public class CargarObra extends javax.swing.JFrame {
         if(getIDObra() == 0){
             JOptionPane.showMessageDialog(null, "Ingrese la obra primero, para hacerlo presione el boton guardar de abajo.");
         }else{
-            new CargarFactura().setVisible(true);
+            new CargarPresupuesto().setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_botonPresupuestoActionPerformed
