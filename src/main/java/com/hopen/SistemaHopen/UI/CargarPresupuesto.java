@@ -5,6 +5,7 @@
 package com.hopen.SistemaHopen.UI;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
@@ -144,7 +145,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         SalirBtn.setBackground(new java.awt.Color(255, 153, 51));
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn.setText("Volver");
+        SalirBtn.setText("Salir");
         SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,7 +265,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         SalirBtn1.setBackground(new java.awt.Color(255, 153, 51));
         SalirBtn1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn1.setText("Volver");
+        SalirBtn1.setText("Salir");
         SalirBtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,7 +356,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         SalirBtn2.setBackground(new java.awt.Color(255, 153, 51));
         SalirBtn2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn2.setText("Volver");
+        SalirBtn2.setText("Salir");
         SalirBtn2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -445,7 +446,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         SalirBtn3.setBackground(new java.awt.Color(255, 153, 51));
         SalirBtn3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn3.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn3.setText("Volver");
+        SalirBtn3.setText("Salir");
         SalirBtn3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -540,7 +541,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         SalirBtn4.setBackground(new java.awt.Color(255, 153, 51));
         SalirBtn4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn4.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn4.setText("Volver");
+        SalirBtn4.setText("Salir");
         SalirBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -764,10 +765,10 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
-                new CargarObra().setVisible(true);
+                new Menu().setVisible(true);
                 dispose();
             } catch (Exception ex) {
                 Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
@@ -794,8 +795,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
             ps.executeUpdate();
             
-            //El vidrio es un caso distinto en realidad
-            /*Buscamos el id de obra y el del vidrio
+            //Buscamos el id de obra y el del vidrio
             String sql2 = "SELECT id FROM vidrio ORDER by id DESC LIMIT 1";
             
             ps = ConexionDB.getConnection().prepareStatement(sql2);
@@ -817,12 +817,12 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             }
             
             
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET vidrio_id = '"+idVidrio+"' WHERE id = '"+idObra+"'";
+            //Insertamos los dos id en la tabla creada para esta asociacion
+            String sql3 = "INSERT INTO obra_lista_vidrio (obra_id, lista_vidrio_id) VALUES ('"+idObra+"', '"+idVidrio+"')";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
             
             ps.executeUpdate();
-            //ya estaria asociado*/
+            //ya estaria asociado
 
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
@@ -836,8 +836,15 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn1ActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
+        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+            == JOptionPane.YES_OPTION){
+            try {
+                new Menu().setVisible(true);
+                dispose();
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_SalirBtn1ActionPerformed
 
     private void guardarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAccActionPerformed
@@ -859,7 +866,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
             ps.executeUpdate();
 
-            /*ACCESORIO ES COMO VIDRIO CREO
+            //ACCESORIO ES COMO VIDRIO CREO
             String sql2 = "SELECT id FROM accesorio ORDER by id DESC LIMIT 1";
             
             ps = ConexionDB.getConnection().prepareStatement(sql2);
@@ -881,12 +888,12 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             }
             
             
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET accesorio_id = '"+idAcc+"' WHERE id = '"+idObra+"'";
+            //Insertamos los ids en la tabla de asociacion
+            String sql3 = "INSERT INTO obra_lista_accesorios (obra_id, lista_accesorios_id) VALUES ('"+idObra+"', '"+idAcc+"')";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
             
             ps.executeUpdate();
-            //ya estaria asociado*/
+            //ya estaria asociado
             
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
@@ -900,8 +907,15 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn2ActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
+        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+            == JOptionPane.YES_OPTION){
+            try {
+                new Menu().setVisible(true);
+                dispose();
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_SalirBtn2ActionPerformed
 
     private void guardarManoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarManoObraActionPerformed
@@ -961,8 +975,15 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn3ActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
+        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+            == JOptionPane.YES_OPTION){
+            try {
+                new Menu().setVisible(true);
+                dispose();
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_SalirBtn3ActionPerformed
 
     private void guardarViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarViajesActionPerformed
@@ -1022,8 +1043,15 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed
         // TODO add your handling code here:
-        new CargarObra().setVisible(true);
-        dispose();
+        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+            == JOptionPane.YES_OPTION){
+            try {
+                new Menu().setVisible(true);
+                dispose();
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_SalirBtn4ActionPerformed
 
     /**
