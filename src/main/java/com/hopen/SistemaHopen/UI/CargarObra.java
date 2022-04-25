@@ -75,10 +75,11 @@ public class CargarObra extends javax.swing.JFrame {
         cbEstado = new javax.swing.JComboBox<>();
         botonPresupuesto = new javax.swing.JButton();
         botonFactura = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        comboAlu = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(753, 703));
-        setPreferredSize(new java.awt.Dimension(700, 703));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -91,12 +92,12 @@ public class CargarObra extends javax.swing.JFrame {
         ObreroIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/obrero.png"))); // NOI18N
 
         titularLbl.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
-        titularLbl.setText("Titular");
+        titularLbl.setText("Cliente");
 
         titularTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         titularTxt.setToolTipText("Hola q onda\n");
         titularTxt.setBorder(null);
-        titularTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        titularTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         titularTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 titularTxtMouseClicked(evt);
@@ -114,7 +115,7 @@ public class CargarObra extends javax.swing.JFrame {
 
         MTTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         MTTxt.setBorder(null);
-        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        MTTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MTTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MTTxtActionPerformed(evt);
@@ -131,7 +132,7 @@ public class CargarObra extends javax.swing.JFrame {
 
         CFTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         CFTxt.setBorder(null);
-        CFTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        CFTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         CFTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CFTxtActionPerformed(evt);
@@ -148,7 +149,7 @@ public class CargarObra extends javax.swing.JFrame {
 
         ComisionTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         ComisionTxt.setBorder(null);
-        ComisionTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        ComisionTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ComisionTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComisionTxtActionPerformed(evt);
@@ -165,7 +166,7 @@ public class CargarObra extends javax.swing.JFrame {
 
         GPTxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         GPTxt.setBorder(null);
-        GPTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        GPTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         GPTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GPTxtActionPerformed(evt);
@@ -184,7 +185,7 @@ public class CargarObra extends javax.swing.JFrame {
         SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
         SalirBtn.setText("Volver");
-        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
@@ -195,7 +196,7 @@ public class CargarObra extends javax.swing.JFrame {
         SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Guardar");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);
@@ -208,7 +209,7 @@ public class CargarObra extends javax.swing.JFrame {
         CFLbl1.setText("Estado");
 
         cbEstado.setToolTipText("");
-        cbEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        cbEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbEstadoActionPerformed(evt);
@@ -219,7 +220,7 @@ public class CargarObra extends javax.swing.JFrame {
         botonPresupuesto.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         botonPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
         botonPresupuesto.setText("Cargar Presupuesto");
-        botonPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonPresupuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonPresupuestoActionPerformed(evt);
@@ -230,12 +231,18 @@ public class CargarObra extends javax.swing.JFrame {
         botonFactura.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         botonFactura.setForeground(new java.awt.Color(255, 255, 255));
         botonFactura.setText("Cargar Factura");
-        botonFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botonFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonFacturaActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Tipo Aluminio");
+
+        comboAlu.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -273,19 +280,19 @@ public class CargarObra extends javax.swing.JFrame {
                                 .addComponent(sepTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(MTTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(titularTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(fechaLbl)
-                                .addGap(77, 77, 77)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(79, 79, 79)
+                            .addComponent(fechaLbl)
+                            .addGap(77, 77, 77)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(sepGP, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fechaCH, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sepFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGap(12, 12, 12)
                                         .addComponent(CFLbl1)
@@ -293,26 +300,26 @@ public class CargarObra extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(CFLbl)
                                         .addGap(48, 48, 48)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(sepCF, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
-                                        .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(2, 2, 2)))))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(51, 51, 51)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(CFTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sepCF, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                                .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboAlu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(2, 2, 2))))
                 .addGap(7, 113, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(155, 155, 155))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(botonFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,11 +371,15 @@ public class CargarObra extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CFLbl1)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboAlu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(botonFactura)
                 .addGap(12, 12, 12)
                 .addComponent(botonPresupuesto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -390,7 +401,8 @@ public class CargarObra extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void llenarComboBox(){
+
+      private void llenarComboBox(){
         PreparedStatement ps; 
         try{
             Connection con = ConexionDB.getConnection();
@@ -402,11 +414,28 @@ public class CargarObra extends javax.swing.JFrame {
             String item = resultSet.getString(1);
             cbEstado.addItem(item);
         }
+        
+            String sql2 ="SELECT a.nombre_color FROM color_aluminio a";
+            ps = ConexionDB.getConnection().prepareStatement(sql2);
+            resultSet = ps.executeQuery();
+        
+        while(resultSet.next()){
+            String item = resultSet.getString(1);
+            comboAlu.addItem(item);
+        }
         ConexionDB.endConnection(con);
          }catch(Exception e){
             e.printStackTrace();
         }
     }
+    
+     public String getNameFromColorAluminio(){
+        String colorAlu = comboAlu.getSelectedItem().toString();
+    //    obra.setEstadoObra(estadoObra);*
+        return colorAlu;
+    }
+     
+    
     //para el estado de la obra
     private int getIDFromEstadoObra(){
         String estado = cbEstado.getSelectedItem().toString();
@@ -687,8 +716,10 @@ public class CargarObra extends javax.swing.JFrame {
     private javax.swing.JButton botonFactura;
     private javax.swing.JButton botonPresupuesto;
     private javax.swing.JComboBox<String> cbEstado;
+    private javax.swing.JComboBox<String> comboAlu;
     private com.toedter.calendar.JDateChooser fechaCH;
     private javax.swing.JLabel fechaLbl;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator sepCF;
     private javax.swing.JSeparator sepComision;

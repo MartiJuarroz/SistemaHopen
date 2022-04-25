@@ -16,14 +16,13 @@ import javax.swing.JOptionPane;
  *
  * @author lisan
  */
-public class CargarPresupuesto extends javax.swing.JFrame {
+public class CargarDatosFactura extends javax.swing.JFrame {
     
     /**
      * Creates new form CargarPresupuestoPrueba
      */
-    public CargarPresupuesto() {
+    public CargarDatosFactura() {
         initComponents();
-        llenarComboBoxVidrio();
     }
 
     /**
@@ -44,11 +43,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         presupuestoAlu = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        remito = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
         guardarAluminio = new javax.swing.JButton();
         SalirBtn = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
         tabVidro = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         planchasVidrio = new javax.swing.JTextField();
@@ -58,17 +54,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         guardarVidrio = new javax.swing.JButton();
         SalirBtn1 = new javax.swing.JButton();
-        comboVidrio = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
+        comboVidrio = new javax.swing.JComboBox<>();
         tabAcc = new javax.swing.JPanel();
         guardarAcc = new javax.swing.JButton();
         SalirBtn2 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jSeparator10 = new javax.swing.JSeparator();
         presupuestoAcc = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
-        fechaAcc = new com.toedter.calendar.JDateChooser();
         tabManoObra = new javax.swing.JPanel();
         guardarManoObra = new javax.swing.JButton();
         SalirBtn3 = new javax.swing.JButton();
@@ -101,7 +94,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Kilos Presupuestado");
+        jLabel1.setText("Kilos Facturados");
 
         presupuestoKg.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         presupuestoKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -111,19 +104,13 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Pesos Presupuestados");
+        jLabel2.setText("Pesos Facturados");
 
         presupuestoAlu.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         presupuestoAlu.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         presupuestoAlu.setBorder(null);
         presupuestoAlu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         presupuestoAlu.setSelectionColor(new java.awt.Color(51, 204, 255));
-
-        remito.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        remito.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        remito.setBorder(null);
-        remito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        remito.setSelectionColor(new java.awt.Color(51, 204, 255));
 
         guardarAluminio.setBackground(new java.awt.Color(0, 204, 255));
         guardarAluminio.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -147,36 +134,28 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Remito");
-
         javax.swing.GroupLayout tabAluminioLayout = new javax.swing.GroupLayout(tabAluminio);
         tabAluminio.setLayout(tabAluminioLayout);
         tabAluminioLayout.setHorizontalGroup(
             tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabAluminioLayout.createSequentialGroup()
                 .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(tabAluminioLayout.createSequentialGroup()
+                        .addContainerGap(208, Short.MAX_VALUE)
+                        .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabAluminioLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jLabel1)
-                        .addGap(37, 37, 37)
-                        .addComponent(presupuestoKg))
-                    .addGroup(tabAluminioLayout.createSequentialGroup()
-                        .addContainerGap(23, Short.MAX_VALUE)
-                        .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabAluminioLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(37, 37, 37)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(presupuestoAlu, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(tabAluminioLayout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(remito, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(tabAluminioLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(37, 37, 37)
+                                .addComponent(presupuestoKg)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabAluminioLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -199,13 +178,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                     .addComponent(presupuestoAlu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(remito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarAluminio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -218,7 +191,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Cantidad Planchas");
+        jLabel4.setText("Cantidad Planchas Usadas");
 
         planchasVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         planchasVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -228,7 +201,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Pesos Presupuestados");
+        jLabel5.setText("Pesos Facturados");
 
         presupuestoVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         presupuestoVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -258,11 +231,11 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             }
         });
 
-        comboVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-
         jLabel13.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Tipo Vidrio");
+
+        comboVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout tabVidroLayout = new javax.swing.GroupLayout(tabVidro);
         tabVidro.setLayout(tabVidroLayout);
@@ -277,25 +250,26 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidroLayout.createSequentialGroup()
                 .addGroup(tabVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabVidroLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                        .addComponent(jLabel4)
+                        .addGap(56, 56, 56)
+                        .addComponent(planchasVidrio, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE))
+                    .addGroup(tabVidroLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(tabVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabVidroLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(37, 37, 37)
-                                .addComponent(planchasVidrio, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabVidroLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5)
                         .addGap(50, 50, 50)
-                        .addComponent(presupuestoVidrio))
-                    .addGroup(tabVidroLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(presupuestoVidrio)))
                 .addGap(18, 18, 18))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidroLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         tabVidroLayout.setVerticalGroup(
             tabVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,11 +286,11 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                     .addComponent(presupuestoVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
+                .addGap(36, 36, 36)
                 .addGroup(tabVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(tabVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -349,10 +323,6 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Fecha de Compra");
-
         presupuestoAcc.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         presupuestoAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         presupuestoAcc.setBorder(null);
@@ -361,7 +331,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Pesos Presupuestados");
+        jLabel11.setText("Pesos Facturados");
 
         javax.swing.GroupLayout tabAccLayout = new javax.swing.GroupLayout(tabAcc);
         tabAcc.setLayout(tabAccLayout);
@@ -376,15 +346,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SalirBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabAccLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(tabAccLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(54, 54, 54)
-                                .addGroup(tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fechaAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jSeparator10, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)))))
+                        .addGap(202, 202, 202)
+                        .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabAccLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(50, 50, 50)
@@ -394,19 +357,13 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         tabAccLayout.setVerticalGroup(
             tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabAccLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(fechaAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(151, 151, 151)
                 .addGroup(tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(presupuestoAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addGroup(tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -441,7 +398,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Cantidad Horas");
+        jLabel8.setText("Cantidad Horas Factura");
 
         cantidadHoras.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         cantidadHoras.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -457,7 +414,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Pesos Presupuestados");
+        jLabel9.setText("Pesos Facturados");
 
         javax.swing.GroupLayout tabManoObraLayout = new javax.swing.GroupLayout(tabManoObra);
         tabManoObra.setLayout(tabManoObraLayout);
@@ -466,24 +423,23 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             .addGroup(tabManoObraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabManoObraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabManoObraLayout.createSequentialGroup()
-                        .addGap(0, 337, Short.MAX_VALUE)
-                        .addComponent(guardarManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SalirBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabManoObraLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(tabManoObraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabManoObraLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(37, 37, 37)
-                                .addComponent(cantidadHoras, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE))
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel8)
+                        .addGap(50, 50, 50)
+                        .addComponent(cantidadHoras, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
                     .addGroup(tabManoObraLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(50, 50, 50)
-                        .addComponent(presupuestoManoObra)))
+                        .addComponent(presupuestoManoObra))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabManoObraLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(tabManoObraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabManoObraLayout.createSequentialGroup()
+                                .addComponent(guardarManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SalirBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         tabManoObraLayout.setVerticalGroup(
@@ -501,7 +457,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                     .addComponent(presupuestoManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addGroup(tabManoObraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -536,7 +492,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Cantidad Viajes");
+        jLabel6.setText("Cantidad Viajes Hechos");
 
         cantidadViajes.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         cantidadViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -552,7 +508,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Pesos Presupuestados");
+        jLabel7.setText("Pesos Facturados");
 
         javax.swing.GroupLayout tabViajeLayout = new javax.swing.GroupLayout(tabViaje);
         tabViaje.setLayout(tabViajeLayout);
@@ -567,17 +523,19 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SalirBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabViajeLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
+                        .addComponent(jLabel6)
+                        .addGap(5, 5, 5)
                         .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabViajeLayout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(37, 37, 37)
-                                .addComponent(cantidadViajes, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE))
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(45, 45, 45)
+                                .addComponent(cantidadViajes, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE))))
                     .addGroup(tabViajeLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
                         .addComponent(jLabel7)
-                        .addGap(50, 50, 50)
+                        .addGap(39, 39, 39)
                         .addComponent(presupuestoViajes)))
                 .addContainerGap())
         );
@@ -586,8 +544,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabViajeLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(cantidadViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cantidadViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
@@ -596,7 +554,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                     .addComponent(presupuestoViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                 .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -609,11 +567,13 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane6, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane6)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane6, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTabbedPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane6.getAccessibleContext().setAccessibleName("");
@@ -633,26 +593,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void llenarComboBoxVidrio(){
-        PreparedStatement ps; 
-        try{
-            Connection con = ConexionDB.getConnection();
-            String sql ="SELECT v.nombre_tipo_vidrio FROM tipo_vidrio v";
-            ps = ConexionDB.getConnection().prepareStatement(sql);
-            ResultSet resultSet = ps.executeQuery();
-        
-        while(resultSet.next()){
-            String item = resultSet.getString(1);
-            comboVidrio.addItem(item);
-        }
-        
-        ConexionDB.endConnection(con);
-         }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
     
-    public int getIDFromClase(String nombreTipo, String material, String tipoNombre){
+    private int getIDFromClase(String nombreTipo, String material, String tipoNombre){
 
         PreparedStatement ps;
         
@@ -676,88 +618,29 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         return 0;
     }
     
-    public String getNameFromVidrio(){
-        String vidrio = comboVidrio.getSelectedItem().toString();
-        return vidrio;
+    private void mostrarTipoVidrio(){
+         
+        PreparedStatement ps;
+        int id = getIDFromClase(, "tipo_vidrio", "tipo_vidrio");
+         
+         try{
+            Connection con = ConexionDB.getConnection();
+            String sql2 = "SELECT t.nombre_tipo_vidrio FROM tipo_vidrio t WHERE t.id=?";
+            ps = ConexionDB.getConnection().prepareStatement(sql2);
+            ps.setInt(1, id);
+        
+            ResultSet resultSet2 = ps.executeQuery();
+                
+            if(resultSet2.next()){
+                   String nombreE = resultSet2.getString("nombre_estado_obra");
+                   comboVidrio.setSelectedItem(nombreE);
+            }
+         }catch(Exception e){
+                e.printStackTrace();
+            }
     }
     
-    private void guardarAluminioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAluminioActionPerformed
-        // TODO add your handling code here:
-        CargarObra co = new CargarObra();
-        double kiloPresupuestado = Double.parseDouble(presupuestoKg.getText());
-        String rto = remito.getText();
-        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
-        String colorAlu = co.getNameFromColorAluminio();
-
-        PreparedStatement ps;
-
-        try{
-            Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO aluminio (total_presupuesto, remito, kilo_presupuestado, color_aluminio_id) VALUES (?,?,?,?)";
-            ps = ConexionDB.getConnection().prepareStatement(sql);
-
-            ps.setDouble(1, totalPresupuestado);
-            ps.setString(2, rto);
-            ps.setDouble(3, kiloPresupuestado);
-            ps.setInt(4, getIDFromClase(colorAlu, "color_aluminio", "color"));
-
-            ps.executeUpdate();
-            
-            //Buscamos el id de obra y el de aluminio
-            String sql2 = "SELECT id FROM aluminio ORDER by id DESC LIMIT 1";
-            
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-            ResultSet resultSet = ps.executeQuery();
-            int idAlu = 0;
-            if(resultSet.next()){
-                idAlu = resultSet.getInt(1);
-                System.out.println("El id del aluminio es: "+idAlu);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-                System.out.println("El id de la obra es: "+idObra);
-            }
-            
-            
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET aluminio_id = '"+idAlu+"' WHERE id = '"+idObra+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado
-
-            JOptionPane.showMessageDialog(null, "Datos guardados");
-            ConexionDB.endConnection(con);
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        presupuestoKg.setText("");
-        presupuestoAlu.setText("");
-        remito.setText("");
-    }//GEN-LAST:event_guardarAluminioActionPerformed
-
-    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
-        // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
-            == JOptionPane.YES_OPTION){
-            try {
-                new Menu().setVisible(true);
-                dispose();
-            } catch (Exception ex) {
-                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_SalirBtnActionPerformed
-
+    
     private void guardarVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrioActionPerformed
         // TODO add your handling code here:
         int cantPlanchas = Integer.parseInt(planchasVidrio.getText());
@@ -1036,6 +919,82 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SalirBtn4ActionPerformed
 
+    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+            == JOptionPane.YES_OPTION){
+            try {
+                new Menu().setVisible(true);
+                dispose();
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_SalirBtnActionPerformed
+
+    private void guardarAluminioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAluminioActionPerformed
+        // TODO add your handling code here:
+        CargarObra co = new CargarObra();
+        double kiloPresupuestado = Double.parseDouble(presupuestoKg.getText());
+        String rto = remito.getText();
+        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+        String colorAlu = co.getNameFromColorAluminio();
+
+        PreparedStatement ps;
+
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="INSERT INTO aluminio (total_presupuesto, remito, kilo_presupuestado, color_aluminio_id) VALUES (?,?,?,?)";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+
+            ps.setDouble(1, totalPresupuestado);
+            ps.setString(2, rto);
+            ps.setDouble(3, kiloPresupuestado);
+            ps.setInt(4, getIDFromClase(colorAlu, "color_aluminio", "color"));
+
+            ps.executeUpdate();
+
+            //Buscamos el id de obra y el de aluminio
+            String sql2 = "SELECT id FROM aluminio ORDER by id DESC LIMIT 1";
+
+            ps = ConexionDB.getConnection().prepareStatement(sql2);
+
+            ResultSet resultSet = ps.executeQuery();
+            int idAlu = 0;
+            if(resultSet.next()){
+                idAlu = resultSet.getInt(1);
+                System.out.println("El id del aluminio es: "+idAlu);
+            }
+
+            //Esta query busca el id mas grande que siempre seria el ultimo ingresado
+            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
+            ps = ConexionDB.getConnection().prepareStatement(sql4);
+            resultSet = ps.executeQuery();
+
+            int idObra = 0;
+            if(resultSet.next()){
+                idObra = resultSet.getInt(1);
+                System.out.println("El id de la obra es: "+idObra);
+            }
+
+            //ya tenemos los id, ahora lo asociamos a la obra
+            String sql3 = "UPDATE obra SET aluminio_id = '"+idAlu+"' WHERE id = '"+idObra+"'";
+            ps = ConexionDB.getConnection().prepareStatement(sql3);
+
+            ps.executeUpdate();
+            //ya estaria asociado
+
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+            ConexionDB.endConnection(con);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        presupuestoKg.setText("");
+        presupuestoAlu.setText("");
+        remito.setText("");
+    }//GEN-LAST:event_guardarAluminioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1053,21 +1012,23 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CargarPresupuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CargarDatosFactura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CargarPresupuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CargarDatosFactura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CargarPresupuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CargarDatosFactura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CargarPresupuesto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CargarDatosFactura.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CargarPresupuesto().setVisible(true);
+                new CargarDatosFactura().setVisible(true);
             }
         });
     }
@@ -1081,16 +1042,13 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private javax.swing.JTextField cantidadHoras;
     private javax.swing.JTextField cantidadViajes;
     private javax.swing.JComboBox<String> comboVidrio;
-    private com.toedter.calendar.JDateChooser fechaAcc;
     private javax.swing.JButton guardarAcc;
     private javax.swing.JButton guardarAluminio;
     private javax.swing.JButton guardarManoObra;
     private javax.swing.JButton guardarViajes;
     private javax.swing.JButton guardarVidrio;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -1101,10 +1059,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
@@ -1119,7 +1075,6 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private javax.swing.JTextField presupuestoManoObra;
     private javax.swing.JTextField presupuestoViajes;
     private javax.swing.JTextField presupuestoVidrio;
-    private javax.swing.JTextField remito;
     private javax.swing.JPanel tabAcc;
     private javax.swing.JPanel tabAluminio;
     private javax.swing.JPanel tabManoObra;

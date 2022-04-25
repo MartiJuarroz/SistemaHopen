@@ -463,7 +463,8 @@ public class EditarObra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
-        mostrarDatos();
+        //mostrarDatos();
+        OtraFormaID();
     }//GEN-LAST:event_btnVerDatosActionPerformed
 
      private void llenarComboBox(){
@@ -716,8 +717,33 @@ public class EditarObra extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+     private Double OtraFormaID(){
+         PreparedStatement ps;
+         String cliente = tfCliente.getText();
+          try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="SELECT * from obra WHERE titular = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            
+            ps.setString(1, cliente);
+            
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                Obra obra = (Obra) resultSet.getObject("obra");
+                Double comi = obra.getComision();
+                MTTxt.setText(Double.toString(comi));
+                return comi;
+            }
+            
+            ConexionDB.endConnection(con);
+          }catch(Exception e){
+            e.printStackTrace();
+        }
+         return null;
+     }
              
-    private void mostrarDatos(){
+ /*   private void mostrarDatos(){
       
         if (tablaObras.getSelectedRow() != -1) {
             String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 0);
@@ -770,7 +796,7 @@ public class EditarObra extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
+    }*/
         /**
      * @param args the command line arguments
      */
