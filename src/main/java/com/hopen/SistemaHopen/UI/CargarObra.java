@@ -197,6 +197,11 @@ public class CargarObra extends javax.swing.JFrame {
         SigBtn.setForeground(new java.awt.Color(255, 255, 255));
         SigBtn.setText("Guardar");
         SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SigBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SigBtnMouseClicked(evt);
+            }
+        });
         SigBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SigBtnActionPerformed(evt);
@@ -493,9 +498,8 @@ public class CargarObra extends javax.swing.JFrame {
         return 0;
      }
     
-    private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
-        // TODO add your handling code here:
-        //si es igual a 0 no existe la obra, si es mayor entonces existe y si es -1 el campo esta vacio   
+     private void guardarDatos(){
+          //si es igual a 0 no existe la obra, si es mayor entonces existe y si es -1 el campo esta vacio   
         if(chequeoObras() > 0){
             JOptionPane.showMessageDialog(null, "Ya existe una obra con ese titular");
         }else{
@@ -547,6 +551,11 @@ public class CargarObra extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El campo titular esta vacío.");
             }    
         }
+     }
+     
+    private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
+        // TODO add your handling code here: 
+       guardarDatos();
     }//GEN-LAST:event_SigBtnActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
@@ -643,7 +652,9 @@ public class CargarObra extends javax.swing.JFrame {
         //Estos botones tendrian que validar que ya se creo la obra nueva
         //Obtenemos el id de la obra para ver si existe y despues cuando cargamos la factura y presupuesto lo relacionamos a esa obra
         if(bandera == false){
-            JOptionPane.showMessageDialog(null, "Ingrese la obra primero, para hacerlo presione el boton guardar de abajo.");
+      //      JOptionPane.showMessageDialog(null, "Ingrese la obra primero, para hacerlo presione el boton guardar de abajo.");
+              guardarDatos();
+              new CargarFactura().setVisible(true);
         }else{
             new CargarFactura().setVisible(true);
             dispose();
@@ -663,6 +674,11 @@ public class CargarObra extends javax.swing.JFrame {
     private void cbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbEstadoActionPerformed
+
+    private void SigBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SigBtnMouseClicked
+        // TODO add your handling code here:
+        bandera=true;
+    }//GEN-LAST:event_SigBtnMouseClicked
     /**
      * @param args the command line arguments
      */

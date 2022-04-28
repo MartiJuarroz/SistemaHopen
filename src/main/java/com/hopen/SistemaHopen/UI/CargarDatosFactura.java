@@ -625,7 +625,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
          
          try{
             Connection con = ConexionDB.getConnection();
-            String sql2 = "SELECT t.nombre_tipo_vidrio FROM tipo_vidrio t WHERE t.id=?";
+            String sql2 = "SELECT nombre_tipo_vidrio FROM tipo_vidrio t,obra_lista_vidrio o, vidrio v WHERE t.id = v.tipo_vidrio_id=?";
             ps = ConexionDB.getConnection().prepareStatement(sql2);
             ps.setInt(1, id);
         
