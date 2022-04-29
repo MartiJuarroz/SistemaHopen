@@ -351,12 +351,11 @@ public class EditarObra extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(CFLbl1)
                         .addGap(86, 86, 86)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(MTbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(editarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(MTbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                            .addComponent(editarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editarPresupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -595,6 +594,8 @@ public class EditarObra extends javax.swing.JFrame {
 
     private void editarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarFacturaActionPerformed
         // TODO add your handling code here:
+        new CargarFactura().setVisible(true);
+        dispose();
     }//GEN-LAST:event_editarFacturaActionPerformed
 
     private void ComisionTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComisionTxtKeyTyped

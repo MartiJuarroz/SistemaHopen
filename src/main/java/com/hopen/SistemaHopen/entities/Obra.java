@@ -49,13 +49,13 @@ public class Obra extends Base {
       @JoinColumn(name = "manoObra_id")
       private ManoObra manoObra;
 
-      @OneToMany
+      @OneToOne
       @JoinColumn(name = "vidrio_id")
-      private List<Vidrio> listaVidrio = new ArrayList<Vidrio>();
+      private CompraVidrio compraVidrio;
 
       @OneToMany
       @JoinColumn(name = "accesorio_id")
-      private List<Accesorio> listaAccesorios = new ArrayList<Accesorio>();
+      private Accesorio accesorios;
 
       @OneToOne
       @JoinColumn(name = "aluminio_id")

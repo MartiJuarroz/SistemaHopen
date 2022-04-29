@@ -129,13 +129,11 @@
                           <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="CFLbl1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="MTbtn" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="editarFactura" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="editarPresupuesto" alignment="1" min="-2" pref="345" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="cbEstado" min="-2" pref="193" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="MTbtn" alignment="1" pref="362" max="32767" attributes="0"/>
+                              <Component id="editarFactura" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cbEstado" max="32767" attributes="0"/>
+                              <Component id="editarPresupuesto" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -299,7 +297,7 @@
               <Border info="null"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -404,7 +402,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Volver"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -424,7 +422,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Guardar"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -454,7 +452,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Ver datos"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -476,7 +474,7 @@
               <Border info="null"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -496,7 +494,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Mostrar todas"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -506,7 +504,7 @@
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <Properties>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -532,7 +530,7 @@
                   <TableColumnModel selectionModel="0"/>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -567,7 +565,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Editar presupuesto"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -587,7 +585,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Editar factura"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>

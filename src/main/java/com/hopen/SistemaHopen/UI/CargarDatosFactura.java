@@ -621,10 +621,19 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private void mostrarTipoVidrio(){
          
         PreparedStatement ps;
-        int id = getIDFromClase(, "tipo_vidrio", "tipo_vidrio");
-         
+        
+        //nombreTipoVidrio es el valor 
+        int id = getIDFromClase("nombreTipoVidrio", "tipo_vidrio", "tipo_vidrio");
+        
          try{
             Connection con = ConexionDB.getConnection();
+            
+            /*String sql = "SELECT tipo_vidrio_id FROM vidrio v WHERE v.id = v.tipo_vidrio_id=?";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            ps.setInt(1, id);
+            
+            ResultSet resultSet2 = ps.executeQuery();*/
+            
             String sql2 = "SELECT nombre_tipo_vidrio FROM tipo_vidrio t,obra_lista_vidrio o, vidrio v WHERE t.id = v.tipo_vidrio_id=?";
             ps = ConexionDB.getConnection().prepareStatement(sql2);
             ps.setInt(1, id);
@@ -714,20 +723,14 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
     private void guardarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAccActionPerformed
         // TODO add your handling code here:
-        java.util.Date fecha = fechaAcc.getDate();
-        long timeInMilliSecs = fecha.getTime();
-        java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
         Double totalPresupuestado = Double.parseDouble(presupuestoAcc.getText());
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO accesorio (total_presupuesto, fecha_compra) VALUES (?,?)";
+            String sql ="INSERT INTO accesorio (total_presupuesto) VALUES (?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
-
-            ps.setDouble(1, totalPresupuestado);
-            ps.setDate(2, fechaDB);
 
             ps.executeUpdate();
 
@@ -766,7 +769,6 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        fechaAcc = null;
         presupuestoAcc.setText("");
     }//GEN-LAST:event_guardarAccActionPerformed
 
@@ -936,7 +938,6 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         // TODO add your handling code here:
         CargarObra co = new CargarObra();
         double kiloPresupuestado = Double.parseDouble(presupuestoKg.getText());
-        String rto = remito.getText();
         Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
         String colorAlu = co.getNameFromColorAluminio();
 
@@ -944,11 +945,10 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO aluminio (total_presupuesto, remito, kilo_presupuestado, color_aluminio_id) VALUES (?,?,?,?)";
+            String sql ="INSERT INTO aluminio (total_presupuesto, kilo_presupuestado, color_aluminio_id) VALUES (?,?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalPresupuestado);
-            ps.setString(2, rto);
             ps.setDouble(3, kiloPresupuestado);
             ps.setInt(4, getIDFromClase(colorAlu, "color_aluminio", "color"));
 
@@ -992,7 +992,6 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         }
         presupuestoKg.setText("");
         presupuestoAlu.setText("");
-        remito.setText("");
     }//GEN-LAST:event_guardarAluminioActionPerformed
 
     /**
