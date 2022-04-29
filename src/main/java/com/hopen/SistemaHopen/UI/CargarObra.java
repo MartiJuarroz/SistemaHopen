@@ -74,7 +74,6 @@ public class CargarObra extends javax.swing.JFrame {
         CFLbl1 = new javax.swing.JLabel();
         cbEstado = new javax.swing.JComboBox<>();
         botonPresupuesto = new javax.swing.JButton();
-        botonFactura = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         comboAlu = new javax.swing.JComboBox<>();
 
@@ -232,17 +231,6 @@ public class CargarObra extends javax.swing.JFrame {
             }
         });
 
-        botonFactura.setBackground(new java.awt.Color(51, 204, 255));
-        botonFactura.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        botonFactura.setForeground(new java.awt.Color(255, 255, 255));
-        botonFactura.setText("Cargar Factura");
-        botonFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        botonFactura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonFacturaActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Tipo Aluminio");
@@ -317,11 +305,9 @@ public class CargarObra extends javax.swing.JFrame {
                 .addGap(7, 113, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(botonFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -376,18 +362,15 @@ public class CargarObra extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CFLbl1)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboAlu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addComponent(botonFactura)
-                .addGap(12, 12, 12)
-                .addComponent(botonPresupuesto)
-                .addGap(18, 18, 18)
+                .addGap(104, 104, 104)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -647,20 +630,6 @@ public class CargarObra extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_titularTxtMouseClicked
 
-    private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
-        // TODO add your handling code here:
-        //Estos botones tendrian que validar que ya se creo la obra nueva
-        //Obtenemos el id de la obra para ver si existe y despues cuando cargamos la factura y presupuesto lo relacionamos a esa obra
-        if(bandera == false){
-      //      JOptionPane.showMessageDialog(null, "Ingrese la obra primero, para hacerlo presione el boton guardar de abajo.");
-              guardarDatos();
-              new CargarFactura().setVisible(true);
-        }else{
-            new CargarFactura().setVisible(true);
-            dispose();
-        }
-    }//GEN-LAST:event_botonFacturaActionPerformed
-
     private void botonPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPresupuestoActionPerformed
         // TODO add your handling code here:
         if(bandera == false){
@@ -729,7 +698,6 @@ public class CargarObra extends javax.swing.JFrame {
     private javax.swing.JButton SalirBtn;
     private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
-    private javax.swing.JButton botonFactura;
     private javax.swing.JButton botonPresupuesto;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> comboAlu;

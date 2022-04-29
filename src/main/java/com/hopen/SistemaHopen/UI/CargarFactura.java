@@ -311,7 +311,7 @@ public class CargarFactura extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        new CargarObra().setVisible(true);
+        new CargarDatosFactura().setVisible(true);
         dispose();
     }//GEN-LAST:event_SigBtnActionPerformed
 

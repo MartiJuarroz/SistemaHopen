@@ -129,15 +129,10 @@
                           <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="CFLbl1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="MTbtn" alignment="1" pref="362" max="32767" attributes="0"/>
-                              <Component id="editarFactura" alignment="1" max="32767" attributes="0"/>
-                              <Component id="cbEstado" max="32767" attributes="0"/>
-                              <Component id="editarPresupuesto" alignment="1" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="cbEstado" min="-2" pref="362" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="83" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="83" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="tfBuscar" min="-2" pref="397" max="-2" attributes="0"/>
@@ -145,13 +140,21 @@
                           <Component id="btnBuscar" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="SigBtn" min="-2" pref="151" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="SalirBtn" min="-2" pref="151" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="editarFactura" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="editarPresupuesto" min="-2" pref="197" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="MTbtn" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="SigBtn" min="-2" pref="151" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="SalirBtn" min="-2" pref="151" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -182,8 +185,10 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="SigBtn" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="SalirBtn" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="MTbtn" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="editarPresupuesto" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="editarFactura" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -238,15 +243,10 @@
                               <Component id="CFLbl1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cbEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="editarFactura" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="editarPresupuesto" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="MTbtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -583,7 +583,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Editar factura"/>
+            <Property name="text" type="java.lang.String" value="Cargar factura"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Cursor Por defecto"/>
             </Property>

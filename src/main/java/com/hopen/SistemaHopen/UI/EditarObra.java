@@ -26,6 +26,8 @@ public class EditarObra extends javax.swing.JFrame {
     
     @Autowired
     ObraService obraService;
+    //la declaro global para poder sacar el id y usarlo en otra cosa 
+    String dato[] = new String[4];
     
     /**
      * Creates new form CargarObra
@@ -271,7 +273,7 @@ public class EditarObra extends javax.swing.JFrame {
         editarFactura.setBackground(new java.awt.Color(51, 204, 255));
         editarFactura.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         editarFactura.setForeground(new java.awt.Color(255, 255, 255));
-        editarFactura.setText("Editar factura");
+        editarFactura.setText("Cargar factura");
         editarFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         editarFactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,23 +353,27 @@ public class EditarObra extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(CFLbl1)
                         .addGap(86, 86, 86)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(MTbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                            .addComponent(editarFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editarPresupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                        .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 83, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(editarFactura)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(MTbtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,8 +397,10 @@ public class EditarObra extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                            .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MTbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(titularLbl)
@@ -437,13 +445,8 @@ public class EditarObra extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CFLbl1)
                             .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editarFactura)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(editarPresupuesto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(MTbtn)
-                        .addGap(33, 33, 33))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -519,7 +522,10 @@ public class EditarObra extends javax.swing.JFrame {
             java.util.Date fecha = fechaCH.getDate();
             long timeInMilliSecs = fecha.getTime();
             java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
-
+            //podriamos inicializar los valores en null y de alguna forma 
+            //los que no editan los tendriamos que dejar como estan.
+            //cualquier forma que se me ocurre es un bardo jajajaj
+            
             Obra obra = new Obra();
             obra.setTotalPresupuesto(total_presupuesto);
             obra.setComision(comision);
@@ -579,7 +585,7 @@ public class EditarObra extends javax.swing.JFrame {
     private void tablaObrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaObrasMouseClicked
         // TODO add your handling code here:
          if (tablaObras.getSelectedRow() != -1) {
-            String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 0);
+            String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 1);
             tfCliente.setText(titular);
         }else{
             JOptionPane.showMessageDialog(null, "Seleccione un renglón primero", "No seleccionó ninguna fila", JOptionPane.INFORMATION_MESSAGE);
@@ -648,19 +654,20 @@ public class EditarObra extends javax.swing.JFrame {
            
         DefaultTableModel model = new DefaultTableModel(); 
         
+        model.addColumn("Id");
         model.addColumn("Cliente");
         model.addColumn("Total presupuesto");
         model.addColumn("Fecha presupuesto");
         
         tablaObras.setModel(model);
         
-        String[] dato = new String[3];
+        dato = new String[4];
         
         PreparedStatement ps;
         
         try{
         Connection con = ConexionDB.getConnection();
-        String sql = "SELECT o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o";
+        String sql = "SELECT o.id, o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o";
         ps = ConexionDB.getConnection().prepareStatement(sql);
         
         ResultSet resultSet = ps.executeQuery();
@@ -669,6 +676,7 @@ public class EditarObra extends javax.swing.JFrame {
             dato[0] = resultSet.getString(1);
             dato[1] = resultSet.getString(2);
             dato[2] = resultSet.getString(3);
+            dato[3] = resultSet.getString(4);
             model.addRow(dato);
         }
         
@@ -718,36 +726,11 @@ public class EditarObra extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
- /*    private Double OtraFormaID(){
-         PreparedStatement ps;
-         String cliente = tfCliente.getText();
-          try{
-            Connection con = ConexionDB.getConnection();
-            String sql ="SELECT * from obra WHERE titular = ?";
-            ps = ConexionDB.getConnection().prepareStatement(sql);
-            
-            ps.setString(1, cliente);
-            
-            ResultSet resultSet = ps.executeQuery();
-            if (resultSet.next()) {
-                Obra obra = (Obra) resultSet.getObject("obra");
-                Double comi = obra.getComision();
-                MTTxt.setText(Double.toString(comi));
-                return comi;
-            }
-            
-            ConexionDB.endConnection(con);
-          }catch(Exception e){
-            e.printStackTrace();
-        }
-         return null;
-     }*/
-             
+                 
     private void mostrarDatos(){
       
         if (tablaObras.getSelectedRow() != -1) {
-            String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 0);
+            String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 1);
             tfCliente.setText(titular);
         }else{
             JOptionPane.showMessageDialog(null, "Seleccione un renglón primero", "No seleccionó ninguna fila", JOptionPane.INFORMATION_MESSAGE);
