@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipoVidrio")
+@Table(name = "tipoAccesorio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

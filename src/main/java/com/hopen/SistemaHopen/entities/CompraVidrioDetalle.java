@@ -17,7 +17,7 @@ import java.util.List;
  * @author Martiniano
  */
 @Entity
-@Table(name = "compraVidrio")
+@Table(name = "compraVidrioDetalle")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

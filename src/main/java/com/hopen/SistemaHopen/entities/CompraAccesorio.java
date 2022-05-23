@@ -16,7 +16,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 
 @Entity
-@Table(name = "accesorio")
+@Table(name = "compraAccesorio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
