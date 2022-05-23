@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.hopen.SistemaHopen.entities;
 
 import lombok.AllArgsConstructor;
@@ -7,21 +11,16 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Entity
-@Table(name = "accesorio")
+@Table(name = "tipoVidrio")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Accesorio extends DiferenciaRealPresupuesto{
-
+public class TipoAccesorio extends Base{
+    
     @Column
-    private String nombreAccesorio;
-
-    @Column
-    private Date fechaCompra;
+    private String nombreTipoVidrio;
 }

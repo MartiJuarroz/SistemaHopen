@@ -55,7 +55,7 @@ public class Obra extends Base {
 
       @OneToMany
       @JoinColumn(name = "accesorio_id")
-      private Accesorio accesorios;
+      private List<CompraAccesorio> accesorios = new ArrayList<CompraAccesorio>();
 
       @OneToOne
       @JoinColumn(name = "aluminio_id")
