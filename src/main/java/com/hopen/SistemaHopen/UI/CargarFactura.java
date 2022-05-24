@@ -320,7 +320,7 @@ public class CargarFactura extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
-                new CargarObra().setVisible(true);
+                new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
                 Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);

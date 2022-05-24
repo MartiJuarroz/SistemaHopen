@@ -297,7 +297,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Vidrio", tabVidro);
+        jTabbedPane6.addTab("TipoVidrio", tabVidro);
 
         tabAcc.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -652,7 +652,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     
     private void guardarVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrioActionPerformed
         // TODO add your handling code here:
-        int cantPlanchas = Integer.parseInt(planchasVidrio.getText());
+        int cantPlanchasUsadas = Integer.parseInt(planchasVidrio.getText());
         Double totalPresupuestado = Double.parseDouble(presupuestoVidrio.getText());
         String tipoVidrio = comboVidrio.getSelectedItem().toString();
 
@@ -660,11 +660,10 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO vidrio (total_presupuesto, cant_planchas, tipo_vidrio_id) VALUES (?,?,?)";
+            String sql ="INSERT INTO compra_vidrio_detalle (planchas_usadas) VALUES (?) where ";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setDouble(1, totalPresupuestado);
-            ps.setInt(2, cantPlanchas);
+            ps.setInt(2, cantPlanchasUsadas);
             ps.setInt(3, getIDFromClase(tipoVidrio, "tipo_vidrio", "tipo_vidrio"));
 
             ps.executeUpdate();

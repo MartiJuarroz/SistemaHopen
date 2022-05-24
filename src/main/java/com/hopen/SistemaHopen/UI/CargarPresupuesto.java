@@ -1041,24 +1041,47 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SalirBtn4ActionPerformed
 
+    public int getNumeroDetalle(){
+        
+        
+        return 0;
+    }
+    
+    
     private void guardarVidrio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrio1ActionPerformed
         // TODO add your handling code here:
         int cantPlanchas = Integer.parseInt(planchasVidrio.getText());
         String tipoVidrio = comboVidrio.getSelectedItem().toString();
         
         PreparedStatement ps;
-
-        try{
+        PreparedStatement ps2;
+        
+         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO detalle_compra_vidrio (total_presupuesto) VALUES (?)";
+            String sql ="SELECT id FROM tipo_vidrio WHERE nombre_tipo_vidrio = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
+            
+            ps.setString(1, tipoVidrio);
+            
+            ResultSet resultSet = ps.executeQuery();
+            
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String sql2 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipo_vidrio_id) VALUES (?,?)";
+                ps2 = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setDouble(1, totalPresupuestado);
-       //     ps.setInt(2, cantPlanchas);
+                ps2.setInt(1, cantPlanchas);
+                ps2.setInt(2, id);
        //     ps.setInt(3, getIDFromClase(tipoVidrio, "tipo_vidrio", "tipo_vidrio"));
 
-            ps.executeUpdate();
-
+                ps2.executeUpdate();
+            }else{
+                JOptionPane.showMessageDialog(null, "Seleccione un tpo de vidrio", "Seleccione un tpo de vidrio", JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+          }catch(Exception e){
+            e.printStackTrace();
+        }    
         
     }//GEN-LAST:event_guardarVidrio1ActionPerformed
 

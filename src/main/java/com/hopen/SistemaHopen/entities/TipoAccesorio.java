@@ -22,5 +22,5 @@ import javax.persistence.Table;
 public class TipoAccesorio extends Base{
     
     @Column
-    private String nombreTipoVidrio;
+    private String nombreTipoAccesorio;
 }
