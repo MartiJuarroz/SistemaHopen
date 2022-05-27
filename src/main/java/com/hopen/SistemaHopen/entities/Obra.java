@@ -65,4 +65,6 @@ public class Obra extends Base {
       @JoinColumn(name = "estadoObra_id")
       private EstadoObra estadoObra;
       
+      //la concha de tu madre
+      
 }
