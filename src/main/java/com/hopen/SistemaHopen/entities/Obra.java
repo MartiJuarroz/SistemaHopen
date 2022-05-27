@@ -64,7 +64,6 @@ public class Obra extends Base {
       @ManyToOne(cascade = CascadeType.PERSIST)
       @JoinColumn(name = "estadoObra_id")
       private EstadoObra estadoObra;
-      
-      //la concha de tu madre
+     
       
 }
