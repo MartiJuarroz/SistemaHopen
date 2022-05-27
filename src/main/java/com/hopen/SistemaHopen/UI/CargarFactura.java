@@ -286,7 +286,7 @@ public class CargarFactura extends javax.swing.JFrame {
         factura.setFechaFactura(fechaDB);
         factura.setTotalFactura(totalFactura);
         
-
+//takatka
         PreparedStatement ps;
 
         try{
