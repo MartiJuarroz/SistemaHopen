@@ -679,6 +679,8 @@ public class EditarObra extends javax.swing.JFrame {
             dato[3] = resultSet.getString(4);
             model.addRow(dato);
         }
+        //en el dato[0] esta el id, de alguna forma hay q llevarlo para cargarFactura
+        // asi guardamos las facturas con el id de la obra a la que perteneces
         
         
         ConexionDB.endConnection(con);

@@ -49,6 +49,15 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         guardarAluminio = new javax.swing.JButton();
         SalirBtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        tabVidro1 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        planchasVidrio = new javax.swing.JTextField();
+        jSeparator12 = new javax.swing.JSeparator();
+        presupuestoVidrio1 = new javax.swing.JTextField();
+        guardarVidrio1 = new javax.swing.JButton();
+        SalirBtn5 = new javax.swing.JButton();
+        comboVidrio = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
         tabVidro = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         presupuestoVidrio = new javax.swing.JTextField();
@@ -82,15 +91,6 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         presupuestoViajes = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
-        tabVidro1 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        planchasVidrio = new javax.swing.JTextField();
-        jSeparator12 = new javax.swing.JSeparator();
-        presupuestoVidrio1 = new javax.swing.JTextField();
-        guardarVidrio1 = new javax.swing.JButton();
-        SalirBtn5 = new javax.swing.JButton();
-        comboVidrio = new javax.swing.JComboBox<>();
-        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -226,11 +226,110 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         jTabbedPane6.addTab("Aluminio", tabAluminio);
 
+        tabVidro1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Cantidad Planchas");
+
+        planchasVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        planchasVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        planchasVidrio.setBorder(null);
+        planchasVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        planchasVidrio.setSelectionColor(new java.awt.Color(51, 204, 255));
+
+        presupuestoVidrio1.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        presupuestoVidrio1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presupuestoVidrio1.setBorder(null);
+        presupuestoVidrio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        presupuestoVidrio1.setSelectionColor(new java.awt.Color(51, 204, 255));
+
+        guardarVidrio1.setBackground(new java.awt.Color(0, 204, 255));
+        guardarVidrio1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        guardarVidrio1.setForeground(new java.awt.Color(255, 255, 255));
+        guardarVidrio1.setText("Guardar");
+        guardarVidrio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        guardarVidrio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarVidrio1ActionPerformed(evt);
+            }
+        });
+
+        SalirBtn5.setBackground(new java.awt.Color(255, 153, 51));
+        SalirBtn5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        SalirBtn5.setForeground(new java.awt.Color(255, 255, 255));
+        SalirBtn5.setText("Salir");
+        SalirBtn5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalirBtn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirBtn5ActionPerformed(evt);
+            }
+        });
+
+        comboVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Tipo Vidrio");
+
+        javax.swing.GroupLayout tabVidro1Layout = new javax.swing.GroupLayout(tabVidro1);
+        tabVidro1.setLayout(tabVidro1Layout);
+        tabVidro1Layout.setHorizontalGroup(
+            tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel16)
+                .addGap(103, 103, 103)
+                .addComponent(presupuestoVidrio1)
+                .addGap(521, 521, 521))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(guardarVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SalirBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(199, 199, 199))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createSequentialGroup()
+                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(tabVidro1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tabVidro1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator12)
+                            .addComponent(planchasVidrio, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))))
+                .addGap(173, 173, 173))
+        );
+        tabVidro1Layout.setVerticalGroup(
+            tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabVidro1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(planchasVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(presupuestoVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardarVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SalirBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70))
+        );
+
+        jTabbedPane6.addTab("TipoVidrio    ", tabVidro1);
+
         tabVidro.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Pesos Presupuestados");
+        jLabel5.setText("Total Presupuestado");
 
         presupuestoVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
         presupuestoVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -276,9 +375,9 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                         .addGap(19, 212, Short.MAX_VALUE)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabVidroLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel5)
-                        .addGap(50, 50, 50)
+                        .addGap(36, 36, 36)
                         .addComponent(presupuestoVidrio)))
                 .addGap(18, 18, 18))
         );
@@ -291,7 +390,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                     .addComponent(presupuestoVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
                 .addGroup(tabVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -579,105 +678,6 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         );
 
         jTabbedPane6.addTab("Viajes", tabViaje);
-
-        tabVidro1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel14.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Cantidad Planchas");
-
-        planchasVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        planchasVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        planchasVidrio.setBorder(null);
-        planchasVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        planchasVidrio.setSelectionColor(new java.awt.Color(51, 204, 255));
-
-        presupuestoVidrio1.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        presupuestoVidrio1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presupuestoVidrio1.setBorder(null);
-        presupuestoVidrio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        presupuestoVidrio1.setSelectionColor(new java.awt.Color(51, 204, 255));
-
-        guardarVidrio1.setBackground(new java.awt.Color(0, 204, 255));
-        guardarVidrio1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        guardarVidrio1.setForeground(new java.awt.Color(255, 255, 255));
-        guardarVidrio1.setText("Guardar");
-        guardarVidrio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        guardarVidrio1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardarVidrio1ActionPerformed(evt);
-            }
-        });
-
-        SalirBtn5.setBackground(new java.awt.Color(255, 153, 51));
-        SalirBtn5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        SalirBtn5.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn5.setText("Salir");
-        SalirBtn5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        SalirBtn5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirBtn5ActionPerformed(evt);
-            }
-        });
-
-        comboVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-
-        jLabel16.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Tipo Vidrio");
-
-        javax.swing.GroupLayout tabVidro1Layout = new javax.swing.GroupLayout(tabVidro1);
-        tabVidro1.setLayout(tabVidro1Layout);
-        tabVidro1Layout.setHorizontalGroup(
-            tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel16)
-                .addGap(103, 103, 103)
-                .addComponent(presupuestoVidrio1)
-                .addGap(521, 521, 521))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(guardarVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SalirBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(199, 199, 199))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createSequentialGroup()
-                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(tabVidro1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(tabVidro1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator12)
-                            .addComponent(planchasVidrio, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))))
-                .addGap(173, 173, 173))
-        );
-        tabVidro1Layout.setVerticalGroup(
-            tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabVidro1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(planchasVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(presupuestoVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16)
-                    .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardarVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SalirBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
-        );
-
-        jTabbedPane6.addTab("TipoVidrio    ", tabVidro1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

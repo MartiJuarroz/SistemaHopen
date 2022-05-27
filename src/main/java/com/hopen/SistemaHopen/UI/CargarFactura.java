@@ -291,7 +291,7 @@ public class CargarFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, imagen) VALUES (?,?,?,?)";
+            String sql ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, imagen_factura) VALUES (?,?,?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             FileInputStream archivoFoto;
