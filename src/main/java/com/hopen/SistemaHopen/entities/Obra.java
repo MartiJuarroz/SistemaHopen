@@ -68,5 +68,6 @@ public class Obra extends Base {
       @OneToMany
       @JoinColumn(name = "obra_id")
       private List<Factura> facturas = new ArrayList<Factura>();
+      //probando cldo
       
 }
