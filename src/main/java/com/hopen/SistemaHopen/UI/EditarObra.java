@@ -465,7 +465,7 @@ public class EditarObra extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
-        mostrarDatos();
+       mostrarDatos();
      //   OtraFormaID();
     }//GEN-LAST:event_btnVerDatosActionPerformed
 
@@ -586,6 +586,8 @@ public class EditarObra extends javax.swing.JFrame {
         // TODO add your handling code here:
          if (tablaObras.getSelectedRow() != -1) {
             String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 1);
+            //guardamos el id de la obra que seleccionamos
+            idObra = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 0);
             tfCliente.setText(titular);
         }else{
             JOptionPane.showMessageDialog(null, "Seleccione un renglón primero", "No seleccionó ninguna fila", JOptionPane.INFORMATION_MESSAGE);
@@ -767,6 +769,7 @@ public class EditarObra extends javax.swing.JFrame {
             double ganancia = resultSet.getDouble("ganancia_pretendida");
             double presupuesto = resultSet.getDouble("total_presupuesto"); 
             int idEstado = resultSet.getInt("estado_obra_id");
+            //guardamos el id para asociar la factura a la obra seleccionada
             idObra = resultSet.getString("id");
             
              try{

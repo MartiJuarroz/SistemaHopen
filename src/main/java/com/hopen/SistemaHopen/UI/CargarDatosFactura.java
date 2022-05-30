@@ -667,50 +667,25 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private void guardarVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrioActionPerformed
         // TODO add your handling code here:
         int cantPlanchasUsadas = Integer.parseInt(planchasVidrio.getText());
-        Double totalPresupuestado = Double.parseDouble(presupuestoVidrio.getText());
-        String tipoVidrio = comboVidrio.getSelectedItem().toString();
+        Double totalReal = Double.parseDouble(presupuestoVidrio.getText());
 
         PreparedStatement ps;
+        PreparedStatement ps2;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO compra_vidrio_detalle (planchas_usadas) VALUES (?) where ";
+            String sql ="INSERT INTO compra_vidrio_detalle (planchas_usadas) VALUES (?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setInt(2, cantPlanchasUsadas);
-            ps.setInt(3, getIDFromClase(tipoVidrio, "tipo_vidrio", "tipo_vidrio"));
-
+            ps.setInt(1, cantPlanchasUsadas);
             ps.executeUpdate();
             
-            //Buscamos el id de obra y el del vidrio
-            String sql2 = "SELECT id FROM vidrio ORDER by id DESC LIMIT 1";
+            String sql2 = "INSERT INTO compra_vidrio (total_real) VALUES (?)";
+            ps2 = ConexionDB.getConnection().prepareStatement(sql2);
             
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
+            ps2.setDouble(1, totalReal);
+            ps2.executeUpdate();
             
-            ResultSet resultSet = ps.executeQuery();
-            int idVidrio = 0;
-            if(resultSet.next()){
-                idVidrio = resultSet.getInt(1);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-            }
-            
-            
-            //Insertamos los dos id en la tabla creada para esta asociacion
-            String sql3 = "INSERT INTO obra_lista_vidrio (obra_id, lista_vidrio_id) VALUES ('"+idObra+"', '"+idVidrio+"')";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado
-
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
 
