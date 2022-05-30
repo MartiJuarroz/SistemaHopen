@@ -23,6 +23,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
      */
     public CargarDatosFactura() {
         initComponents();
+        pasarIdObra();
     }
 
     /**
@@ -599,6 +600,14 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
+    public String pasarIdObra(){
+        EditarObra ventanaEditarObra = new EditarObra();
+        String id = ventanaEditarObra.idObra;
+        System.out.println(id);
+        return id;
+    }
+    
+    
     private int getIDFromClase(String nombreTipo, String material, String tipoNombre){
 
         PreparedStatement ps;
@@ -940,24 +949,31 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
     private void guardarAluminioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAluminioActionPerformed
         // TODO add your handling code here:
+        //Hay q buscar la obra a la que quiere cargar la factura
         CargarObra co = new CargarObra();
-        double kiloPresupuestado = Double.parseDouble(presupuestoKg.getText());
-        Double totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+        double kiloFactura = Double.parseDouble(presupuestoKg.getText());
+        Double totalFacturado = Double.parseDouble(presupuestoAlu.getText());
         String colorAlu = co.getNameFromColorAluminio();
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO aluminio (total_presupuesto, kilo_presupuestado, color_aluminio_id) VALUES (?,?,?)";
+            String sql ="INSERT INTO aluminio (total_real, kilo_factura) VALUES (?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setDouble(1, totalPresupuestado);
-            ps.setDouble(3, kiloPresupuestado);
-            ps.setInt(4, getIDFromClase(colorAlu, "color_aluminio", "color"));
+            ps.setDouble(1, totalFacturado);
+            ps.setDouble(2, kiloFactura);
+            //ps.setInt(3, getIDFromClase(colorAlu, "color_aluminio", "color"));
+            //El color ya lo elegimos asique por ahora no va
 
             ps.executeUpdate();
-
+            
+            
+            /*TODO ESTO NO IRIA EN ESTE CASO PORQUE VAMOS A CARGAR LA FACTURA DE CUALQUIER OBRA
+            Y NO DE LA ULTIMA
+            HAY QUE HACER ALGO PARECIDO PERO ASOCIANDO A LA OBRA ELEGIDA
+            LO MISMO PARA EL VIDRIO, MANO DE OBRA, ACCESORIO, VIAJE
             //Buscamos el id de obra y el de aluminio
             String sql2 = "SELECT id FROM aluminio ORDER by id DESC LIMIT 1";
 
@@ -969,7 +985,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 idAlu = resultSet.getInt(1);
                 System.out.println("El id del aluminio es: "+idAlu);
             }
-
+            
             //Esta query busca el id mas grande que siempre seria el ultimo ingresado
             String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
             ps = ConexionDB.getConnection().prepareStatement(sql4);
@@ -984,9 +1000,8 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             //ya tenemos los id, ahora lo asociamos a la obra
             String sql3 = "UPDATE obra SET aluminio_id = '"+idAlu+"' WHERE id = '"+idObra+"'";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
-
-            ps.executeUpdate();
-            //ya estaria asociado
+            
+            ps.executeUpdate();*/
 
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);

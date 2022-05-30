@@ -27,7 +27,7 @@ public class EditarObra extends javax.swing.JFrame {
     @Autowired
     ObraService obraService;
     //la declaro global para poder sacar el id y usarlo en otra cosa 
-    String dato[] = new String[4];
+    String idObra = "";
     
     /**
      * Creates new form CargarObra
@@ -661,7 +661,7 @@ public class EditarObra extends javax.swing.JFrame {
         
         tablaObras.setModel(model);
         
-        dato = new String[4];
+        String dato[] = new String[4];
         
         PreparedStatement ps;
         
@@ -679,8 +679,7 @@ public class EditarObra extends javax.swing.JFrame {
             dato[3] = resultSet.getString(4);
             model.addRow(dato);
         }
-        //en el dato[0] esta el id, de alguna forma hay q llevarlo para cargarFactura
-        // asi guardamos las facturas con el id de la obra a la que perteneces
+        //en el dato[0] estan todos los ids
         
         
         ConexionDB.endConnection(con);
@@ -696,21 +695,24 @@ public class EditarObra extends javax.swing.JFrame {
     }
     
     private void buscarDatosObra(String input){
+        ColorCeldas c = new ColorCeldas();
+        
         DefaultTableModel model = new DefaultTableModel(); 
         
-        model.addColumn("Titular");
+        model.addColumn("Id");
+        model.addColumn("Cliente");
         model.addColumn("Total presupuesto");
         model.addColumn("Fecha presupuesto");
         
         tablaObras.setModel(model);
         
-        String[] dato = new String[3];
+        String[] dato = new String[4];
         
         PreparedStatement ps;
         
         try{
         Connection con = ConexionDB.getConnection();
-        String sql = "SELECT o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o WHERE titular LIKE ?";
+        String sql = "SELECT o.id, o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o WHERE titular LIKE ?";
         ps = ConexionDB.getConnection().prepareStatement(sql);
         ps.setString(1, input+"%");
         
@@ -720,6 +722,7 @@ public class EditarObra extends javax.swing.JFrame {
             dato[0] = resultSet.getString(1);
             dato[1] = resultSet.getString(2);
             dato[2] = resultSet.getString(3);
+            dato[3] = resultSet.getString(3);
             model.addRow(dato);
         }
         
@@ -727,8 +730,16 @@ public class EditarObra extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
-                 
+        
+        for (int i = 0; i < tablaObras.getColumnCount(); i++) {
+             
+             tablaObras.getColumnModel().getColumn(i).setCellRenderer(c);
+             
+         }
+        
+    } 
+    
+    
     private void mostrarDatos(){
       
         if (tablaObras.getSelectedRow() != -1) {
@@ -755,12 +766,13 @@ public class EditarObra extends javax.swing.JFrame {
             Date fecha = resultSet.getDate("fecha_presupuesto");
             double ganancia = resultSet.getDouble("ganancia_pretendida");
             double presupuesto = resultSet.getDouble("total_presupuesto"); 
-            int id = resultSet.getInt("estado_obra_id");
+            int idEstado = resultSet.getInt("estado_obra_id");
+            idObra = resultSet.getString("id");
             
              try{
                 String sql2 = "SELECT e.nombre_estado_obra FROM estado_obra e WHERE e.id=?";
                 ps2 = ConexionDB.getConnection().prepareStatement(sql2);
-                ps2.setInt(1, id);
+                ps2.setInt(1, idEstado);
         
                 ResultSet resultSet2 = ps2.executeQuery();
                 
