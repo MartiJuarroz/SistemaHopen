@@ -18,12 +18,12 @@ import javax.swing.JOptionPane;
  */
 public class CargarDatosFactura extends javax.swing.JFrame {
     
-    String idO = "";
+    int idO = 0;
     
     public CargarDatosFactura() {
         initComponents();
     }
-    public CargarDatosFactura(String idObra) {
+    public CargarDatosFactura(int idObra) {
         initComponents();
         this.idO = idObra;
     }
@@ -722,7 +722,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             ps = ConexionDB.getConnection().prepareStatement(sql);
             
             ps.setDouble(1, totalReal);
-            ps.setString(2, idO);
+            ps.setInt(2, idO);
 
             ps.executeUpdate();
 
@@ -757,7 +757,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO mano_obra (total_rea, horasmo) VALUES (?,?)";
+            String sql ="INSERT INTO mano_obra (total_real, horasmo) VALUES (?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalFacturado);

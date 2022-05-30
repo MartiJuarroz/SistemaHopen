@@ -23,12 +23,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class CargarFactura extends javax.swing.JFrame {
 
-    String idO = "";
+    int idO = 0;
     public CargarFactura() {
         initComponents();
     }
     
-    public CargarFactura(String idObra){
+    public CargarFactura(int idObra){
         initComponents();
         this.idO = idObra;
     }
@@ -298,13 +298,13 @@ public class CargarFactura extends javax.swing.JFrame {
 
             FileInputStream archivoFoto;
             
-            archivoFoto = new FileInputStream(tfImagen.getText());
+           // archivoFoto = new FileInputStream(tfImagen.getText());
             
             ps.setString(1, numeroFactura);
             ps.setDouble(2, totalFactura);
             ps.setDate(3, fechaDB);
             //ps.setBinaryStream(4, archivoFoto);
-            ps.setString(4, idO);
+            ps.setInt(4, idO);
             
             ps.executeUpdate();
 

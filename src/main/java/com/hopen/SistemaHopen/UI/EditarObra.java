@@ -27,7 +27,7 @@ public class EditarObra extends javax.swing.JFrame {
     @Autowired
     ObraService obraService;
     //la declaro global para poder sacar el id y usarlo en otra cosa 
-    String idObra = "";
+    int idObra = 0;
     
     /**
      * Creates new form CargarObra
@@ -464,13 +464,6 @@ public class EditarObra extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public String getIdObra(String id){
-        
-        
-        return id;
-    }
-    
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
        mostrarDatos();
     }//GEN-LAST:event_btnVerDatosActionPerformed
@@ -593,7 +586,7 @@ public class EditarObra extends javax.swing.JFrame {
          if (tablaObras.getSelectedRow() != -1) {
             String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 1);
             //guardamos el id de la obra que seleccionamos
-            idObra = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 0);
+            idObra =Integer.parseInt((String) tablaObras.getValueAt(tablaObras.getSelectedRow(), 0));
             tfCliente.setText(titular);
         }else{
             JOptionPane.showMessageDialog(null, "Seleccione un renglón primero", "No seleccionó ninguna fila", JOptionPane.INFORMATION_MESSAGE);
@@ -775,8 +768,7 @@ public class EditarObra extends javax.swing.JFrame {
             double ganancia = resultSet.getDouble("ganancia_pretendida");
             double presupuesto = resultSet.getDouble("total_presupuesto"); 
             int idEstado = resultSet.getInt("estado_obra_id");
-            //guardamos el id para asociar la factura a la obra seleccionada
-            getIdObra(resultSet.getString("id"));
+            idObra = resultSet.getInt("id");
             
              try{
                 String sql2 = "SELECT e.nombre_estado_obra FROM estado_obra e WHERE e.id=?";
