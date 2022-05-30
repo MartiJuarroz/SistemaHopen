@@ -18,12 +18,14 @@ import javax.swing.JOptionPane;
  */
 public class CargarDatosFactura extends javax.swing.JFrame {
     
-    /**
-     * Creates new form CargarPresupuestoPrueba
-     */
+    String idO = "";
+    
     public CargarDatosFactura() {
         initComponents();
-        pasarIdObra();
+    }
+    public CargarDatosFactura(String idObra) {
+        initComponents();
+        this.idO = idObra;
     }
 
     /**
@@ -598,15 +600,14 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
     
+    /*
     public String pasarIdObra(){
-        EditarObra ventanaEditarObra = new EditarObra();
         String id = ventanaEditarObra.idObra;
         System.out.println(id);
         return id;
     }
-    
+    */
     
     private int getIDFromClase(String nombreTipo, String material, String tipoNombre){
 
@@ -717,13 +718,15 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO accesorio (total_real) VALUES (?)";
+            String sql ="INSERT INTO compra_accesorio (total_real, obra_id) VALUES (?, ?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             
             ps.setDouble(1, totalReal);
+            ps.setString(2, idO);
 
             ps.executeUpdate();
 
+            JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
 
         }catch(Exception e){

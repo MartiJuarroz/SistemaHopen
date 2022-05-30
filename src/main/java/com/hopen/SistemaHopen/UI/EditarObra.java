@@ -464,9 +464,15 @@ public class EditarObra extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public String getIdObra(String id){
+        
+        
+        return id;
+    }
+    
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
        mostrarDatos();
-     //   OtraFormaID();
     }//GEN-LAST:event_btnVerDatosActionPerformed
 
      private void llenarComboBox(){
@@ -602,7 +608,7 @@ public class EditarObra extends javax.swing.JFrame {
 
     private void editarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarFacturaActionPerformed
         // TODO add your handling code here:
-        new CargarFactura().setVisible(true);
+        new CargarFactura(idObra).setVisible(true);
         dispose();
     }//GEN-LAST:event_editarFacturaActionPerformed
 
@@ -770,7 +776,7 @@ public class EditarObra extends javax.swing.JFrame {
             double presupuesto = resultSet.getDouble("total_presupuesto"); 
             int idEstado = resultSet.getInt("estado_obra_id");
             //guardamos el id para asociar la factura a la obra seleccionada
-            idObra = resultSet.getString("id");
+            getIdObra(resultSet.getString("id"));
             
              try{
                 String sql2 = "SELECT e.nombre_estado_obra FROM estado_obra e WHERE e.id=?";

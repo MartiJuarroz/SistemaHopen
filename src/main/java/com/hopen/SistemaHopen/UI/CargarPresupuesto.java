@@ -845,7 +845,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO accesorio (total_presupuesto, fecha_compra) VALUES (?,?)";
+            String sql ="INSERT INTO compra_accesorio (total_presupuesto, fecha_compra) VALUES (?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalPresupuestado);

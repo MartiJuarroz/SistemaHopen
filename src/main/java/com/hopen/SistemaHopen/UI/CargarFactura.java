@@ -23,11 +23,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class CargarFactura extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CargarFactura
-     */
+    String idO = "";
     public CargarFactura() {
         initComponents();
+    }
+    
+    public CargarFactura(String idObra){
+        initComponents();
+        this.idO = idObra;
     }
 
     /**
@@ -286,12 +289,11 @@ public class CargarFactura extends javax.swing.JFrame {
         factura.setFechaFactura(fechaDB);
         factura.setTotalFactura(totalFactura);
         
-//takatka
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, imagen_factura) VALUES (?,?,?,?)";
+            String sql ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, obra_id) VALUES (?,?,?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             FileInputStream archivoFoto;
@@ -301,7 +303,8 @@ public class CargarFactura extends javax.swing.JFrame {
             ps.setString(1, numeroFactura);
             ps.setDouble(2, totalFactura);
             ps.setDate(3, fechaDB);
-            ps.setBinaryStream(4, archivoFoto);
+            //ps.setBinaryStream(4, archivoFoto);
+            ps.setString(4, idO);
             
             ps.executeUpdate();
 
@@ -311,7 +314,7 @@ public class CargarFactura extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        new CargarDatosFactura().setVisible(true);
+        new CargarDatosFactura(idO).setVisible(true);
         dispose();
     }//GEN-LAST:event_SigBtnActionPerformed
 
