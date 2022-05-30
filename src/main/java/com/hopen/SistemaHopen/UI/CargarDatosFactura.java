@@ -711,47 +711,19 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
     private void guardarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAccActionPerformed
         // TODO add your handling code here:
-        Double totalPresupuestado = Double.parseDouble(presupuestoAcc.getText());
+        Double totalReal = Double.parseDouble(presupuestoAcc.getText());
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO accesorio (total_presupuesto) VALUES (?)";
+            String sql ="INSERT INTO accesorio (total_real) VALUES (?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
+            
+            ps.setDouble(1, totalReal);
 
             ps.executeUpdate();
 
-            //ACCESORIO ES COMO VIDRIO CREO
-            String sql2 = "SELECT id FROM accesorio ORDER by id DESC LIMIT 1";
-            
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-            ResultSet resultSet = ps.executeQuery();
-            int idAcc = 0;
-            if(resultSet.next()){
-                idAcc = resultSet.getInt(1);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-            }
-            
-            
-            //Insertamos los ids en la tabla de asociacion
-            String sql3 = "INSERT INTO obra_lista_accesorios (obra_id, lista_accesorios_id) VALUES ('"+idObra+"', '"+idAcc+"')";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado
-            
-            JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
 
         }catch(Exception e){
@@ -776,48 +748,20 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private void guardarManoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarManoObraActionPerformed
         // TODO add your handling code here:
         int cantHoras = Integer.parseInt(cantidadHoras.getText());
-        Double totalPresupuestado = Double.parseDouble(presupuestoManoObra.getText());
+        Double totalFacturado = Double.parseDouble(presupuestoManoObra.getText());
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO mano_obra (total_presupuesto, horasmo) VALUES (?,?)";
+            String sql ="INSERT INTO mano_obra (total_rea, horasmo) VALUES (?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setDouble(1, totalPresupuestado);
+            ps.setDouble(1, totalFacturado);
             ps.setInt(2, cantHoras);
 
             ps.executeUpdate();
             
-            String sql2 = "SELECT id FROM mano_obra ORDER by id DESC LIMIT 1";
-            
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-            ResultSet resultSet = ps.executeQuery();
-            int idMO = 0;
-            if(resultSet.next()){
-                idMO = resultSet.getInt(1);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-            }
-            
-            
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET mano_obra_id = '"+idMO+"' WHERE id = '"+idObra+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado
-
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
 
@@ -844,48 +788,20 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private void guardarViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarViajesActionPerformed
         // TODO add your handling code here:
         int cantViajes = Integer.parseInt(cantidadViajes.getText());
-        Double totalPresupuestado = Double.parseDouble(presupuestoViajes.getText());
+        Double totalFacturado = Double.parseDouble(presupuestoViajes.getText());
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO viaje (total_presupuesto, cant_viajes_presupuesto) VALUES (?,?)";
+            String sql ="INSERT INTO viaje (total_real, cant_viajes_presupuesto) VALUES (?,?)";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setDouble(1, totalPresupuestado);
+            ps.setDouble(1, totalFacturado);
             ps.setInt(2, cantViajes);
 
             ps.executeUpdate();
             
-            String sql2 = "SELECT id FROM viaje ORDER by id DESC LIMIT 1";
-            
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-            ResultSet resultSet = ps.executeQuery();
-            int idViaje = 0;
-            if(resultSet.next()){
-                idViaje = resultSet.getInt(1);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-            }
-            
-            
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET viaje_id = '"+idViaje+"' WHERE id = '"+idObra+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado
-
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
 
@@ -948,35 +864,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             /*TODO ESTO NO IRIA EN ESTE CASO PORQUE VAMOS A CARGAR LA FACTURA DE CUALQUIER OBRA
             Y NO DE LA ULTIMA
             HAY QUE HACER ALGO PARECIDO PERO ASOCIANDO A LA OBRA ELEGIDA
-            LO MISMO PARA EL VIDRIO, MANO DE OBRA, ACCESORIO, VIAJE
-            //Buscamos el id de obra y el de aluminio
-            String sql2 = "SELECT id FROM aluminio ORDER by id DESC LIMIT 1";
-
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-
-            ResultSet resultSet = ps.executeQuery();
-            int idAlu = 0;
-            if(resultSet.next()){
-                idAlu = resultSet.getInt(1);
-                System.out.println("El id del aluminio es: "+idAlu);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-                System.out.println("El id de la obra es: "+idObra);
-            }
-
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET aluminio_id = '"+idAlu+"' WHERE id = '"+idObra+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();*/
+            LO MISMO PARA EL VIDRIO, MANO DE OBRA, ACCESORIO, VIAJE*/
 
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
