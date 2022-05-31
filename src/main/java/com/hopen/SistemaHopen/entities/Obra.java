@@ -50,12 +50,12 @@ public class Obra extends Base {
       private ManoObra manoObra;
 
       @OneToOne
-      @JoinColumn(name = "vidrio_id")
+      @JoinColumn(name = "compraVidrio_id")
       private CompraVidrio compraVidrio;
 
-      @OneToMany
-      @JoinColumn(name = "obra_id")
-      private List<CompraAccesorio> accesorios = new ArrayList<CompraAccesorio>();
+      @OneToOne
+      @JoinColumn(name = "compraAccesorio_id")
+      private CompraAccesorio accesorios;
 
       @OneToOne
       @JoinColumn(name = "aluminio_id")
@@ -65,7 +65,6 @@ public class Obra extends Base {
       @JoinColumn(name = "estadoObra_id")
       private EstadoObra estadoObra;
      
-      
       @OneToMany
       @JoinColumn(name = "obra_id")
       private List<Factura> facturas = new ArrayList<Factura>();

@@ -854,7 +854,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             ps.executeUpdate();
 
             //ACCESORIO ES COMO VIDRIO CREO
-            String sql2 = "SELECT id FROM accesorio ORDER by id DESC LIMIT 1";
+            String sql2 = "SELECT id FROM compra_accesorio ORDER by id DESC LIMIT 1";
             
             ps = ConexionDB.getConnection().prepareStatement(sql2);
             
@@ -875,12 +875,12 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             }
             
             
-            //Insertamos los ids en la tabla de asociacion
-            String sql3 = "INSERT INTO obra_lista_accesorios (obra_id, lista_accesorios_id) VALUES ('"+idObra+"', '"+idAcc+"')";
+           //Insertamos los ids en la tabla de asociacion
+            String sql3 = "INSERT INTO obra (compra_accesorio_id) VALUES ('"+idAcc+"')";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
             
             ps.executeUpdate();
-            //ya estaria asociado
+            //ya estaria asociado*/
             
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
@@ -1054,7 +1054,6 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         String tipoVidrio = comboVidrio.getSelectedItem().toString();
         
         PreparedStatement ps;
-        PreparedStatement ps2;
         
          try{
             Connection con = ConexionDB.getConnection();
@@ -1066,15 +1065,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             ResultSet resultSet = ps.executeQuery();
             
             if (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String sql2 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipo_vidrio_id) VALUES (?,?)";
-                ps2 = ConexionDB.getConnection().prepareStatement(sql);
+                int id = resultSet.getInt(1);
+                String sql2 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipovidrio_id) VALUES (?,?)";
 
-                ps2.setInt(1, cantPlanchas);
-                ps2.setInt(2, id);
+                ps.setInt(1, cantPlanchas);
+                ps.setInt(2, id);
        //     ps.setInt(3, getIDFromClase(tipoVidrio, "tipo_vidrio", "tipo_vidrio"));
 
-                ps2.executeUpdate();
+                ps.executeUpdate();
             }else{
                 JOptionPane.showMessageDialog(null, "Seleccione un tpo de vidrio", "Seleccione un tpo de vidrio", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1142,12 +1140,12 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 idObra = resultSet.getInt(1);
             }
 
-            //Insertamos los dos id en la tabla creada para esta asociacion
-            String sql3 = "INSERT INTO obra (total_presupuesto) WHERE obra_id = (?)(VALUES ('"+idVidrio+"', '"+idObra+"')";
+      //   Insertamos los dos id en la tabla creada para esta asociacion
+            String sql3 = "INSERT INTO obra (compra_accesorio_id) VALUES ('"+idVidrio+"')";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
 
             ps.executeUpdate();
-            //ya estaria asociado
+            //ya estaria asociado*/
 
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
