@@ -1072,12 +1072,10 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 ps = ConexionDB.getConnection().prepareStatement(sql2);
             
                 ps.executeQuery();
-                int idCompra = 0;
-                if(resultSet.next()){
-                   idCompra = resultSet.getInt(1);
-             }
                 
-                String sql3 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipovidrio_id,compra_vidrio_id) VALUES (?,?,?)";
+                int idCompra = resultSet.getInt(1);
+                
+                String sql3 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipovidrio_id, compra_vidrio_id) VALUES (?,?,?)";
                 ps = ConexionDB.getConnection().prepareStatement(sql3);
                 ps.setInt(1, cantPlanchas);
                 ps.setInt(2, idTipoVi);
