@@ -1042,8 +1042,27 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SalirBtn4ActionPerformed
 
-    public int getNumeroDetalle(){
+    public int getIDCompraVidrio(){
         
+        PreparedStatement ps;
+        
+        try{
+            Connection con = ConexionDB.getConnection();
+            
+            String sql2 = "SELECT id FROM compra_vidrio ORDER by id DESC LIMIT 1";
+            
+            ps = ConexionDB.getConnection().prepareStatement(sql2);
+            
+            ResultSet resultSet = ps.executeQuery();
+            
+            if (resultSet.next()) {
+            int idCompra = resultSet.getInt(1);
+            return idCompra;
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }    
         
         return 0;
     }
@@ -1053,33 +1072,28 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         // TODO add your handling code here:
         int cantPlanchas = Integer.parseInt(planchasVidrio.getText());
         String tipoVidrio = comboVidrio.getSelectedItem().toString();
-        
+                
         PreparedStatement ps;
+        
+        
         
          try{
             Connection con = ConexionDB.getConnection();
+            
             String sql ="SELECT id FROM tipo_vidrio WHERE nombre_tipo_vidrio = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             
             ps.setString(1, tipoVidrio);
             
             ResultSet resultSet = ps.executeQuery();
-             if (resultSet.next()) {
+            if (resultSet.next()) {
              int idTipoVi = resultSet.getInt("id");
-            
-                String sql2 = "SELECT id FROM compra_vidrio ORDER by id DESC LIMIT 1";
-            
-                ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-                ps.executeQuery();
-                
-                int idCompra = resultSet.getInt(1);
                 
                 String sql3 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipovidrio_id, compra_vidrio_id) VALUES (?,?,?)";
                 ps = ConexionDB.getConnection().prepareStatement(sql3);
                 ps.setInt(1, cantPlanchas);
                 ps.setInt(2, idTipoVi);
-                ps.setInt(3, idCompra);
+                ps.setInt(3, getIDCompraVidrio());
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Datos guardados, ingrese la cantidad de otro tipo de vidrio si hay");
                 planchasVidrio.setText("");
