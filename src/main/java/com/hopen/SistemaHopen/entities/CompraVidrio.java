@@ -19,5 +19,6 @@ import java.util.List;
 public class CompraVidrio extends DiferenciaRealPresupuesto {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "compraVidrio_id")
     private List<CompraVidrioDetalle> listaDetalleCompra = new ArrayList<CompraVidrioDetalle>();
 }

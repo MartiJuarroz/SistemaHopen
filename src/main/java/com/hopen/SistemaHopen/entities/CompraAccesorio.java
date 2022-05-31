@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -27,5 +28,6 @@ public class CompraAccesorio extends DiferenciaRealPresupuesto{
     private Date fechaCompra;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "compraAccesorio_id")
     private List<TipoAccesorio> listaTipoAccesorio = new ArrayList<TipoAccesorio>();
 }

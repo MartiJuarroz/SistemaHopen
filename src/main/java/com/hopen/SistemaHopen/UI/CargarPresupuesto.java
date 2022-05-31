@@ -876,7 +876,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             
             
            //Insertamos los ids en la tabla de asociacion
-            String sql3 = "INSERT INTO obra (compra_accesorio_id) VALUES ('"+idAcc+"')";
+            //String sql3 = "UPDATE obra SET compra_vidrio_id = '"+idVidrio+"' WHERE id = '"+idObra+"'";
+            String sql3 = "UPDATE obra SET compra_accesorio_id = '"+idAcc+"' WHERE id = '"+idObra+"'";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
             
             ps.executeUpdate();
@@ -894,7 +895,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn2ActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
                 new Menu().setVisible(true);
@@ -962,7 +963,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn3ActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
                 new Menu().setVisible(true);
@@ -1030,7 +1031,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
                 new Menu().setVisible(true);
@@ -1065,16 +1066,25 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             ResultSet resultSet = ps.executeQuery();
             
             if (resultSet.next()) {
-                int id = resultSet.getInt(1);
+                int id = resultSet.getInt("id");
                 String sql2 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipovidrio_id) VALUES (?,?)";
-
+                ps = ConexionDB.getConnection().prepareStatement(sql2);
                 ps.setInt(1, cantPlanchas);
                 ps.setInt(2, id);
-       //     ps.setInt(3, getIDFromClase(tipoVidrio, "tipo_vidrio", "tipo_vidrio"));
-
                 ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Datos guardados, ingrese la cantidad de otro tipo de vidrio si hay");
+                planchasVidrio.setText("");
+                
+        /*        String sql3 ="INSERT INTO compra_vidrio_lista_detalle_compra (compra_vidrio_id, lista_detalle_compra_id) VALUES (?,?)";
+                ps = ConexionDB.getConnection().prepareStatement(sql2);
+                ps.setInt(1, );
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Datos guardados, ingrese la cantidad de otro tipo de vidrio si hay");
+                planchasVidrio.setText("");*/
+                
             }else{
-                JOptionPane.showMessageDialog(null, "Seleccione un tpo de vidrio", "Seleccione un tpo de vidrio", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Seleccione un tipo de vidrio", "Seleccione un tipo de vidrio", JOptionPane.INFORMATION_MESSAGE);
             }
             
           }catch(Exception e){
@@ -1089,7 +1099,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
     private void SalirBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn1ActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
                 new Menu().setVisible(true);
@@ -1141,7 +1151,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             }
 
       //   Insertamos los dos id en la tabla creada para esta asociacion
-            String sql3 = "INSERT INTO obra (compra_accesorio_id) VALUES ('"+idVidrio+"')";
+   //   String sql3 = "UPDATE obra SET viaje_id = '"+idViaje+"' WHERE id = '"+idObra+"'";
+            String sql3 = "UPDATE obra SET compra_vidrio_id = '"+idVidrio+"' WHERE id = '"+idObra+"'";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
 
             ps.executeUpdate();
