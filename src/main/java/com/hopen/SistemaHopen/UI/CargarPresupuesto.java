@@ -1064,18 +1064,29 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             ps.setString(1, tipoVidrio);
             
             ResultSet resultSet = ps.executeQuery();
+             if (resultSet.next()) {
+             int idTipoVi = resultSet.getInt("id");
             
-            if (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String sql2 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipovidrio_id) VALUES (?,?)";
+                String sql2 = "SELECT id FROM compra_vidrio ORDER by id DESC LIMIT 1";
+            
                 ps = ConexionDB.getConnection().prepareStatement(sql2);
+            
+                ps.executeQuery();
+                int idCompra = 0;
+                if(resultSet.next()){
+                   idCompra = resultSet.getInt(1);
+             }
+                
+                String sql3 ="INSERT INTO compra_vidrio_detalle (cant_planchas, tipovidrio_id,compra_vidrio_id) VALUES (?,?,?)";
+                ps = ConexionDB.getConnection().prepareStatement(sql3);
                 ps.setInt(1, cantPlanchas);
-                ps.setInt(2, id);
+                ps.setInt(2, idTipoVi);
+                ps.setInt(3, idCompra);
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Datos guardados, ingrese la cantidad de otro tipo de vidrio si hay");
                 planchasVidrio.setText("");
                 
-        /*        String sql3 ="INSERT INTO compra_vidrio_lista_detalle_compra (compra_vidrio_id, lista_detalle_compra_id) VALUES (?,?)";
+        /*      String sql3 ="INSERT INTO compra_vidrio_lista_detalle_compra (compra_vidrio_id, lista_detalle_compra_id) VALUES (?,?)";
                 ps = ConexionDB.getConnection().prepareStatement(sql2);
                 ps.setInt(1, );
                 ps.setInt(2, id);
