@@ -76,6 +76,7 @@ public class CargarObra extends javax.swing.JFrame {
         botonPresupuesto = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         comboAlu = new javax.swing.JComboBox<>();
+        btnEditarObra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(753, 703));
@@ -237,6 +238,17 @@ public class CargarObra extends javax.swing.JFrame {
 
         comboAlu.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
 
+        btnEditarObra.setBackground(new java.awt.Color(0, 204, 255));
+        btnEditarObra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        btnEditarObra.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditarObra.setText("Editar Obra");
+        btnEditarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarObraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -302,9 +314,11 @@ public class CargarObra extends javax.swing.JFrame {
                                 .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(comboAlu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(2, 2, 2))))
-                .addGap(7, 113, Short.MAX_VALUE))
+                .addGap(7, 124, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEditarObra, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -362,15 +376,17 @@ public class CargarObra extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CFLbl1)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboAlu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(104, 104, 104)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditarObra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -378,7 +394,7 @@ public class CargarObra extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,6 +542,17 @@ public class CargarObra extends javax.swing.JFrame {
                 
                 //bandera para botones presupuesto y factura
                 bandera = true;
+                
+                //una vez ingresados los datos no se pueden modificar
+                titularTxt.setEditable(false);
+                MTTxt.setEditable(false);
+                ComisionTxt.setEditable(false);
+                GPTxt.setEditable(false);
+                CFTxt.setEditable(false);
+                fechaCH.setVisible(false);
+                comboAlu.setVisible(false);
+                cbEstado.setVisible(false);
+                
 
             }catch(Exception e){
                 e.printStackTrace();
@@ -648,6 +675,12 @@ public class CargarObra extends javax.swing.JFrame {
         // TODO add your handling code here:
         bandera=true;
     }//GEN-LAST:event_SigBtnMouseClicked
+
+    private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
+        // TODO add your handling code here:
+        new EditarObra().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnEditarObraActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -699,6 +732,7 @@ public class CargarObra extends javax.swing.JFrame {
     private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
     private javax.swing.JButton botonPresupuesto;
+    private javax.swing.JButton btnEditarObra;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> comboAlu;
     private com.toedter.calendar.JDateChooser fechaCH;

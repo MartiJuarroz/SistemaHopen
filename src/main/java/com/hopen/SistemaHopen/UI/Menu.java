@@ -169,8 +169,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
         // TODO add your handling code here:
-        EditarObra ventanaEditarObra = new EditarObra();
-        ventanaEditarObra.setVisible(true);
+        new EditarObra().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnEditarObraActionPerformed
 
