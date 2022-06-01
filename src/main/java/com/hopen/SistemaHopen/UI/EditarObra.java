@@ -516,6 +516,32 @@ public class EditarObra extends javax.swing.JFrame {
         return 0;
     }
     
+    public int getIDFromObraSeleccionada(){
+     String nombre = tfCliente.getText();
+    //    obra.setEstadoObra(estadoObra);*
+
+        PreparedStatement ps;
+        
+          try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="SELECT id FROM obra e WHERE titular = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            
+            ps.setString(1, nombre);
+            
+            ResultSet resultSet = ps.executeQuery();
+            
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                return id;
+            }
+            
+          }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
             double total_presupuesto = Double.parseDouble(MTTxt.getText());
@@ -606,6 +632,7 @@ public class EditarObra extends javax.swing.JFrame {
 
     private void editarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarFacturaActionPerformed
         // TODO add your handling code here:
+        idObra = getIDFromObraSeleccionada();
         new CargarFactura(idObra).setVisible(true);
         dispose();
     }//GEN-LAST:event_editarFacturaActionPerformed

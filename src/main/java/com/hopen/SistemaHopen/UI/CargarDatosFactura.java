@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class CargarDatosFactura extends javax.swing.JFrame {
     
-    int idO = 0;
+    int idO;
     
     public CargarDatosFactura() {
         initComponents();
@@ -26,6 +26,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     public CargarDatosFactura(int idObra) {
         initComponents();
         this.idO = idObra;
+        mostrarTipoVidrio();
     }
 
     /**
@@ -636,28 +637,45 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private void mostrarTipoVidrio(){
          
         PreparedStatement ps;
-        
-        //nombreTipoVidrio es el valor 
-        int id = getIDFromClase("nombreTipoVidrio", "tipo_vidrio", "tipo_vidrio");
-        
-         try{
+        try{
             Connection con = ConexionDB.getConnection();
+            String sql2 = "SELECT compra_vidrio_id FROM obra o WHERE o.id = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql2);
+            ps.setInt(1, idO);
+            ResultSet resultSet = ps.executeQuery();
             
+            int idCompra = resultSet.getInt("compra_vidrio_id");
+           
+
+        //nombreTipoVidrio es el valor 
+      //      int id = getIDFromClase(nombre, "tipo_vidrio", "tipo_vidrio");
+                   
             /*String sql = "SELECT tipo_vidrio_id FROM vidrio v WHERE v.id = v.tipo_vidrio_id=?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             ps.setInt(1, id);
             
             ResultSet resultSet2 = ps.executeQuery();*/
             
-            String sql2 = "SELECT nombre_tipo_vidrio FROM tipo_vidrio t,obra_lista_vidrio o, vidrio v WHERE t.id = v.tipo_vidrio_id=?";
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            ps.setInt(1, id);
+            String sql3 = "SELECT tipovidrio_id FROM compra_vidrio_detalle cvd WHERE cvd.compra_vidrio_id = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql3);
+            ps.setInt(1, idCompra);
         
             ResultSet resultSet2 = ps.executeQuery();
-                
-            if(resultSet2.next()){
-                   String nombreE = resultSet2.getString("nombre_estado_obra");
-                   comboVidrio.setSelectedItem(nombreE);
+             
+            while(resultSet2.next()){
+                        String nombre = resultSet2.getString(1);
+                        comboVidrio.addItem(nombre);
+                /*    int id = resultSet2.getInt("id");
+                    String sql4 = "SELECT nombre_tipo_vidrio FROM tipo_vidrio tv WHERE tv.id=?";
+                    ps = ConexionDB.getConnection().prepareStatement(sql4);
+                    ps.setInt(1, id);
+                    
+                    ResultSet resultSet3 = ps.executeQuery();
+                    
+                    while(resultSet3.next()){
+                        String nombre = resultSet3.getString("nombre_tipo_vidrio");
+                        comboVidrio.addItem(nombre);
+                    }*/
             }
          }catch(Exception e){
                 e.printStackTrace();
@@ -699,7 +717,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
     private void SalirBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn1ActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
                 new Menu().setVisible(true);
@@ -737,7 +755,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
     private void SalirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn2ActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
                 new Menu().setVisible(true);

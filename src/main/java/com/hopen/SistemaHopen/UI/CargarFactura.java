@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -23,7 +24,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class CargarFactura extends javax.swing.JFrame {
 
-    int idO = 0;
+    int idO;
     public CargarFactura() {
         initComponents();
     }
@@ -277,6 +278,18 @@ public class CargarFactura extends javax.swing.JFrame {
 
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here:
+         PreparedStatement ps;
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="SELECT * from factura WHERE obra_id = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+            ps.setInt(1, idO);
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                JOptionPane.showMessageDialog(null, "Ya existe una factura para esta obra", "Factura ya existente", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                new EditarObra().setVisible(true);
+            }else{
         String numeroFactura = numeroFac.getText();
         double totalFactura = Double.parseDouble(monto.getText());
         //Para convertir fecha de java en fecha de sql
@@ -289,12 +302,8 @@ public class CargarFactura extends javax.swing.JFrame {
         factura.setFechaFactura(fechaDB);
         factura.setTotalFactura(totalFactura);
         
-        PreparedStatement ps;
-
-        try{
-            Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, obra_id) VALUES (?,?,?,?)";
-            ps = ConexionDB.getConnection().prepareStatement(sql);
+            String sql2 ="INSERT INTO factura (numero_factura, total_factura, fecha_factura, obra_id) VALUES (?,?,?,?)";
+            ps = ConexionDB.getConnection().prepareStatement(sql2);
 
             FileInputStream archivoFoto;
             
@@ -310,12 +319,14 @@ public class CargarFactura extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
-
+            new CargarDatosFactura(idO).setVisible(true);
+            dispose();
+        }
         }catch(Exception e){
             e.printStackTrace();
         }
-        new CargarDatosFactura(idO).setVisible(true);
-        dispose();
+
+        
     }//GEN-LAST:event_SigBtnActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
