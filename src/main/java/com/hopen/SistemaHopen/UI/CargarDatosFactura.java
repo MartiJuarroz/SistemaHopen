@@ -688,13 +688,13 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         
           try{
             Connection con = ConexionDB.getConnection();
-            String sql ="SELECT '"+componente+"'_id FROM obra o WHERE o.id = +'"+idO+"'";
+            String sql ="SELECT "+componente+"_id FROM obra o WHERE o.id = +'"+idO+"'";
             ps = ConexionDB.getConnection().prepareStatement(sql);
                         
             ResultSet resultSet = ps.executeQuery();
             
             if (resultSet.next()) {
-                int id = resultSet.getInt(componente+"_id");
+                int id = resultSet.getInt(1);
                 return id;
             }
             ConexionDB.endConnection(con);
