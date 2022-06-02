@@ -616,7 +616,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         SalirBtn4.setBackground(new java.awt.Color(255, 153, 51));
         SalirBtn4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn4.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn4.setText("Salir");
+        SalirBtn4.setText("Siguiente");
         SalirBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -1,0 +1,26 @@
+Tengo que buscar la sintaxis para anidar una consulta dentro de otra.
+Validaciones para que no queden campos vacios
+
+Creo que habria que cambiar la relacion de obra y factura para que una obra pueda tener varias facturas
+
+Cambie en los botones de volver de la carga de datos de factura para que vuelva a la pantalla de editar y no valla hasta el menu
+Arregle dos boludeces para que funcione lo que habias hecho
+
+La fecha de compra de los accesorios deberiamos ingresarla cuando cargamos la factura y no el presupuesto
+
+Y falta agregar la pantalla esa que decias de que cuando termine de cargar el presupuesto le deje ir directamente a cargar la factura si quisiera
+
+Boludeces: el recordarme en el login no tiene sentido porque supuestamente va en una compu nomas el sistema y si entra otro no se quisieramos que
+          entre con ese usuario
+
+Cuando guardamos los datos de la factura se crea otra fila ahhh yase jjajajaj
+tenemos que poner update en las consultas en vez de insert takataaa
+
+"INSERT INTO compra_vidrio_detalle (planchas_usadas) VALUES (?) where compra_vidrio_id IN "
+                    + "(SELECT compra_vidrio_id FROM obra o WHERE o.id = ?)"
+
+No pude terminar pero lo tengo casi liquidado
+
+
+
+

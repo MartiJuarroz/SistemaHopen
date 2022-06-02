@@ -49,6 +49,12 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         guardarAluminio = new javax.swing.JButton();
         SalirBtn = new javax.swing.JButton();
+        tabVidro1 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        presupuestoVidrio1 = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        guardarVidrio1 = new javax.swing.JButton();
+        SalirBtn5 = new javax.swing.JButton();
         tabVidro = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         planchasVidrio = new javax.swing.JTextField();
@@ -145,7 +151,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             .addGroup(tabAluminioLayout.createSequentialGroup()
                 .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(tabAluminioLayout.createSequentialGroup()
-                        .addContainerGap(208, Short.MAX_VALUE)
+                        .addContainerGap(224, Short.MAX_VALUE)
                         .addGroup(tabAluminioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -190,6 +196,80 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         );
 
         jTabbedPane6.addTab("Aluminio", tabAluminio);
+
+        tabVidro1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Total Facturado");
+
+        presupuestoVidrio1.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        presupuestoVidrio1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presupuestoVidrio1.setBorder(null);
+        presupuestoVidrio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        presupuestoVidrio1.setSelectionColor(new java.awt.Color(51, 204, 255));
+
+        guardarVidrio1.setBackground(new java.awt.Color(0, 204, 255));
+        guardarVidrio1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        guardarVidrio1.setForeground(new java.awt.Color(255, 255, 255));
+        guardarVidrio1.setText("Guardar");
+        guardarVidrio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        guardarVidrio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarVidrio1ActionPerformed(evt);
+            }
+        });
+
+        SalirBtn5.setBackground(new java.awt.Color(255, 153, 51));
+        SalirBtn5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        SalirBtn5.setForeground(new java.awt.Color(255, 255, 255));
+        SalirBtn5.setText("Salir");
+        SalirBtn5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalirBtn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirBtn5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tabVidro1Layout = new javax.swing.GroupLayout(tabVidro1);
+        tabVidro1.setLayout(tabVidro1Layout);
+        tabVidro1Layout.setHorizontalGroup(
+            tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(guardarVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SalirBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createSequentialGroup()
+                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(tabVidro1Layout.createSequentialGroup()
+                        .addGap(19, 212, Short.MAX_VALUE)
+                        .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabVidro1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel10)
+                        .addGap(36, 36, 36)
+                        .addComponent(presupuestoVidrio1)))
+                .addGap(18, 18, 18))
+        );
+        tabVidro1Layout.setVerticalGroup(
+            tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabVidro1Layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(presupuestoVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardarVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SalirBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jTabbedPane6.addTab("Vidrio", tabVidro1);
 
         tabVidro.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -372,7 +452,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                     .addComponent(presupuestoAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addGroup(tabAccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -435,7 +515,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                     .addGroup(tabManoObraLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(50, 50, 50)
-                        .addComponent(cantidadHoras, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
+                        .addComponent(cantidadHoras, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE))
                     .addGroup(tabManoObraLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(50, 50, 50)
@@ -491,7 +571,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         SalirBtn4.setBackground(new java.awt.Color(255, 153, 51));
         SalirBtn4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         SalirBtn4.setForeground(new java.awt.Color(255, 255, 255));
-        SalirBtn4.setText("Salir");
+        SalirBtn4.setText("Siguiente");
         SalirBtn4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SalirBtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -527,7 +607,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabViajeLayout.createSequentialGroup()
-                        .addGap(0, 337, Short.MAX_VALUE)
+                        .addGap(0, 353, Short.MAX_VALUE)
                         .addComponent(guardarViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SalirBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -537,7 +617,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                         .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabViajeLayout.createSequentialGroup()
                                 .addGap(45, 45, 45)
-                                .addComponent(cantidadViajes, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE))
+                                .addComponent(cantidadViajes, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE))))
@@ -601,14 +681,28 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+        
+    private int getIdDatosFactura(String componente){
     
-    /*
-    public String pasarIdObra(){
-        String id = ventanaEditarObra.idObra;
-        System.out.println(id);
-        return id;
-    }
-    */
+    PreparedStatement ps;
+        
+          try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="SELECT '"+componente+"'_id FROM obra o WHERE o.id = +'"+idO+"'";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+                        
+            ResultSet resultSet = ps.executeQuery();
+            
+            if (resultSet.next()) {
+                int id = resultSet.getInt(componente+"_id");
+                return id;
+            }
+            ConexionDB.endConnection(con);
+          }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+}
     
     private int getIDFromClase(String nombreTipo, String material, String tipoNombre){
 
@@ -642,9 +736,14 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             String sql2 = "SELECT compra_vidrio_id FROM obra o WHERE o.id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql2);
             ps.setInt(1, idO);
+            
             ResultSet resultSet = ps.executeQuery();
             
-            int idCompra = resultSet.getInt("compra_vidrio_id");
+            int idCompra = 0;
+            while(resultSet.next()){
+                idCompra = resultSet.getInt("compra_vidrio_id");
+            }
+            
            
 
         //nombreTipoVidrio es el valor 
@@ -660,10 +759,10 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             ps = ConexionDB.getConnection().prepareStatement(sql3);
             ps.setInt(1, idCompra);
         
-            ResultSet resultSet2 = ps.executeQuery();
+            resultSet = ps.executeQuery();
              
-            while(resultSet2.next()){
-                        String nombre = resultSet2.getString(1);
+            while(resultSet.next()){
+                        String nombre = resultSet.getString(1);
                         comboVidrio.addItem(nombre);
                 /*    int id = resultSet2.getInt("id");
                     String sql4 = "SELECT nombre_tipo_vidrio FROM tipo_vidrio tv WHERE tv.id=?";
@@ -693,7 +792,8 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO compra_vidrio_detalle (planchas_usadas) VALUES (?)";
+            //esto puede ser un tiro al aire
+            String sql ="UPDATE compra_vidrio_detalle SET planchas_usadas = ? where id IN ("+getIdDatosFactura("compra_vidrio")+")";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setInt(1, cantPlanchasUsadas);
@@ -720,7 +820,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
-                new Menu().setVisible(true);
+                new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
                 Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
@@ -758,7 +858,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
-                new Menu().setVisible(true);
+                new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
                 Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
@@ -798,7 +898,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
-                new Menu().setVisible(true);
+                new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
                 Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
@@ -838,7 +938,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
-                new Menu().setVisible(true);
+                new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
                 Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
@@ -851,7 +951,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
-                new Menu().setVisible(true);
+                new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
                 Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
@@ -897,6 +997,44 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         presupuestoAlu.setText("");
     }//GEN-LAST:event_guardarAluminioActionPerformed
 
+    private void guardarVidrio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrio1ActionPerformed
+        // TODO add your handling code here:
+        Double totalFacturado = Double.parseDouble(presupuestoVidrio1.getText());
+
+        PreparedStatement ps;
+
+        try{
+            Connection con = ConexionDB.getConnection();
+            String sql ="UPDATE compra_vidrio SET total_real = ? WHERE id IN ("+getIdDatosFactura("compra_vidrio")+")";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+
+            ps.setDouble(1, totalFacturado);
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Datos guardados");
+            ConexionDB.endConnection(con);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        guardarVidrio1.setVisible(true);
+    }//GEN-LAST:event_guardarVidrio1ActionPerformed
+
+    private void SalirBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn5ActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+            == JOptionPane.YES_OPTION){
+            try {
+                new EditarObra().setVisible(true);
+                dispose();
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_SalirBtn5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -941,6 +1079,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private javax.swing.JButton SalirBtn2;
     private javax.swing.JButton SalirBtn3;
     private javax.swing.JButton SalirBtn4;
+    private javax.swing.JButton SalirBtn5;
     private javax.swing.JTextField cantidadHoras;
     private javax.swing.JTextField cantidadViajes;
     private javax.swing.JComboBox<String> comboVidrio;
@@ -949,7 +1088,9 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private javax.swing.JButton guardarManoObra;
     private javax.swing.JButton guardarViajes;
     private javax.swing.JButton guardarVidrio;
+    private javax.swing.JButton guardarVidrio1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -961,6 +1102,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
@@ -977,10 +1119,12 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private javax.swing.JTextField presupuestoManoObra;
     private javax.swing.JTextField presupuestoViajes;
     private javax.swing.JTextField presupuestoVidrio;
+    private javax.swing.JTextField presupuestoVidrio1;
     private javax.swing.JPanel tabAcc;
     private javax.swing.JPanel tabAluminio;
     private javax.swing.JPanel tabManoObra;
     private javax.swing.JPanel tabViaje;
     private javax.swing.JPanel tabVidro;
+    private javax.swing.JPanel tabVidro1;
     // End of variables declaration//GEN-END:variables
 }
