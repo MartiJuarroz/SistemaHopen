@@ -20,4 +20,7 @@ public class Viaje extends DiferenciaRealPresupuesto{
 
     @Column
     private int cantViajesPresupuesto;
+    
+    @Column
+    private int cantViajesReal;
 }

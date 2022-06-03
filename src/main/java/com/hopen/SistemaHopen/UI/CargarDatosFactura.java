@@ -799,7 +799,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             ps.setInt(1, cantPlanchasUsadas);
             ps.executeUpdate();
             
-            String sql2 = "INSERT INTO compra_vidrio (total_real) VALUES (?)";
+            String sql2 = "UPDATE compra_vidrio SET total_real = ? where id IN ("+getIdDatosFactura("compra_vidrio")+")";
             ps2 = ConexionDB.getConnection().prepareStatement(sql2);
             
             ps2.setDouble(1, totalReal);
@@ -811,8 +811,6 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        presupuestoVidrio.setText("");
-        planchasVidrio.setText("");
     }//GEN-LAST:event_guardarVidrioActionPerformed
 
     private void SalirBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn1ActionPerformed
@@ -836,7 +834,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO compra_accesorio (total_real, obra_id) VALUES (?, ?)";
+            String sql ="UPDATE compra_accesorio SET total_real = ? where id IN ("+getIdDatosFactura("compra_accesorio")+")";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             
             ps.setDouble(1, totalReal);
@@ -875,7 +873,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO mano_obra (total_real, horasmo) VALUES (?,?)";
+            String sql ="UPDATE mano_obra SET total_real = ?, horasmo = ? where id IN ("+getIdDatosFactura("mano_obra")+")";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalFacturado);
@@ -915,7 +913,8 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO viaje (total_real, cant_viajes_presupuesto) VALUES (?,?)";
+            String sql ="UPDATE viaje SET total_real = ?, cant_viajes_real = ? where id IN ("+getIdDatosFactura("viaje")+")";
+            //a chequear con la base datos porque recien agregamos una variable/columna
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalFacturado);
@@ -971,21 +970,13 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO aluminio (total_real, kilo_factura) VALUES (?,?)";
+            String sql ="UPDATE aluminio SET total_real = ?, kilo_factura = ? where id IN ("+getIdDatosFactura("aluminio")+")";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalFacturado);
             ps.setDouble(2, kiloFactura);
-            //ps.setInt(3, getIDFromClase(colorAlu, "color_aluminio", "color"));
-            //El color ya lo elegimos asique por ahora no va
 
             ps.executeUpdate();
-            
-            
-            /*TODO ESTO NO IRIA EN ESTE CASO PORQUE VAMOS A CARGAR LA FACTURA DE CUALQUIER OBRA
-            Y NO DE LA ULTIMA
-            HAY QUE HACER ALGO PARECIDO PERO ASOCIANDO A LA OBRA ELEGIDA
-            LO MISMO PARA EL VIDRIO, MANO DE OBRA, ACCESORIO, VIAJE*/
 
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
@@ -993,8 +984,6 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        presupuestoKg.setText("");
-        presupuestoAlu.setText("");
     }//GEN-LAST:event_guardarAluminioActionPerformed
 
     private void guardarVidrio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrio1ActionPerformed
