@@ -740,7 +740,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             ResultSet resultSet = ps.executeQuery();
             
             int idCompra = 0;
-            while(resultSet.next()){
+            if(resultSet.next()){
                 idCompra = resultSet.getInt("compra_vidrio_id");
             }
             
@@ -755,27 +755,25 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             
             ResultSet resultSet2 = ps.executeQuery();*/
             
-            String sql3 = "SELECT tipovidrio_id FROM compra_vidrio_detalle cvd WHERE cvd.compra_vidrio_id = ?";
+            String sql3 = "SELECT cvd.tipovidrio_id FROM compra_vidrio_detalle cvd WHERE cvd.compra_vidrio_id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
             ps.setInt(1, idCompra);
         
             resultSet = ps.executeQuery();
-             
+            
+            int id = 0;
+            //        comboVidrio.addItem(id2);
             while(resultSet.next()){
-                        String nombre = resultSet.getString(1);
-                        comboVidrio.addItem(nombre);
-                /*    int id = resultSet2.getInt("id");
-                    String sql4 = "SELECT nombre_tipo_vidrio FROM tipo_vidrio tv WHERE tv.id=?";
-                    ps = ConexionDB.getConnection().prepareStatement(sql4);
-                    ps.setInt(1, id);
-                    
-                    ResultSet resultSet3 = ps.executeQuery();
-                    
-                    while(resultSet3.next()){
-                        String nombre = resultSet3.getString("nombre_tipo_vidrio");
-                        comboVidrio.addItem(nombre);
-                    }*/
-            }
+            id = resultSet.getInt(1);
+            String sql4 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv WHERE tv.id = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql4);
+            ps.setInt(1, id);        
+            resultSet = ps.executeQuery();
+            if(resultSet.next()){
+            String nombre = resultSet.getString(1);
+            comboVidrio.addItem(nombre);
+           }
+           }
          }catch(Exception e){
                 e.printStackTrace();
             }
@@ -838,7 +836,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             ps = ConexionDB.getConnection().prepareStatement(sql);
             
             ps.setDouble(1, totalReal);
-            ps.setInt(2, idO);
+         //   ps.setInt(2, idO);
 
             ps.executeUpdate();
 
@@ -934,7 +932,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
                 new EditarObra().setVisible(true);
@@ -947,7 +945,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
         // TODO add your handling code here:
-        if (JOptionPane.showConfirmDialog(null, "Seguro que quiere ir al menu principal?, perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+        if (JOptionPane.showConfirmDialog(null, "¿Seguro que quiere ir al menu principal? Perderá los datos no guardados.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
             == JOptionPane.YES_OPTION){
             try {
                 new EditarObra().setVisible(true);

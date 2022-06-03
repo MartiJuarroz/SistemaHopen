@@ -281,7 +281,7 @@ public class CargarFactura extends javax.swing.JFrame {
          PreparedStatement ps;
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="SELECT * from factura WHERE obra_id = ?";
+       /*     String sql ="SELECT * from factura WHERE obra_id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             ps.setInt(1, idO);
             ResultSet resultSet = ps.executeQuery();
@@ -289,7 +289,7 @@ public class CargarFactura extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ya existe una factura para esta obra", "Factura ya existente", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
                 new EditarObra().setVisible(true);
-            }else{
+            }else{*/
         String numeroFactura = numeroFac.getText();
         double totalFactura = Double.parseDouble(monto.getText());
         //Para convertir fecha de java en fecha de sql
@@ -321,7 +321,7 @@ public class CargarFactura extends javax.swing.JFrame {
             ConexionDB.endConnection(con);
             new CargarDatosFactura(idO).setVisible(true);
             dispose();
-        }
+     //   }
         }catch(Exception e){
             e.printStackTrace();
         }
