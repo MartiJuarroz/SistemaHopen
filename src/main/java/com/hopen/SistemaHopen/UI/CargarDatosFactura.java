@@ -782,9 +782,14 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     
     private void guardarVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrioActionPerformed
         // TODO add your handling code here:
-        int cantPlanchasUsadas = Integer.parseInt(planchasVidrio.getText());
-        Double totalReal = Double.parseDouble(presupuestoVidrio.getText());
-
+        int cantPlanchasUsadas = 0;
+        Double totalReal = 0.0;
+        if(!planchasVidrio.getText().isEmpty()){
+            cantPlanchasUsadas = Integer.parseInt(planchasVidrio.getText());
+        }
+        if(!presupuestoVidrio.getText().isEmpty()){
+            totalReal = Double.parseDouble(presupuestoVidrio.getText());
+        }
         PreparedStatement ps;
         PreparedStatement ps2;
 
@@ -827,6 +832,9 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private void guardarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAccActionPerformed
         // TODO add your handling code here:
         Double totalReal = Double.parseDouble(presupuestoAcc.getText());
+        if(!presupuestoAcc.getText().isEmpty()){
+            totalReal = Double.parseDouble(presupuestoAcc.getText());
+        }
 
         PreparedStatement ps;
 
@@ -866,7 +874,12 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         // TODO add your handling code here:
         int cantHoras = Integer.parseInt(cantidadHoras.getText());
         Double totalFacturado = Double.parseDouble(presupuestoManoObra.getText());
-
+        if(!planchasVidrio.getText().isEmpty()){
+            cantHoras = Integer.parseInt(cantidadHoras.getText());
+        }
+        if(!presupuestoManoObra.getText().isEmpty()){
+            totalFacturado = Double.parseDouble(presupuestoManoObra.getText());
+        }
         PreparedStatement ps;
 
         try{
@@ -904,8 +917,14 @@ public class CargarDatosFactura extends javax.swing.JFrame {
 
     private void guardarViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarViajesActionPerformed
         // TODO add your handling code here:
-        int cantViajes = Integer.parseInt(cantidadViajes.getText());
-        Double totalFacturado = Double.parseDouble(presupuestoViajes.getText());
+        int cantViajes = 0;
+        Double totalFacturado = 0.0;
+        if(!cantidadViajes.getText().isEmpty()){
+            cantViajes = Integer.parseInt(cantidadViajes.getText());
+        }
+        if(!presupuestoViajes.getText().isEmpty()){
+            totalFacturado = Double.parseDouble(presupuestoViajes.getText());
+        }
 
         PreparedStatement ps;
 
@@ -960,8 +979,16 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Hay q buscar la obra a la que quiere cargar la factura
         CargarObra co = new CargarObra();
-        double kiloFactura = Double.parseDouble(presupuestoKg.getText());
-        Double totalFacturado = Double.parseDouble(presupuestoAlu.getText());
+        double kiloFactura = 0.0;
+        Double totalFacturado = 0.0;
+        
+        if(!presupuestoAlu.getText().isEmpty()){
+            totalFacturado = Double.parseDouble(presupuestoAlu.getText());
+        }
+        if(!presupuestoKg.getText().isEmpty()){
+            kiloFactura = Double.parseDouble(presupuestoKg.getText());
+        }
+            
         String colorAlu = co.getNameFromColorAluminio();
 
         PreparedStatement ps;

@@ -861,14 +861,15 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private void guardarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAccActionPerformed
         // TODO add your handling code here:
         java.util.Date fecha = null;
+        java.sql.Date fechaDB = null;
         Double totalPresupuestado = 0.0;     
         
-        //chequear validacion fecha
         if (fechaAcc.getDate() != null){
             fecha = fechaAcc.getDate();
-        }
             long timeInMilliSecs = fecha.getTime();
-            java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
+            fechaDB = new java.sql.Date(timeInMilliSecs);
+        }
+            
         if (!presupuestoAcc.getText().isEmpty()){
             totalPresupuestado = Double.parseDouble(presupuestoAcc.getText());
         }
