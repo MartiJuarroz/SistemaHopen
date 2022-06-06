@@ -777,20 +777,19 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         // TODO add your handling code here:
         CargarObra co = new CargarObra();
         double kiloPresupuestado = 0.0;
-        String rto = "";
+        String rto = null;
         Double totalPresupuestado = 0.0;
-        String colorAlu = "";
         
-        if (presupuestoKg.getText() != ""){
+        if (!presupuestoKg.getText().isEmpty()){
             kiloPresupuestado = Double.parseDouble(presupuestoKg.getText());
         }
-        if (remito.getText() != ""){
+        if (!remito.getText().isEmpty()){
             rto = remito.getText();
         }
-        if (presupuestoAlu.getText() != ""){
+        if (!presupuestoAlu.getText().isEmpty()){
             totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
         }
-        colorAlu = co.getNameFromColorAluminio();
+        String colorAlu = co.getNameFromColorAluminio();
 
         PreparedStatement ps;
 
@@ -864,12 +863,13 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         java.util.Date fecha = null;
         Double totalPresupuestado = 0.0;     
         
+        //chequear validacion fecha
         if (fechaAcc.getDate() != null){
             fecha = fechaAcc.getDate();
         }
             long timeInMilliSecs = fecha.getTime();
             java.sql.Date fechaDB = new java.sql.Date(timeInMilliSecs);
-        if (presupuestoAcc.getText() != ""){
+        if (!presupuestoAcc.getText().isEmpty()){
             totalPresupuestado = Double.parseDouble(presupuestoAcc.getText());
         }
 
@@ -943,10 +943,10 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         int cantHoras = 0;
         Double totalPresupuestado = 0.0;
         
-        if (cantidadHoras.getText() != ""){
+        if (!cantidadHoras.getText().isEmpty()){
             cantHoras = Integer.parseInt(cantidadHoras.getText());
         }
-        if (presupuestoManoObra.getText() != ""){
+        if (!presupuestoManoObra.getText().isEmpty()){
             totalPresupuestado = Double.parseDouble(presupuestoManoObra.getText());
         }
 
@@ -1018,10 +1018,10 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         int cantViajes = 0;
         Double totalPresupuestado = 0.0;
         
-        if (cantidadViajes.getText() != ""){
+        if (!cantidadViajes.getText().isEmpty()){
             cantViajes = Integer.parseInt(cantidadViajes.getText());
         }
-        if (presupuestoViajes.getText() != ""){
+        if (!presupuestoViajes.getText().isEmpty()){
             totalPresupuestado = Double.parseDouble(presupuestoViajes.getText());
         }
 
@@ -1119,7 +1119,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         int cantPlanchas = 0;
         String tipoVidrio = comboVidrio.getSelectedItem().toString();
         
-        if (planchasVidrio.getText() != ""){
+        if (!planchasVidrio.getText().isEmpty()){
             cantPlanchas = Integer.parseInt(planchasVidrio.getText());
         }
                 
@@ -1187,7 +1187,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         // TODO add your handling code here:
         Double totalPresupuestado = 0.0;
         
-        if (presupuestoVidrio.getText() != ""){
+        if (!presupuestoVidrio.getText().isEmpty()){
         totalPresupuestado = Double.parseDouble(presupuestoVidrio.getText());
         }
 
@@ -1199,9 +1199,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
             ps.setDouble(1, totalPresupuestado);
-       //     ps.setInt(2, cantPlanchas);
-       //     ps.setInt(3, getIDFromClase(tipoVidrio, "tipo_vidrio", "tipo_vidrio"));
-
+            
             ps.executeUpdate();
 
             //Buscamos el id de obra y el del vidrio
