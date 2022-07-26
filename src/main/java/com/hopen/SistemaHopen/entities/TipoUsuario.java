@@ -26,5 +26,5 @@ public class TipoUsuario extends Base{
     
     @Column
     private String nombreTipoUsuario;
-
+    
 }
