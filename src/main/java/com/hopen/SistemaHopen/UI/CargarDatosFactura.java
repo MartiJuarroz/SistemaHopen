@@ -754,17 +754,31 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             ps.setInt(1, id);
             
             ResultSet resultSet2 = ps.executeQuery();*/
+          
+     /*       String sql3 = "SELECT cvd.tipovidrio_id FROM compra_vidrio_detalle cvd WHERE cvd.compra_vidrio_id = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql3);
+            ps.setInt(1, idCompra);
+        
+            resultSet = ps.executeQuery();*/
             
-            String sql3 = "SELECT cvd.tipovidrio_id FROM compra_vidrio_detalle cvd WHERE cvd.compra_vidrio_id = ?";
+            String sql3 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql3);
             ps.setInt(1, idCompra);
         
             resultSet = ps.executeQuery();
             
-            int id = 0;
+            while(resultSet.next()){
+                String nombre = resultSet.getString(1);
+                comboVidrio.addItem(nombre);
+            }
+            
+
+// WHERE compra_vidrio_detalle.compra_vidrio_id = obra.compra_vidrio_id = ?"
+            
+       /*     int id = 0;
             //        comboVidrio.addItem(id2);
             while(resultSet.next()){
-            id = resultSet.getInt(1);
+            id = resultSet.getInt("tipovidrio_id");
             String sql4 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv WHERE tv.id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql4);
             ps.setInt(1, id);        
@@ -773,7 +787,8 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             String nombre = resultSet.getString(1);
             comboVidrio.addItem(nombre);
            }
-           }
+           }*/
+            
          }catch(Exception e){
                 e.printStackTrace();
             }
