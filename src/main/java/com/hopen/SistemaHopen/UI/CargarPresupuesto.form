@@ -105,9 +105,8 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="presupuestoKg" min="-2" pref="435" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -117,17 +116,15 @@
                                   <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
                                           <Component id="jSeparator1" min="-2" pref="443" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="remito" min="-2" pref="424" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="presupuestoAlu" alignment="0" pref="423" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Component id="jSeparator3" alignment="0" min="-2" pref="443" max="-2" attributes="0"/>
+                                              <Component id="presupuestoAlu" alignment="0" min="-2" pref="423" max="-2" attributes="0"/>
+                                              <Component id="jSeparator3" alignment="0" pref="443" max="32767" attributes="0"/>
+                                              <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
@@ -169,7 +166,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace pref="58" max="32767" attributes="0"/>
+                          <EmptySpace pref="65" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="guardarAluminio" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="SalirBtn" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
@@ -643,9 +640,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextPane" name="jTextPane1">
                       <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                             <EmptyBorder/>
