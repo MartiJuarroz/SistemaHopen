@@ -4,6 +4,7 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import com.hopen.SistemaHopen.entities.Usuario;
 import com.hopen.SistemaHopen.services.ObraService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,12 +17,23 @@ public class Menu extends javax.swing.JFrame {
     @Autowired
     private ObraService obraS;
     
+    Usuario mod;
+    
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
         setTitle("Menu");
+    }
+    
+    public Menu(int tipoUsuario){
+        initComponents();
+        setTitle("Menu");        
+        
+        if (tipoUsuario == 2){
+            btnEditarObra.setVisible(false);
+        } 
     }
 
     /**
@@ -198,7 +210,8 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Reportes().setVisible(true);
     }//GEN-LAST:event_btnReportesActionPerformed
-         
+ 
+    
     /**
      * @param args the command line arguments
      */

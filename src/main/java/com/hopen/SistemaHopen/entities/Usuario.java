@@ -25,6 +25,9 @@ public class Usuario extends Base{
     @Column
     private String contraseña;
     
+    @Column
+    private String emailUsuario;
+    
     @ManyToOne
     @JoinColumn(name = "tipoUsuario_id")
     private TipoUsuario tipoUsuario;

@@ -5,6 +5,7 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import com.hopen.SistemaHopen.entities.TipoUsuario;
 import com.hopen.SistemaHopen.entities.Usuario;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -49,7 +50,7 @@ public class LoginForm extends javax.swing.JFrame {
         checkboxRecordarme = new java.awt.Checkbox();
         btnEntrar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        ForgetPss = new javax.swing.JLabel();
         pfContraseña = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -103,9 +104,14 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel7.setText("¿Olvidaste la contraseña? Click aqui");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ForgetPss.setForeground(new java.awt.Color(51, 102, 255));
+        ForgetPss.setText("¿Olvidaste la contraseña? Click aqui");
+        ForgetPss.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ForgetPss.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ForgetPssMouseClicked(evt);
+            }
+        });
 
         pfContraseña.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         pfContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -190,7 +196,7 @@ public class LoginForm extends javax.swing.JFrame {
                                 .addGap(0, 43, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7)))
+                                .addComponent(ForgetPss)))
                         .addContainerGap())))
         );
         panel1Layout.setVerticalGroup(
@@ -221,7 +227,7 @@ public class LoginForm extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addComponent(btnSalir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jLabel7)
+                .addComponent(ForgetPss)
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -241,16 +247,47 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void iniciarSesion(){
+    public int getIDTipoUsuario(){
         String nombreUsuario = tfUsuario.getText();
         String contraseña = String.valueOf(pfContraseña.getPassword());
         
+        PreparedStatement ps;
+   
+        try {
+         
+            Connection con = ConexionDB.getConnection();
+            String sql = "SELECT tipo_usuario_id FROM usuario WHERE nombre_usuario=? AND contraseña=?";
+            ps = ConexionDB.getConnection().prepareStatement(sql);
+      //      PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ps.setString(1, nombreUsuario);
+            ps.setString(2, contraseña);
+
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()){
+                int tipoUsuarioID = resultSet.getInt("tipo_usuario_id");    
+                return tipoUsuarioID;
+            }   
+            ConexionDB.endConnection(con);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    private void iniciarSesion(){
+        String nombreUsuario = tfUsuario.getText();
+        String contraseña = String.valueOf(pfContraseña.getPassword());
+        int tipoUsuario = getIDTipoUsuario();
+   //     boolean ingreso  = getAuthenticadedUser(nombreUsuario, contraseña);
+        
         usuario = getAuthenticadedUser(nombreUsuario, contraseña);
 
-         if (usuario != null) {
+        if (usuario != null) {
+        //   if (ingreso) {
                 dispose();
             try {
-                new Menu().setVisible(true);
+                new Menu(tipoUsuario).setVisible(true);
                 //         this.setVisible(false);
             } catch (Exception ex) {
                 Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -263,6 +300,7 @@ public class LoginForm extends javax.swing.JFrame {
                 pfContraseña.setText("");
             }
     }
+    
     
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
@@ -281,10 +319,16 @@ public class LoginForm extends javax.swing.JFrame {
            iniciarSesion();
     }//GEN-LAST:event_pfContraseñaKeyPressed
     }
+    
+    private void ForgetPssMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ForgetPssMouseClicked
+        // TODO add your handling code here:
+        new RecuperarContraseña().setVisible(true);
+    }//GEN-LAST:event_ForgetPssMouseClicked
+    
     /**
      *
      */
-    public Usuario usuario;
+      public Usuario usuario;
     
       private Usuario getAuthenticadedUser(String nombre_usuario, String contraseña) {
     /*    Usuario usuario = null;
@@ -311,10 +355,12 @@ public class LoginForm extends javax.swing.JFrame {
             if (resultSet.next()) {
                 usuario = new Usuario();
                 String nombreU = resultSet.getString("nombre_usuario");
+                int tipoUsuarioID = resultSet.getInt("tipo_usuario_id");
             //    String pass = resultSet.getString("contraseña");
             //    System.out.println("Successful Authentication of: " + nombreU);
                 JOptionPane.showMessageDialog(LoginForm.this,
                         "Bienvenido "+nombreU);
+       //         return true;
             }
             
             ConexionDB.endConnection(con);
@@ -365,6 +411,7 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ForgetPss;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnSalir;
     private java.awt.Checkbox checkboxRecordarme;
@@ -375,7 +422,6 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
