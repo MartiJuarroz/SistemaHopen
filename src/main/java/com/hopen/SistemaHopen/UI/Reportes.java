@@ -88,17 +88,17 @@ public class Reportes extends javax.swing.JFrame {
             difAluminioKg.setText(Integer.toString(diferenciaKg));
             //calculo de porcentajes con validaciones
             if(kiloPresu == 0){
-                porcAluminioPesos.setText("0");
+                porcAluminioPesos.setText("0.0");
             }else{
                 int porcentajeKg = ((kiloFact/kiloPresu)-1)*100;
                 porcAluminioKg.setText(Double.toString(porcentajeKg));
             }
-            if(totPresupuesto == 0){
-                porcAluminioPesos.setText("0");
+            if(totPresupuesto == 0.0){
+                porcAluminioPesos.setText("0.0");
             }else{
                 Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
                 porcAluminioKg.setText(Double.toString(porcentajePesos));
-            }            
+            }
             
         }catch(Exception e){
             e.printStackTrace();
@@ -176,11 +176,11 @@ public class Reportes extends javax.swing.JFrame {
 
         diferencia.setBackground(new java.awt.Color(255, 255, 255));
         diferencia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        diferencia.setText("Diferencia");
+        diferencia.setText("Diferencia$");
 
         diferenciaPor.setBackground(new java.awt.Color(255, 255, 255));
         diferenciaPor.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        diferenciaPor.setText("Diferencia porcentual");
+        diferenciaPor.setText("Diferencia porcentual%");
 
         facturado.setBackground(new java.awt.Color(255, 255, 255));
         facturado.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -196,6 +196,7 @@ public class Reportes extends javax.swing.JFrame {
         presuAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
         presuAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuAluminioPesos.setText("500");
         presuAluminioPesos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         difAluminioPesos.setEditable(false);
@@ -214,6 +215,7 @@ public class Reportes extends javax.swing.JFrame {
         facAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
         facAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facAluminioPesos.setText("500");
         facAluminioPesos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         facAluminioPesos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +239,7 @@ public class Reportes extends javax.swing.JFrame {
         facAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
         facAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facAluminioKg.setText("500");
         facAluminioKg.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         facAluminioKg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +251,7 @@ public class Reportes extends javax.swing.JFrame {
         presuAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
         presuAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuAluminioKg.setText("500");
         presuAluminioKg.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -263,6 +267,7 @@ public class Reportes extends javax.swing.JFrame {
         presuVidrio.setBackground(new java.awt.Color(255, 255, 255));
         presuVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuVidrio.setText("500");
         presuVidrio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         difVidrio.setEditable(false);
@@ -278,6 +283,7 @@ public class Reportes extends javax.swing.JFrame {
         facVidrio.setBackground(new java.awt.Color(255, 255, 255));
         facVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facVidrio.setText("500");
         facVidrio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         facVidrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,6 +301,7 @@ public class Reportes extends javax.swing.JFrame {
         facViajes.setBackground(new java.awt.Color(255, 255, 255));
         facViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facViajes.setText("500");
         facViajes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         facViajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,6 +322,7 @@ public class Reportes extends javax.swing.JFrame {
         presuViajes.setBackground(new java.awt.Color(255, 255, 255));
         presuViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuViajes.setText("500");
         presuViajes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         difMO.setEditable(false);
@@ -327,12 +335,14 @@ public class Reportes extends javax.swing.JFrame {
         presuMO.setBackground(new java.awt.Color(255, 255, 255));
         presuMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuMO.setText("500");
         presuMO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         facMO.setEditable(false);
         facMO.setBackground(new java.awt.Color(255, 255, 255));
         facMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facMO.setText("500");
         facMO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         facMO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,12 +366,14 @@ public class Reportes extends javax.swing.JFrame {
         presuAcc.setBackground(new java.awt.Color(255, 255, 255));
         presuAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuAcc.setText("500");
         presuAcc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         facAcc.setEditable(false);
         facAcc.setBackground(new java.awt.Color(255, 255, 255));
         facAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facAcc.setText("500");
         facAcc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         facAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,7 +432,7 @@ public class Reportes extends javax.swing.JFrame {
                                         .addComponent(descripcion)
                                         .addGap(437, 437, 437)
                                         .addComponent(presupuesto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                                         .addComponent(facturado)))
                                 .addGap(51, 51, 51)
                                 .addComponent(diferencia)
@@ -464,7 +476,7 @@ public class Reportes extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(64, 64, 64)
+                        .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(facAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
