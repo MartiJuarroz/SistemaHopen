@@ -7,6 +7,7 @@ package com.hopen.SistemaHopen.UI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import javax.swing.JLabel;
 
 /**
@@ -87,17 +88,19 @@ public class Reportes extends javax.swing.JFrame {
             difAluminioPesos.setText(Double.toString(diferenciaPesos));
             difAluminioKg.setText(Integer.toString(diferenciaKg));
             //calculo de porcentajes con validaciones
+            
+            DecimalFormat df = new DecimalFormat("#.00");
             if(kiloPresu == 0){
                 porcAluminioPesos.setText("0.0");
             }else{
-                int porcentajeKg = ((kiloFact/kiloPresu)-1)*100;
-                porcAluminioKg.setText(Double.toString(porcentajeKg));
+                Double porcentajeKg =(((kiloFact*1.0)/(kiloPresu*1.0))-1)*100;
+                porcAluminioKg.setText(df.format(porcentajeKg));
             }
             if(totPresupuesto == 0.0){
                 porcAluminioPesos.setText("0.0");
             }else{
                 Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
-                porcAluminioKg.setText(Double.toString(porcentajePesos));
+                porcAluminioPesos.setText(df.format(porcentajePesos));
             }
             
         }catch(Exception e){
@@ -192,31 +195,37 @@ public class Reportes extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel7.setText("Obra: ");
 
-        presuAluminioPesos.setEditable(false);
         presuAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
         presuAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        presuAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuAluminioPesos.setText("500");
-        presuAluminioPesos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        presuAluminioPesos.setBorder(null);
+        presuAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         difAluminioPesos.setEditable(false);
         difAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
         difAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         difAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difAluminioPesos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        difAluminioPesos.setText("000");
+        difAluminioPesos.setBorder(null);
+        difAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        difAluminioPesos.setFocusable(false);
 
         porcAluminioPesos.setEditable(false);
         porcAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
         porcAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         porcAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcAluminioPesos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        porcAluminioPesos.setText("000");
+        porcAluminioPesos.setBorder(null);
+        porcAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        porcAluminioPesos.setFocusable(false);
 
         facAluminioPesos.setEditable(false);
         facAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
         facAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facAluminioPesos.setText("500");
-        facAluminioPesos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        facAluminioPesos.setText("000");
+        facAluminioPesos.setBorder(null);
+        facAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        facAluminioPesos.setFocusable(false);
         facAluminioPesos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facAluminioPesosActionPerformed(evt);
@@ -227,20 +236,28 @@ public class Reportes extends javax.swing.JFrame {
         difAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
         difAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         difAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difAluminioKg.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        difAluminioKg.setText("000");
+        difAluminioKg.setBorder(null);
+        difAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        difAluminioKg.setFocusable(false);
 
         porcAluminioKg.setEditable(false);
         porcAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
         porcAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         porcAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcAluminioKg.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        porcAluminioKg.setText("000");
+        porcAluminioKg.setBorder(null);
+        porcAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        porcAluminioKg.setFocusable(false);
 
         facAluminioKg.setEditable(false);
         facAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
         facAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facAluminioKg.setText("500");
-        facAluminioKg.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        facAluminioKg.setText("000");
+        facAluminioKg.setBorder(null);
+        facAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        facAluminioKg.setFocusable(false);
         facAluminioKg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facAluminioKgActionPerformed(evt);
@@ -251,8 +268,10 @@ public class Reportes extends javax.swing.JFrame {
         presuAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
         presuAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuAluminioKg.setText("500");
-        presuAluminioKg.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        presuAluminioKg.setText("000");
+        presuAluminioKg.setBorder(null);
+        presuAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        presuAluminioKg.setFocusable(false);
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel8.setText("Aluminio Kg");
@@ -261,20 +280,28 @@ public class Reportes extends javax.swing.JFrame {
         porcVidrio.setBackground(new java.awt.Color(255, 255, 255));
         porcVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         porcVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcVidrio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        porcVidrio.setText("000");
+        porcVidrio.setBorder(null);
+        porcVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        porcVidrio.setFocusable(false);
 
         presuVidrio.setEditable(false);
         presuVidrio.setBackground(new java.awt.Color(255, 255, 255));
         presuVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuVidrio.setText("500");
-        presuVidrio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        presuVidrio.setText("000");
+        presuVidrio.setBorder(null);
+        presuVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        presuVidrio.setFocusable(false);
 
         difVidrio.setEditable(false);
         difVidrio.setBackground(new java.awt.Color(255, 255, 255));
         difVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         difVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difVidrio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        difVidrio.setText("000");
+        difVidrio.setBorder(null);
+        difVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        difVidrio.setFocusable(false);
 
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel9.setText("Vidrio");
@@ -283,8 +310,10 @@ public class Reportes extends javax.swing.JFrame {
         facVidrio.setBackground(new java.awt.Color(255, 255, 255));
         facVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facVidrio.setText("500");
-        facVidrio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        facVidrio.setText("000");
+        facVidrio.setBorder(null);
+        facVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        facVidrio.setFocusable(false);
         facVidrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facVidrioActionPerformed(evt);
@@ -295,14 +324,19 @@ public class Reportes extends javax.swing.JFrame {
         difViajes.setBackground(new java.awt.Color(255, 255, 255));
         difViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         difViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difViajes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        difViajes.setText("000");
+        difViajes.setBorder(null);
+        difViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        difViajes.setFocusable(false);
 
         facViajes.setEditable(false);
         facViajes.setBackground(new java.awt.Color(255, 255, 255));
         facViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facViajes.setText("500");
-        facViajes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        facViajes.setText("000");
+        facViajes.setBorder(null);
+        facViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        facViajes.setFocusable(false);
         facViajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facViajesActionPerformed(evt);
@@ -313,7 +347,10 @@ public class Reportes extends javax.swing.JFrame {
         porcViajes.setBackground(new java.awt.Color(255, 255, 255));
         porcViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         porcViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcViajes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        porcViajes.setText("000");
+        porcViajes.setBorder(null);
+        porcViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        porcViajes.setFocusable(false);
 
         jLabel10.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel10.setText("Viajes");
@@ -322,28 +359,37 @@ public class Reportes extends javax.swing.JFrame {
         presuViajes.setBackground(new java.awt.Color(255, 255, 255));
         presuViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuViajes.setText("500");
-        presuViajes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        presuViajes.setText("000");
+        presuViajes.setBorder(null);
+        presuViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        presuViajes.setFocusable(false);
 
         difMO.setEditable(false);
         difMO.setBackground(new java.awt.Color(255, 255, 255));
         difMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         difMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difMO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        difMO.setText("000");
+        difMO.setBorder(null);
+        difMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        difMO.setFocusable(false);
 
         presuMO.setEditable(false);
         presuMO.setBackground(new java.awt.Color(255, 255, 255));
         presuMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuMO.setText("500");
-        presuMO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        presuMO.setText("000");
+        presuMO.setBorder(null);
+        presuMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        presuMO.setFocusable(false);
 
         facMO.setEditable(false);
         facMO.setBackground(new java.awt.Color(255, 255, 255));
         facMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facMO.setText("500");
-        facMO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        facMO.setText("000");
+        facMO.setBorder(null);
+        facMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        facMO.setFocusable(false);
         facMO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facMOActionPerformed(evt);
@@ -357,7 +403,10 @@ public class Reportes extends javax.swing.JFrame {
         porcMO.setBackground(new java.awt.Color(255, 255, 255));
         porcMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         porcMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcMO.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        porcMO.setText("000");
+        porcMO.setBorder(null);
+        porcMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        porcMO.setFocusable(false);
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel12.setText("Accesorios");
@@ -366,15 +415,19 @@ public class Reportes extends javax.swing.JFrame {
         presuAcc.setBackground(new java.awt.Color(255, 255, 255));
         presuAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         presuAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuAcc.setText("500");
-        presuAcc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        presuAcc.setText("000");
+        presuAcc.setBorder(null);
+        presuAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        presuAcc.setFocusable(false);
 
         facAcc.setEditable(false);
         facAcc.setBackground(new java.awt.Color(255, 255, 255));
         facAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         facAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facAcc.setText("500");
-        facAcc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        facAcc.setText("000");
+        facAcc.setBorder(null);
+        facAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        facAcc.setFocusable(false);
         facAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facAccActionPerformed(evt);
@@ -385,13 +438,19 @@ public class Reportes extends javax.swing.JFrame {
         difAcc.setBackground(new java.awt.Color(255, 255, 255));
         difAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         difAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difAcc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        difAcc.setText("000");
+        difAcc.setBorder(null);
+        difAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        difAcc.setFocusable(false);
 
         porcAcc.setEditable(false);
         porcAcc.setBackground(new java.awt.Color(255, 255, 255));
         porcAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         porcAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcAcc.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        porcAcc.setText("000");
+        porcAcc.setBorder(null);
+        porcAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        porcAcc.setFocusable(false);
 
         cbReportes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
 
