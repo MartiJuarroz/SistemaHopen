@@ -50,17 +50,25 @@ public class Reportes extends javax.swing.JFrame {
         try{
             //Primero busco los ids de la obra elegida
             Connection con = ConexionDB.getConnection();
-            String sql = "SELECT aluminio_id FROM obra WHERE titular=?";
+            String sql = "SELECT aluminio_id, compra_accesorio_id, compra_vidrio_id, viaje_id, mano_obra_id FROM obra WHERE titular=?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             ps.setString(1, nombreTitular);
             ResultSet resultSet = ps.executeQuery();
             
             int idAlu =0;
+            int idAcc =0;
+            int idVidrio=0;
+            int idViaje =0;
+            int idMO =0;
             while(resultSet.next()){
                 idAlu = resultSet.getInt(1);
+                idAcc = resultSet.getInt(2);
+                idVidrio = resultSet.getInt(3);
+                idViaje = resultSet.getInt(4);
+                idMO = resultSet.getInt(5);
             }
             
-            //Busco los datos de aluminio
+            //---------------------Aluminio-------------------
             String sql2 = "SELECT  total_presupuesto, total_real, kilo_presupuestado, kilo_factura FROM aluminio WHERE id=?";
             ps = ConexionDB.getConnection().prepareStatement(sql2);
             ps.setInt(1, idAlu);
@@ -78,8 +86,8 @@ public class Reportes extends javax.swing.JFrame {
                 kiloFact = resultSet.getInt("kilo_factura");
             }
             //definir diferencias
-            Double diferenciaPesos = totReal-totPresupuesto;
-            int diferenciaKg = kiloFact-kiloPresu;
+            Double diferenciaPesos = totPresupuesto-totReal;
+            int diferenciaKg = kiloPresu-kiloFact;
             //asignar valores a los textfields
             presuAluminioPesos.setText(Double.toString(totPresupuesto));
             presuAluminioKg.setText(Integer.toString(kiloPresu));
@@ -91,7 +99,7 @@ public class Reportes extends javax.swing.JFrame {
             
             DecimalFormat df = new DecimalFormat("#.00");
             if(kiloPresu == 0){
-                porcAluminioPesos.setText("0.0");
+                porcAluminioKg.setText("0.0");
             }else{
                 Double porcentajeKg =(((kiloFact*1.0)/(kiloPresu*1.0))-1)*100;
                 porcAluminioKg.setText(df.format(porcentajeKg));
@@ -103,6 +111,100 @@ public class Reportes extends javax.swing.JFrame {
                 porcAluminioPesos.setText(df.format(porcentajePesos));
             }
             
+            //---------------------Accesorio-------------------
+            String sql3 = "SELECT  total_presupuesto, total_real FROM compra_accesorio WHERE id=?";
+            ps = ConexionDB.getConnection().prepareStatement(sql3);
+            ps.setInt(1, idAcc);
+            resultSet = ps.executeQuery();
+            
+            while(resultSet.next()){
+                totPresupuesto = resultSet.getDouble("total_presupuesto");
+                totReal = resultSet.getDouble("total_real");
+            }
+            //definir diferencias
+            diferenciaPesos = totPresupuesto-totReal;
+            //asignar valores a los textfields
+            presuAcc.setText(Double.toString(totPresupuesto));
+            facAcc.setText(Double.toString(totReal));
+            difAcc.setText(Double.toString(diferenciaPesos));
+            //calculo de porcentajes con validaciones
+            if(totPresupuesto == 0.0){
+                porcAcc.setText("0.0");
+            }else{
+                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                porcAcc.setText(df.format(porcentajePesos));
+            }
+            //---------------------Vidrio-------------------
+            String sql4 = "SELECT  total_presupuesto, total_real FROM compra_vidrio WHERE id=?";
+            ps = ConexionDB.getConnection().prepareStatement(sql4);
+            ps.setInt(1, idVidrio);
+            resultSet = ps.executeQuery();
+            
+            while(resultSet.next()){
+                totPresupuesto = resultSet.getDouble("total_presupuesto");
+                totReal = resultSet.getDouble("total_real");
+            }
+            //definir diferencias
+            diferenciaPesos = totPresupuesto-totReal;
+            //asignar valores a los textfields
+            presuVidrio.setText(Double.toString(totPresupuesto));
+            facVidrio.setText(Double.toString(totReal));
+            difVidrio.setText(Double.toString(diferenciaPesos));
+            //calculo de porcentajes con validaciones
+            if(totPresupuesto == 0.0){
+                porcVidrio.setText("0.0");
+            }else{
+                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                porcVidrio.setText(df.format(porcentajePesos));
+            }
+            //---------------------Viajes-------------------
+            String sql5 = "SELECT  total_presupuesto, total_real FROM viaje WHERE id=?";
+            ps = ConexionDB.getConnection().prepareStatement(sql5);
+            ps.setInt(1, idViaje);
+            resultSet = ps.executeQuery();
+            
+            while(resultSet.next()){
+                totPresupuesto = resultSet.getDouble("total_presupuesto");
+                totReal = resultSet.getDouble("total_real");
+            }
+            //definir diferencias
+            diferenciaPesos = totPresupuesto-totReal;
+            //asignar valores a los textfields
+            presuViajes.setText(Double.toString(totPresupuesto));
+            facViajes.setText(Double.toString(totReal));
+            difViajes.setText(Double.toString(diferenciaPesos));
+            //calculo de porcentajes con validaciones
+            if(totPresupuesto == 0.0){
+                porcViajes.setText("0.0");
+            }else{
+                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                porcViajes.setText(df.format(porcentajePesos));
+            }
+            //---------------------Mano Obra-------------------
+            String sql6 = "SELECT  total_presupuesto, total_real FROM mano_obra WHERE id=?";
+            ps = ConexionDB.getConnection().prepareStatement(sql6);
+            ps.setInt(1, idMO);
+            resultSet = ps.executeQuery();
+            
+            while(resultSet.next()){
+                totPresupuesto = resultSet.getDouble("total_presupuesto");
+                totReal = resultSet.getDouble("total_real");
+            }
+            //definir diferencias
+            diferenciaPesos = totPresupuesto-totReal;
+            //asignar valores a los textfields
+            presuMO.setText(Double.toString(totPresupuesto));
+            facMo.setText(Double.toString(totReal));
+            difMO.setText(Double.toString(diferenciaPesos));
+            //calculo de porcentajes con validaciones
+            if(totPresupuesto == 0.0){
+                porcMO.setText("0.0");
+            }else{
+                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                porcMO.setText(df.format(porcentajePesos));
+            }
+            
+            ConexionDB.endConnection(con);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -112,7 +214,9 @@ public class Reportes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        reporteMateriales = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         titulo.setHorizontalAlignment(JLabel.CENTER);
         presupuesto = new javax.swing.JLabel();
@@ -125,45 +229,54 @@ public class Reportes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         presuAluminioPesos = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        difAluminioPesos = new javax.swing.JTextField();
-        porcAluminioPesos = new javax.swing.JTextField();
-        facAluminioPesos = new javax.swing.JTextField();
-        difAluminioKg = new javax.swing.JTextField();
-        porcAluminioKg = new javax.swing.JTextField();
-        facAluminioKg = new javax.swing.JTextField();
-        presuAluminioKg = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
-        porcVidrio = new javax.swing.JTextField();
-        presuVidrio = new javax.swing.JTextField();
-        difVidrio = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        facVidrio = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        difViajes = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
-        facViajes = new javax.swing.JTextField();
-        porcViajes = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        presuViajes = new javax.swing.JTextField();
-        difMO = new javax.swing.JTextField();
-        presuMO = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
-        facMO = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        porcMO = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        presuAcc = new javax.swing.JTextField();
-        facAcc = new javax.swing.JTextField();
-        difAcc = new javax.swing.JTextField();
-        porcAcc = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
         cbReportes = new javax.swing.JComboBox<>();
         btnVerDatos = new javax.swing.JButton();
+        facAluminioPesos = new javax.swing.JTextField();
+        difAluminioPesos = new javax.swing.JTextField();
+        porcAluminioPesos = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        presuAluminioKg = new javax.swing.JTextField();
+        facAluminioKg = new javax.swing.JTextField();
+        difAluminioKg = new javax.swing.JTextField();
+        porcAluminioKg = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        difAcc = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        facAcc = new javax.swing.JTextField();
+        presuAcc = new javax.swing.JTextField();
+        porcAcc = new javax.swing.JTextField();
+        facVidrio = new javax.swing.JTextField();
+        presuVidrio = new javax.swing.JTextField();
+        porcVidrio = new javax.swing.JTextField();
+        difVidrio = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        facViajes = new javax.swing.JTextField();
+        difViajes = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        presuViajes = new javax.swing.JTextField();
+        porcViajes = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        facMo = new javax.swing.JTextField();
+        porcMO = new javax.swing.JTextField();
+        difMO = new javax.swing.JTextField();
+        presuMO = new javax.swing.JTextField();
+        jSeparator7 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 204, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 204, 255));
+
+        jTabbedPane1.setBackground(new java.awt.Color(0, 204, 255));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+
+        reporteMateriales.setBackground(new java.awt.Color(255, 255, 255));
 
         titulo.setBackground(new java.awt.Color(255, 255, 255));
         titulo.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 36)); // NOI18N
@@ -195,262 +308,12 @@ public class Reportes extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel7.setText("Obra: ");
 
+        presuAluminioPesos.setEditable(false);
         presuAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
-        presuAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        presuAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        presuAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         presuAluminioPesos.setBorder(null);
         presuAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        difAluminioPesos.setEditable(false);
-        difAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
-        difAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        difAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difAluminioPesos.setText("000");
-        difAluminioPesos.setBorder(null);
-        difAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        difAluminioPesos.setFocusable(false);
-
-        porcAluminioPesos.setEditable(false);
-        porcAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
-        porcAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        porcAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcAluminioPesos.setText("000");
-        porcAluminioPesos.setBorder(null);
-        porcAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        porcAluminioPesos.setFocusable(false);
-
-        facAluminioPesos.setEditable(false);
-        facAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
-        facAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        facAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facAluminioPesos.setText("000");
-        facAluminioPesos.setBorder(null);
-        facAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        facAluminioPesos.setFocusable(false);
-        facAluminioPesos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facAluminioPesosActionPerformed(evt);
-            }
-        });
-
-        difAluminioKg.setEditable(false);
-        difAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
-        difAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        difAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difAluminioKg.setText("000");
-        difAluminioKg.setBorder(null);
-        difAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        difAluminioKg.setFocusable(false);
-
-        porcAluminioKg.setEditable(false);
-        porcAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
-        porcAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        porcAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcAluminioKg.setText("000");
-        porcAluminioKg.setBorder(null);
-        porcAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        porcAluminioKg.setFocusable(false);
-
-        facAluminioKg.setEditable(false);
-        facAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
-        facAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        facAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facAluminioKg.setText("000");
-        facAluminioKg.setBorder(null);
-        facAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        facAluminioKg.setFocusable(false);
-        facAluminioKg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facAluminioKgActionPerformed(evt);
-            }
-        });
-
-        presuAluminioKg.setEditable(false);
-        presuAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
-        presuAluminioKg.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        presuAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuAluminioKg.setText("000");
-        presuAluminioKg.setBorder(null);
-        presuAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        presuAluminioKg.setFocusable(false);
-
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel8.setText("Aluminio Kg");
-
-        porcVidrio.setEditable(false);
-        porcVidrio.setBackground(new java.awt.Color(255, 255, 255));
-        porcVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        porcVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcVidrio.setText("000");
-        porcVidrio.setBorder(null);
-        porcVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        porcVidrio.setFocusable(false);
-
-        presuVidrio.setEditable(false);
-        presuVidrio.setBackground(new java.awt.Color(255, 255, 255));
-        presuVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        presuVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuVidrio.setText("000");
-        presuVidrio.setBorder(null);
-        presuVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        presuVidrio.setFocusable(false);
-
-        difVidrio.setEditable(false);
-        difVidrio.setBackground(new java.awt.Color(255, 255, 255));
-        difVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        difVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difVidrio.setText("000");
-        difVidrio.setBorder(null);
-        difVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        difVidrio.setFocusable(false);
-
-        jLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel9.setText("Vidrio");
-
-        facVidrio.setEditable(false);
-        facVidrio.setBackground(new java.awt.Color(255, 255, 255));
-        facVidrio.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        facVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facVidrio.setText("000");
-        facVidrio.setBorder(null);
-        facVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        facVidrio.setFocusable(false);
-        facVidrio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facVidrioActionPerformed(evt);
-            }
-        });
-
-        difViajes.setEditable(false);
-        difViajes.setBackground(new java.awt.Color(255, 255, 255));
-        difViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        difViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difViajes.setText("000");
-        difViajes.setBorder(null);
-        difViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        difViajes.setFocusable(false);
-
-        facViajes.setEditable(false);
-        facViajes.setBackground(new java.awt.Color(255, 255, 255));
-        facViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        facViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facViajes.setText("000");
-        facViajes.setBorder(null);
-        facViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        facViajes.setFocusable(false);
-        facViajes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facViajesActionPerformed(evt);
-            }
-        });
-
-        porcViajes.setEditable(false);
-        porcViajes.setBackground(new java.awt.Color(255, 255, 255));
-        porcViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        porcViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcViajes.setText("000");
-        porcViajes.setBorder(null);
-        porcViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        porcViajes.setFocusable(false);
-
-        jLabel10.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel10.setText("Viajes");
-
-        presuViajes.setEditable(false);
-        presuViajes.setBackground(new java.awt.Color(255, 255, 255));
-        presuViajes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        presuViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuViajes.setText("000");
-        presuViajes.setBorder(null);
-        presuViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        presuViajes.setFocusable(false);
-
-        difMO.setEditable(false);
-        difMO.setBackground(new java.awt.Color(255, 255, 255));
-        difMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        difMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difMO.setText("000");
-        difMO.setBorder(null);
-        difMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        difMO.setFocusable(false);
-
-        presuMO.setEditable(false);
-        presuMO.setBackground(new java.awt.Color(255, 255, 255));
-        presuMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        presuMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuMO.setText("000");
-        presuMO.setBorder(null);
-        presuMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        presuMO.setFocusable(false);
-
-        facMO.setEditable(false);
-        facMO.setBackground(new java.awt.Color(255, 255, 255));
-        facMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        facMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facMO.setText("000");
-        facMO.setBorder(null);
-        facMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        facMO.setFocusable(false);
-        facMO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facMOActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel11.setText("Mano de Obra");
-
-        porcMO.setEditable(false);
-        porcMO.setBackground(new java.awt.Color(255, 255, 255));
-        porcMO.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        porcMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcMO.setText("000");
-        porcMO.setBorder(null);
-        porcMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        porcMO.setFocusable(false);
-
-        jLabel12.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel12.setText("Accesorios");
-
-        presuAcc.setEditable(false);
-        presuAcc.setBackground(new java.awt.Color(255, 255, 255));
-        presuAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        presuAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        presuAcc.setText("000");
-        presuAcc.setBorder(null);
-        presuAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        presuAcc.setFocusable(false);
-
-        facAcc.setEditable(false);
-        facAcc.setBackground(new java.awt.Color(255, 255, 255));
-        facAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        facAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        facAcc.setText("000");
-        facAcc.setBorder(null);
-        facAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        facAcc.setFocusable(false);
-        facAcc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                facAccActionPerformed(evt);
-            }
-        });
-
-        difAcc.setEditable(false);
-        difAcc.setBackground(new java.awt.Color(255, 255, 255));
-        difAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        difAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        difAcc.setText("000");
-        difAcc.setBorder(null);
-        difAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        difAcc.setFocusable(false);
-
-        porcAcc.setEditable(false);
-        porcAcc.setBackground(new java.awt.Color(255, 255, 255));
-        porcAcc.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        porcAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        porcAcc.setText("000");
-        porcAcc.setBorder(null);
-        porcAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        porcAcc.setFocusable(false);
 
         cbReportes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
 
@@ -465,133 +328,304 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        facAluminioPesos.setEditable(false);
+        facAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
+        facAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        facAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facAluminioPesos.setBorder(null);
+        facAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        difAluminioPesos.setEditable(false);
+        difAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
+        difAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        difAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        difAluminioPesos.setBorder(null);
+        difAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        porcAluminioPesos.setEditable(false);
+        porcAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
+        porcAluminioPesos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        porcAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        porcAluminioPesos.setBorder(null);
+        porcAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel2.setText("Aluminio Kg");
+
+        presuAluminioKg.setEditable(false);
+        presuAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
+        presuAluminioKg.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        presuAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuAluminioKg.setBorder(null);
+        presuAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        facAluminioKg.setEditable(false);
+        facAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
+        facAluminioKg.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        facAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facAluminioKg.setBorder(null);
+        facAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        difAluminioKg.setEditable(false);
+        difAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
+        difAluminioKg.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        difAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        difAluminioKg.setBorder(null);
+        difAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        porcAluminioKg.setEditable(false);
+        porcAluminioKg.setBackground(new java.awt.Color(255, 255, 255));
+        porcAluminioKg.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        porcAluminioKg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        porcAluminioKg.setBorder(null);
+        porcAluminioKg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        difAcc.setEditable(false);
+        difAcc.setBackground(new java.awt.Color(255, 255, 255));
+        difAcc.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        difAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        difAcc.setBorder(null);
+        difAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel3.setText("Accesorios");
+
+        facAcc.setEditable(false);
+        facAcc.setBackground(new java.awt.Color(255, 255, 255));
+        facAcc.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        facAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facAcc.setBorder(null);
+        facAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        presuAcc.setEditable(false);
+        presuAcc.setBackground(new java.awt.Color(255, 255, 255));
+        presuAcc.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        presuAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuAcc.setBorder(null);
+        presuAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        porcAcc.setEditable(false);
+        porcAcc.setBackground(new java.awt.Color(255, 255, 255));
+        porcAcc.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        porcAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        porcAcc.setBorder(null);
+        porcAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        facVidrio.setEditable(false);
+        facVidrio.setBackground(new java.awt.Color(255, 255, 255));
+        facVidrio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        facVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facVidrio.setBorder(null);
+        facVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        presuVidrio.setEditable(false);
+        presuVidrio.setBackground(new java.awt.Color(255, 255, 255));
+        presuVidrio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        presuVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuVidrio.setBorder(null);
+        presuVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        porcVidrio.setEditable(false);
+        porcVidrio.setBackground(new java.awt.Color(255, 255, 255));
+        porcVidrio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        porcVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        porcVidrio.setBorder(null);
+        porcVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        difVidrio.setEditable(false);
+        difVidrio.setBackground(new java.awt.Color(255, 255, 255));
+        difVidrio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        difVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        difVidrio.setBorder(null);
+        difVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel4.setText("Vidrio");
+
+        facViajes.setEditable(false);
+        facViajes.setBackground(new java.awt.Color(255, 255, 255));
+        facViajes.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        facViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facViajes.setBorder(null);
+        facViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        difViajes.setEditable(false);
+        difViajes.setBackground(new java.awt.Color(255, 255, 255));
+        difViajes.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        difViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        difViajes.setBorder(null);
+        difViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel5.setText("Viajes");
+
+        presuViajes.setEditable(false);
+        presuViajes.setBackground(new java.awt.Color(255, 255, 255));
+        presuViajes.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        presuViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuViajes.setBorder(null);
+        presuViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        porcViajes.setEditable(false);
+        porcViajes.setBackground(new java.awt.Color(255, 255, 255));
+        porcViajes.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        porcViajes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        porcViajes.setBorder(null);
+        porcViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel6.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel6.setText("Mano de Obra");
+
+        facMo.setEditable(false);
+        facMo.setBackground(new java.awt.Color(255, 255, 255));
+        facMo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        facMo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        facMo.setBorder(null);
+        facMo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        porcMO.setEditable(false);
+        porcMO.setBackground(new java.awt.Color(255, 255, 255));
+        porcMO.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        porcMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        porcMO.setBorder(null);
+        porcMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        difMO.setEditable(false);
+        difMO.setBackground(new java.awt.Color(255, 255, 255));
+        difMO.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        difMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        difMO.setBorder(null);
+        difMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        presuMO.setEditable(false);
+        presuMO.setBackground(new java.awt.Color(255, 255, 255));
+        presuMO.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        presuMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presuMO.setBorder(null);
+        presuMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        javax.swing.GroupLayout reporteMaterialesLayout = new javax.swing.GroupLayout(reporteMateriales);
+        reporteMateriales.setLayout(reporteMaterialesLayout);
+        reporteMaterialesLayout.setHorizontalGroup(
+            reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reporteMaterialesLayout.createSequentialGroup()
+                                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btnVerDatos))
+                                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addComponent(descripcion)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(presupuesto)
+                                        .addGap(114, 114, 114)
+                                        .addComponent(facturado)
+                                        .addGap(66, 66, 66)))
+                                .addGap(22, 22, 22)
+                                .addComponent(diferencia)
+                                .addGap(69, 69, 69)
+                                .addComponent(diferenciaPor)
+                                .addGap(43, 43, 43))
                             .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnVerDatos))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(40, 40, 40)
-                                        .addComponent(descripcion)
-                                        .addGap(437, 437, 437)
-                                        .addComponent(presupuesto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                                        .addComponent(facturado)))
-                                .addGap(51, 51, 51)
-                                .addComponent(diferencia)
-                                .addGap(40, 40, 40)
-                                .addComponent(diferenciaPor)
-                                .addGap(43, 43, 43))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(426, 426, 426)
-                                .addComponent(presuAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(426, 426, 426)
-                                .addComponent(presuAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(426, 426, 426)
-                                .addComponent(presuVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(426, 426, 426)
-                                .addComponent(presuViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(409, 409, 409)
-                                .addComponent(presuMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(426, 426, 426)
-                                .addComponent(presuAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(503, 503, 503)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(facAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(difAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85)
-                                .addComponent(porcAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(facAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(difAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85)
-                                .addComponent(porcAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(facVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(difVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85)
-                                .addComponent(porcVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(facViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(difViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85)
-                                .addComponent(porcViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(facMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(difMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85)
-                                .addComponent(porcMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(facAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(difAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85)
-                                .addComponent(porcAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGap(503, 503, 503)
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(presuAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(facAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(difAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(porcAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
+                                .addComponent(presuAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(facAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(difAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(porcAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
+                                .addComponent(presuAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(facAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(difAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(porcAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
+                                .addComponent(presuVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(facVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(difVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(porcVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
+                                .addComponent(presuViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(facViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(difViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(porcViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
+                                .addComponent(presuMO, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(facMo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(difMO, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(porcMO, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(62, 62, 62)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(reporteMaterialesLayout.createSequentialGroup()
                     .addGap(433, 433, 433)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(703, Short.MAX_VALUE)))
+                    .addContainerGap(750, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        reporteMaterialesLayout.setVerticalGroup(
+            reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reporteMaterialesLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(titulo)
                 .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(presupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(descripcion)
                     .addComponent(diferencia)
@@ -600,119 +634,140 @@ public class Reportes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(presuAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(difAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(porcAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(presuAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(difAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(porcAluminioPesos, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(presuAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(difAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(porcAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(presuAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(difAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(porcAluminioKg, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(presuVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(difVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(porcVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(presuAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(difAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(porcAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(presuAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(difAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(porcAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(presuViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(difViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(porcViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(presuVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(difVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(porcVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(presuMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(difMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(porcMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(facMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(presuViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(difViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(porcViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(79, 79, 79))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(presuMO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(facMo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(difMO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(porcMO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(393, 393, 393))
+            .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(reporteMaterialesLayout.createSequentialGroup()
                     .addGap(107, 107, 107)
                     .addComponent(jLabel7)
-                    .addContainerGap(496, Short.MAX_VALUE)))
+                    .addContainerGap(759, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Materiales", reporteMateriales);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1257, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 664, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Diferencias Generales", jPanel1);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1257, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 664, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Incidencias", jPanel3);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1257, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1257, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 705, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 660, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void facAluminioPesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facAluminioPesosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facAluminioPesosActionPerformed
-
-    private void facAluminioKgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facAluminioKgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facAluminioKgActionPerformed
-
-    private void facVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facVidrioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facVidrioActionPerformed
-
-    private void facViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facViajesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facViajesActionPerformed
-
-    private void facMOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facMOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facMOActionPerformed
-
-    private void facAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facAccActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_facAccActionPerformed
 
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
         mostrarDatos();
@@ -768,18 +823,20 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JTextField facAcc;
     private javax.swing.JTextField facAluminioKg;
     private javax.swing.JTextField facAluminioPesos;
-    private javax.swing.JTextField facMO;
+    private javax.swing.JTextField facMo;
     private javax.swing.JTextField facViajes;
     private javax.swing.JTextField facVidrio;
     private javax.swing.JLabel facturado;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -787,6 +844,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField porcAcc;
     private javax.swing.JTextField porcAluminioKg;
     private javax.swing.JTextField porcAluminioPesos;
@@ -800,6 +858,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JTextField presuViajes;
     private javax.swing.JTextField presuVidrio;
     private javax.swing.JLabel presupuesto;
+    private javax.swing.JPanel reporteMateriales;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
