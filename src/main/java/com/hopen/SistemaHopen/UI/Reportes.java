@@ -8,7 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -264,6 +267,7 @@ public class Reportes extends javax.swing.JFrame {
         difMO = new javax.swing.JTextField();
         presuMO = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
+        SalirBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -504,6 +508,22 @@ public class Reportes extends javax.swing.JFrame {
         presuMO.setBorder(null);
         presuMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        SalirBtn.setBackground(new java.awt.Color(255, 153, 51));
+        SalirBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        SalirBtn.setForeground(new java.awt.Color(255, 255, 255));
+        SalirBtn.setText("Volver");
+        SalirBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        SalirBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SalirBtnMouseClicked(evt);
+            }
+        });
+        SalirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout reporteMaterialesLayout = new javax.swing.GroupLayout(reporteMateriales);
         reporteMateriales.setLayout(reporteMaterialesLayout);
         reporteMaterialesLayout.setHorizontalGroup(
@@ -609,6 +629,10 @@ public class Reportes extends javax.swing.JFrame {
                                 .addComponent(porcMO, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(62, 62, 62)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reporteMaterialesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
             .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(reporteMaterialesLayout.createSequentialGroup()
                     .addGap(433, 433, 433)
@@ -699,7 +723,9 @@ public class Reportes extends javax.swing.JFrame {
                             .addComponent(porcMO, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(393, 393, 393))
+                .addGap(119, 119, 119)
+                .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(232, 232, 232))
             .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(reporteMaterialesLayout.createSequentialGroup()
                     .addGap(107, 107, 107)
@@ -772,6 +798,25 @@ public class Reportes extends javax.swing.JFrame {
     private void btnVerDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosActionPerformed
         mostrarDatos();
     }//GEN-LAST:event_btnVerDatosActionPerformed
+
+    private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
+            == JOptionPane.YES_OPTION){
+            dispose();
+            try {
+                new Menu().setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_SalirBtnActionPerformed
+
+    private void SalirBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirBtnMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        new Menu().setVisible(true);
+    }//GEN-LAST:event_SalirBtnMouseClicked
     
     /**
      * @param args the command line arguments
@@ -809,6 +854,7 @@ public class Reportes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton SalirBtn;
     private javax.swing.JButton btnVerDatos;
     private javax.swing.JComboBox<String> cbReportes;
     private javax.swing.JLabel descripcion;

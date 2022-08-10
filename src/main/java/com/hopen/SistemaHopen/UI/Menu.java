@@ -17,7 +17,7 @@ public class Menu extends javax.swing.JFrame {
     @Autowired
     private ObraService obraS;
     
-    Usuario mod;
+   // Usuario mod;
     
     /**
      * Creates new form Menu
