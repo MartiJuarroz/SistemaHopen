@@ -6,6 +6,7 @@ package com.hopen.SistemaHopen.UI;
 
 import java.awt.Color;
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -120,6 +121,12 @@ public class RecuperarContraseña extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Ingrese el mail del usuario para poder recuperar la contraseña");
 
+        emailTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                emailTextFieldKeyPressed(evt);
+            }
+        });
+
         jToggleButton1.setText("Enviar correo");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -180,6 +187,7 @@ public class RecuperarContraseña extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
@@ -192,6 +200,20 @@ public class RecuperarContraseña extends javax.swing.JFrame {
         dispose();
         new LoginForm().setVisible(true);
     }//GEN-LAST:event_jToggleButton1MouseClicked
+
+    private void emailTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTextFieldKeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+             try {
+                 recuperarContraseña();
+             } catch (SQLException ex) {
+                 Logger.getLogger(RecuperarContraseña.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             
+             dispose();
+             new LoginForm().setVisible(true);
+    }                   
+    }//GEN-LAST:event_emailTextFieldKeyPressed
 
     /**
      * @param args the command line arguments

@@ -241,8 +241,8 @@ public class CargarObra extends javax.swing.JFrame {
         btnEditarObra.setBackground(new java.awt.Color(0, 204, 255));
         btnEditarObra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         btnEditarObra.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditarObra.setText("Editar Obra");
-        btnEditarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditarObra.setText("Cargar factura");
+        btnEditarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEditarObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarObraActionPerformed(evt);
@@ -663,7 +663,6 @@ public class CargarObra extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese la obra primero, para hacerlo presione el boton guardar de abajo.");
         }else{
             new CargarPresupuesto().setVisible(true);
-            dispose();
         }
     }//GEN-LAST:event_botonPresupuestoActionPerformed
 
@@ -678,8 +677,11 @@ public class CargarObra extends javax.swing.JFrame {
 
     private void btnEditarObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarObraActionPerformed
         // TODO add your handling code here:
-        new EditarObra().setVisible(true);
-        dispose();
+        if(bandera == false){
+            JOptionPane.showMessageDialog(null, "Ingrese la obra primero, para hacerlo presione el boton guardar de abajo.");
+        }else{
+            new CargarFactura().setVisible(true);
+        }
     }//GEN-LAST:event_btnEditarObraActionPerformed
     /**
      * @param args the command line arguments

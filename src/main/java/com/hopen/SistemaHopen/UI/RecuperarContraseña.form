@@ -102,6 +102,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="emailTextField">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="emailTextFieldKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="jToggleButton1">
           <Properties>
