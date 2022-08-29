@@ -38,8 +38,6 @@ public class Reportes extends javax.swing.JFrame {
         while(resultSet.next()){
             String item = resultSet.getString(1);
             cbReportes.addItem(item);
-            cbReportesDif.addItem(item);
-            cbReportesInci.addItem(item);
         }
         ConexionDB.endConnection(con);
          }catch(Exception e){
@@ -47,10 +45,15 @@ public class Reportes extends javax.swing.JFrame {
         }
     }
     
+    private double presuTotal = 0;
+    private double facturaTotal = 0;
+    
     private void mostrarDatos(){
         PreparedStatement ps;
         
         String nombreTitular = cbReportes.getSelectedItem().toString();
+        nombreObra.setText(nombreTitular);
+        nombreObra2.setText(nombreTitular);
         
         try{
             //Primero busco los ids de la obra elegida
@@ -100,8 +103,12 @@ public class Reportes extends javax.swing.JFrame {
             facAluminioKg.setText(Integer.toString(kiloFact));
             difAluminioPesos.setText(Double.toString(diferenciaPesos));
             difAluminioKg.setText(Integer.toString(diferenciaKg));
-            //calculo de porcentajes con validaciones
             
+            //sumatoria de totales
+            presuTotal = presuTotal + totPresupuesto;
+            facturaTotal = facturaTotal + totReal;
+            
+            //calculo de porcentajes con validaciones
             DecimalFormat df = new DecimalFormat("#.00");
             if(kiloPresu == 0){
                 porcAluminioKg.setText("0.0");
@@ -132,6 +139,11 @@ public class Reportes extends javax.swing.JFrame {
             presuAcc.setText(Double.toString(totPresupuesto));
             facAcc.setText(Double.toString(totReal));
             difAcc.setText(Double.toString(diferenciaPesos));
+            
+            //sumatoria de totales
+            presuTotal = presuTotal + totPresupuesto;
+            facturaTotal = facturaTotal + totReal;
+            
             //calculo de porcentajes con validaciones
             if(totPresupuesto == 0.0){
                 porcAcc.setText("0.0");
@@ -155,6 +167,11 @@ public class Reportes extends javax.swing.JFrame {
             presuVidrio.setText(Double.toString(totPresupuesto));
             facVidrio.setText(Double.toString(totReal));
             difVidrio.setText(Double.toString(diferenciaPesos));
+            
+            //sumatoria de totales
+            presuTotal = presuTotal + totPresupuesto;
+            facturaTotal = facturaTotal + totReal;            
+            
             //calculo de porcentajes con validaciones
             if(totPresupuesto == 0.0){
                 porcVidrio.setText("0.0");
@@ -178,6 +195,11 @@ public class Reportes extends javax.swing.JFrame {
             presuViajes.setText(Double.toString(totPresupuesto));
             facViajes.setText(Double.toString(totReal));
             difViajes.setText(Double.toString(diferenciaPesos));
+            
+            //sumatoria de totales
+            presuTotal = presuTotal + totPresupuesto;
+            facturaTotal = facturaTotal + totReal;
+            
             //calculo de porcentajes con validaciones
             if(totPresupuesto == 0.0){
                 porcViajes.setText("0.0");
@@ -201,6 +223,11 @@ public class Reportes extends javax.swing.JFrame {
             presuMO.setText(Double.toString(totPresupuesto));
             facMo.setText(Double.toString(totReal));
             difMO.setText(Double.toString(diferenciaPesos));
+            
+            //sumatoria de totales
+            presuTotal = presuTotal + totPresupuesto;
+            facturaTotal = facturaTotal + totReal;
+            
             //calculo de porcentajes con validaciones
             if(totPresupuesto == 0.0){
                 porcMO.setText("0.0");
@@ -209,12 +236,19 @@ public class Reportes extends javax.swing.JFrame {
                 porcMO.setText(df.format(porcentajePesos));
             }
             
+            double gananciaR = presuTotal-facturaTotal;
+            double var = gananciaR/presuTotal;
+            precioAbertura.setText(Double.toString(presuTotal));
+            gastoReal.setText(Double.toString(facturaTotal));
+            gananciaReal.setText(Double.toString(gananciaR));
+            variacion.setText(Double.toString(var));
+            //sumatoria de costos no esta muy claro
+            
             ConexionDB.endConnection(con);
         }catch(Exception e){
             e.printStackTrace();
         }
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -224,7 +258,7 @@ public class Reportes extends javax.swing.JFrame {
         difGeneral = new javax.swing.JPanel();
         titulo1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        cbReportesDif = new javax.swing.JComboBox<>();
+        cbReportes = new javax.swing.JComboBox<>();
         btnVerDatosDif = new javax.swing.JButton();
         SalirBtn1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -232,7 +266,7 @@ public class Reportes extends javax.swing.JFrame {
         gastoReal = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        ganaciaReal = new javax.swing.JTextField();
+        gananciaReal = new javax.swing.JTextField();
         variacion = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -250,8 +284,6 @@ public class Reportes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         presuAluminioPesos = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        cbReportes = new javax.swing.JComboBox<>();
-        btnVerDatosMat = new javax.swing.JButton();
         facAluminioPesos = new javax.swing.JTextField();
         difAluminioPesos = new javax.swing.JTextField();
         porcAluminioPesos = new javax.swing.JTextField();
@@ -286,6 +318,7 @@ public class Reportes extends javax.swing.JFrame {
         presuMO = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         SalirBtn = new javax.swing.JButton();
+        nombreObra = new javax.swing.JTextField();
         incidencias = new javax.swing.JPanel();
         titulo2 = new javax.swing.JLabel();
         presupuesto1 = new javax.swing.JLabel();
@@ -296,7 +329,6 @@ public class Reportes extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         incidenciaAlu = new javax.swing.JTextField();
-        cbReportesInci = new javax.swing.JComboBox<>();
         btnVerDatos2 = new javax.swing.JButton();
         SalirBtn2 = new javax.swing.JButton();
         presupuesto2 = new javax.swing.JLabel();
@@ -310,7 +342,7 @@ public class Reportes extends javax.swing.JFrame {
         incidenciaCom = new javax.swing.JTextField();
         jSeparator15 = new javax.swing.JSeparator();
         SalirBtn4 = new javax.swing.JButton();
-        btnVerDatosInci = new javax.swing.JButton();
+        nombreObra2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 204, 255));
@@ -330,7 +362,7 @@ public class Reportes extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel9.setText("Obra: ");
 
-        cbReportesDif.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        cbReportes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
 
         btnVerDatosDif.setBackground(new java.awt.Color(0, 204, 255));
         btnVerDatosDif.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
@@ -379,9 +411,9 @@ public class Reportes extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel11.setText("Ganacia Real");
 
-        ganaciaReal.setEditable(false);
-        ganaciaReal.setBackground(new java.awt.Color(255, 255, 255));
-        ganaciaReal.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        gananciaReal.setEditable(false);
+        gananciaReal.setBackground(new java.awt.Color(255, 255, 255));
+        gananciaReal.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
 
         variacion.setEditable(false);
         variacion.setBackground(new java.awt.Color(255, 255, 255));
@@ -434,13 +466,13 @@ public class Reportes extends javax.swing.JFrame {
                             .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                 .addComponent(gastoReal, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(precioAbertura, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ganaciaReal, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(gananciaReal, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(variacion, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sumCostos, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(difGeneralLayout.createSequentialGroup()
                         .addGap(503, 503, 503)
                         .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbReportesDif, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(580, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, difGeneralLayout.createSequentialGroup()
@@ -466,7 +498,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addComponent(titulo1)
                 .addGap(36, 36, 36)
                 .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbReportesDif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerDatosDif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(76, 76, 76)
                 .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -479,7 +511,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(ganaciaReal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gananciaReal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -540,19 +572,6 @@ public class Reportes extends javax.swing.JFrame {
         presuAluminioPesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         presuAluminioPesos.setBorder(null);
         presuAluminioPesos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        cbReportes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-
-        btnVerDatosMat.setBackground(new java.awt.Color(0, 204, 255));
-        btnVerDatosMat.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        btnVerDatosMat.setForeground(new java.awt.Color(255, 255, 255));
-        btnVerDatosMat.setText("Ver datos");
-        btnVerDatosMat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnVerDatosMat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerDatosMatActionPerformed(evt);
-            }
-        });
 
         facAluminioPesos.setEditable(false);
         facAluminioPesos.setBackground(new java.awt.Color(255, 255, 255));
@@ -746,6 +765,18 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
 
+        nombreObra.setEditable(false);
+        nombreObra.setBackground(new java.awt.Color(255, 255, 255));
+        nombreObra.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        nombreObra.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombreObra.setBorder(null);
+        nombreObra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        nombreObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreObraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout reporteMaterialesLayout = new javax.swing.GroupLayout(reporteMateriales);
         reporteMateriales.setLayout(reporteMaterialesLayout);
         reporteMaterialesLayout.setHorizontalGroup(
@@ -758,19 +789,13 @@ public class Reportes extends javax.swing.JFrame {
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reporteMaterialesLayout.createSequentialGroup()
-                                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnVerDatosMat))
-                                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
-                                        .addGap(40, 40, 40)
-                                        .addComponent(descripcion)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(presupuesto)
-                                        .addGap(114, 114, 114)
-                                        .addComponent(facturado)
-                                        .addGap(66, 66, 66)))
-                                .addGap(22, 22, 22)
+                                .addGap(40, 40, 40)
+                                .addComponent(descripcion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(presupuesto)
+                                .addGap(114, 114, 114)
+                                .addComponent(facturado)
+                                .addGap(88, 88, 88)
                                 .addComponent(diferencia)
                                 .addGap(69, 69, 69)
                                 .addComponent(diferenciaPor)
@@ -780,12 +805,6 @@ public class Reportes extends javax.swing.JFrame {
                             .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
-                        .addGap(503, 503, 503)
-                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(reporteMaterialesLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -845,7 +864,13 @@ public class Reportes extends javax.swing.JFrame {
                                 .addComponent(difMO, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
                                 .addComponent(porcMO, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(62, 62, 62)))
+                        .addGap(62, 62, 62))
+                    .addGroup(reporteMaterialesLayout.createSequentialGroup()
+                        .addGap(505, 505, 505)
+                        .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, reporteMaterialesLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -862,11 +887,9 @@ public class Reportes extends javax.swing.JFrame {
             .addGroup(reporteMaterialesLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(titulo)
-                .addGap(36, 36, 36)
-                .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVerDatosMat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addGap(37, 37, 37)
+                .addComponent(nombreObra, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
                 .addGroup(reporteMaterialesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(descripcion)
                     .addComponent(presupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -948,7 +971,7 @@ public class Reportes extends javax.swing.JFrame {
                 .addGroup(reporteMaterialesLayout.createSequentialGroup()
                     .addGap(107, 107, 107)
                     .addComponent(jLabel7)
-                    .addContainerGap(759, Short.MAX_VALUE)))
+                    .addContainerGap(761, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Materiales", reporteMateriales);
@@ -992,8 +1015,6 @@ public class Reportes extends javax.swing.JFrame {
         incidenciaAlu.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         incidenciaAlu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         incidenciaAlu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        cbReportesInci.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
 
         btnVerDatos2.setBackground(new java.awt.Color(0, 204, 255));
         btnVerDatos2.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
@@ -1092,14 +1113,15 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
 
-        btnVerDatosInci.setBackground(new java.awt.Color(0, 204, 255));
-        btnVerDatosInci.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        btnVerDatosInci.setForeground(new java.awt.Color(255, 255, 255));
-        btnVerDatosInci.setText("Ver datos");
-        btnVerDatosInci.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnVerDatosInci.addActionListener(new java.awt.event.ActionListener() {
+        nombreObra2.setEditable(false);
+        nombreObra2.setBackground(new java.awt.Color(255, 255, 255));
+        nombreObra2.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        nombreObra2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombreObra2.setBorder(null);
+        nombreObra2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        nombreObra2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerDatosInciActionPerformed(evt);
+                nombreObra2ActionPerformed(evt);
             }
         });
 
@@ -1120,11 +1142,11 @@ public class Reportes extends javax.swing.JFrame {
                 .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(incidenciaAcc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(presupuesto4))
-                .addGap(60, 60, 60)
+                .addGap(59, 59, 59)
                 .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(incidenciaVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(facturado1))
-                .addGap(60, 60, 60)
+                .addGap(61, 61, 61)
                 .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(incidenciaMO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(presupuesto2))
@@ -1154,15 +1176,6 @@ public class Reportes extends javax.swing.JFrame {
                 .addGap(735, 735, 735)
                 .addComponent(SalirBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
-            .addGroup(incidenciasLayout.createSequentialGroup()
-                .addGap(503, 503, 503)
-                .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(incidenciasLayout.createSequentialGroup()
-                        .addComponent(cbReportesInci, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
-                        .addComponent(btnVerDatosInci))
-                    .addComponent(titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, incidenciasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1172,6 +1185,12 @@ public class Reportes extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, incidenciasLayout.createSequentialGroup()
                         .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 1242, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(899, 899, 899))))
+            .addGroup(incidenciasLayout.createSequentialGroup()
+                .addGap(503, 503, 503)
+                .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombreObra2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(incidenciasLayout.createSequentialGroup()
                     .addGap(433, 433, 433)
@@ -1185,11 +1204,10 @@ public class Reportes extends javax.swing.JFrame {
                     .addGroup(incidenciasLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(titulo2)
-                        .addGap(36, 36, 36)
+                        .addGap(37, 37, 37)
                         .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbReportesInci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnVerDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVerDatosInci, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nombreObra2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(52, 52, 52)
                         .addGroup(incidenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(diferencia1)
@@ -1269,10 +1287,6 @@ public class Reportes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVerDatosMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosMatActionPerformed
-        mostrarDatos();
-    }//GEN-LAST:event_btnVerDatosMatActionPerformed
-
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
         // TODO add your handling code here:
         if (JOptionPane.showConfirmDialog(null, "Si vuelve atras no se guardarán los datos.", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE)
@@ -1333,10 +1347,13 @@ public class Reportes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SalirBtn4ActionPerformed
 
-    private void btnVerDatosInciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerDatosInciActionPerformed
+    private void nombreObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreObraActionPerformed
         // TODO add your handling code here:
-        mostrarDatos();
-    }//GEN-LAST:event_btnVerDatosInciActionPerformed
+    }//GEN-LAST:event_nombreObraActionPerformed
+
+    private void nombreObra2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreObra2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreObra2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1381,11 +1398,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JButton SalirBtn4;
     private javax.swing.JButton btnVerDatos2;
     private javax.swing.JButton btnVerDatosDif;
-    private javax.swing.JButton btnVerDatosInci;
-    private javax.swing.JButton btnVerDatosMat;
     private javax.swing.JComboBox<String> cbReportes;
-    private javax.swing.JComboBox<String> cbReportesDif;
-    private javax.swing.JComboBox<String> cbReportesInci;
     private javax.swing.JLabel descripcion;
     private javax.swing.JLabel descripcion1;
     private javax.swing.JTextField difAcc;
@@ -1407,7 +1420,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JTextField facVidrio;
     private javax.swing.JLabel facturado;
     private javax.swing.JLabel facturado1;
-    private javax.swing.JTextField ganaciaReal;
+    private javax.swing.JTextField gananciaReal;
     private javax.swing.JTextField gastoReal;
     private javax.swing.JTextField incidenciaAcc;
     private javax.swing.JTextField incidenciaAlu;
@@ -1442,6 +1455,8 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField nombreObra;
+    private javax.swing.JTextField nombreObra2;
     private javax.swing.JTextField porcAcc;
     private javax.swing.JTextField porcAluminioKg;
     private javax.swing.JTextField porcAluminioPesos;
@@ -1462,7 +1477,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JLabel presupuesto4;
     private javax.swing.JPanel reporteMateriales;
     private javax.swing.JTextField sumCostos;
-    private javax.swing.JLabel titulo;
+    javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo1;
     private javax.swing.JLabel titulo2;
     private javax.swing.JTextField variacion;
