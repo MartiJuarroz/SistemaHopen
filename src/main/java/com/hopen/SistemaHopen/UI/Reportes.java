@@ -58,7 +58,7 @@ public class Reportes extends javax.swing.JFrame {
         try{
             //Primero busco los ids de la obra elegida
             Connection con = ConexionDB.getConnection();
-            String sql = "SELECT aluminio_id, compra_accesorio_id, compra_vidrio_id, viaje_id, mano_obra_id FROM obra WHERE titular=?";
+            String sql = "SELECT aluminio_id, compra_accesorio_id, compra_vidrio_id, viaje_id, mano_obra_id, ganancia_pretendida, comision FROM obra WHERE titular=?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             ps.setString(1, nombreTitular);
             ResultSet resultSet = ps.executeQuery();
@@ -68,12 +68,16 @@ public class Reportes extends javax.swing.JFrame {
             int idVidrio=0;
             int idViaje =0;
             int idMO =0;
+            double gananciaPret = 0.0;
+            double comision = 0.0;
             while(resultSet.next()){
                 idAlu = resultSet.getInt(1);
                 idAcc = resultSet.getInt(2);
                 idVidrio = resultSet.getInt(3);
                 idViaje = resultSet.getInt(4);
                 idMO = resultSet.getInt(5);
+                gananciaPret = resultSet.getInt(6);
+                comision = resultSet.getInt(7);
             }
             
             //---------------------Aluminio-------------------
@@ -83,30 +87,30 @@ public class Reportes extends javax.swing.JFrame {
             resultSet = ps.executeQuery();
             
             //declaracion de variables auxiliares
-            double totPresupuesto = 0.0;
-            double totReal = 0.0;
+            double totPresupuestoAlu = 0.0;
+            double totRealAlu = 0.0;
             int kiloPresu = 0;
             int kiloFact = 0;
             while(resultSet.next()){
-                totPresupuesto = resultSet.getDouble("total_presupuesto");
-                totReal = resultSet.getDouble("total_real");
+                totPresupuestoAlu = resultSet.getDouble("total_presupuesto");
+                totRealAlu = resultSet.getDouble("total_real");
                 kiloPresu = resultSet.getInt("kilo_presupuestado");
                 kiloFact = resultSet.getInt("kilo_factura");
             }
             //definir diferencias
-            Double diferenciaPesos = totPresupuesto-totReal;
+            Double diferenciaPesos = totPresupuestoAlu-totRealAlu;
             int diferenciaKg = kiloPresu-kiloFact;
             //asignar valores a los textfields
-            presuAluminioPesos.setText(Double.toString(totPresupuesto));
+            presuAluminioPesos.setText(Double.toString(totPresupuestoAlu));
             presuAluminioKg.setText(Integer.toString(kiloPresu));
-            facAluminioPesos.setText(Double.toString(totReal));
+            facAluminioPesos.setText(Double.toString(totRealAlu));
             facAluminioKg.setText(Integer.toString(kiloFact));
             difAluminioPesos.setText(Double.toString(diferenciaPesos));
             difAluminioKg.setText(Integer.toString(diferenciaKg));
             
             //sumatoria de totales
-            presuTotal = presuTotal + totPresupuesto;
-            facturaTotal = facturaTotal + totReal;
+            presuTotal = presuTotal + totPresupuestoAlu;
+            facturaTotal = facturaTotal + totRealAlu;
             
             //calculo de porcentajes con validaciones
             DecimalFormat df = new DecimalFormat("#.00");
@@ -116,10 +120,10 @@ public class Reportes extends javax.swing.JFrame {
                 Double porcentajeKg =(((kiloFact*1.0)/(kiloPresu*1.0))-1)*100;
                 porcAluminioKg.setText(df.format(porcentajeKg));
             }
-            if(totPresupuesto == 0.0){
+            if(totPresupuestoAlu == 0.0){
                 porcAluminioPesos.setText("0.0");
             }else{
-                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                Double porcentajePesos = ((totRealAlu/totPresupuestoAlu)-1)*100;
                 porcAluminioPesos.setText(df.format(porcentajePesos));
             }
             
@@ -129,26 +133,28 @@ public class Reportes extends javax.swing.JFrame {
             ps.setInt(1, idAcc);
             resultSet = ps.executeQuery();
             
+            double totPresupuestoAcc = 0.0;
+            double totRealAcc = 0.0;
             while(resultSet.next()){
-                totPresupuesto = resultSet.getDouble("total_presupuesto");
-                totReal = resultSet.getDouble("total_real");
+                totPresupuestoAcc = resultSet.getDouble("total_presupuesto");
+                totRealAcc = resultSet.getDouble("total_real");
             }
             //definir diferencias
-            diferenciaPesos = totPresupuesto-totReal;
+            diferenciaPesos = totPresupuestoAcc-totRealAcc;
             //asignar valores a los textfields
-            presuAcc.setText(Double.toString(totPresupuesto));
-            facAcc.setText(Double.toString(totReal));
+            presuAcc.setText(Double.toString(totPresupuestoAcc));
+            facAcc.setText(Double.toString(totRealAcc));
             difAcc.setText(Double.toString(diferenciaPesos));
             
             //sumatoria de totales
-            presuTotal = presuTotal + totPresupuesto;
-            facturaTotal = facturaTotal + totReal;
+            presuTotal = presuTotal + totPresupuestoAcc;
+            facturaTotal = facturaTotal + totRealAcc;
             
             //calculo de porcentajes con validaciones
-            if(totPresupuesto == 0.0){
+            if(totPresupuestoAcc == 0.0){
                 porcAcc.setText("0.0");
             }else{
-                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                Double porcentajePesos = ((totRealAcc/totPresupuestoAcc)-1)*100;
                 porcAcc.setText(df.format(porcentajePesos));
             }
             //---------------------Vidrio-------------------
@@ -157,26 +163,28 @@ public class Reportes extends javax.swing.JFrame {
             ps.setInt(1, idVidrio);
             resultSet = ps.executeQuery();
             
+            double totPresupuestoVid = 0.0;
+            double totRealVid = 0.0;
             while(resultSet.next()){
-                totPresupuesto = resultSet.getDouble("total_presupuesto");
-                totReal = resultSet.getDouble("total_real");
+                totPresupuestoVid = resultSet.getDouble("total_presupuesto");
+                totRealVid = resultSet.getDouble("total_real");
             }
             //definir diferencias
-            diferenciaPesos = totPresupuesto-totReal;
+            diferenciaPesos = totPresupuestoVid-totRealVid;
             //asignar valores a los textfields
-            presuVidrio.setText(Double.toString(totPresupuesto));
-            facVidrio.setText(Double.toString(totReal));
+            presuVidrio.setText(Double.toString(totPresupuestoVid));
+            facVidrio.setText(Double.toString(totRealVid));
             difVidrio.setText(Double.toString(diferenciaPesos));
             
             //sumatoria de totales
-            presuTotal = presuTotal + totPresupuesto;
-            facturaTotal = facturaTotal + totReal;            
+            presuTotal = presuTotal + totPresupuestoVid;
+            facturaTotal = facturaTotal + totRealVid;            
             
             //calculo de porcentajes con validaciones
-            if(totPresupuesto == 0.0){
+            if(totPresupuestoVid == 0.0){
                 porcVidrio.setText("0.0");
             }else{
-                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                Double porcentajePesos = ((totRealVid/totPresupuestoVid)-1)*100;
                 porcVidrio.setText(df.format(porcentajePesos));
             }
             //---------------------Viajes-------------------
@@ -185,26 +193,28 @@ public class Reportes extends javax.swing.JFrame {
             ps.setInt(1, idViaje);
             resultSet = ps.executeQuery();
             
+            double totPresupuestoViaje = 0.0;
+            double totRealViaje = 0.0;
             while(resultSet.next()){
-                totPresupuesto = resultSet.getDouble("total_presupuesto");
-                totReal = resultSet.getDouble("total_real");
+                totPresupuestoViaje = resultSet.getDouble("total_presupuesto");
+                totRealViaje = resultSet.getDouble("total_real");
             }
             //definir diferencias
-            diferenciaPesos = totPresupuesto-totReal;
+            diferenciaPesos = totPresupuestoViaje-totRealViaje;
             //asignar valores a los textfields
-            presuViajes.setText(Double.toString(totPresupuesto));
-            facViajes.setText(Double.toString(totReal));
+            presuViajes.setText(Double.toString(totPresupuestoViaje));
+            facViajes.setText(Double.toString(totRealViaje));
             difViajes.setText(Double.toString(diferenciaPesos));
             
             //sumatoria de totales
-            presuTotal = presuTotal + totPresupuesto;
-            facturaTotal = facturaTotal + totReal;
+            presuTotal = presuTotal + totPresupuestoViaje;
+            facturaTotal = facturaTotal + totRealViaje;
             
             //calculo de porcentajes con validaciones
-            if(totPresupuesto == 0.0){
+            if(totPresupuestoViaje == 0.0){
                 porcViajes.setText("0.0");
             }else{
-                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                Double porcentajePesos = ((totRealViaje/totPresupuestoViaje)-1)*100;
                 porcViajes.setText(df.format(porcentajePesos));
             }
             //---------------------Mano Obra-------------------
@@ -213,26 +223,28 @@ public class Reportes extends javax.swing.JFrame {
             ps.setInt(1, idMO);
             resultSet = ps.executeQuery();
             
+            double totPresupuestoMO = 0.0;
+            double totRealMO = 0.0;
             while(resultSet.next()){
-                totPresupuesto = resultSet.getDouble("total_presupuesto");
-                totReal = resultSet.getDouble("total_real");
+                totPresupuestoMO = resultSet.getDouble("total_presupuesto");
+                totRealMO = resultSet.getDouble("total_real");
             }
             //definir diferencias
-            diferenciaPesos = totPresupuesto-totReal;
+            diferenciaPesos = totPresupuestoMO-totRealMO;
             //asignar valores a los textfields
-            presuMO.setText(Double.toString(totPresupuesto));
-            facMo.setText(Double.toString(totReal));
+            presuMO.setText(Double.toString(totPresupuestoMO));
+            facMo.setText(Double.toString(totRealMO));
             difMO.setText(Double.toString(diferenciaPesos));
             
             //sumatoria de totales
-            presuTotal = presuTotal + totPresupuesto;
-            facturaTotal = facturaTotal + totReal;
+            presuTotal = presuTotal + totPresupuestoMO;
+            facturaTotal = facturaTotal + totRealMO;
             
             //calculo de porcentajes con validaciones
-            if(totPresupuesto == 0.0){
+            if(totPresupuestoMO == 0.0){
                 porcMO.setText("0.0");
             }else{
-                Double porcentajePesos = ((totReal/totPresupuesto)-1)*100;
+                Double porcentajePesos = ((totRealMO/totPresupuestoMO)-1)*100;
                 porcMO.setText(df.format(porcentajePesos));
             }
             
@@ -241,8 +253,17 @@ public class Reportes extends javax.swing.JFrame {
             precioAbertura.setText(Double.toString(presuTotal));
             gastoReal.setText(Double.toString(facturaTotal));
             gananciaReal.setText(Double.toString(gananciaR));
-            variacion.setText(Double.toString(var));
+            variacion.setText(df.format(var*100));
             //sumatoria de costos no esta muy claro
+            
+            incidenciaAlu.setText(df.format((totRealAlu/presuTotal*100)));
+            incidenciaAcc.setText(df.format(totRealAcc/presuTotal*100));
+            incidenciaVidrio.setText(df.format(totRealVid/presuTotal*100));
+            incidenciaMO.setText(df.format(totRealMO/presuTotal*100));
+            incidenciaViaje.setText(df.format(totRealViaje/presuTotal*100));
+            incidenciaGan.setText(df.format(gananciaPret/presuTotal*100));
+            incidenciaCom.setText(df.format(comision/presuTotal*100));
+            
             
             ConexionDB.endConnection(con);
         }catch(Exception e){
@@ -474,7 +495,7 @@ public class Reportes extends javax.swing.JFrame {
                         .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(580, Short.MAX_VALUE))
+                .addContainerGap(584, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, difGeneralLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVerDatosDif)
@@ -1011,9 +1032,9 @@ public class Reportes extends javax.swing.JFrame {
 
         incidenciaAlu.setEditable(false);
         incidenciaAlu.setBackground(new java.awt.Color(255, 255, 255));
-        incidenciaAlu.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        incidenciaAlu.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         incidenciaAlu.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        incidenciaAlu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        incidenciaAlu.setBorder(null);
         incidenciaAlu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnVerDatos2.setBackground(new java.awt.Color(0, 204, 255));
@@ -1057,44 +1078,44 @@ public class Reportes extends javax.swing.JFrame {
 
         incidenciaAcc.setEditable(false);
         incidenciaAcc.setBackground(new java.awt.Color(255, 255, 255));
-        incidenciaAcc.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        incidenciaAcc.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         incidenciaAcc.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        incidenciaAcc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        incidenciaAcc.setBorder(null);
         incidenciaAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         incidenciaVidrio.setEditable(false);
         incidenciaVidrio.setBackground(new java.awt.Color(255, 255, 255));
-        incidenciaVidrio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        incidenciaVidrio.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         incidenciaVidrio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        incidenciaVidrio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        incidenciaVidrio.setBorder(null);
         incidenciaVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         incidenciaMO.setEditable(false);
         incidenciaMO.setBackground(new java.awt.Color(255, 255, 255));
-        incidenciaMO.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        incidenciaMO.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         incidenciaMO.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        incidenciaMO.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        incidenciaMO.setBorder(null);
         incidenciaMO.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         incidenciaViaje.setEditable(false);
         incidenciaViaje.setBackground(new java.awt.Color(255, 255, 255));
-        incidenciaViaje.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        incidenciaViaje.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         incidenciaViaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        incidenciaViaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        incidenciaViaje.setBorder(null);
         incidenciaViaje.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         incidenciaGan.setEditable(false);
         incidenciaGan.setBackground(new java.awt.Color(255, 255, 255));
-        incidenciaGan.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        incidenciaGan.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         incidenciaGan.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        incidenciaGan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        incidenciaGan.setBorder(null);
         incidenciaGan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         incidenciaCom.setEditable(false);
         incidenciaCom.setBackground(new java.awt.Color(255, 255, 255));
-        incidenciaCom.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        incidenciaCom.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         incidenciaCom.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        incidenciaCom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        incidenciaCom.setBorder(null);
         incidenciaCom.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         SalirBtn4.setBackground(new java.awt.Color(255, 153, 51));
@@ -1337,6 +1358,12 @@ public class Reportes extends javax.swing.JFrame {
 
     private void SalirBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn3ActionPerformed
         // TODO add your handling code here:
+        dispose();
+        try {
+                new Menu().setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_SalirBtn3ActionPerformed
 
     private void SalirBtn4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirBtn4MouseClicked
