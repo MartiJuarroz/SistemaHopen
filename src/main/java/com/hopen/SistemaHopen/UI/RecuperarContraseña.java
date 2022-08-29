@@ -111,22 +111,27 @@ public class RecuperarContraseña extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(0, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel1.setText("Recuperar contraseña");
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel2.setText("Ingrese el mail del usuario para poder recuperar la contraseña");
 
+        emailTextField.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         emailTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 emailTextFieldKeyPressed(evt);
             }
         });
 
+        jToggleButton1.setBackground(new java.awt.Color(0, 204, 255));
+        jToggleButton1.setFont(new java.awt.Font("Roboto Black", 0, 15)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("Enviar correo");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -144,17 +149,13 @@ public class RecuperarContraseña extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailTextField)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jToggleButton1)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jToggleButton1)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                    .addComponent(jLabel1))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,8 +167,8 @@ public class RecuperarContraseña extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
