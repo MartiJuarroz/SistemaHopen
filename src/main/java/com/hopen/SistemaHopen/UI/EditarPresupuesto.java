@@ -74,8 +74,6 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         SalirBtn5 = new javax.swing.JButton();
         comboVidrio = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         tabAcc = new javax.swing.JPanel();
         guardarAcc = new javax.swing.JButton();
         SalirBtn2 = new javax.swing.JButton();
@@ -355,11 +353,6 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Tipo Vidrio");
 
-        jTextPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTextPane1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        jTextPane1.setText("Para ingresar los tipos de vidrio debe primero ingresar el presupuesto");
-        jScrollPane2.setViewportView(jTextPane1);
-
         javax.swing.GroupLayout tabVidro1Layout = new javax.swing.GroupLayout(tabVidro1);
         tabVidro1.setLayout(tabVidro1Layout);
         tabVidro1Layout.setHorizontalGroup(
@@ -371,16 +364,11 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                         .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabVidro1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tabVidro1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSeparator12)
-                                    .addComponent(planchasVidrio, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)))
-                            .addGroup(tabVidro1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator12)
+                            .addComponent(planchasVidrio, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))))
                 .addGap(173, 173, 173))
             .addGroup(tabVidro1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
@@ -409,12 +397,10 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                     .addComponent(presupuestoVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
                     .addComponent(comboVidrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
-                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(guardarVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SalirBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                .addGroup(tabVidro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardarVidrio1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SalirBtn5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -663,13 +649,14 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                         .addComponent(SalirBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tabViajeLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(tabViajeLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addGap(37, 37, 37)
-                                .addComponent(cantidadViajes, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE))
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(87, 87, 87)
+                                .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cantidadViajes)
+                                    .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)))))
                     .addGroup(tabViajeLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(50, 50, 50)
@@ -691,7 +678,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                     .addComponent(presupuestoViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addGroup(tabViajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarViajes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SalirBtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -749,17 +736,98 @@ public class EditarPresupuesto extends javax.swing.JFrame {
             int idMano = resultSet.getInt(4);
             int idViaje = resultSet.getInt(5);
             
-            
             // ALUMINIO 
             
             String sql2 ="SELECT kilo_presupuestado, total_presupuestado,remito FROM aluminio a WHERE a.id = ?";
             ps.setInt(1, idAlu);
             ps = ConexionDB.getConnection().prepareStatement(sql2);
             ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                double kilos = rs.getDouble(1);
+                double totalA = rs.getDouble(2);
+                String remito2 = rs.getString(3);
+                presupuestoKg.setText(Double.toString(kilos));
+                presupuestoAlu.setText(Double.toString(totalA));
+                remito.setText(remito2);
+            }
+            
+            // VIDRIO
+            
+            String sql3 ="SELECT total_presupuesto FROM compra_vidrio v WHERE v.id = ?";
+            ps.setInt(1, idVidrio);
+            ps = ConexionDB.getConnection().prepareStatement(sql3);
+            ResultSet rs2 = ps.executeQuery();
+            if(rs2.next()){
+                double totalV = rs2.getDouble(1);             
+                presupuestoVidrio.setText(Double.toString(totalV));
+            }
+            
+            String sql4 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = ?";
+            ps = ConexionDB.getConnection().prepareStatement(sql4);
+            ps.setInt(1, idVidrio);
+            ResultSet rs3 = ps.executeQuery();
+            
+            while(rs3.next()){
+                String nombre = rs3.getString(1);
+                comboVidrio.addItem(nombre);
+            }
+            
+            String sql5 ="SELECT cant_planchas FROM compra_vidrio_detalle cvd WHERE cvd.id = ?";
+            ps.setInt(1, idAlu);
+            ps = ConexionDB.getConnection().prepareStatement(sql5);
+            ResultSet rs4 = ps.executeQuery();
+            if(rs4.next()){
+                int planchas = rs4.getInt(1);
+                planchasVidrio.setText(Integer.toString(planchas));
+            }
+            
+            // ACCESORIOS 
+            
+            String sql6 ="SELECT fecha_compra, total_presupuesto FROM compra_accesorio ca WHERE ca.id = ?";
+            ps.setInt(1, idAcce);
+            ps = ConexionDB.getConnection().prepareStatement(sql6);
+            ResultSet rs5 = ps.executeQuery();
+            if(rs5.next()){
+                Date fecha = rs5.getDate(1);
+                double totalA = rs5.getDouble(2);             
+                presupuestoAcc.setText(Double.toString(totalA));
+                fechaAcc.setDate(fecha);
+            }
+            
+            // MANO DE OBRA
+            
+            String sql7 ="SELECT horasmo, total_presupuesto FROM mano_obra m WHERE m.id = ?";
+            ps.setInt(1, idMano);
+            ps = ConexionDB.getConnection().prepareStatement(sql7);
+            ResultSet rs6 = ps.executeQuery();
+            if(rs6.next()){
+                double horas = rs6.getDouble(1);
+                double totalMO = rs6.getDouble(2);
+                cantidadHoras.setText(Double.toString(horas));
+                presupuestoManoObra.setText(Double.toString(totalMO));
+            }
+            
+            // VIAJES
+            
+            String sql8 ="SELECT cant_viajes_presupuesto, total_presupuesto FROM viaje v WHERE v.id = ?";
+            ps.setInt(1, idViaje);
+            ps = ConexionDB.getConnection().prepareStatement(sql8);
+            ResultSet rs7 = ps.executeQuery();
+            if(rs7.next()){
+                double viajes = rs7.getDouble(1);
+                double totalViaje = rs7.getDouble(2);
+                cantidadViajes.setText(Double.toString(viajes));
+                presupuestoViajes.setText(Double.toString(totalViaje));
+            }
+            
             }
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    private void actualizarCampos(){
+        
     }
     
     private void llenarComboBoxTipoVidrio(){
@@ -1348,7 +1416,6 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -1361,7 +1428,6 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane6;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField planchasVidrio;
     private javax.swing.JTextField presupuestoAcc;
     private javax.swing.JTextField presupuestoAlu;
