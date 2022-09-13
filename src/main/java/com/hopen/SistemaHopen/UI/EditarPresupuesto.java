@@ -31,6 +31,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     
     public EditarPresupuesto(int idObra) {
         initComponents();
+        llenarTextos();
         llenarComboBoxTipoVidrio();
         guardarVidrio1.setVisible(false);
         this.idObra = idObra;
