@@ -30,9 +30,9 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     }
     
     public EditarPresupuesto(int idObra) {
-        initComponents();
         llenarTextos();
-        llenarComboBoxTipoVidrio();
+        initComponents();
+      //  llenarComboBoxTipoVidrio();
         guardarVidrio1.setVisible(false);
         this.idObra = idObra;
     }
@@ -825,10 +825,6 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
-    
-    private void actualizarCampos(){
-        
     }
     
     private void llenarComboBoxTipoVidrio(){

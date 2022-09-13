@@ -626,7 +626,8 @@ public class EditarObra extends javax.swing.JFrame {
 
     private void editarPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPresupuestoActionPerformed
         // TODO add your handling code here:
-        new EditarPresupuesto(getIDFromObraSeleccionada()).setVisible(true);      
+        idObra = getIDFromObraSeleccionada();
+        new EditarPresupuesto(idObra).setVisible(true);      
     }//GEN-LAST:event_editarPresupuestoActionPerformed
 
     private void editarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarFacturaActionPerformed
