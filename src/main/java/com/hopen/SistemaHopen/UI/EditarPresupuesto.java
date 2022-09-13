@@ -25,16 +25,16 @@ public class EditarPresupuesto extends javax.swing.JFrame {
      */
     public EditarPresupuesto() {
         initComponents();
-        llenarComboBoxTipoVidrio();
+  //      llenarComboBoxTipoVidrio();
         guardarVidrio1.setVisible(false);
     }
     
     public EditarPresupuesto(int idObra) {
-        llenarTextos();
         initComponents();
       //  llenarComboBoxTipoVidrio();
         guardarVidrio1.setVisible(false);
         this.idObra = idObra;
+        llenarTextos();
     }
 
     /**
@@ -724,7 +724,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         try{
             
             Connection con = ConexionDB.getConnection();
-            String sql ="SELECT compra_accesorio_id, aluminio_id, compra_vidrio_id, mano_obra_id, viaje_id FROM obra o WHERE o.id = ?";
+            String sql ="SELECT o.compra_accesorio_id, o.aluminio_id, o.compra_vidrio_id, o.mano_obra_id, o.viaje_id FROM obra o WHERE o.id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             ps.setInt(1, idObra);
             
@@ -739,14 +739,13 @@ public class EditarPresupuesto extends javax.swing.JFrame {
             
             // ALUMINIO 
             
-            String sql2 ="SELECT kilo_presupuestado, total_presupuestado,remito FROM aluminio a WHERE a.id = ?";
-            ps.setInt(1, idAlu);
+            String sql2 ="SELECT kilo_presupuestado, total_presupuesto,remito FROM aluminio a WHERE a.id = '"+idAlu+"'"; 
             ps = ConexionDB.getConnection().prepareStatement(sql2);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                double kilos = rs.getDouble(1);
-                double totalA = rs.getDouble(2);
-                String remito2 = rs.getString(3);
+            resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                double kilos = resultSet.getDouble(1);
+                double totalA = resultSet.getDouble(2);
+                String remito2 = resultSet.getString(3);
                 presupuestoKg.setText(Double.toString(kilos));
                 presupuestoAlu.setText(Double.toString(totalA));
                 remito.setText(remito2);
@@ -754,80 +753,74 @@ public class EditarPresupuesto extends javax.swing.JFrame {
             
             // VIDRIO
             
-            String sql3 ="SELECT total_presupuesto FROM compra_vidrio v WHERE v.id = ?";
-            ps.setInt(1, idVidrio);
+            String sql3 ="SELECT total_presupuesto FROM compra_vidrio v WHERE v.id = '"+idVidrio+"'"; 
             ps = ConexionDB.getConnection().prepareStatement(sql3);
-            ResultSet rs2 = ps.executeQuery();
-            if(rs2.next()){
-                double totalV = rs2.getDouble(1);             
+            resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                double totalV = resultSet.getDouble(1);             
                 presupuestoVidrio.setText(Double.toString(totalV));
             }
             
-            String sql4 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = ?";
+            String sql4 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = '"+idVidrio+"'"; 
             ps = ConexionDB.getConnection().prepareStatement(sql4);
-            ps.setInt(1, idVidrio);
-            ResultSet rs3 = ps.executeQuery();
+            resultSet = ps.executeQuery();
             
-            while(rs3.next()){
-                String nombre = rs3.getString(1);
+            while(resultSet.next()){
+                String nombre = resultSet.getString(1);
                 comboVidrio.addItem(nombre);
             }
             
-            String sql5 ="SELECT cant_planchas FROM compra_vidrio_detalle cvd WHERE cvd.id = ?";
-            ps.setInt(1, idAlu);
+            String sql5 ="SELECT cant_planchas FROM compra_vidrio_detalle cvd WHERE cvd.id = '"+idVidrio+"'";
             ps = ConexionDB.getConnection().prepareStatement(sql5);
-            ResultSet rs4 = ps.executeQuery();
-            if(rs4.next()){
-                int planchas = rs4.getInt(1);
+            resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                int planchas = resultSet.getInt(1);
                 planchasVidrio.setText(Integer.toString(planchas));
             }
             
             // ACCESORIOS 
             
-            String sql6 ="SELECT fecha_compra, total_presupuesto FROM compra_accesorio ca WHERE ca.id = ?";
-            ps.setInt(1, idAcce);
+            String sql6 ="SELECT fecha_compra, total_presupuesto FROM compra_accesorio ca WHERE ca.id = '"+idAcce+"'"; 
             ps = ConexionDB.getConnection().prepareStatement(sql6);
-            ResultSet rs5 = ps.executeQuery();
-            if(rs5.next()){
-                Date fecha = rs5.getDate(1);
-                double totalA = rs5.getDouble(2);             
+            resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                Date fecha = resultSet.getDate(1);
+                double totalA = resultSet.getDouble(2);             
                 presupuestoAcc.setText(Double.toString(totalA));
                 fechaAcc.setDate(fecha);
             }
             
             // MANO DE OBRA
             
-            String sql7 ="SELECT horasmo, total_presupuesto FROM mano_obra m WHERE m.id = ?";
-            ps.setInt(1, idMano);
+            String sql7 ="SELECT horasmo, total_presupuesto FROM mano_obra m WHERE m.id = '"+idMano+"'"; 
             ps = ConexionDB.getConnection().prepareStatement(sql7);
-            ResultSet rs6 = ps.executeQuery();
-            if(rs6.next()){
-                double horas = rs6.getDouble(1);
-                double totalMO = rs6.getDouble(2);
+            resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                double horas = resultSet.getDouble(1);
+                double totalMO = resultSet.getDouble(2);
                 cantidadHoras.setText(Double.toString(horas));
                 presupuestoManoObra.setText(Double.toString(totalMO));
             }
             
             // VIAJES
             
-            String sql8 ="SELECT cant_viajes_presupuesto, total_presupuesto FROM viaje v WHERE v.id = ?";
-            ps.setInt(1, idViaje);
+            String sql8 ="SELECT cant_viajes_presupuesto, total_presupuesto FROM viaje v WHERE v.id = '"+idViaje+"'"; 
             ps = ConexionDB.getConnection().prepareStatement(sql8);
-            ResultSet rs7 = ps.executeQuery();
-            if(rs7.next()){
-                double viajes = rs7.getDouble(1);
-                double totalViaje = rs7.getDouble(2);
+            resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                double viajes = resultSet.getDouble(1);
+                double totalViaje = resultSet.getDouble(2);
                 cantidadViajes.setText(Double.toString(viajes));
                 presupuestoViajes.setText(Double.toString(totalViaje));
             }
             
-            }
+          }
         }catch(Exception e){
             e.printStackTrace();
         }
     }
     
-    private void llenarComboBoxTipoVidrio(){
+ /*  private void llenarComboBoxTipoVidrio(){
         PreparedStatement ps; 
         try{
             Connection con = ConexionDB.getConnection();
@@ -844,7 +837,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
          }catch(Exception e){
             e.printStackTrace();
         }
-    }
+    }*/
     
     public int getIDFromClase(String nombreTipo, String material, String tipoNombre){
 
