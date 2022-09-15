@@ -86,6 +86,7 @@ public class EditarObra extends javax.swing.JFrame {
         cbEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -634,7 +635,6 @@ public class EditarObra extends javax.swing.JFrame {
         // TODO add your handling code here:
         idObra = getIDFromObraSeleccionada();
         new CargarFactura(idObra).setVisible(true);
-        dispose();
     }//GEN-LAST:event_editarFacturaActionPerformed
 
     private void ComisionTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComisionTxtKeyTyped

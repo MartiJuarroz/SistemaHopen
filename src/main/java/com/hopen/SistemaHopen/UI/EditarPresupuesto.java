@@ -102,8 +102,9 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 255));
 
@@ -750,6 +751,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                 presupuestoVidrio.setText(Double.toString(totalV));
             }
             
+            //llenar combo box
             String sql4 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = '"+idVidrio+"'"; 
             ps = ConexionDB.getConnection().prepareStatement(sql4);
             resultSet = ps.executeQuery();
@@ -758,13 +760,30 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                 String nombre = resultSet.getString(1);
                 comboVidrio.addItem(nombre);
             }
+          
+            //
             
-            String sql5 ="SELECT cant_planchas FROM compra_vidrio_detalle cvd WHERE cvd.id = '"+idVidrio+"'";
+            if(resultSet.next()){
+                
+            for (int i = 0;i<comboVidrio.getSize().height;i++){    
+                
+            String sql9 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = '"+idVidrio+"'"; 
+            ps = ConexionDB.getConnection().prepareStatement(sql9);
+            resultSet = ps.executeQuery();
+             
+            if(resultSet.next()){ 
+                String nombre = resultSet.getString(1);
+            if (comboVidrio.getSelectedItem().toString() == nombre){
+            String sql5 ="SELECT cant_planchas FROM compra_vidrio_detalle cvd inner join compra_vidrio cv on '"+idVidrio+"' = cvd.compra_vidrio_id";
             ps = ConexionDB.getConnection().prepareStatement(sql5);
             resultSet = ps.executeQuery();
             if(resultSet.next()){
                 int planchas = resultSet.getInt(1);
                 planchasVidrio.setText(Integer.toString(planchas));
+            }
+            }
+            }
+            }
             }
             
             // ACCESORIOS 
