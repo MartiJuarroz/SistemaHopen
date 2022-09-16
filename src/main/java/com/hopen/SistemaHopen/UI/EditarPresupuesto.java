@@ -319,6 +319,11 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         planchasVidrio.setBorder(null);
         planchasVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         planchasVidrio.setSelectionColor(new java.awt.Color(51, 204, 255));
+        planchasVidrio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                planchasVidrioActionPerformed(evt);
+            }
+        });
 
         guardarVidrio1.setBackground(new java.awt.Color(0, 204, 255));
         guardarVidrio1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -343,6 +348,11 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         });
 
         comboVidrio.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        comboVidrio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboVidrioActionPerformed(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Microsoft YaHei", 0, 16)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -758,7 +768,11 @@ public class EditarPresupuesto extends javax.swing.JFrame {
             
             while(resultSet.next()){
                 String nombre = resultSet.getString(1);
+//                String nombre2 = resultSet.getString(2);
+//                String nombre3 = resultSet.getString(3);
                 comboVidrio.addItem(nombre);
+//                comboVidrio.addItem(nombre2);
+//                comboVidrio.addItem(nombre3);
             }
           
             //
@@ -1345,6 +1359,15 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         presupuestoVidrio.setText("");
         guardarVidrio1.setVisible(true);
     }//GEN-LAST:event_guardarVidrioActionPerformed
+
+    private void comboVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboVidrioActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_comboVidrioActionPerformed
+
+    private void planchasVidrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planchasVidrioActionPerformed
+        // Cuando haya algun cambio en el combobox deberia cambiar la cantidad de planchas
+    }//GEN-LAST:event_planchasVidrioActionPerformed
 
     /**
      * @param args the command line arguments
