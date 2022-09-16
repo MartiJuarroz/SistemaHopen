@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,27 +39,27 @@ public class Obra extends Base {
       private double costosFijos;
 
       @OneToMany
-      @JoinColumn(name = "obra_id")
+      @JoinColumn(name = "obra_id", cascade = CascadeType.ALL, orphanRemoval = true)
       private List<Proveedor> proveedores = new ArrayList<Proveedor>();
 
       @OneToOne
-      @JoinColumn(name = "viaje_id")
+      @JoinColumn(name = "viaje_id",cascade = CascadeType.ALL, orphanRemoval = true)
       private Viaje viaje;
 
       @OneToOne
-      @JoinColumn(name = "manoObra_id")
+      @JoinColumn(name = "manoObra_id",cascade = CascadeType.ALL, orphanRemoval = true)
       private ManoObra manoObra;
 
       @OneToOne
-      @JoinColumn(name = "compraVidrio_id")
+      @JoinColumn(name = "compraVidrio_id",cascade = CascadeType.ALL, orphanRemoval = true)
       private CompraVidrio compraVidrio;
 
       @OneToOne
-      @JoinColumn(name = "compraAccesorio_id")
+      @JoinColumn(name = "compraAccesorio_id",cascade = CascadeType.ALL, orphanRemoval = true)
       private CompraAccesorio accesorios;
 
       @OneToOne
-      @JoinColumn(name = "aluminio_id")
+      @JoinColumn(name = "aluminio_id",cascade = CascadeType.ALL, orphanRemoval = true)
       private Aluminio aluminio;
 
       @ManyToOne(cascade = CascadeType.PERSIST)

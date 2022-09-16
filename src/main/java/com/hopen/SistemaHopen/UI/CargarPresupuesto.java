@@ -37,7 +37,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTabbedPane6 = new javax.swing.JTabbedPane();
+        panelPrincipal = new javax.swing.JTabbedPane();
         tabAluminio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         presupuestoKg = new javax.swing.JTextField();
@@ -60,6 +60,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         planchasVidrio = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
+        presupuestoVidrio1 = new javax.swing.JTextField();
         guardarVidrio1 = new javax.swing.JButton();
         SalirBtn5 = new javax.swing.JButton();
         comboVidrio = new javax.swing.JComboBox<>();
@@ -96,13 +97,14 @@ public class CargarPresupuesto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setName("Cargar Presupuesto"); // NOI18N
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 255));
 
-        jTabbedPane6.setBackground(new java.awt.Color(51, 204, 255));
-        jTabbedPane6.setForeground(new java.awt.Color(255, 255, 255));
-        jTabbedPane6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        panelPrincipal.setBackground(new java.awt.Color(51, 204, 255));
+        panelPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        panelPrincipal.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         tabAluminio.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -224,7 +226,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jTabbedPane6.addTab("Aluminio", tabAluminio);
+        panelPrincipal.addTab("Aluminio", tabAluminio);
 
         tabVidro.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -298,7 +300,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Vidrio", tabVidro);
+        panelPrincipal.addTab("Vidrio", tabVidro);
 
         tabVidro1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -311,6 +313,12 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         planchasVidrio.setBorder(null);
         planchasVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         planchasVidrio.setSelectionColor(new java.awt.Color(51, 204, 255));
+
+        presupuestoVidrio1.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        presupuestoVidrio1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        presupuestoVidrio1.setBorder(null);
+        presupuestoVidrio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        presupuestoVidrio1.setSelectionColor(new java.awt.Color(51, 204, 255));
 
         guardarVidrio1.setBackground(new java.awt.Color(0, 204, 255));
         guardarVidrio1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -398,7 +406,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("TipoVidrio    ", tabVidro1);
+        panelPrincipal.addTab("TipoVidrio    ", tabVidro1);
 
         tabAcc.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -488,7 +496,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Accesorios", tabAcc);
+        panelPrincipal.addTab("Accesorios", tabAcc);
 
         tabManoObra.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -583,7 +591,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Mano de Obra", tabManoObra);
+        panelPrincipal.addTab("Mano de Obra", tabManoObra);
 
         tabViaje.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -678,22 +686,22 @@ public class CargarPresupuesto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Viajes", tabViaje);
+        panelPrincipal.addTab("Viajes", tabViaje);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jTabbedPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane6, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPane6.getAccessibleContext().setAccessibleName("");
+        panelPrincipal.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -828,6 +836,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         presupuestoKg.setText("");
         presupuestoAlu.setText("");
         remito.setText("");
+        panelPrincipal.setSelectedIndex(1);
     }//GEN-LAST:event_guardarAluminioActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
@@ -909,6 +918,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
         fechaAcc = null;
         presupuestoAcc.setText("");
+        panelPrincipal.setSelectedIndex(4);
     }//GEN-LAST:event_guardarAccActionPerformed
 
     private void SalirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn2ActionPerformed
@@ -984,6 +994,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
         cantidadHoras.setText("");
         presupuestoManoObra.setText("");
+        panelPrincipal.setSelectedIndex(5);
     }//GEN-LAST:event_guardarManoObraActionPerformed
 
     private void SalirBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn3ActionPerformed
@@ -1059,6 +1070,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
         cantidadViajes.setText("");
         presupuestoViajes.setText("");
+        new CargarFactura().setVisible(true);
     }//GEN-LAST:event_guardarViajesActionPerformed
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed
@@ -1149,6 +1161,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
           }catch(Exception e){
             e.printStackTrace();
         }    
+         
+         panelPrincipal.setSelectedIndex(3);
         
     }//GEN-LAST:event_guardarVidrio1ActionPerformed
 
@@ -1224,7 +1238,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
             e.printStackTrace();
         }
         presupuestoVidrio.setText("");
-        guardarVidrio1.setVisible(true);
+        panelPrincipal.setSelectedIndex(2);
     }//GEN-LAST:event_guardarVidrioActionPerformed
 
     /**
@@ -1305,8 +1319,8 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTabbedPane jTabbedPane6;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTabbedPane panelPrincipal;
     private javax.swing.JTextField planchasVidrio;
     private javax.swing.JTextField presupuestoAcc;
     private javax.swing.JTextField presupuestoAlu;
@@ -1314,6 +1328,7 @@ public class CargarPresupuesto extends javax.swing.JFrame {
     private javax.swing.JTextField presupuestoManoObra;
     private javax.swing.JTextField presupuestoViajes;
     private javax.swing.JTextField presupuestoVidrio;
+    private javax.swing.JTextField presupuestoVidrio1;
     private javax.swing.JTextField remito;
     private javax.swing.JPanel tabAcc;
     private javax.swing.JPanel tabAluminio;

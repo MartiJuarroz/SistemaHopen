@@ -84,6 +84,7 @@ public class EditarObra extends javax.swing.JFrame {
         editarFactura = new javax.swing.JButton();
         CFLbl1 = new javax.swing.JLabel();
         cbEstado = new javax.swing.JComboBox<>();
+        btnBorrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -287,6 +288,15 @@ public class EditarObra extends javax.swing.JFrame {
 
         cbEstado.setToolTipText("");
 
+        btnBorrar.setBackground(new java.awt.Color(255, 51, 51));
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setText("Borrar obra");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -370,7 +380,9 @@ public class EditarObra extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(btnBorrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(editarFactura)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(editarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -404,7 +416,8 @@ public class EditarObra extends javax.swing.JFrame {
                             .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(MTbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editarPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(editarFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBorrar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(titularLbl)
@@ -681,6 +694,29 @@ public class EditarObra extends javax.swing.JFrame {
     }                                       
     }//GEN-LAST:event_tfBuscarKeyPressed
 
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        // TODO add your handling code here:
+        //    String titular = (String)tablaObras.getValueAt(tablaObras.getSelectedRow(), 1);
+            //guardamos el id de la obra que seleccionamos
+            int idObra2 = getIDFromObraSeleccionada();
+            idObra =Integer.parseInt((String) tablaObras.getValueAt(tablaObras.getSelectedRow(), 0));
+            PreparedStatement ps;
+            try{
+                Connection con = ConexionDB.getConnection();
+                String sql = "DELETE FROM obra WHERE id = ?";
+                ps = ConexionDB.getConnection().prepareStatement(sql);
+                if (tfCliente.getText() == ""){
+                    ps.setInt(1, idObra);
+                }
+                ps.setInt(1, idObra2);
+                ps.executeUpdate();
+                mostrarTabla(); 
+        //        ConexionDB.endConnection(con); 
+            }catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
      private void mostrarTabla() {   
          
         ColorCeldas c = new ColorCeldas();
@@ -880,6 +916,7 @@ public class EditarObra extends javax.swing.JFrame {
     private javax.swing.JButton SalirBtn;
     private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnVerDatos;
     private javax.swing.JComboBox<String> cbEstado;

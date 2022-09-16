@@ -567,6 +567,7 @@ public class CargarObra extends javax.swing.JFrame {
     private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
         // TODO add your handling code here: 
        guardarDatos();
+       new CargarPresupuesto().setVisible(true);
     }//GEN-LAST:event_SigBtnActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
