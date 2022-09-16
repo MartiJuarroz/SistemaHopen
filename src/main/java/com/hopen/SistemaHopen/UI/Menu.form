@@ -52,22 +52,19 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                  <EmptySpace pref="63" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnReportes" max="32767" attributes="0"/>
                               <Component id="btnIngresar" max="32767" attributes="0"/>
-                              <Component id="btnEditarObra" alignment="0" min="-2" pref="226" max="-2" attributes="0"/>
+                              <Component id="btnEditarObra" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="btnReportes" min="-2" pref="226" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -166,7 +163,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Editar datos de obra"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -186,7 +183,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Ingresar una obra nueva"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -206,7 +203,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
@@ -226,7 +223,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Reportes"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>

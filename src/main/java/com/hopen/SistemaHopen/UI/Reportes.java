@@ -4,14 +4,16 @@
  */
 package com.hopen.SistemaHopen.UI;
 
+import java.awt.Button;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -25,8 +27,52 @@ public class Reportes extends javax.swing.JFrame {
     public Reportes() {
         initComponents();
         llenarComboBox();
+        setTitle("Reportes Obra");
+        TextPrompt filtradoR = new TextPrompt("Ingrese el nombre del titular de la obra a buscar",filtrador);
+        filtradoR.setShowPromptOnce(true);
     }
     
+    /** SE VA A PONER FIERA LA COSA*************************************************************************
+    private Node createSearchComboBox() {
+
+        ObservableList<String> items = FXCollections
+                .observableArrayList(
+                        "auto", 
+                        "casa",
+                        "perro",
+                        "animales",
+                        "oro",
+                        "minerales", 
+                        "teclado",
+                        "computadora",
+                        "restaurante",
+                        "comida",
+                        "papas",
+                        "salud",
+                        "bellesa",
+                        "cristales",
+                        "escuela",
+                        "saber",
+                        "periodico");
+        
+        SearchComboBox<String> cbx = new SearchComboBox<>();
+        cbx.setItems(items);
+        cbx.setFilter((item, text) -> item.contains(text));
+        cbx.getSelectionModel().selectedItemProperty().addListener((p, o, n) -> System.out.println("ComboBox Item: " + n));
+        cbx.setPrefWidth(250.0);
+        cbx.getSelectionModel().select(5);
+
+        Button btn = new Button("Select index 10");
+        btn.setOnAction(a -> cbx.getSelectionModel().clearAndSelect(10));
+        
+        VBox box = new VBox(10.0);
+        box.getChildren().addAll(cbx, btn);
+        box.setAlignment(Pos.CENTER);
+        
+        return box;
+    }  
+    
+    /*******************************************************************************************************/
     private void llenarComboBox(){
         PreparedStatement ps; 
         try{
@@ -43,6 +89,32 @@ public class Reportes extends javax.swing.JFrame {
          }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    private void filtrarObra(String input){
+        
+        PreparedStatement ps;
+        
+        try{
+        Connection con = ConexionDB.getConnection();
+        String sql = "SELECT o.titular FROM obra o WHERE titular LIKE ?";
+        ps = ConexionDB.getConnection().prepareStatement(sql);
+        ps.setString(1, "%"+input+"%");
+        
+        ResultSet resultSet = ps.executeQuery();
+        
+        cbReportes.removeAll();
+        while(resultSet.next()){
+            String item = resultSet.getString(1);
+            cbReportes.addItem(item);
+             
+        }
+        
+        ConexionDB.endConnection(con);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
     }
     
     private double presuTotal = 0;
@@ -293,6 +365,9 @@ public class Reportes extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         sumCostos = new javax.swing.JTextField();
         SalirBtn3 = new javax.swing.JButton();
+        filtrador = new javax.swing.JTextField();
+        btnFiltrador = new javax.swing.JButton();
+        desfiltradoBtn = new javax.swing.JButton();
         reporteMateriales = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         presupuesto = new javax.swing.JLabel();
@@ -469,11 +544,41 @@ public class Reportes extends javax.swing.JFrame {
             }
         });
 
+        btnFiltrador.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        btnFiltrador.setForeground(new java.awt.Color(255, 255, 255));
+        btnFiltrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
+        btnFiltrador.setBorder(null);
+        btnFiltrador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFiltrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltradorActionPerformed(evt);
+            }
+        });
+
+        desfiltradoBtn.setBackground(new java.awt.Color(51, 204, 255));
+        desfiltradoBtn.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        desfiltradoBtn.setForeground(new java.awt.Color(255, 255, 255));
+        desfiltradoBtn.setText("Mostrar Obras");
+        desfiltradoBtn.setToolTipText("");
+        desfiltradoBtn.setBorder(SalirBtn1.getBorder());
+        desfiltradoBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        desfiltradoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desfiltradoBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout difGeneralLayout = new javax.swing.GroupLayout(difGeneral);
         difGeneral.setLayout(difGeneralLayout);
         difGeneralLayout.setHorizontalGroup(
             difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(difGeneralLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, difGeneralLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SalirBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SalirBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, difGeneralLayout.createSequentialGroup()
                 .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(difGeneralLayout.createSequentialGroup()
                         .addGap(104, 104, 104)
@@ -492,37 +597,37 @@ public class Reportes extends javax.swing.JFrame {
                             .addComponent(variacion, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sumCostos, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(difGeneralLayout.createSequentialGroup()
-                        .addGap(503, 503, 503)
-                        .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(584, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, difGeneralLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVerDatosDif)
-                .addGap(414, 414, 414))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, difGeneralLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(SalirBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SalirBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
-            .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(difGeneralLayout.createSequentialGroup()
-                    .addGap(433, 433, 433)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(750, Short.MAX_VALUE)))
+                        .addGap(417, 417, 417)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbReportes, 0, 174, Short.MAX_VALUE)
+                            .addComponent(titulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addComponent(filtrador))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnVerDatosDif, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFiltrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(desfiltradoBtn)
+                .addGap(291, 291, 291))
         );
         difGeneralLayout.setVerticalGroup(
             difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(difGeneralLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(titulo1)
-                .addGap(36, 36, 36)
+                .addGap(34, 34, 34)
                 .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVerDatosDif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76)
+                    .addComponent(btnVerDatosDif, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(desfiltradoBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(filtrador, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
                 .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(precioAbertura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -547,11 +652,6 @@ public class Reportes extends javax.swing.JFrame {
                 .addGap(384, 384, 384)
                 .addComponent(SalirBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(232, 232, 232))
-            .addGroup(difGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(difGeneralLayout.createSequentialGroup()
-                    .addGap(107, 107, 107)
-                    .addComponent(jLabel9)
-                    .addContainerGap(1186, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Diferencias Generales", difGeneral);
@@ -1382,6 +1482,19 @@ public class Reportes extends javax.swing.JFrame {
     private void nombreObra2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreObra2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreObra2ActionPerformed
+
+    private void btnFiltradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltradorActionPerformed
+        // TODO add your handling code here:
+        cbReportes.removeAllItems();
+        filtrarObra(filtrador.getText());
+        filtrador.setText("");
+    }//GEN-LAST:event_btnFiltradorActionPerformed
+
+    private void desfiltradoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desfiltradoBtnActionPerformed
+        // TODO add your handling code here:
+        cbReportes.removeAllItems();
+        llenarComboBox();
+    }//GEN-LAST:event_desfiltradoBtnActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1424,11 +1537,13 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JButton SalirBtn2;
     private javax.swing.JButton SalirBtn3;
     private javax.swing.JButton SalirBtn4;
+    private javax.swing.JButton btnFiltrador;
     private javax.swing.JButton btnVerDatos2;
     private javax.swing.JButton btnVerDatosDif;
     private javax.swing.JComboBox<String> cbReportes;
     private javax.swing.JLabel descripcion;
     private javax.swing.JLabel descripcion1;
+    private javax.swing.JButton desfiltradoBtn;
     private javax.swing.JTextField difAcc;
     private javax.swing.JTextField difAluminioKg;
     private javax.swing.JTextField difAluminioPesos;
@@ -1448,6 +1563,7 @@ public class Reportes extends javax.swing.JFrame {
     private javax.swing.JTextField facVidrio;
     private javax.swing.JLabel facturado;
     private javax.swing.JLabel facturado1;
+    private javax.swing.JTextField filtrador;
     private javax.swing.JTextField gananciaReal;
     private javax.swing.JTextField gastoReal;
     private javax.swing.JTextField incidenciaAcc;

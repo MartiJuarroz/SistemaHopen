@@ -211,7 +211,7 @@ public class EditarObra extends javax.swing.JFrame {
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
         btnBuscar.setBorder(null);
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -691,7 +691,7 @@ public class EditarObra extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
            buscarDatosObra(tfBuscar.getText());
            tfBuscar.setText("");
-    }                                       
+        }                                       
     }//GEN-LAST:event_tfBuscarKeyPressed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -783,7 +783,7 @@ public class EditarObra extends javax.swing.JFrame {
         Connection con = ConexionDB.getConnection();
         String sql = "SELECT o.id, o.titular,o.total_presupuesto,o.fecha_presupuesto FROM obra o WHERE titular LIKE ?";
         ps = ConexionDB.getConnection().prepareStatement(sql);
-        ps.setString(1, input+"%");
+        ps.setString(1, "%"+input+"%");
         
         ResultSet resultSet = ps.executeQuery();
         
