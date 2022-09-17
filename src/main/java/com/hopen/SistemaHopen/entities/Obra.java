@@ -38,35 +38,35 @@ public class Obra extends Base {
       @Column
       private double costosFijos;
 
-      @OneToMany
-      @JoinColumn(name = "obra_id", cascade = CascadeType.ALL, orphanRemoval = true)
+      @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+      @JoinColumn(name = "obra_id")
       private List<Proveedor> proveedores = new ArrayList<Proveedor>();
 
-      @OneToOne
-      @JoinColumn(name = "viaje_id",cascade = CascadeType.ALL, orphanRemoval = true)
+      @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+      @JoinColumn(name = "viaje_id")
       private Viaje viaje;
 
-      @OneToOne
-      @JoinColumn(name = "manoObra_id",cascade = CascadeType.ALL, orphanRemoval = true)
+      @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+      @JoinColumn(name = "manoObra_id")
       private ManoObra manoObra;
 
-      @OneToOne
-      @JoinColumn(name = "compraVidrio_id",cascade = CascadeType.ALL, orphanRemoval = true)
+      @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+      @JoinColumn(name = "compraVidrio_id")
       private CompraVidrio compraVidrio;
 
-      @OneToOne
-      @JoinColumn(name = "compraAccesorio_id",cascade = CascadeType.ALL, orphanRemoval = true)
+      @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+      @JoinColumn(name = "compraAccesorio_id")
       private CompraAccesorio accesorios;
 
-      @OneToOne
-      @JoinColumn(name = "aluminio_id",cascade = CascadeType.ALL, orphanRemoval = true)
+      @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+      @JoinColumn(name = "aluminio_id")
       private Aluminio aluminio;
 
       @ManyToOne(cascade = CascadeType.PERSIST)
       @JoinColumn(name = "estadoObra_id")
       private EstadoObra estadoObra;
      
-      @OneToMany
+      @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
       @JoinColumn(name = "obra_id")
       private List<Factura> facturas = new ArrayList<Factura>();
 }
