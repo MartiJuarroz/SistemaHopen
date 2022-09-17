@@ -4,8 +4,6 @@
  */
 package com.hopen.SistemaHopen.UI;
 
-import java.awt.Button;
-import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +11,6 @@ import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -28,51 +25,10 @@ public class Reportes extends javax.swing.JFrame {
         initComponents();
         llenarComboBox();
         setTitle("Reportes Obra");
-        TextPrompt filtradoR = new TextPrompt("Ingrese el nombre del titular de la obra a buscar",filtrador);
+        TextPrompt filtradoR = new TextPrompt("Ingrese el titular de la obra",filtrador);
         filtradoR.setShowPromptOnce(true);
     }
     
-    /** SE VA A PONER FIERA LA COSA*************************************************************************
-    private Node createSearchComboBox() {
-
-        ObservableList<String> items = FXCollections
-                .observableArrayList(
-                        "auto", 
-                        "casa",
-                        "perro",
-                        "animales",
-                        "oro",
-                        "minerales", 
-                        "teclado",
-                        "computadora",
-                        "restaurante",
-                        "comida",
-                        "papas",
-                        "salud",
-                        "bellesa",
-                        "cristales",
-                        "escuela",
-                        "saber",
-                        "periodico");
-        
-        SearchComboBox<String> cbx = new SearchComboBox<>();
-        cbx.setItems(items);
-        cbx.setFilter((item, text) -> item.contains(text));
-        cbx.getSelectionModel().selectedItemProperty().addListener((p, o, n) -> System.out.println("ComboBox Item: " + n));
-        cbx.setPrefWidth(250.0);
-        cbx.getSelectionModel().select(5);
-
-        Button btn = new Button("Select index 10");
-        btn.setOnAction(a -> cbx.getSelectionModel().clearAndSelect(10));
-        
-        VBox box = new VBox(10.0);
-        box.getChildren().addAll(cbx, btn);
-        box.setAlignment(Pos.CENTER);
-        
-        return box;
-    }  
-    
-    /*******************************************************************************************************/
     private void llenarComboBox(){
         PreparedStatement ps; 
         try{
