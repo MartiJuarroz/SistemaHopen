@@ -71,7 +71,7 @@ public class EditarObra extends javax.swing.JFrame {
         fechaLbl = new javax.swing.JLabel();
         sepFecha = new javax.swing.JSeparator();
         SalirBtn = new javax.swing.JButton();
-        SigBtn = new javax.swing.JButton();
+        actualizarDatos = new javax.swing.JButton();
         fechaCH = new com.toedter.calendar.JDateChooser();
         btnVerDatos = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -182,14 +182,14 @@ public class EditarObra extends javax.swing.JFrame {
             }
         });
 
-        SigBtn.setBackground(new java.awt.Color(0, 204, 255));
-        SigBtn.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
-        SigBtn.setForeground(new java.awt.Color(255, 255, 255));
-        SigBtn.setText("Actualizar datos");
-        SigBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        SigBtn.addActionListener(new java.awt.event.ActionListener() {
+        actualizarDatos.setBackground(new java.awt.Color(0, 204, 255));
+        actualizarDatos.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        actualizarDatos.setForeground(new java.awt.Color(255, 255, 255));
+        actualizarDatos.setText("Actualizar datos");
+        actualizarDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        actualizarDatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SigBtnActionPerformed(evt);
+                actualizarDatosActionPerformed(evt);
             }
         });
 
@@ -211,7 +211,7 @@ public class EditarObra extends javax.swing.JFrame {
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
         btnBuscar.setBorder(null);
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -370,7 +370,7 @@ public class EditarObra extends javax.swing.JFrame {
                         .addGap(0, 83, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(actualizarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(150, 150, 150)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -463,7 +463,7 @@ public class EditarObra extends javax.swing.JFrame {
                             .addComponent(CFLbl1)
                             .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(SigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(actualizarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -556,7 +556,7 @@ public class EditarObra extends javax.swing.JFrame {
         return 0;
     }
     
-    private void SigBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigBtnActionPerformed
+    private void actualizarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarDatosActionPerformed
         // TODO add your handling code here:
             double total_presupuesto = Double.parseDouble(MTTxt.getText());
             double comision = Double.parseDouble(ComisionTxt.getText());
@@ -596,7 +596,7 @@ public class EditarObra extends javax.swing.JFrame {
             }
             new Menu().setVisible(true);
             dispose();
-    }//GEN-LAST:event_SigBtnActionPerformed
+    }//GEN-LAST:event_actualizarDatosActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
         // TODO add your handling code here:
@@ -914,8 +914,8 @@ public class EditarObra extends javax.swing.JFrame {
     private javax.swing.JButton MTbtn;
     private javax.swing.JLabel ObreroIcon;
     private javax.swing.JButton SalirBtn;
-    private javax.swing.JButton SigBtn;
     private javax.swing.JLabel UITxt;
+    private javax.swing.JButton actualizarDatos;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnVerDatos;

@@ -327,7 +327,7 @@ public class CargarFactura extends javax.swing.JFrame {
             
             ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Datos guardados");
+            JOptionPane.showMessageDialog(null, "Factura guardada");
             ConexionDB.endConnection(con);
             new CargarDatosFactura(idO).setVisible(true);
             dispose();

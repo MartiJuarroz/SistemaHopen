@@ -143,7 +143,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         guardarAluminio.setBackground(new java.awt.Color(0, 204, 255));
         guardarAluminio.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         guardarAluminio.setForeground(new java.awt.Color(255, 255, 255));
-        guardarAluminio.setText("Guardar");
+        guardarAluminio.setText("Actualizar");
         guardarAluminio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarAluminio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +249,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         guardarVidrio.setBackground(new java.awt.Color(0, 204, 255));
         guardarVidrio.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         guardarVidrio.setForeground(new java.awt.Color(255, 255, 255));
-        guardarVidrio.setText("Guardar");
+        guardarVidrio.setText("Actualizar");
         guardarVidrio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarVidrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,7 +328,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         guardarVidrio1.setBackground(new java.awt.Color(0, 204, 255));
         guardarVidrio1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         guardarVidrio1.setForeground(new java.awt.Color(255, 255, 255));
-        guardarVidrio1.setText("Guardar");
+        guardarVidrio1.setText("Actualizar");
         guardarVidrio1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarVidrio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,7 +412,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         guardarAcc.setBackground(new java.awt.Color(0, 204, 255));
         guardarAcc.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         guardarAcc.setForeground(new java.awt.Color(255, 255, 255));
-        guardarAcc.setText("Guardar");
+        guardarAcc.setText("Actualizar");
         guardarAcc.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -502,7 +502,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         guardarManoObra.setBackground(new java.awt.Color(0, 204, 255));
         guardarManoObra.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         guardarManoObra.setForeground(new java.awt.Color(255, 255, 255));
-        guardarManoObra.setText("Guardar");
+        guardarManoObra.setText("Actualizar");
         guardarManoObra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarManoObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -597,7 +597,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         guardarViajes.setBackground(new java.awt.Color(0, 204, 255));
         guardarViajes.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         guardarViajes.setForeground(new java.awt.Color(255, 255, 255));
-        guardarViajes.setText("Guardar");
+        guardarViajes.setText("Actualizar");
         guardarViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         guardarViajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -893,74 +893,44 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     
     private void guardarAluminioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAluminioActionPerformed
         // TODO add your handling code here:
-        CargarObra co = new CargarObra();
-        double kiloPresupuestado = 0.0;
-        String rto = null;
-        Double totalPresupuestado = 0.0;
         
-        if (!presupuestoKg.getText().isEmpty()){
-            kiloPresupuestado = Double.parseDouble(presupuestoKg.getText());
+      //  CargarObra co = new CargarObra();
+        double kiloFactura = 0.0;
+        Double totalFacturado = 0.0;
+        Double remito2 = 0.0;
+        
+        if(!presupuestoAlu.getText().isEmpty()){
+            totalFacturado = Double.parseDouble(presupuestoAlu.getText());
         }
-        if (!remito.getText().isEmpty()){
-            rto = remito.getText();
+        if(!presupuestoKg.getText().isEmpty()){
+            kiloFactura = Double.parseDouble(presupuestoKg.getText());
         }
-        if (!presupuestoAlu.getText().isEmpty()){
-            totalPresupuestado = Double.parseDouble(presupuestoAlu.getText());
+        
+        if(!remito.getText().isEmpty()){
+            remito2 = Double.parseDouble(presupuestoKg.getText());
         }
-        String colorAlu = co.getNameFromColorAluminio();
-
+            
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO aluminio (total_presupuesto, remito, kilo_presupuestado, color_aluminio_id) VALUES (?,?,?,?)";
+            String sql ="UPDATE aluminio SET total_real = ?, kilo_factura = ?, remito = ? FROM obra o where o.id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setDouble(1, totalPresupuestado);
-            ps.setString(2, rto);
-            ps.setDouble(3, kiloPresupuestado);
-            ps.setInt(4, getIDFromClase(colorAlu, "color_aluminio", "color"));
+            ps.setDouble(1, totalFacturado);
+            ps.setDouble(2, kiloFactura);
+            ps.setDouble(3, remito2);
+            ps.setInt(4,idObra);
 
             ps.executeUpdate();
-            
-            //Buscamos el id de obra y el de aluminio
-            String sql2 = "SELECT id FROM aluminio ORDER by id DESC LIMIT 1";
-            
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-            ResultSet resultSet = ps.executeQuery();
-            int idAlu = 0;
-            if(resultSet.next()){
-                idAlu = resultSet.getInt(1);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-            }
-            
-            
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET aluminio_id = '"+idAlu+"' WHERE id = '"+idObra+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado
 
-            JOptionPane.showMessageDialog(null, "Datos guardados");
+            JOptionPane.showMessageDialog(null, "Datos actualizados");
             ConexionDB.endConnection(con);
 
         }catch(Exception e){
             e.printStackTrace();
         }
-        presupuestoKg.setText("");
-        presupuestoAlu.setText("");
-        remito.setText("");
+        
     }//GEN-LAST:event_guardarAluminioActionPerformed
 
     private void SalirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtnActionPerformed
@@ -977,71 +947,31 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirBtnActionPerformed
 
     private void guardarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAccActionPerformed
-        // TODO add your handling code here:
-        java.util.Date fecha = null;
-        java.sql.Date fechaDB = null;
-        Double totalPresupuestado = 0.0;     
-        
-        if (fechaAcc.getDate() != null){
-            fecha = fechaAcc.getDate();
-            long timeInMilliSecs = fecha.getTime();
-            fechaDB = new java.sql.Date(timeInMilliSecs);
-        }
-            
-        if (!presupuestoAcc.getText().isEmpty()){
-            totalPresupuestado = Double.parseDouble(presupuestoAcc.getText());
+        // TODO add your handling code here:    
+       Double totalReal = Double.parseDouble(presupuestoAcc.getText());
+        if(!presupuestoAcc.getText().isEmpty()){
+            totalReal = Double.parseDouble(presupuestoAcc.getText());
         }
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO compra_accesorio (total_presupuesto, fecha_compra) VALUES (?,?)";
+            String sql ="UPDATE compra_accesorio SET total_real = ? FROM obra o where o.id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
-
-            ps.setDouble(1, totalPresupuestado);
-            ps.setDate(2, fechaDB);
+            
+            ps.setDouble(1, totalReal);
+            ps.setInt(2, idObra);
 
             ps.executeUpdate();
 
-            //ACCESORIO ES COMO VIDRIO CREO
-            String sql2 = "SELECT id FROM compra_accesorio ORDER by id DESC LIMIT 1";
-            
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-            ResultSet resultSet = ps.executeQuery();
-            int idAcc = 0;
-            if(resultSet.next()){
-                idAcc = resultSet.getInt(1);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-            }
-            
-            
-           //Insertamos los ids en la tabla de asociacion
-            //String sql3 = "UPDATE obra SET compra_vidrio_id = '"+idVidrio+"' WHERE id = '"+idObra+"'";
-            String sql3 = "UPDATE obra SET compra_accesorio_id = '"+idAcc+"' WHERE id = '"+idObra+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado*/
-            
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
 
         }catch(Exception e){
             e.printStackTrace();
-        }
-        fechaAcc = null;
-        presupuestoAcc.setText("");
+        }   
+       
     }//GEN-LAST:event_guardarAccActionPerformed
 
     private void SalirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn2ActionPerformed
@@ -1059,64 +989,35 @@ public class EditarPresupuesto extends javax.swing.JFrame {
 
     private void guardarManoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarManoObraActionPerformed
         // TODO add your handling code here:
-        int cantHoras = 0;
-        Double totalPresupuestado = 0.0;
-        
-        if (!cantidadHoras.getText().isEmpty()){
+        int cantHoras = Integer.parseInt(cantidadHoras.getText());
+        Double totalFacturado = Double.parseDouble(presupuestoManoObra.getText());
+        if(!planchasVidrio.getText().isEmpty()){
             cantHoras = Integer.parseInt(cantidadHoras.getText());
         }
-        if (!presupuestoManoObra.getText().isEmpty()){
-            totalPresupuestado = Double.parseDouble(presupuestoManoObra.getText());
+        if(!presupuestoManoObra.getText().isEmpty()){
+            totalFacturado = Double.parseDouble(presupuestoManoObra.getText());
         }
-
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO mano_obra (total_presupuesto, horasmo) VALUES (?,?)";
+            String sql ="UPDATE mano_obra SET total_real = ?, horasmo = ? FROM obra o where o.id = ? ";
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setDouble(1, totalPresupuestado);
+            ps.setDouble(1, totalFacturado);
             ps.setInt(2, cantHoras);
+            ps.setInt(3,idObra);
 
             ps.executeUpdate();
             
-            String sql2 = "SELECT id FROM mano_obra ORDER by id DESC LIMIT 1";
-            
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-            ResultSet resultSet = ps.executeQuery();
-            int idMO = 0;
-            if(resultSet.next()){
-                idMO = resultSet.getInt(1);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-            }
-            
-            
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET mano_obra_id = '"+idMO+"' WHERE id = '"+idObra+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado
-
-            JOptionPane.showMessageDialog(null, "Datos guardados");
+            JOptionPane.showMessageDialog(null, "Datos actualizados");
             ConexionDB.endConnection(con);
 
         }catch(Exception e){
             e.printStackTrace();
         }
-        cantidadHoras.setText("");
-        presupuestoManoObra.setText("");
+
+    
     }//GEN-LAST:event_guardarManoObraActionPerformed
 
     private void SalirBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn3ActionPerformed
@@ -1135,63 +1036,35 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     private void guardarViajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarViajesActionPerformed
         // TODO add your handling code here:
         int cantViajes = 0;
-        Double totalPresupuestado = 0.0;
-        
-        if (!cantidadViajes.getText().isEmpty()){
+        Double totalFacturado = 0.0;
+        if(!cantidadViajes.getText().isEmpty()){
             cantViajes = Integer.parseInt(cantidadViajes.getText());
         }
-        if (!presupuestoViajes.getText().isEmpty()){
-            totalPresupuestado = Double.parseDouble(presupuestoViajes.getText());
+        if(!presupuestoViajes.getText().isEmpty()){
+            totalFacturado = Double.parseDouble(presupuestoViajes.getText());
         }
 
         PreparedStatement ps;
 
         try{
             Connection con = ConexionDB.getConnection();
-            String sql ="INSERT INTO viaje (total_presupuesto, cant_viajes_presupuesto) VALUES (?,?)";
+            String sql ="UPDATE viaje SET total_real = ?, cant_viajes_real = ? FROM obra o where o.id = ?";
+            //a chequear con la base datos porque recien agregamos una variable/columna
             ps = ConexionDB.getConnection().prepareStatement(sql);
 
-            ps.setDouble(1, totalPresupuestado);
+            ps.setDouble(1, totalFacturado);
             ps.setInt(2, cantViajes);
+            ps.setInt(3, idObra);
 
             ps.executeUpdate();
             
-            String sql2 = "SELECT id FROM viaje ORDER by id DESC LIMIT 1";
-            
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            
-            ResultSet resultSet = ps.executeQuery();
-            int idViaje = 0;
-            if(resultSet.next()){
-                idViaje = resultSet.getInt(1);
-            }
-            
-            //Esta query busca el id mas grande que siempre seria el ultimo ingresado            
-            String sql4 = "SELECT id FROM obra ORDER by id DESC LIMIT 1";
-            ps = ConexionDB.getConnection().prepareStatement(sql4);
-            resultSet = ps.executeQuery();
-            
-            int idObra = 0;
-            if(resultSet.next()){
-                idObra = resultSet.getInt(1);
-            }
-            
-            
-            //ya tenemos los id, ahora lo asociamos a la obra
-            String sql3 = "UPDATE obra SET viaje_id = '"+idViaje+"' WHERE id = '"+idObra+"'";
-            ps = ConexionDB.getConnection().prepareStatement(sql3);
-            
-            ps.executeUpdate();
-            //ya estaria asociado
-
-            JOptionPane.showMessageDialog(null, "Datos guardados");
+            JOptionPane.showMessageDialog(null, "Datos actualizados");
             ConexionDB.endConnection(con);
 
         }catch(Exception e){
             e.printStackTrace();
         }
-        cantidadViajes.setText("");
-        presupuestoViajes.setText("");
+          
     }//GEN-LAST:event_guardarViajesActionPerformed
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed

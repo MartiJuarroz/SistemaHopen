@@ -38,8 +38,8 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jTabbedPane6 = new javax.swing.JTabbedPane();
+        panelPrincipal = new javax.swing.JPanel();
+        panelDatosFactura = new javax.swing.JTabbedPane();
         tabAluminio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         presupuestoKg = new javax.swing.JTextField();
@@ -95,11 +95,11 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(51, 204, 255));
+        panelPrincipal.setBackground(new java.awt.Color(51, 204, 255));
 
-        jTabbedPane6.setBackground(new java.awt.Color(51, 204, 255));
-        jTabbedPane6.setForeground(new java.awt.Color(255, 255, 255));
-        jTabbedPane6.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        panelDatosFactura.setBackground(new java.awt.Color(51, 204, 255));
+        panelDatosFactura.setForeground(new java.awt.Color(255, 255, 255));
+        panelDatosFactura.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         tabAluminio.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -196,7 +196,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jTabbedPane6.addTab("Aluminio", tabAluminio);
+        panelDatosFactura.addTab("Aluminio", tabAluminio);
 
         tabVidro1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -270,7 +270,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Vidrio", tabVidro1);
+        panelDatosFactura.addTab("Vidrio", tabVidro1);
 
         tabVidro.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -387,7 +387,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("TipoVidrio", tabVidro);
+        panelDatosFactura.addTab("TipoVidrio", tabVidro);
 
         tabAcc.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -460,7 +460,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Accesorios", tabAcc);
+        panelDatosFactura.addTab("Accesorios", tabAcc);
 
         tabManoObra.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -554,7 +554,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Mano de Obra", tabManoObra);
+        panelDatosFactura.addTab("Mano de Obra", tabManoObra);
 
         tabViaje.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -651,32 +651,32 @@ public class CargarDatosFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane6.addTab("Viajes", tabViaje);
+        panelDatosFactura.addTab("Viajes", tabViaje);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane6)
+        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
+        panelPrincipal.setLayout(panelPrincipalLayout);
+        panelPrincipalLayout.setHorizontalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelDatosFactura)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jTabbedPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panelPrincipalLayout.setVerticalGroup(
+            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPrincipalLayout.createSequentialGroup()
+                .addComponent(panelDatosFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane6.getAccessibleContext().setAccessibleName("");
+        panelDatosFactura.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -826,7 +826,9 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "Datos guardados");
             ConexionDB.endConnection(con);
-
+            planchasVidrio.setText("");
+            presupuestoVidrio.setText("");
+            panelDatosFactura.setSelectedIndex(3);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -871,6 +873,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
             e.printStackTrace();
         }
         presupuestoAcc.setText("");
+        panelDatosFactura.setSelectedIndex(4);
     }//GEN-LAST:event_guardarAccActionPerformed
 
     private void SalirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn2ActionPerformed
@@ -916,6 +919,7 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         }
         cantidadHoras.setText("");
         presupuestoManoObra.setText("");
+        panelDatosFactura.setSelectedIndex(5);
     }//GEN-LAST:event_guardarManoObraActionPerformed
 
     private void SalirBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn3ActionPerformed
@@ -963,6 +967,9 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         }
         cantidadViajes.setText("");
         presupuestoViajes.setText("");
+        JOptionPane.showMessageDialog(null, "Datos de la factura guardados");
+        dispose();
+        new CargarObra().setVisible(true);
     }//GEN-LAST:event_guardarViajesActionPerformed
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed
@@ -1025,6 +1032,9 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
+        presupuestoKg.setText("");
+        presupuestoAlu.setText("");
+        panelDatosFactura.setSelectedIndex(1);
     }//GEN-LAST:event_guardarAluminioActionPerformed
 
     private void guardarVidrio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarVidrio1ActionPerformed
@@ -1048,8 +1058,8 @@ public class CargarDatosFactura extends javax.swing.JFrame {
         }catch(Exception e){
             e.printStackTrace();
         }
-        
-        guardarVidrio1.setVisible(true);
+        presupuestoVidrio1.setText("");
+        panelDatosFactura.setSelectedIndex(2);
     }//GEN-LAST:event_guardarVidrio1ActionPerformed
 
     private void SalirBtn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn5ActionPerformed
@@ -1130,7 +1140,6 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -1141,7 +1150,8 @@ public class CargarDatosFactura extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTabbedPane panelDatosFactura;
+    private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextField planchasVidrio;
     private javax.swing.JTextField presupuestoAcc;
     private javax.swing.JTextField presupuestoAlu;

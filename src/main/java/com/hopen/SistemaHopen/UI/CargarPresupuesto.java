@@ -1070,7 +1070,9 @@ public class CargarPresupuesto extends javax.swing.JFrame {
         }
         cantidadViajes.setText("");
         presupuestoViajes.setText("");
+        JOptionPane.showMessageDialog(null, "Presupuesto guardado");
         new CargarFactura().setVisible(true);
+        dispose();
     }//GEN-LAST:event_guardarViajesActionPerformed
 
     private void SalirBtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirBtn4ActionPerformed
