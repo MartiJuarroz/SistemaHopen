@@ -724,32 +724,33 @@ public class EditarPresupuesto extends javax.swing.JFrame {
         try{
             
             Connection con = ConexionDB.getConnection();
-            String sql ="SELECT o.compra_accesorio_id, o.aluminio_id, o.compra_vidrio_id, o.mano_obra_id, o.viaje_id FROM obra o WHERE o.id = ?";
+            String sql ="SELECT compra_accesorio_id, aluminio_id, compra_vidrio_id, mano_obra_id, viaje_id FROM obra WHERE id = ?";
             ps = ConexionDB.getConnection().prepareStatement(sql);
             ps.setInt(1, idObra);
+            //buscamos todos los ids de los elementos de la obra
             
             ResultSet resultSet = ps.executeQuery();
             
             if(resultSet.next()){
-            int idAcce = resultSet.getInt(1);
-            int idAlu = resultSet.getInt(2);
-            int idVidrio = resultSet.getInt(3); 
-            int idMano = resultSet.getInt(4);
-            int idViaje = resultSet.getInt(5);
+                int idAcce = resultSet.getInt(1);
+                int idAlu = resultSet.getInt(2);
+                int idVidrio = resultSet.getInt(3); 
+                int idMano = resultSet.getInt(4);
+                int idViaje = resultSet.getInt(5);
             
-            // ALUMINIO 
+                // ALUMINIO 
             
-            String sql2 ="SELECT kilo_presupuestado, total_presupuesto,remito FROM aluminio a WHERE a.id = '"+idAlu+"'"; 
-            ps = ConexionDB.getConnection().prepareStatement(sql2);
-            resultSet = ps.executeQuery();
-            if(resultSet.next()){
-                double kilos = resultSet.getDouble(1);
-                double totalA = resultSet.getDouble(2);
-                String remito2 = resultSet.getString(3);
-                presupuestoKg.setText(Double.toString(kilos));
-                presupuestoAlu.setText(Double.toString(totalA));
-                remito.setText(remito2);
-            }
+                String sql2 ="SELECT kilo_presupuestado, total_presupuesto,remito FROM aluminio a WHERE a.id = '"+idAlu+"'"; 
+                ps = ConexionDB.getConnection().prepareStatement(sql2);
+                resultSet = ps.executeQuery();
+                if(resultSet.next()){
+                    double kilos = resultSet.getDouble(1);
+                    double totalA = resultSet.getDouble(2);
+                    String remito2 = resultSet.getString(3);
+                    presupuestoKg.setText(Double.toString(kilos));
+                    presupuestoAlu.setText(Double.toString(totalA));
+                    remito.setText(remito2);
+                }
             
             // VIDRIO
             
@@ -774,30 +775,28 @@ public class EditarPresupuesto extends javax.swing.JFrame {
 //                comboVidrio.addItem(nombre2);
 //                comboVidrio.addItem(nombre3);
             }
-          
-            //
             
             if(resultSet.next()){
                 
-            for (int i = 0;i<comboVidrio.getSize().height;i++){    
+                for (int i = 0;i<comboVidrio.getSize().height;i++){    
                 
-            String sql9 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = '"+idVidrio+"'"; 
-            ps = ConexionDB.getConnection().prepareStatement(sql9);
-            resultSet = ps.executeQuery();
-             
-            if(resultSet.next()){ 
-                String nombre = resultSet.getString(1);
-            if (comboVidrio.getSelectedItem().toString() == nombre){
-            String sql5 ="SELECT cant_planchas FROM compra_vidrio_detalle cvd inner join compra_vidrio cv on '"+idVidrio+"' = cvd.compra_vidrio_id";
-            ps = ConexionDB.getConnection().prepareStatement(sql5);
-            resultSet = ps.executeQuery();
-            if(resultSet.next()){
-                int planchas = resultSet.getInt(1);
-                planchasVidrio.setText(Integer.toString(planchas));
-            }
-            }
-            }
-            }
+                    String sql9 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = '"+idVidrio+"'"; 
+                    ps = ConexionDB.getConnection().prepareStatement(sql9);
+                    resultSet = ps.executeQuery();
+
+                    if(resultSet.next()){ 
+                        String nombre = resultSet.getString(1);
+                        if (comboVidrio.getSelectedItem().toString() == nombre){
+                            String sql5 ="SELECT cant_planchas FROM compra_vidrio_detalle cvd inner join compra_vidrio cv on '"+idVidrio+"' = cvd.compra_vidrio_id";
+                            ps = ConexionDB.getConnection().prepareStatement(sql5);
+                            resultSet = ps.executeQuery();
+                            if(resultSet.next()){
+                                int planchas = resultSet.getInt(1);
+                                planchasVidrio.setText(Integer.toString(planchas));
+                            }
+                        }
+                    }
+                }
             }
             
             // ACCESORIOS 
@@ -837,6 +836,8 @@ public class EditarPresupuesto extends javax.swing.JFrame {
             }
             
           }
+            
+          ConexionDB.endConnection(con);
         }catch(Exception e){
             e.printStackTrace();
         }

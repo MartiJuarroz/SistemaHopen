@@ -526,7 +526,7 @@ public class CargarObra extends javax.swing.JFrame {
 
             try{
                 Connection con = ConexionDB.getConnection();
-                String sql ="INSERT INTO obra (titular, total_presupuesto, comision, ganancia_pretendida, costos_fijos, fecha_presupuesto,estado_obra_id) VALUES (?,?,?,?,?,?,?)";
+                String sql ="INSERT INTO obra (titular, total_presupuesto, comision, ganancia_pretendida, costos_fijos, fecha_presupuesto,estado_obra_id) VALUES (uppercase(?),?,?,?,?,?,?)";
                 ps = ConexionDB.getConnection().prepareStatement(sql);
 
                 ps.setString(1, titular);

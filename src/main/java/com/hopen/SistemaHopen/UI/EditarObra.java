@@ -641,13 +641,21 @@ public class EditarObra extends javax.swing.JFrame {
     private void editarPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPresupuestoActionPerformed
         // TODO add your handling code here:
         idObra = getIDFromObraSeleccionada();
-        new EditarPresupuesto(idObra).setVisible(true);      
+        if(idObra != 0){
+            new CargarFactura(idObra).setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciona una obra para editar el presupuesto", "No seleccionó ninguna obra", JOptionPane.INFORMATION_MESSAGE);
+        }      
     }//GEN-LAST:event_editarPresupuestoActionPerformed
 
     private void editarFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarFacturaActionPerformed
         // TODO add your handling code here:
         idObra = getIDFromObraSeleccionada();
-        new CargarFactura(idObra).setVisible(true);
+        if(idObra != 0){
+            new CargarFactura(idObra).setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciona una obra antes de agregar la factura", "No seleccionó ninguna obra", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_editarFacturaActionPerformed
 
     private void ComisionTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ComisionTxtKeyTyped
