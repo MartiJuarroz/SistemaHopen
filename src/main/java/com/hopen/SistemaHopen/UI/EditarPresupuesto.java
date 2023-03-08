@@ -31,7 +31,7 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     
     public EditarPresupuesto(int idObra) {
         initComponents();
-      //  llenarComboBoxTipoVidrio();
+        //llenarComboBoxTipoVidrio(); no existe mas este metodo
         guardarVidrio1.setVisible(false);
         this.idObra = idObra;
         llenarTextos();
@@ -763,7 +763,9 @@ public class EditarPresupuesto extends javax.swing.JFrame {
             }
             
             //llenar combo box
-            String sql4 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = '"+idVidrio+"'"; 
+            String sql4 = "SELECT tv.nombre_tipo_vidrio FROM tipo_vidrio tv inner join compra_vidrio_detalle cvd on cvd.tipovidrio_id = tv.id WHERE cvd.compra_vidrio_id = '"+idVidrio+"'";
+            //esta consulta es lo que no funciona creo
+            //porque cuando editamos no podemos ver los tipos de vidrio
             ps = ConexionDB.getConnection().prepareStatement(sql4);
             resultSet = ps.executeQuery();
             
