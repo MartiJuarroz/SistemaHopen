@@ -897,7 +897,6 @@ public class EditarPresupuesto extends javax.swing.JFrame {
     private void guardarAluminioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarAluminioActionPerformed
         // TODO add your handling code here:
         
-      //  CargarObra co = new CargarObra();
         double kiloFactura = 0.0;
         Double totalFacturado = 0.0;
         Double remito2 = 0.0;
@@ -944,7 +943,9 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                 new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
-                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+                //no se porque esta esto, abre la pantalla de cargar una obra nueva cuando terminamos de editar otra, no tiene mucho sentido
+                //Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
     }//GEN-LAST:event_SalirBtnActionPerformed
@@ -985,7 +986,8 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                 new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
-                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
     }//GEN-LAST:event_SalirBtn2ActionPerformed
@@ -1031,7 +1033,8 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                 new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
-                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
     }//GEN-LAST:event_SalirBtn3ActionPerformed
@@ -1078,7 +1081,8 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                 new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
-                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+                //Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_SalirBtn4ActionPerformed
@@ -1173,7 +1177,8 @@ public class EditarPresupuesto extends javax.swing.JFrame {
                 new EditarObra().setVisible(true);
                 dispose();
             } catch (Exception ex) {
-                Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+                //Logger.getLogger(CargarObra.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_SalirBtn1ActionPerformed

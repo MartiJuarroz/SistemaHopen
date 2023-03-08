@@ -524,6 +524,8 @@ public class EditarObra extends javax.swing.JFrame {
                 return id;
             }
             
+            ConexionDB.endConnection(con);
+            
           }catch(Exception e){
             e.printStackTrace();
         }
@@ -550,6 +552,7 @@ public class EditarObra extends javax.swing.JFrame {
                 return id;
             }
             
+          ConexionDB.endConnection(con);
           }catch(Exception e){
             e.printStackTrace();
         }
